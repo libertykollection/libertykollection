@@ -247,10 +247,12 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
             <TableBody>
               {filteredData.length > 0 ? (
                 filteredData.map((item) => {
-                  const imageSrc =
-                    item.images && item.images.length > 0
-                      ? `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${item.images[0].name}`
-                      : null;
+                  const rawImg = item.images && item.images.length > 0 ? (item.images[0].url || item.images[0].name) : null;
+                  const imageSrc = rawImg
+                    ? (rawImg.startsWith('http') || rawImg.startsWith('/')
+                        ? rawImg
+                        : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${rawImg}`)
+                    : null;
 
                   return (
                     <TableRow
@@ -277,6 +279,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                               src={imageSrc}
                               alt={item.name}
                               fill
+                              unoptimized
                               sizes="52px"
                               style={{ objectFit: 'cover' }}
                             />

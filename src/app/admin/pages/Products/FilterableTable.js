@@ -800,7 +800,8 @@ const FilterableTable = ({
                               <Image
                                 width={44}
                                 height={44}
-                                src={item.images[0].url.startsWith('https://') ? item.images[0].url : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${item.images[0].url}`}
+                                unoptimized
+                                src={item.images[0].url.startsWith('http') || item.images[0].url.startsWith('/') ? item.images[0].url : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${item.images[0].url}`}
                                 alt=""
                                 style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                               />
