@@ -1,0 +1,10 @@
+node_modules
+.next
+store2u/
+.env
+store2u.rar
+next-env.d.ts
+customer_api_docs.md
+stress-test-api.js
+test-db.js
+test-prisma.js

@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ==========================================================================
+       GLOBAL WEBSITE THEME CONFIGURATION
+       Simply change the color codes in this section to update the ENTIRE website!
+
+    /* ==========================================================================
+       GLORIA COSMETICS GLOBAL THEME CONFIGURATION
+       Extracted directly from the official Gloria Cosmetics logo:
+       • Primary: Royal Sunburst Gold (#B98C2D)
+       • Secondary: Radiant Sun Gold (#D2AA2D)
+       • Dark Surfaces / Noir: Deep Onyx Charcoal (#141311)
+       • Soft Accent / Light: Champagne Ivory (#F9F5EC)
+       • Borders: Warm Gold Pearl (#E8DFC8)
+       ========================================================================== */
+
+    /* 1. Primary Brand Accent & Action Buttons (Gloria Sunburst Gold) */
+    --theme-primary: #B98C2D;
+    --theme-primary-rgb: 185, 140, 45;
+    --theme-primary-hover: #9E7420;
+    --theme-primary-dark: #826017;
+    --theme-primary-contrast: #FFFFFF;
+
+    /* 2. Secondary Accent (Gloria Radiant Gold Highlight - Badges, Stars, Accents) */
+    --theme-secondary: #D2AA2D;
+    --theme-secondary-rgb: 210, 170, 45;
+    --theme-secondary-hover: #B98C2D;
+
+    /* 3. Dark Elements (Gloria Onyx Noir Footer & Deep Surfaces) */
+    --theme-dark: #141311;
+    --theme-dark-rgb: 20, 19, 17;
+    --theme-dark-surface: #0E0D0B;
+    --theme-dark-border: #2C2822;
+    --theme-dark-text: #E5DFD0;
+
+    /* 4. Light Backgrounds & Tinted Surfaces (Champagne Silk & Warm Ivory) */
+    --theme-light: #F9F5EC;
+    --theme-light-hover: #F2EBDA;
+    --theme-surface: #FFFFFF;
+    --theme-muted: #FAF7F0;
+
+    /* 5. Borders & Dividers (Warm Golden Pearl) */
+    --theme-border: #E8DFC8;
+    --theme-border-subtle: #F2ECDC;
+
+    /* 6. Functional Status */
+    --theme-sale: #C23934;
+    --theme-success: #10B981;
+
+    /* 7. Backward Compatibility Mappings */
+    --brand-primary: var(--theme-primary);
+    --brand-primary-rgb: var(--theme-primary-rgb);
+    --brand-primary-hover: var(--theme-primary-hover);
+    --brand-primary-dark: var(--theme-primary-dark);
+    --brand-primary-darker: var(--theme-primary-dark);
+    --brand-light: var(--theme-light);
+    --brand-light-hover: var(--theme-light-hover);
+    --brand-border: var(--theme-border);
+    --brand-surface: var(--theme-light);
+    --brand-accent: var(--theme-primary);
+    --brand-accent-glow: rgba(var(--theme-primary-rgb), 0.25);
+    --brand-gold: var(--theme-secondary);
+    --brand-gold-light: var(--theme-light);
+    --brand-orange: var(--theme-secondary-hover);
+  }
+
+  html {
+    font-family: var(--font-sans), var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: inherit;
+    color: #1f2937;
+    letter-spacing: -0.01em;
+  }
+
+  /* Professional typography utilities */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+  }
+
+  /* Numeric alignment for currency/prices */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Shimmer loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Add shimmer animation utility */
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide,
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.s2u-marquee {
+  animation: marquee 28s linear infinite;
+  display: flex;
+}
+
+/* Material luxury progress bar animations */
+@keyframes topProgressBar {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes topProgressBarShort {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+.s2u-progress-bar-primary {
+  animation: topProgressBar 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+.s2u-progress-bar-secondary {
+  animation: topProgressBarShort 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.15s infinite;
+}

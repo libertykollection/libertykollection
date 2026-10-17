@@ -1,0 +1,21 @@
+{
+    "name": "Store2U",
+    "short_name": "Store2U",
+    "description": "Store2U - Your Gateway to Digital & Physical Goods",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#F25C2C",
+    "icons": [
+        {
+            "src": "/store2ulogo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/store2ulogo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
