@@ -1,37 +1,38 @@
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
-
 const prisma = new PrismaClient();
 
 async function main() {
-  const email = 'admin@store2u.ca';
-  const password = 'admin123';
-  const hashedPassword = bcrypt.hashSync(password, 10);
-
-  try {
-    const existingUser = await prisma.user.findUnique({
-      where: { email: email },
+  const email = 'theitxprts@gmail.com';
+  const rawPass = '786ninja';
+  const hash = await bcrypt.hash(rawPass, 10);
+  
+  const existing = await prisma.user.findUnique({ where: { email } });
+  if (existing) {
+    const updated = await prisma.user.update({
+      where: { email },
+      data: {
+        password: hash,
+        role: 'ADMIN',
+        emailVerified: true,
+        name: 'TheITXprts Admin'
+      }
     });
-
-    if (existingUser) {
-      console.log('User with this email already exists.');
-    } else {
-      const user = await prisma.user.create({
-        data: {
-          email: email,
-          password: hashedPassword,
-          name: 'Admin User',
-          role: 'ADMIN',
-          emailVerified: true, // Auto-verify admin
-        },
-      });
-      console.log('Admin user created successfully:', user);
-    }
-  } catch (e) {
-    console.error('Error creating admin user:', e);
-  } finally {
-    await prisma.$disconnect();
+    console.log('✓ Successfully updated user to ADMIN:', updated.id, updated.email, updated.role);
+  } else {
+    const created = await prisma.user.create({
+      data: {
+        email,
+        password: hash,
+        role: 'ADMIN',
+        name: 'TheITXprts Admin',
+        emailVerified: true,
+        city: 'Lahore',
+        phoneno: '+923001234567'
+      }
+    });
+    console.log('✓ Successfully created new ADMIN user:', created.id, created.email, created.role);
   }
 }
 
-main();
+main().catch(console.error).finally(() => prisma.$disconnect());
