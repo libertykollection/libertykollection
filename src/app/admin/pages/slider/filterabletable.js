@@ -368,9 +368,10 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                       >
                         {item.imgurl ? (
                           <Image
-                            src={`${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${item.imgurl}`}
+                            src={item.imgurl.startsWith('http') || item.imgurl.startsWith('/') ? item.imgurl : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${item.imgurl}`}
                             alt={`Slider #${item.id}`}
                             fill
+                            unoptimized
                             style={{ objectFit: 'cover' }}
                           />
                         ) : (
@@ -506,9 +507,10 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                     <Typography variant="caption" sx={{ color: '#8C7A70', display: 'block', mb: 0.5 }}>Current Image Preview:</Typography>
                     <Box sx={{ width: '100%', height: 120, position: 'relative', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${existingImage}`}
+                        src={existingImage.startsWith('http') || existingImage.startsWith('/') ? existingImage : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${existingImage}`}
                         alt="Existing banner"
                         fill
+                        unoptimized
                         style={{ objectFit: 'cover' }}
                       />
                     </Box>
