@@ -21,7 +21,7 @@ import prisma from './util/prisma';
 export async function generateMetadata() {
   let title = 'Prestige Online Atelier';
   let description = 'Shop luxury authentic cosmetics, niche fragrances, and verified skincare.';
-  let icon = '/store2ulogo.png';
+  let icon = '/gloria_logo.png';
 
   try {
     const details = await prisma.companyDetails.findFirst();
@@ -49,8 +49,9 @@ export async function generateMetadata() {
     description,
     manifest: '/manifest.json',
     icons: {
-      icon,
-      apple: icon,
+      icon: '/gloria_logo.png',
+      shortcut: '/favicon.ico',
+      apple: '/gloria_logo.png',
     },
     alternates: {
       canonical: '/',
