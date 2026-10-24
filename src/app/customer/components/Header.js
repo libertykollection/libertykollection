@@ -54,7 +54,9 @@ const Header = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const wishlistItems = useSelector((state) => state.wishlist?.items || []);
   const [totalQuantityOfItems, setTotalQuantityOfItems] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
 
   // Cart Count
   useEffect(() => {
@@ -65,6 +67,11 @@ const Header = () => {
       setTotalQuantityOfItems(0);
     }
   }, [cartItems]);
+
+  // Wishlist Count
+  useEffect(() => {
+    setWishlistCount(wishlistItems?.length || 0);
+  }, [wishlistItems]);
 
   // Debounced Search Effect
   useEffect(() => {
@@ -412,9 +419,11 @@ const Header = () => {
               aria-label="Wishlist"
             >
               <FiHeart size={21} className="stroke-[2]" />
-              <span className="absolute -top-1 -right-2 bg-theme-primary text-white text-[10px] font-black w-4 h-4 rounded-none flex items-center justify-center shadow-xs">
-                0
-              </span>
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-theme-primary text-white text-[10px] font-black w-4 h-4 rounded-none flex items-center justify-center shadow-xs">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
 
             {/* Dusty Rose Cart Button with Espresso Counter */}
@@ -719,6 +728,18 @@ const Header = () => {
               </div>
 
               <div className="border-t border-[#F0DCE3] my-4 pt-4 space-y-2 text-sm font-semibold">
+                <Link
+                  href="/customer/pages/wishlist"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between p-2 text-gray-700 hover:text-theme-primary"
+                >
+                  <span>My Vanity Wishlist</span>
+                  {wishlistCount > 0 && (
+                    <span className="bg-theme-primary text-white text-[10px] font-black px-1.5 py-0.5">
+                      {wishlistCount}
+                    </span>
+                  )}
+                </Link>
                 <Link href="/customer/pages/collections" onClick={() => setIsMobileMenuOpen(false)} className="block p-2 text-gray-700 hover:text-theme-primary">
                   Collections
                 </Link>

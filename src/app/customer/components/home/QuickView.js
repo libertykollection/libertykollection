@@ -4,9 +4,11 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiX, FiMinus, FiPlus, FiShoppingBag, FiCheck, FiArrowRight, FiShield, FiTruck } from 'react-icons/fi';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { addToCart } from '../../../store/cartSlice';
+import { toggleWishlist } from '../../../store/wishlistSlice';
 import { formatPrice, getOriginalPrice, parseImages, productHref, stripHtml } from './homeUtils';
 
 const QuickViewContext = createContext({ open: () => {} });
@@ -27,6 +29,8 @@ export const QuickViewProvider = ({ children }) => {
 
 const QuickViewModal = ({ product, onClose }) => {
   const dispatch = useDispatch();
+  const wishlistItems = useSelector((state) => state.wishlist?.items || []);
+  const inWishlist = wishlistItems.some((item) => item.id === product?.id);
   const images = parseImages(product);
   const [active, setActive] = useState(0);
   const [qty, setQty] = useState(1);
@@ -171,6 +175,19 @@ const QuickViewModal = ({ product, onClose }) => {
             >
               {added ? <FiCheck size={16} /> : <FiShoppingBag size={16} />}
               {outOfStock ? 'Out of stock' : added ? 'Added to bag' : 'Add to bag'}
+            </button>
+            <button
+              type="button"
+              onClick={() => dispatch(toggleWishlist(product))}
+              title={inWishlist ? 'In Vanity Wishlist' : 'Add to Vanity Wishlist'}
+              aria-label="Wishlist"
+              className={`w-12 h-12 flex items-center justify-center border transition-colors ${
+                inWishlist
+                  ? 'border-[#C53261] bg-[#FFF5F8] text-[#C53261]'
+                  : 'border-gray-300 text-gray-700 hover:border-[#C53261] hover:text-[#C53261]'
+              }`}
+            >
+              {inWishlist ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
             </button>
           </div>
 

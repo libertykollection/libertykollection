@@ -5,9 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiEye, FiShoppingBag, FiCheck } from 'react-icons/fi';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { addToCart } from '../../../store/cartSlice';
+import { toggleWishlist } from '../../../store/wishlistSlice';
 import { useQuickView } from './QuickView';
 import { formatPrice, getOriginalPrice, parseImages, productHref } from './homeUtils';
 
@@ -16,6 +18,8 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
   const router = useRouter();
   const { open } = useQuickView();
   const [added, setAdded] = useState(false);
+  const wishlistItems = useSelector((state) => state.wishlist?.items || []);
+  const inWishlist = wishlistItems.some((item) => item.id === product.id);
 
   const images = parseImages(product);
   const primary = images[0];
@@ -35,6 +39,12 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
     dispatch(addToCart(product));
     setAdded(true);
     setTimeout(() => setAdded(false), 1600);
+  };
+
+  const handleToggleWishlist = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(toggleWishlist(product));
   };
 
   const handleQuickView = (e) => {
@@ -93,6 +103,21 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
               <span className="bg-gray-900/80 text-white text-[10px] font-bold tracking-wider px-2 py-0.5">SOLD OUT</span>
             )}
           </div>
+
+          {/* Floating Wishlist Heart */}
+          <button
+            type="button"
+            onClick={handleToggleWishlist}
+            aria-label={inWishlist ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
+            title={inWishlist ? 'In Vanity Wishlist' : 'Add to Vanity Wishlist'}
+            className="absolute top-2 right-2 z-10 w-8 h-8 flex items-center justify-center bg-white/90 hover:bg-white border border-[#F0DCE3] text-[#141311] hover:text-[#C53261] transition-all rounded-none shadow-xs"
+          >
+            {inWishlist ? (
+              <FaHeart className="text-[#C53261]" size={14} />
+            ) : (
+              <FaRegHeart size={14} />
+            )}
+          </button>
 
           {/* Hover actions */}
           <div className="absolute inset-x-0 bottom-0 z-10 flex translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">

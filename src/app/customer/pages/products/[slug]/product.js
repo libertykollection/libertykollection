@@ -11,6 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCart } from '../../../../store/cartSlice';
+import { toggleWishlist } from '../../../../store/wishlistSlice';
 import {
   FiMinus,
   FiPlus,
@@ -65,7 +66,21 @@ const ProductPage = ({ productData }) => {
   const [colors, setColors] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWishlist, setIsWishlist] = useState(false);
+  const wishlistItems = useSelector((state) => state.wishlist?.items || []);
+  const isWishlist = useMemo(() => {
+    return wishlistItems.some((item) => item.id === product?.id);
+  }, [wishlistItems, product?.id]);
+
+  const handleToggleWishlist = () => {
+    if (!product) return;
+    dispatch(toggleWishlist(product));
+    if (isWishlist) {
+      toast.info('Removed from Vanity Wishlist');
+    } else {
+      toast.success('Added to Vanity Wishlist');
+    }
+  };
+
   const [activeTab, setActiveTab] = useState('description');
   const [imgError, setImgError] = useState(false);
 
@@ -385,8 +400,9 @@ const ProductPage = ({ productData }) => {
 
                 {/* Floating Wishlist Button */}
                 <button
-                  onClick={() => setIsWishlist(!isWishlist)}
-                  title="Save to Vanity Wishlist"
+                  type="button"
+                  onClick={handleToggleWishlist}
+                  title={isWishlist ? 'In Vanity Wishlist' : 'Save to Vanity Wishlist'}
                   className="absolute top-4 right-4 z-20 w-10 h-10 rounded-none bg-white border border-[#F0DCE3] flex items-center justify-center text-[#141311] hover:text-[#C53261] hover:border-[#C53261] transition-all shadow-none"
                 >
                   {isWishlist ? (
@@ -613,6 +629,20 @@ const ProductPage = ({ productData }) => {
                     >
                       <FiShoppingBag size={15} />
                       <span>{product?.stock === 0 ? 'Allocated / Sold Out' : 'Add to Vanity Bag'}</span>
+                    </button>
+
+                    {/* Wishlist Button */}
+                    <button
+                      type="button"
+                      onClick={handleToggleWishlist}
+                      title={isWishlist ? 'In Vanity Wishlist' : 'Save to Vanity Wishlist'}
+                      className={`w-12 h-12 flex items-center justify-center border transition-all rounded-none ${
+                        isWishlist
+                          ? 'border-[#C53261] bg-[#FFF5F8] text-[#C53261]'
+                          : 'border-[#F0DCE3] bg-white text-[#141311] hover:border-[#C53261] hover:text-[#C53261]'
+                      }`}
+                    >
+                      {isWishlist ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
                     </button>
                   </div>
 
