@@ -47,6 +47,14 @@ const nextConfig = {
   // Compression
   compress: true,
 
+  // Limit build parallelism (shared hosting has strict thread/process limits)
+  experimental: {
+    cpus: 1,
+    workerThreads: false,
+    webpackBuildWorker: false,
+    staticGenerationMaxConcurrency: 1,
+  },
+
   // Production optimizations
   // Disabled optimizeCss as it requires 'critters' package and can cause build issues
   // experimental: {
