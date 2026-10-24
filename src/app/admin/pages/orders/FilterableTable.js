@@ -29,7 +29,11 @@ import {
   Grid,
   Stack,
   Tabs,
-  Tab
+  Tab,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from '@mui/material';
 import {
   Search as SearchIcon,
@@ -176,50 +180,99 @@ const FilterableTable = ({ data = [], fetchData }) => {
 
   const handleAddNewItem = async () => {
     setIsFetching(true);
-    const formData = new FormData();
-    formData.append('userId', newItem.userId);
-    formData.append('total', newItem.total);
-    formData.append('status', newItem.status);
-    newItem.orderItems.forEach((item, index) => {
-      formData.append(`orderItems[${index}][productId]`, item.productId);
-      formData.append(`orderItems[${index}][quantity]`, item.quantity);
-      formData.append(`orderItems[${index}][price]`, item.price);
-    });
-    if (newItem.image) {
-      formData.append('image', newItem.image);
-    }
-
     try {
-      const url = newItem.id ? `/api/orders/${newItem.id}` : '/api/orders';
-      const method = newItem.id ? 'PUT' : 'POST';
+      let uploadedReceiptUrl = '';
+      if (newItem.image) {
+        const uploadData = new FormData();
+        uploadData.append('file', newItem.image);
+        try {
+          const uploadRes = await fetch('/api/upload', {
+            method: 'POST',
+            body: uploadData,
+          });
+          if (uploadRes.ok) {
+            const resJson = await uploadRes.json();
+            uploadedReceiptUrl = resJson.url || '';
+          }
+        } catch (uploadErr) {
+          console.error('Receipt upload failed:', uploadErr);
+        }
+      }
 
-      const payload = newItem.id ? {
-        id: newItem.id,
-        userId: newItem.userId,
-        total: newItem.total,
-        status: newItem.status,
-        paymentMethod: 'Other',
-        paymentInfo: null
-      } : formData;
-
-      const options = newItem.id ? {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      } : {
-        method,
-        body: formData
+      const manualDetails = {
+        type: 'manual_payment',
+        transactionId: newItem.transactionId || '',
+        amount: Number(newItem.paidAmount || newItem.total) || 0,
+        receiptUrl: uploadedReceiptUrl,
+        bankName: newItem.bankName || 'Direct Bank Transfer',
+        submittedAt: new Date().toISOString(),
+        uploadedByAdmin: true,
       };
 
-      const response = await fetch(url, options);
-      if (response.ok && fetchData) {
+      if (newItem.id) {
+        // Edit existing order
+        const payload = {
+          id: newItem.id,
+          userId: newItem.userId ? parseInt(newItem.userId) : null,
+          total: Number(newItem.total) || 0,
+          status: newItem.status,
+          paymentMethod: newItem.paymentMethod || 'Manual Payment',
+          paymentInfo: manualDetails
+        };
+        await fetch(`/api/orders/${newItem.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        // Create new order
+        const payload = {
+          userId: newItem.userId ? parseInt(newItem.userId) : null,
+          total: Number(newItem.total) || 0,
+          netTotal: Number(newItem.total) || 0,
+          status: newItem.status || (newItem.paymentMethod === 'Manual Payment' ? 'PENDING' : 'PAID'),
+          paymentMethod: newItem.paymentMethod || 'Manual Payment',
+          paymentInfo: manualDetails,
+          paymentId: newItem.transactionId || null,
+          shippingAddress: {
+            recipientName: newItem.recipientName || 'Walk-in / Phone Customer',
+            phoneNumber: newItem.phoneNumber || '+92',
+            email: newItem.email || 'customer@gloriacosmetics.shop',
+            city: newItem.city || 'Karachi',
+            streetAddress: newItem.streetAddress || 'Direct In-Store / Admin Order',
+            state: 'Sindh',
+            country: 'Pakistan',
+            zip: '75000'
+          },
+          items: newItem.orderItems && newItem.orderItems.length > 0 ? newItem.orderItems.map((item) => ({
+            productId: parseInt(item.productId, 10),
+            quantity: Number(item.quantity) || 1,
+            price: Number(item.price) || 0,
+          })) : [
+            {
+              productId: 1,
+              quantity: 1,
+              price: Number(newItem.total) || 0
+            }
+          ]
+        };
+
+        await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      if (fetchData) {
         await fetchData();
       }
       setIsModalOpen(false);
     } catch (error) {
       console.error('Error saving item:', error);
+    } finally {
+      setIsFetching(false);
     }
-    setIsFetching(false);
   };
 
   const handleDeleteItem = async (e, id) => {
@@ -284,10 +337,20 @@ const FilterableTable = ({ data = [], fetchData }) => {
             setNewItem({
               id: null,
               userId: '',
+              recipientName: '',
+              phoneNumber: '',
+              email: '',
+              city: 'Karachi',
+              streetAddress: '',
               total: '',
+              paidAmount: '',
               status: 'PENDING',
+              paymentMethod: 'Manual Payment',
+              transactionId: '',
+              bankName: 'Meezan Bank',
               orderItems: [],
               image: null,
+              receiptPreview: null,
             });
             setIsModalOpen(true);
           }}
@@ -678,28 +741,80 @@ const FilterableTable = ({ data = [], fetchData }) => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Customer User ID *"
-                  type="number"
-                  value={newItem.userId}
-                  onChange={(e) => setNewItem({ ...newItem, userId: e.target.value })}
+                  label="Recipient Full Name *"
+                  value={newItem.recipientName || ''}
+                  onChange={(e) => setNewItem({ ...newItem, recipientName: e.target.value })}
                   sx={inputStyles}
-                  placeholder="e.g. 102"
+                  placeholder="e.g. Fatima Khan"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Initial Order Status"
-                  value={newItem.status}
-                  onChange={(e) => setNewItem({ ...newItem, status: e.target.value })}
+                  label="Contact Phone Number *"
+                  value={newItem.phoneNumber || ''}
+                  onChange={(e) => setNewItem({ ...newItem, phoneNumber: e.target.value })}
                   sx={inputStyles}
-                  placeholder="PENDING, PAID, SHIPPED..."
+                  placeholder="e.g. 0300-1234567"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  label="Total Amount (PKR) *"
+                  label="Delivery City"
+                  value={newItem.city || 'Karachi'}
+                  onChange={(e) => setNewItem({ ...newItem, city: e.target.value })}
+                  sx={inputStyles}
+                  placeholder="e.g. Karachi, Lahore, Islamabad"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth sx={inputStyles}>
+                  <InputLabel>Payment Method</InputLabel>
+                  <Select
+                    value={newItem.paymentMethod || 'Manual Payment'}
+                    label="Payment Method"
+                    onChange={(e) => setNewItem({ ...newItem, paymentMethod: e.target.value })}
+                  >
+                    <option value="Manual Payment" style={{ padding: '8px' }}>Manual Payment / Bank Transfer</option>
+                    <option value="Cash on Delivery" style={{ padding: '8px' }}>Cash on Delivery (COD)</option>
+                    <option value="Credit Card" style={{ padding: '8px' }}>Credit Card / PayPal</option>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="Transaction ID / Reference # *"
+                  value={newItem.transactionId || ''}
+                  onChange={(e) => setNewItem({ ...newItem, transactionId: e.target.value })}
+                  sx={inputStyles}
+                  placeholder="e.g. TRX-98421098 or 20491823"
+                  helperText="Required for manual bank / JazzCash verification"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth sx={inputStyles}>
+                  <InputLabel>Settlement Channel</InputLabel>
+                  <Select
+                    value={newItem.bankName || 'Meezan Bank'}
+                    label="Settlement Channel"
+                    onChange={(e) => setNewItem({ ...newItem, bankName: e.target.value })}
+                  >
+                    <option value="Meezan Bank" style={{ padding: '8px' }}>Meezan Bank</option>
+                    <option value="HBL (Habib Bank Limited)" style={{ padding: '8px' }}>HBL (Habib Bank Limited)</option>
+                    <option value="JazzCash" style={{ padding: '8px' }}>JazzCash</option>
+                    <option value="EasyPaisa" style={{ padding: '8px' }}>EasyPaisa</option>
+                    <option value="Bank Alfalah" style={{ padding: '8px' }}>Bank Alfalah</option>
+                    <option value="Standard Chartered" style={{ padding: '8px' }}>Standard Chartered</option>
+                    <option value="Other Bank" style={{ padding: '8px' }}>Other Bank / RAAST</option>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="Total Order Amount (PKR) *"
                   type="number"
                   value={newItem.total}
                   onChange={(e) => setNewItem({ ...newItem, total: e.target.value })}
@@ -710,12 +825,41 @@ const FilterableTable = ({ data = [], fetchData }) => {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="Declared Paid Amount (PKR)"
+                  type="number"
+                  value={newItem.paidAmount || newItem.total}
+                  onChange={(e) => setNewItem({ ...newItem, paidAmount: e.target.value })}
+                  sx={inputStyles}
+                  InputProps={{
+                    startAdornment: <Typography sx={{ mr: 1, color: '#8C7A70', fontWeight: 700, fontSize: '0.85rem' }}>Rs.</Typography>
+                  }}
+                  helperText="Amount sent by customer"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth sx={inputStyles}>
+                  <InputLabel>Initial Status</InputLabel>
+                  <Select
+                    value={newItem.status || 'PENDING'}
+                    label="Initial Status"
+                    onChange={(e) => setNewItem({ ...newItem, status: e.target.value })}
+                  >
+                    <option value="PENDING" style={{ padding: '8px' }}>PENDING (Awaiting Verification)</option>
+                    <option value="PAID" style={{ padding: '8px' }}>PAID (Verified)</option>
+                    <option value="CONFIRMED" style={{ padding: '8px' }}>CONFIRMED</option>
+                    <option value="SHIPPED" style={{ padding: '8px' }}>SHIPPED</option>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <Box
                   onClick={() => document.getElementById('manual-order-image').click()}
                   sx={{
-                    border: '1px dashed #C5A059',
+                    border: newItem.image ? '1px solid #166534' : '1px dashed #C5A059',
                     borderRadius: '0px',
-                    bgcolor: '#FBF9F7',
+                    bgcolor: newItem.image ? '#F0FDF4' : '#FBF9F7',
                     p: 1.5,
                     height: '56px',
                     display: 'flex',
@@ -725,15 +869,26 @@ const FilterableTable = ({ data = [], fetchData }) => {
                     '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' }
                   }}
                 >
-                  <CloudUploadIcon sx={{ color: '#C53261' }} />
-                  <Typography variant="body2" sx={{ color: newItem.image ? '#141311' : '#8C7A70', fontSize: '0.8rem', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {newItem.image ? newItem.image.name : 'Upload Payment Receipt / Note'}
-                  </Typography>
+                  <CloudUploadIcon sx={{ color: newItem.image ? '#166534' : '#C53261' }} />
+                  <Box sx={{ flex: 1, overflow: 'hidden' }}>
+                    <Typography variant="body2" sx={{ color: newItem.image ? '#166534' : '#141311', fontSize: '0.8rem', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {newItem.image ? `Receipt: ${newItem.image.name}` : 'Upload Payment Receipt Proof *'}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: '#8C7A70', fontSize: '0.7rem', display: 'block' }}>
+                      {newItem.image ? `${(newItem.image.size / 1024).toFixed(1)} KB` : 'Click to select screenshot or bank slip'}
+                    </Typography>
+                  </Box>
                   <input
                     id="manual-order-image"
                     type="file"
                     hidden
-                    onChange={(e) => setNewItem({ ...newItem, image: e.target.files[0] })}
+                    accept="image/*,application/pdf"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setNewItem({ ...newItem, image: file });
+                      }
+                    }}
                   />
                 </Box>
               </Grid>

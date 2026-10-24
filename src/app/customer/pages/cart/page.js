@@ -23,8 +23,12 @@ import {
   FiTruck,
   FiShield,
   FiLock,
+  FiUploadCloud,
+  FiCheckCircle,
+  FiFileText,
+  FiEye,
 } from 'react-icons/fi';
-import { FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal } from 'react-icons/fa';
+import { FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal, FaUniversity } from 'react-icons/fa';
 import { removeFromCart, updateQuantity, setCart } from '../../../store/cartSlice';
 import Image from 'next/image';
 import { jwtDecode } from 'jwt-decode';
@@ -52,6 +56,40 @@ const CartPage = () => {
   const [storeSettings, setStoreSettings] = useState(null);
   const [confirmedOrder, setConfirmedOrder] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Manual Pre-Payment State & Receipt Proof
+  const [manualPayment, setManualPayment] = useState({
+    transactionId: '',
+    amount: '',
+    receiptFile: null,
+    receiptUrl: '',
+    bankName: 'Meezan Bank',
+    senderNote: '',
+  });
+  const [receiptPreview, setReceiptPreview] = useState(null);
+  const [isUploadingReceipt, setIsUploadingReceipt] = useState(false);
+
+  const handleReceiptFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error('File size exceeds 10MB limit.');
+      return;
+    }
+
+    setManualPayment((prev) => ({ ...prev, receiptFile: file }));
+
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setReceiptPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setReceiptPreview(null);
+    }
+  };
 
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
@@ -302,6 +340,52 @@ const CartPage = () => {
       return;
     }
 
+    if (paymentMethod === 'Manual Payment') {
+      if (!manualPayment.transactionId.trim()) {
+        toast.error('Please enter the Transaction ID / Reference Number.');
+        return;
+      }
+      if (!manualPayment.receiptFile && !manualPayment.receiptUrl) {
+        toast.error('Please upload your payment receipt or transfer screenshot.');
+        return;
+      }
+
+      let uploadedReceiptUrl = manualPayment.receiptUrl;
+      if (manualPayment.receiptFile) {
+        setIsUploadingReceipt(true);
+        try {
+          const uploadFormData = new FormData();
+          uploadFormData.append('file', manualPayment.receiptFile);
+          const uploadRes = await axios.post('/api/upload', uploadFormData);
+          uploadedReceiptUrl = uploadRes.data?.url || '';
+          if (!uploadedReceiptUrl) {
+            throw new Error('No receipt URL returned');
+          }
+        } catch (uploadErr) {
+          console.error('Receipt upload failed:', uploadErr);
+          toast.error('Failed to upload payment receipt image. Please try again.');
+          setIsUploadingReceipt(false);
+          return;
+        } finally {
+          setIsUploadingReceipt(false);
+        }
+      }
+
+      const finalTotal = calculateFinalTotal();
+      const manualDetails = {
+        type: 'manual_payment',
+        transactionId: manualPayment.transactionId.trim(),
+        amount: Number(manualPayment.amount) || finalTotal,
+        receiptUrl: uploadedReceiptUrl,
+        bankName: manualPayment.bankName || 'Direct Bank Transfer',
+        senderNote: manualPayment.senderNote || '',
+        submittedAt: new Date().toISOString()
+      };
+
+      await executeOrderPlacement(manualDetails);
+      return;
+    }
+
     await executeOrderPlacement();
   };
 
@@ -460,6 +544,11 @@ const CartPage = () => {
                 <p className="text-[#141311] font-semibold">
                   {confirmedOrder.paymentMethod || paymentMethod}
                 </p>
+                {(confirmedOrder.paymentMethod === 'Manual Payment' || paymentMethod === 'Manual Payment') && (
+                  <span className="text-[10px] text-[#166534] font-semibold block mt-0.5">
+                    ✓ Payment proof receipt submitted
+                  </span>
+                )}
               </div>
 
               <div>
@@ -471,6 +560,18 @@ const CartPage = () => {
                 </p>
               </div>
             </div>
+
+            {(confirmedOrder.paymentMethod === 'Manual Payment' || paymentMethod === 'Manual Payment') && (
+              <div className="mt-4 p-3.5 bg-[#F0FDF4] border border-[#BBF7D0] text-xs text-[#166534] flex items-start gap-2.5">
+                <FiCheckCircle className="text-base flex-shrink-0 mt-0.5 text-[#16A34A]" />
+                <div>
+                  <span className="font-bold block">Pre-Payment Proof Received</span>
+                  <span className="text-[11px] text-[#14532D] leading-relaxed">
+                    Transaction ID <strong>{manualPayment.transactionId || 'Submitted'}</strong> has been registered with your order. Our team will verify the payment receipt and dispatch your cosmetic atelier package.
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Action CTAs */}
@@ -794,15 +895,16 @@ const CartPage = () => {
                 <span className="text-xs text-[#8C7A70] font-medium uppercase tracking-wider">Step 2 of 2</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {/* 1. Cash on Delivery */}
                 <label
-                  className={`flex items-center justify-between p-4 cursor-pointer border transition-all ${
+                  className={`flex flex-col justify-between p-4 cursor-pointer border transition-all ${
                     paymentMethod === 'Cash on Delivery'
                       ? 'border-[#141311] bg-[#FFF5F8]'
                       : 'border-[#F0DCE3] hover:border-[#C5A059]'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-start justify-between mb-2">
                     <input
                       type="radio"
                       name="payment"
@@ -811,43 +913,230 @@ const CartPage = () => {
                         setPaymentMethod('Cash on Delivery');
                         setIsReadyForPayment(false);
                       }}
-                      className="accent-[#141311] w-4 h-4"
+                      className="accent-[#141311] w-4 h-4 mt-0.5"
                     />
-                    <div>
-                      <span className="text-xs font-bold uppercase tracking-wider block text-[#141311]">
-                        Cash on Delivery (COD)
-                      </span>
-                      <span className="text-[11px] text-[#8C7A70]">Pay upon courier arrival</span>
-                    </div>
+                    <FiTruck className="text-[#C53261] text-lg" />
                   </div>
-                  <FiTruck className="text-[#C53261] text-xl" />
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider block text-[#141311]">
+                      Cash on Delivery
+                    </span>
+                    <span className="text-[11px] text-[#8C7A70] block mt-0.5">Pay upon courier arrival</span>
+                  </div>
                 </label>
 
+                {/* 2. Manual Payment / Bank Transfer */}
                 <label
-                  className={`flex items-center justify-between p-4 cursor-pointer border transition-all ${
+                  className={`flex flex-col justify-between p-4 cursor-pointer border transition-all ${
+                    paymentMethod === 'Manual Payment'
+                      ? 'border-[#141311] bg-[#FFF5F8]'
+                      : 'border-[#F0DCE3] hover:border-[#C5A059]'
+                  }`}
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <input
+                      type="radio"
+                      name="payment"
+                      checked={paymentMethod === 'Manual Payment'}
+                      onChange={() => {
+                        setPaymentMethod('Manual Payment');
+                        setIsReadyForPayment(false);
+                        if (!manualPayment.amount) {
+                          setManualPayment((prev) => ({ ...prev, amount: Math.round(calculateFinalTotal()) }));
+                        }
+                      }}
+                      className="accent-[#141311] w-4 h-4 mt-0.5"
+                    />
+                    <FaUniversity className="text-[#C53261] text-lg" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider block text-[#141311]">
+                      Bank / Manual
+                    </span>
+                    <span className="text-[11px] text-[#8C7A70] block mt-0.5">Upload receipt proof</span>
+                  </div>
+                </label>
+
+                {/* 3. Online Card / PayPal */}
+                <label
+                  className={`flex flex-col justify-between p-4 cursor-pointer border transition-all ${
                     paymentMethod === 'Credit Card'
                       ? 'border-[#141311] bg-[#FFF5F8]'
                       : 'border-[#F0DCE3] hover:border-[#C5A059]'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-start justify-between mb-2">
                     <input
                       type="radio"
                       name="payment"
                       checked={paymentMethod === 'Credit Card'}
                       onChange={() => setPaymentMethod('Credit Card')}
-                      className="accent-[#141311] w-4 h-4"
+                      className="accent-[#141311] w-4 h-4 mt-0.5"
                     />
-                    <div>
-                      <span className="text-xs font-bold uppercase tracking-wider block text-[#141311]">
-                        Online Card / PayPal
-                      </span>
-                      <span className="text-[11px] text-[#8C7A70]">Encrypted instant settlement</span>
-                    </div>
+                    <FiCreditCard className="text-[#C53261] text-lg" />
                   </div>
-                  <FiCreditCard className="text-[#C53261] text-xl" />
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider block text-[#141311]">
+                      Card / PayPal
+                    </span>
+                    <span className="text-[11px] text-[#8C7A70] block mt-0.5">Instant checkout</span>
+                  </div>
                 </label>
               </div>
+
+              {/* Manual Payment Details & Receipt Upload Box */}
+              {paymentMethod === 'Manual Payment' && (
+                <div className="mt-4 p-5 bg-[#FAF8F6] border border-[#EAD7DF] space-y-4 animate-fade-in">
+                  <div className="flex items-start gap-3 p-3.5 bg-white border border-[#F0DCE3]">
+                    <FaUniversity className="text-[#C53261] text-xl mt-0.5 flex-shrink-0" />
+                    <div className="text-xs space-y-1.5 w-full">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold uppercase tracking-wider text-[#141311]">
+                          Gloria Official Settlement Account
+                        </span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] bg-[#FFF5F8] px-2 py-0.5 border border-[#F0DCE3]">
+                          Pre-Payment Proof
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-[#8C7A70]">
+                        Transfer the net payable amount and enter your Transaction Reference & Receipt Image below.
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1.5 border-t border-[#F0DCE3]">
+                        <div><span className="font-semibold text-[#8C7A70]">Bank:</span> <span className="font-bold text-[#141311]">Meezan Bank</span></div>
+                        <div><span className="font-semibold text-[#8C7A70]">Account Title:</span> <span className="font-bold text-[#141311]">Gloria Luxury Cosmetics</span></div>
+                        <div><span className="font-semibold text-[#8C7A70]">Account / IBAN:</span> <span className="font-mono font-bold text-[#141311]">PK42MEZN0001234567890123</span></div>
+                        <div><span className="font-semibold text-[#8C7A70]">JazzCash / EasyPaisa:</span> <span className="font-mono font-bold text-[#141311]">0300-1234567</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Transaction ID */}
+                    <div>
+                      <label className="text-xs font-bold text-[#8C7A70] uppercase tracking-wider block mb-1">
+                        Transaction ID / Reference # <span className="text-[#C53261]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. TRX-98421098 or 20491823"
+                        value={manualPayment.transactionId}
+                        onChange={(e) => setManualPayment((prev) => ({ ...prev, transactionId: e.target.value }))}
+                        className="w-full bg-white border border-[#F0DCE3] py-2.5 px-3 text-xs sm:text-sm font-mono outline-none focus:border-[#C53261]"
+                        required
+                      />
+                    </div>
+
+                    {/* Paid Amount */}
+                    <div>
+                      <label className="text-xs font-bold text-[#8C7A70] uppercase tracking-wider block mb-1">
+                        Transferred Amount (PKR) <span className="text-[#C53261]">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="e.g. 2450"
+                        value={manualPayment.amount || Math.round(calculateFinalTotal())}
+                        onChange={(e) => setManualPayment((prev) => ({ ...prev, amount: e.target.value }))}
+                        className="w-full bg-white border border-[#F0DCE3] py-2.5 px-3 text-xs sm:text-sm font-semibold outline-none focus:border-[#C53261]"
+                        required
+                      />
+                    </div>
+
+                    {/* Bank / Transfer Channel */}
+                    <div>
+                      <label className="text-xs font-bold text-[#8C7A70] uppercase tracking-wider block mb-1">
+                        Transfer Channel
+                      </label>
+                      <select
+                        value={manualPayment.bankName}
+                        onChange={(e) => setManualPayment((prev) => ({ ...prev, bankName: e.target.value }))}
+                        className="w-full bg-white border border-[#F0DCE3] py-2.5 px-3 text-xs outline-none focus:border-[#C53261]"
+                      >
+                        <option value="Meezan Bank">Meezan Bank</option>
+                        <option value="HBL (Habib Bank Limited)">HBL (Habib Bank Limited)</option>
+                        <option value="JazzCash">JazzCash</option>
+                        <option value="EasyPaisa">EasyPaisa</option>
+                        <option value="Bank Alfalah">Bank Alfalah</option>
+                        <option value="Standard Chartered">Standard Chartered</option>
+                        <option value="Other Bank">Other Bank / RAAST</option>
+                      </select>
+                    </div>
+
+                    {/* Sender Notes / Account Name */}
+                    <div>
+                      <label className="text-xs font-bold text-[#8C7A70] uppercase tracking-wider block mb-1">
+                        Sender Account Name (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Waqas Umar"
+                        value={manualPayment.senderNote}
+                        onChange={(e) => setManualPayment((prev) => ({ ...prev, senderNote: e.target.value }))}
+                        className="w-full bg-white border border-[#F0DCE3] py-2.5 px-3 text-xs outline-none focus:border-[#C53261]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Receipt Upload Dropzone */}
+                  <div>
+                    <label className="text-xs font-bold text-[#8C7A70] uppercase tracking-wider block mb-1.5">
+                      Upload Payment Receipt / Transfer Screenshot <span className="text-[#C53261]">*</span>
+                    </label>
+
+                    {receiptPreview ? (
+                      <div className="p-3 bg-white border border-[#F0DCE3] flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-16 h-16 relative border border-[#F0DCE3] overflow-hidden flex-shrink-0 bg-[#FBF9F7]">
+                            <img
+                              src={receiptPreview}
+                              alt="Receipt Preview"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5 text-xs font-bold text-[#166534]">
+                              <FiCheckCircle />
+                              <span>Receipt Proof Attached</span>
+                            </div>
+                            <span className="text-[11px] text-[#8C7A70] block truncate max-w-[200px] sm:max-w-xs">
+                              {manualPayment.receiptFile ? manualPayment.receiptFile.name : 'Uploaded receipt'}
+                            </span>
+                            <span className="text-[10px] text-[#8C7A70]">
+                              {manualPayment.receiptFile ? `${(manualPayment.receiptFile.size / 1024).toFixed(1)} KB` : ''}
+                            </span>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setManualPayment((prev) => ({ ...prev, receiptFile: null, receiptUrl: '' }));
+                            setReceiptPreview(null);
+                          }}
+                          className="text-xs font-bold uppercase tracking-wider text-[#C53261] hover:underline px-2 py-1"
+                        >
+                          Change
+                        </button>
+                      </div>
+                    ) : (
+                      <label className="border-2 border-dashed border-[#E0CBD4] hover:border-[#C53261] bg-white p-5 flex flex-col items-center justify-center cursor-pointer transition-all text-center">
+                        <FiUploadCloud className="text-[#C53261] text-2xl mb-1.5" />
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#141311]">
+                          Click to Browse or Drag Receipt Proof
+                        </span>
+                        <span className="text-[11px] text-[#8C7A70] mt-0.5">
+                          Supports JPG, PNG, WEBP, or PDF (Max 10MB)
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*,application/pdf"
+                          onChange={handleReceiptFileChange}
+                          className="hidden"
+                        />
+                      </label>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {isReadyForPayment && paymentMethod === 'Credit Card' && (
                 <div id="paypal-button-container" className="mt-4 pt-4 border-t border-[#F0DCE3]" />

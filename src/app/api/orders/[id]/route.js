@@ -82,8 +82,10 @@ export async function PUT(request) {
         data: {
           status,
           stockDeducted: shouldDeduct ? true : (shouldRestore ? false : order.stockDeducted),
-          paymentMethod,
-          paymentInfo: paymentMethod === 'Credit Card' ? JSON.stringify(paymentInfo) : null,
+          paymentMethod: paymentMethod || order.paymentMethod,
+          paymentInfo: paymentInfo !== undefined 
+            ? (typeof paymentInfo === 'object' && paymentInfo !== null ? JSON.stringify(paymentInfo) : paymentInfo) 
+            : order.paymentInfo,
           updatedAt: new Date(),
         },
       });

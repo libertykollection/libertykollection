@@ -79,7 +79,18 @@ export async function POST(request) {
                 deliveryCharge: Number(deliveryCharge) || 0,
                 extraDeliveryCharge: Number(extraDeliveryCharge) || 0,
                 netTotal: Number(netTotal) || 0,
-                status: (paymentMethod === 'Cash on Delivery' || paymentMethod === 'COD') ? 'PENDING' : 'PAID',
+                status: (
+                    paymentMethod === 'Cash on Delivery' ||
+                    paymentMethod === 'COD' ||
+                    paymentMethod === 'Manual Payment' ||
+                    paymentMethod === 'Bank Transfer' ||
+                    (typeof paymentMethod === 'string' && (
+                        paymentMethod.toLowerCase().includes('manual') ||
+                        paymentMethod.toLowerCase().includes('bank') ||
+                        paymentMethod.toLowerCase().includes('jazzcash') ||
+                        paymentMethod.toLowerCase().includes('easypaisa')
+                    ))
+                ) ? 'PENDING' : 'PAID',
                 stockDeducted: true,
                 recipientName: shippingAddress.recipientName || 'N/A',
                 streetAddress: shippingAddress.streetAddress || '',
@@ -91,7 +102,7 @@ export async function POST(request) {
                 phoneNumber: shippingAddress.phoneNumber || 'N/A',
                 email: shippingAddress.email || 'N/A',
                 paymentMethod: paymentMethod || 'Unknown',
-                paymentInfo: finalPaymentInfo ? JSON.stringify(finalPaymentInfo) : null,
+                paymentInfo: finalPaymentInfo ? (typeof finalPaymentInfo === 'string' ? finalPaymentInfo : JSON.stringify(finalPaymentInfo)) : null,
                 couponCode,
                 orderItems: {
                     create: items.map(item => {
