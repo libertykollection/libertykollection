@@ -33,13 +33,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -47,7 +47,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -130,9 +130,9 @@ const ProfilePage = () => {
           sx={{
             borderRadius: '0px',
             bgcolor: '#fff',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             color: '#141311',
-            '&:hover': { bgcolor: '#F9F5EC', color: '#B98C2D' },
+            '&:hover': { bgcolor: '#FFF5F8', color: '#C53261' },
           }}
         >
           <ArrowBackIcon fontSize="small" />
@@ -164,7 +164,7 @@ const ProfilePage = () => {
             sx={{
               p: { xs: 2.5, sm: 3.5 },
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               height: '100%',
             }}
@@ -174,8 +174,8 @@ const ProfilePage = () => {
                 sx={{
                   width: 36,
                   height: 36,
-                  bgcolor: '#F9F5EC',
-                  color: '#B98C2D',
+                  bgcolor: '#FFF5F8',
+                  color: '#C53261',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -188,7 +188,7 @@ const ProfilePage = () => {
               </Typography>
             </Box>
 
-            <Divider sx={{ mb: 3, borderColor: '#E8DFC8' }} />
+            <Divider sx={{ mb: 3, borderColor: '#F0DCE3' }} />
 
             <Stack spacing={2.5}>
               <Box>
@@ -219,7 +219,7 @@ const ProfilePage = () => {
             sx={{
               p: { xs: 2.5, sm: 3.5 },
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
             }}
           >
@@ -228,8 +228,8 @@ const ProfilePage = () => {
                 sx={{
                   width: 36,
                   height: 36,
-                  bgcolor: '#F9F5EC',
-                  color: '#B98C2D',
+                  bgcolor: '#FFF5F8',
+                  color: '#C53261',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -242,7 +242,7 @@ const ProfilePage = () => {
               </Typography>
             </Box>
 
-            <Divider sx={{ mb: 3, borderColor: '#E8DFC8' }} />
+            <Divider sx={{ mb: 3, borderColor: '#F0DCE3' }} />
 
             <form onSubmit={handleChangePassword}>
               <Stack spacing={2.5}>
@@ -316,7 +316,7 @@ const ProfilePage = () => {
                     py: 1.5,
                     mt: 1,
                     boxShadow: 'none',
-                    '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                    '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
                   }}
                 >
                   {loading ? 'Updating Password...' : 'Save New Password'}

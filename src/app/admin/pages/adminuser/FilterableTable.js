@@ -46,13 +46,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -60,7 +60,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -251,7 +251,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
               mb: 0.5,
             }}
           >
-            Atelier Staff & Administrator Roles
+            Staff & Administrator Roles
           </Typography>
           <Typography variant="body2" sx={{ color: '#8C7A70', letterSpacing: '0.02em' }}>
             Manage administrative credentials, boutique branch access, and role permissions
@@ -274,8 +274,8 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             border: '1px solid #141311',
             boxShadow: 'none',
             '&:hover': {
-              bgcolor: '#B98C2D',
-              borderColor: '#B98C2D',
+              bgcolor: '#C53261',
+              borderColor: '#C53261',
               boxShadow: 'none',
             },
           }}
@@ -292,7 +292,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -311,8 +311,8 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -329,7 +329,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -348,8 +348,8 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -366,7 +366,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -385,8 +385,8 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -403,7 +403,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
         elevation={0}
         sx={{
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           overflow: 'hidden',
         }}
@@ -411,7 +411,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
         <Box
           sx={{
             p: 2,
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between',
@@ -450,19 +450,19 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 80 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 80 }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Admin Details
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 180 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 180 }}>
                   Branch
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 160 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 160 }}>
                   Role
                 </TableCell>
-                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 120 }}>
+                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 120 }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -475,7 +475,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
                     hover
                     sx={{
                       '&:hover': { bgcolor: '#FDFBF9' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
                     <TableCell sx={{ color: '#8C7A70', fontSize: '0.85rem', fontWeight: 500 }}>
@@ -505,9 +505,9 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
                           fontSize: '0.75rem',
                           textTransform: 'uppercase',
                           letterSpacing: '0.04em',
-                          bgcolor: (item.role || '').toLowerCase().includes('super') ? '#141311' : '#F9F5EC',
+                          bgcolor: (item.role || '').toLowerCase().includes('super') ? '#141311' : '#FFF5F8',
                           color: (item.role || '').toLowerCase().includes('super') ? '#fff' : '#141311',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                         }}
                       />
                     </TableCell>
@@ -520,7 +520,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
                           sx={{
                             color: '#8C7A70',
                             borderRadius: '0px',
-                            '&:hover': { color: '#B98C2D', bgcolor: '#F9F5EC' },
+                            '&:hover': { color: '#C53261', bgcolor: '#FFF5F8' },
                           }}
                         >
                           <EditIcon sx={{ fontSize: 18 }} />
@@ -543,7 +543,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={5} align="center" sx={{ py: 6, color: '#8C7A70' }}>
-                    <AdminIcon sx={{ fontSize: 36, color: '#D2AA2D', mb: 1 }} />
+                    <AdminIcon sx={{ fontSize: 36, color: '#C5A059', mb: 1 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311' }}>
                       No administrator accounts found
                     </Typography>
@@ -564,7 +564,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 20px 40px rgba(18, 11, 16, 0.1)',
           },
         }}
@@ -574,7 +574,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             p: 2.5,
           }}
         >
@@ -678,7 +678,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
             </Box>
           </DialogContent>
 
-          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #E8DFC8', gap: 1 }}>
+          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #F0DCE3', gap: 1 }}>
             <Button
               onClick={() => setIsModalOpen(false)}
               disabled={isLoading}
@@ -690,7 +690,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
                 letterSpacing: '0.08em',
                 fontWeight: 600,
                 px: 2.5,
-                '&:hover': { bgcolor: '#F9F5EC', color: '#141311' },
+                '&:hover': { bgcolor: '#FFF5F8', color: '#141311' },
               }}
             >
               Cancel
@@ -709,7 +709,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
                 fontWeight: 600,
                 px: 3,
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
               }}
             >
               {isLoading ? 'Saving...' : newItem.id ? 'Update Admin' : 'Create Admin'}
@@ -725,7 +725,7 @@ const FilterableTable = ({ data = [], fetchData, isPageLoading = false }) => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             p: 1,
           },
         }}

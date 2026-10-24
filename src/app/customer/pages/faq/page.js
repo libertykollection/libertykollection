@@ -33,12 +33,12 @@ const FAQ = () => {
   return (
     <div className="bg-[#FBF9F7] min-h-screen text-[#141311]">
       {/* Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1400px] px-4 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">
               <Link href="/" className="hover:text-[#141311] transition-colors">
-                Atelier
+                Home
               </Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Client Guidance</span>
@@ -47,7 +47,7 @@ const FAQ = () => {
               Frequently Asked Questions & Answers
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Concierge Assistance
           </span>
@@ -57,23 +57,23 @@ const FAQ = () => {
       <div className="container mx-auto max-w-[1200px] px-4 lg:px-8 py-12 sm:py-16">
         <FaqSection />
 
-        <div className="bg-white p-8 sm:p-10 rounded-none border border-[#E8DFC8] mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-white p-8 sm:p-10 rounded-none border border-[#F0DCE3] mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-2">
             <h4 className="text-xs font-serif font-bold text-[#141311] uppercase tracking-wider flex items-center gap-2">
-              <FiHelpCircle className="text-[#B98C2D]" /> The Atelier Standard
+              <FiHelpCircle className="text-[#C53261]" /> The Quality Standard
             </h4>
             <p className="text-xs text-gray-500 font-light leading-relaxed">
-              {brandName ? `${brandName} is` : 'Our atelier is'} devoted to providing authentic luxury cosmetic creations, swift white-glove dispatch, and unwavering client satisfaction.
+              {brandName ? `${brandName} is` : 'Gloria Cosmetics is'} devoted to providing authentic luxury cosmetic creations, swift white-glove dispatch, and unwavering client satisfaction.
             </p>
           </div>
 
           <div className="space-y-2">
             <h4 className="text-xs font-serif font-bold text-[#141311] uppercase tracking-wider flex items-center gap-2">
-              <FiPhone className="text-[#B98C2D]" /> Direct Concierge Hotline
+              <FiPhone className="text-[#C53261]" /> Direct Concierge Hotline
             </h4>
             <p className="text-xs text-gray-500 font-light leading-relaxed">
               Need immediate guidance with shade matching or delivery status? Reach our hotline Mon – Sat at{' '}
-              <a href={`tel:${phone}`} className="font-bold text-[#141311] hover:text-[#B98C2D]">
+              <a href={`tel:${phone}`} className="font-bold text-[#141311] hover:text-[#C53261]">
                 {phone}
               </a>.
             </p>
@@ -81,13 +81,13 @@ const FAQ = () => {
 
           <div className="space-y-2">
             <h4 className="text-xs font-serif font-bold text-[#141311] uppercase tracking-wider flex items-center gap-2">
-              <FiMail className="text-[#B98C2D]" /> Priority Email Concierge
+              <FiMail className="text-[#C53261]" /> Priority Email Concierge
             </h4>
             <p className="text-xs text-gray-500 font-light leading-relaxed">
               Send us inquiries any time {email ? (
-                <>at <a href={`mailto:${email}`} className="font-bold text-[#141311] hover:text-[#B98C2D]">{email}</a></>
+                <>at <a href={`mailto:${email}`} className="font-bold text-[#141311] hover:text-[#C53261]">{email}</a></>
               ) : (
-                <>via our <Link href="/customer/pages/contactus" className="font-bold text-[#141311] hover:text-[#B98C2D]">Concierge Desk</Link></>
+                <>via our <Link href="/customer/pages/contactus" className="font-bold text-[#141311] hover:text-[#C53261]">Concierge Desk</Link></>
               )}. Our curators reply promptly within 24 hours.
             </p>
           </div>

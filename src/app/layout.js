@@ -1,25 +1,36 @@
-import { Plus_Jakarta_Sans, Poppins } from 'next/font/google';
+import { Cormorant_Garamond, DM_Sans, Jost } from 'next/font/google';
 import ClientLayout from './ClientLayout';
 import './globals.css';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+/* ─── Display / Heading serif — luxury editorial feel ─── */
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+/* ─── Body / UI — clean geometric sans ─── */
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const poppins = Poppins({
+/* ─── Labels / Navigation — modern humanist caps ─── */
+const jost = Jost({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-ui',
   display: 'swap',
 });
 
 import prisma from './util/prisma';
 
 export async function generateMetadata() {
-  let title = 'Prestige Online Atelier';
+  let title = 'Gloria Cosmetics - Official Online Store';
   let description = 'Shop luxury authentic cosmetics, niche fragrances, and verified skincare.';
   let icon = '/gloria_logo.png';
 
@@ -44,7 +55,7 @@ export async function generateMetadata() {
   }
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk'),
     title,
     description,
     manifest: '/manifest.json',
@@ -61,8 +72,8 @@ export async function generateMetadata() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${poppins.variable}`}>
-      <body className={`${plusJakartaSans.className} font-sans antialiased`} suppressHydrationWarning={true}>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${jost.variable}`}>
+      <body className={`${dmSans.className} font-sans antialiased`} suppressHydrationWarning={true}>
         <ClientLayout>
           {children}
         </ClientLayout>

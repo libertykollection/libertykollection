@@ -35,13 +35,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -122,8 +122,8 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
             border: '1px solid #141311',
             boxShadow: 'none',
             '&:hover': {
-              bgcolor: '#B98C2D',
-              borderColor: '#B98C2D',
+              bgcolor: '#C53261',
+              borderColor: '#C53261',
               boxShadow: 'none',
             },
           }}
@@ -140,7 +140,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -159,8 +159,8 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -177,7 +177,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
         elevation={0}
         sx={{
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           overflow: 'hidden',
         }}
@@ -185,7 +185,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
         <Box
           sx={{
             p: 2,
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between',
@@ -224,22 +224,22 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 80 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 80 }}>
                   Item
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Product Title & Details
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 140 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 140 }}>
                   Price (PKR)
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 140 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 140 }}>
                   Rating
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 120 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 120 }}>
                   Stock Status
                 </TableCell>
-                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 100 }}>
+                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 100 }}>
                   View
                 </TableCell>
               </TableRow>
@@ -260,7 +260,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                       hover
                       sx={{
                         '&:hover': { bgcolor: '#FDFBF9' },
-                        borderBottom: '1px solid #E8DFC8',
+                        borderBottom: '1px solid #F0DCE3',
                       }}
                     >
                       <TableCell>
@@ -268,8 +268,8 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                           sx={{
                             width: 52,
                             height: 52,
-                            bgcolor: '#F9F5EC',
-                            border: '1px solid #E8DFC8',
+                            bgcolor: '#FFF5F8',
+                            border: '1px solid #F0DCE3',
                             position: 'relative',
                             overflow: 'hidden',
                           }}
@@ -285,7 +285,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                             />
                           ) : (
                             <Box sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                              <StarIcon sx={{ color: '#D2AA2D', fontSize: 20 }} />
+                              <StarIcon sx={{ color: '#C5A059', fontSize: 20 }} />
                             </Box>
                           )}
                         </Box>
@@ -321,7 +321,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                             value={Number(item.rating || 5)}
                             readOnly
                             size="small"
-                            sx={{ color: '#B98C2D' }}
+                            sx={{ color: '#C53261' }}
                           />
                           <Typography variant="caption" sx={{ fontWeight: 600, color: '#141311' }}>
                             ({item.rating || '5.0'})
@@ -339,7 +339,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                             fontSize: '0.75rem',
                             bgcolor: Number(item.stock) > 0 ? '#E8F5E9' : '#FFEBEE',
                             color: Number(item.stock) > 0 ? '#2E7D32' : '#C62828',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                           }}
                         />
                       </TableCell>
@@ -351,7 +351,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
                           sx={{
                             color: '#8C7A70',
                             borderRadius: '0px',
-                            '&:hover': { color: '#B98C2D', bgcolor: '#F9F5EC' },
+                            '&:hover': { color: '#C53261', bgcolor: '#FFF5F8' },
                           }}
                         >
                           <OpenInNewIcon sx={{ fontSize: 18 }} />
@@ -363,7 +363,7 @@ const FilterableTable = ({ products = [], isPageLoading = false }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={6} align="center" sx={{ py: 6, color: '#8C7A70' }}>
-                    <StarIcon sx={{ fontSize: 36, color: '#D2AA2D', mb: 1 }} />
+                    <StarIcon sx={{ fontSize: 36, color: '#C5A059', mb: 1 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311' }}>
                       No top-rated cosmetics products found
                     </Typography>

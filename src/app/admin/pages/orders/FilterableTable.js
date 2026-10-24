@@ -51,13 +51,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -65,7 +65,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -74,7 +74,7 @@ const inputStyles = {
 const getStatusStyles = (status) => {
   const s = status?.toLowerCase() || '';
   if (s.includes('pending')) {
-    return { bgcolor: '#FBF9F7', color: '#B98C2D', border: '1px solid #E8DFC8' };
+    return { bgcolor: '#FBF9F7', color: '#C53261', border: '1px solid #F0DCE3' };
   }
   if (s.includes('confirmed') || s.includes('paid')) {
     return { bgcolor: '#F0FDF4', color: '#166534', border: '1px solid #BBF7D0' };
@@ -88,7 +88,7 @@ const getStatusStyles = (status) => {
   if (s.includes('cancelled')) {
     return { bgcolor: '#FEF2F2', color: '#991B1B', border: '1px solid #FECACA' };
   }
-  return { bgcolor: '#FBF9F7', color: '#8C7A70', border: '1px solid #E8DFC8' };
+  return { bgcolor: '#FBF9F7', color: '#8C7A70', border: '1px solid #F0DCE3' };
 };
 
 // Payment Method Helper
@@ -96,13 +96,13 @@ const getPaymentMethodStyles = (method) => {
   const m = method?.toLowerCase() || '';
   if (m.includes('bank')) return { color: '#6B21A8', bgcolor: '#F5F3FF', border: '1px solid #E9D5FF' };
   if (m.includes('cod') || m.includes('cash')) return { color: '#166534', bgcolor: '#F0FDF4', border: '1px solid #BBF7D0' };
-  if (m.includes('card') || m.includes('stripe') || m.includes('paypal')) return { color: '#B98C2D', bgcolor: '#FBF9F7', border: '1px solid #E8DFC8' };
-  return { color: '#8C7A70', bgcolor: '#FBF9F7', border: '1px solid #E8DFC8' };
+  if (m.includes('card') || m.includes('stripe') || m.includes('paypal')) return { color: '#C53261', bgcolor: '#FBF9F7', border: '1px solid #F0DCE3' };
+  return { color: '#8C7A70', bgcolor: '#FBF9F7', border: '1px solid #F0DCE3' };
 };
 
 const getImageUrl = (url) => {
   if (!url) return null;
-  if (url.startsWith('http')) return url;
+  if (url.startsWith('http') || url.startsWith('/') || url.startsWith('data:')) return url;
   return `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${url}`;
 };
 
@@ -260,14 +260,14 @@ const FilterableTable = ({ data = [], fetchData }) => {
       {/* Top Loading Line */}
       {isFetching && (
         <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#B98C2D' }} />
+          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#C53261' }} />
         </Box>
       )}
 
       {/* Header Section */}
       <Box sx={{ mb: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'flex-end' }, gap: 2 }}>
         <Box>
-          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#B98C2D', display: 'block', mb: 0.5 }}>
+          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#C53261', display: 'block', mb: 0.5 }}>
             Admin Console • Sales Operations
           </Typography>
           <Typography variant="h4" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.02em' }}>
@@ -316,8 +316,8 @@ const FilterableTable = ({ data = [], fetchData }) => {
       {/* Metric Cards Row */}
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <MoneyIcon />
             </Box>
             <Box>
@@ -331,8 +331,8 @@ const FilterableTable = ({ data = [], fetchData }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <ShoppingBagIcon />
             </Box>
             <Box>
@@ -346,23 +346,23 @@ const FilterableTable = ({ data = [], fetchData }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <PendingIcon />
             </Box>
             <Box>
               <Typography variant="caption" sx={{ textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8C7A70', fontWeight: 700 }}>
                 Action Pending
               </Typography>
-              <Typography variant="h6" sx={{ fontWeight: 800, color: '#B98C2D' }}>
+              <Typography variant="h6" sx={{ fontWeight: 800, color: '#C53261' }}>
                 {counts.pending} Orders
               </Typography>
             </Box>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <CompletedIcon />
             </Box>
             <Box>
@@ -378,9 +378,9 @@ const FilterableTable = ({ data = [], fetchData }) => {
       </Grid>
 
       {/* Main Table Paper */}
-      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
+      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden' }}>
         {/* Status Filter Tabs */}
-        <Box sx={{ borderBottom: '1px solid #E8DFC8', bgcolor: '#FBF9F7', px: 2 }}>
+        <Box sx={{ borderBottom: '1px solid #F0DCE3', bgcolor: '#FBF9F7', px: 2 }}>
           <Tabs
             value={statusTab}
             onChange={(e, val) => {
@@ -420,7 +420,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
         </Box>
 
         {/* Search Bar */}
-        <Box sx={{ p: 2.5, borderBottom: '1px solid #E8DFC8', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
+        <Box sx={{ p: 2.5, borderBottom: '1px solid #F0DCE3', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
           <TextField
             size="small"
             placeholder="Search orders by ID, customer name, email, or payment method..."
@@ -445,28 +445,28 @@ const FilterableTable = ({ data = [], fetchData }) => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '80px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '80px' }}>
                   Order
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '80px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '80px' }}>
                   Item
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Customer
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Total Amount
                 </TableCell>
-                <TableCell align="center" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell align="center" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Status
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Date & Time
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Payment
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '130px' }}>
+                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '130px' }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -481,19 +481,19 @@ const FilterableTable = ({ data = [], fetchData }) => {
                       cursor: 'pointer',
                       bgcolor: index % 2 === 0 ? '#fff' : '#FAF8F6',
                       '&:hover': { bgcolor: '#F5EFEB' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
-                    <TableCell sx={{ fontWeight: 700, color: '#141311', fontSize: '0.85rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 700, color: '#141311', fontSize: '0.85rem', borderBottom: '1px solid #F0DCE3' }}>
                       #{item.id}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       {item.orderItems && item.orderItems.length > 0 && item.orderItems[0].product?.images?.[0] ? (
                         <Box
                           sx={{
                             width: 44,
                             height: 44,
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             borderRadius: '0px',
                             overflow: 'hidden',
                             position: 'relative',
@@ -509,12 +509,12 @@ const FilterableTable = ({ data = [], fetchData }) => {
                           />
                         </Box>
                       ) : (
-                        <Box sx={{ width: 44, height: 44, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <InventoryIcon sx={{ fontSize: 18, color: '#D2AA2D' }} />
+                        <Box sx={{ width: 44, height: 44, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <InventoryIcon sx={{ fontSize: 18, color: '#C5A059' }} />
                         </Box>
                       )}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                         <Avatar
                           sx={{
@@ -539,10 +539,10 @@ const FilterableTable = ({ data = [], fetchData }) => {
                         </Box>
                       </Box>
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 800, color: '#141311', fontSize: '0.85rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 800, color: '#141311', fontSize: '0.85rem', borderBottom: '1px solid #F0DCE3' }}>
                       {parseFloat(item.total || 0).toLocaleString()} PKR
                     </TableCell>
-                    <TableCell align="center" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell align="center" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Chip
                         label={item.status || 'PENDING'}
                         size="small"
@@ -557,14 +557,14 @@ const FilterableTable = ({ data = [], fetchData }) => {
                         }}
                       />
                     </TableCell>
-                    <TableCell sx={{ color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #F0DCE3' }}>
                       {new Date(item.updatedAt || item.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                       <br />
                       <Typography variant="caption" sx={{ color: '#8C7A70', fontSize: '0.7rem' }}>
                         {new Date(item.updatedAt || item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </Typography>
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Chip
                         label={item.paymentMethod || 'COD'}
                         size="small"
@@ -577,7 +577,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
                         }}
                       />
                     </TableCell>
-                    <TableCell align="right" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell align="right" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Stack direction="row" spacing={0.5} justifyContent="flex-end">
                         <IconButton
                           size="small"
@@ -588,7 +588,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
                           sx={{
                             borderRadius: '0px',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#141311', color: '#fff' },
                           }}
@@ -600,8 +600,8 @@ const FilterableTable = ({ data = [], fetchData }) => {
                           onClick={(e) => handleDeleteItem(e, item.id)}
                           sx={{
                             borderRadius: '0px',
-                            color: '#B98C2D',
-                            border: '1px solid #E8DFC8',
+                            color: '#C53261',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#EF4444', color: '#fff', borderColor: '#EF4444' },
                           }}
@@ -615,7 +615,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={8} sx={{ textAlign: 'center', py: 8, color: '#8C7A70' }}>
-                    <ShoppingBagIcon sx={{ fontSize: '2.5rem', color: '#D2AA2D', mb: 1, display: 'block', mx: 'auto' }} />
+                    <ShoppingBagIcon sx={{ fontSize: '2.5rem', color: '#C5A059', mb: 1, display: 'block', mx: 'auto' }} />
                     <Typography variant="body1" sx={{ fontWeight: 600, color: '#141311' }}>No orders found matching criteria</Typography>
                     <Typography variant="caption" sx={{ color: '#8C7A70' }}>Try switching tabs or refining search terms.</Typography>
                   </TableCell>
@@ -635,7 +635,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           sx={{
-            borderTop: '1px solid #E8DFC8',
+            borderTop: '1px solid #F0DCE3',
             bgcolor: '#FBF9F7',
             '& .MuiTablePagination-select': { borderRadius: '0px' },
           }}
@@ -651,14 +651,14 @@ const FilterableTable = ({ data = [], fetchData }) => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 24px 60px rgba(18, 11, 16, 0.15)',
           }
         }}
       >
-        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #E8DFC8' }}>
+        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #F0DCE3' }}>
           <Box>
-            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#B98C2D', display: 'block' }}>
+            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#C53261', display: 'block' }}>
               Order Dispatch
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif' }}>
@@ -713,7 +713,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
                 <Box
                   onClick={() => document.getElementById('manual-order-image').click()}
                   sx={{
-                    border: '1px dashed #D2AA2D',
+                    border: '1px dashed #C5A059',
                     borderRadius: '0px',
                     bgcolor: '#FBF9F7',
                     p: 1.5,
@@ -722,10 +722,10 @@ const FilterableTable = ({ data = [], fetchData }) => {
                     alignItems: 'center',
                     gap: 1.5,
                     cursor: 'pointer',
-                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#B98C2D' }
+                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' }
                   }}
                 >
-                  <CloudUploadIcon sx={{ color: '#B98C2D' }} />
+                  <CloudUploadIcon sx={{ color: '#C53261' }} />
                   <Typography variant="body2" sx={{ color: newItem.image ? '#141311' : '#8C7A70', fontSize: '0.8rem', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {newItem.image ? newItem.image.name : 'Upload Payment Receipt / Note'}
                   </Typography>
@@ -740,7 +740,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
             </Grid>
           </Box>
 
-          <Divider sx={{ my: 3, borderColor: '#E8DFC8' }} />
+          <Divider sx={{ my: 3, borderColor: '#F0DCE3' }} />
 
           {/* Section 2: Order Items */}
           <Box>
@@ -760,13 +760,13 @@ const FilterableTable = ({ data = [], fetchData }) => {
                 }
                 sx={{
                   borderRadius: '0px',
-                  borderColor: '#E8DFC8',
+                  borderColor: '#F0DCE3',
                   color: '#141311',
                   fontWeight: 700,
                   fontSize: '0.75rem',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7' }
+                  '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7' }
                 }}
               >
                 Add Item
@@ -774,8 +774,8 @@ const FilterableTable = ({ data = [], fetchData }) => {
             </Box>
 
             {newItem.orderItems.length === 0 ? (
-              <Box sx={{ p: 3, bgcolor: '#FBF9F7', border: '1px dashed #E8DFC8', borderRadius: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-                <InventoryIcon sx={{ fontSize: 28, color: '#D2AA2D' }} />
+              <Box sx={{ p: 3, bgcolor: '#FBF9F7', border: '1px dashed #F0DCE3', borderRadius: '0px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                <InventoryIcon sx={{ fontSize: 28, color: '#C5A059' }} />
                 <Typography variant="caption" sx={{ color: '#8C7A70', fontWeight: 600 }}>No cosmetics products added to this order yet.</Typography>
               </Box>
             ) : (
@@ -787,7 +787,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
                       p: 1.5,
                       borderRadius: '0px',
                       bgcolor: '#FBF9F7',
-                      border: '1px solid #E8DFC8',
+                      border: '1px solid #F0DCE3',
                       display: 'grid',
                       gridTemplateColumns: '2fr 1fr 1fr 40px',
                       gap: 1.5,
@@ -839,7 +839,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
                         const updated = newItem.orderItems.filter((_, i) => i !== index);
                         setNewItem({ ...newItem, orderItems: updated });
                       }}
-                      sx={{ color: '#B98C2D', borderRadius: '0px', '&:hover': { color: '#EF4444' } }}
+                      sx={{ color: '#C53261', borderRadius: '0px', '&:hover': { color: '#EF4444' } }}
                     >
                       <DeleteIcon sx={{ fontSize: '1.1rem' }} />
                     </IconButton>
@@ -849,13 +849,13 @@ const FilterableTable = ({ data = [], fetchData }) => {
             )}
           </Box>
         </DialogContent>
-        <DialogActions sx={{ p: 3, px: 4, borderTop: '1px solid #E8DFC8', display: 'flex', gap: 1.5 }}>
+        <DialogActions sx={{ p: 3, px: 4, borderTop: '1px solid #F0DCE3', display: 'flex', gap: 1.5 }}>
           <Button
             variant="outlined"
             onClick={() => setIsModalOpen(false)}
             sx={{
               borderRadius: '0px',
-              borderColor: '#E8DFC8',
+              borderColor: '#F0DCE3',
               color: '#8C7A70',
               px: 3,
               py: 1,
@@ -863,7 +863,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
               fontSize: '0.8rem',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7', color: '#141311' }
+              '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7', color: '#141311' }
             }}
           >
             Cancel

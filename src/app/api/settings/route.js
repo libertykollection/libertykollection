@@ -3,7 +3,17 @@ import prisma from '../../util/prisma'; // Ensure the path is correct
 
 export async function GET() {
   try {
-    const settings = await prisma.settings.findFirst();
+    let settings = await prisma.settings.findFirst();
+    if (!settings) {
+      settings = await prisma.settings.create({
+        data: {
+          deliveryCharge: 200,
+          taxPercentage: 0,
+          other1: 0,
+          other2: 0,
+        },
+      });
+    }
     return NextResponse.json(settings);
   } catch (error) {
     console.error('Error fetching settings:', error);
@@ -22,12 +32,31 @@ export async function POST(request) {
     const data = await request.json();
     const { deliveryCharge, taxPercentage, other1, other2 } = data;
 
+    const parsedDelivery = isNaN(parseFloat(deliveryCharge)) ? 0 : parseFloat(deliveryCharge);
+    const parsedTax = isNaN(parseFloat(taxPercentage)) ? 0 : parseFloat(taxPercentage);
+    const parsedOther1 = isNaN(parseFloat(other1)) ? 0 : parseFloat(other1);
+    const parsedOther2 = isNaN(parseFloat(other2)) ? 0 : parseFloat(other2);
+
+    const existing = await prisma.settings.findFirst();
+    if (existing) {
+      const updated = await prisma.settings.update({
+        where: { id: existing.id },
+        data: {
+          deliveryCharge: parsedDelivery,
+          taxPercentage: parsedTax,
+          other1: parsedOther1,
+          other2: parsedOther2,
+        },
+      });
+      return NextResponse.json(updated);
+    }
+
     const newSetting = await prisma.settings.create({
       data: {
-        deliveryCharge: parseFloat(deliveryCharge),
-        taxPercentage: parseFloat(taxPercentage),
-        other1: parseFloat(other1) || 0,
-        other2: parseFloat(other2) || 0,
+        deliveryCharge: parsedDelivery,
+        taxPercentage: parsedTax,
+        other1: parsedOther1,
+        other2: parsedOther2,
       },
     });
 
@@ -44,22 +73,40 @@ export async function POST(request) {
   }
 }
 
-export async function PUT(request, { params }) {
+export async function PUT(request) {
   try {
     const data = await request.json();
     const { deliveryCharge, taxPercentage, other1, other2 } = data;
 
-    const updatedSetting = await prisma.settings.update({
-      where: { id: parseInt(params.id) },
+    const parsedDelivery = isNaN(parseFloat(deliveryCharge)) ? 0 : parseFloat(deliveryCharge);
+    const parsedTax = isNaN(parseFloat(taxPercentage)) ? 0 : parseFloat(taxPercentage);
+    const parsedOther1 = isNaN(parseFloat(other1)) ? 0 : parseFloat(other1);
+    const parsedOther2 = isNaN(parseFloat(other2)) ? 0 : parseFloat(other2);
+
+    const existing = await prisma.settings.findFirst();
+    if (existing) {
+      const updated = await prisma.settings.update({
+        where: { id: existing.id },
+        data: {
+          deliveryCharge: parsedDelivery,
+          taxPercentage: parsedTax,
+          other1: parsedOther1,
+          other2: parsedOther2,
+        },
+      });
+      return NextResponse.json(updated);
+    }
+
+    const created = await prisma.settings.create({
       data: {
-        deliveryCharge: parseFloat(deliveryCharge),
-        taxPercentage: parseFloat(taxPercentage),
-        other1: parseFloat(other1) || 0,
-        other2: parseFloat(other2) || 0,
+        deliveryCharge: parsedDelivery,
+        taxPercentage: parsedTax,
+        other1: parsedOther1,
+        other2: parsedOther2,
       },
     });
 
-    return NextResponse.json(updatedSetting);
+    return NextResponse.json(created);
   } catch (error) {
     console.error('Error updating settings:', error);
     return NextResponse.json(

@@ -34,11 +34,15 @@ export async function POST(request) {
 
         // 1. Validate Stock & Prepare Updates
         for (const item of items) {
-            const productId = parseInt(item.productId);
+            let rawId = item.productId !== undefined && item.productId !== null ? item.productId : item.id;
+            if (typeof rawId === 'string' && rawId.includes('-')) {
+                rawId = rawId.split('-')[0];
+            }
+            const productId = parseInt(rawId, 10);
 
             if (isNaN(productId)) {
                 console.error('Invalid productId for item:', item);
-                throw new Error(`Invalid product ID: ${item.productId}. Please ensure cart items have valid product IDs.`);
+                throw new Error(`Invalid product ID: ${item.productId || item.id}. Please ensure cart items have valid product IDs.`);
             }
 
             const product = await prisma.product.findUnique({
@@ -46,7 +50,7 @@ export async function POST(request) {
             });
 
             if (!product) {
-                throw new Error(`Product with ID ${item.productId} not found.`);
+                throw new Error(`Product with ID ${productId} not found.`);
             }
 
             // Skip stock check for digital
@@ -90,13 +94,20 @@ export async function POST(request) {
                 paymentInfo: finalPaymentInfo ? JSON.stringify(finalPaymentInfo) : null,
                 couponCode,
                 orderItems: {
-                    create: items.map(item => ({
-                        productId: parseInt(item.productId),
-                        quantity: Number(item.quantity) || 1,
-                        price: Number(item.price) || 0,
-                        selectedColor: item.selectedColor || null,
-                        selectedSize: item.selectedSize || null,
-                    })),
+                    create: items.map(item => {
+                        let rawId = item.productId !== undefined && item.productId !== null ? item.productId : item.id;
+                        if (typeof rawId === 'string' && rawId.includes('-')) {
+                            rawId = rawId.split('-')[0];
+                        }
+                        const productId = parseInt(rawId, 10);
+                        return {
+                            productId,
+                            quantity: Number(item.quantity) || 1,
+                            price: Number(item.price) || 0,
+                            selectedColor: item.selectedColor || null,
+                            selectedSize: item.selectedSize || null,
+                        };
+                    }),
                 },
             },
             include: {

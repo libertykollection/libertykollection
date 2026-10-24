@@ -102,7 +102,7 @@ const SubcategoryPage = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#FBF9F7]">
         <ToastContainer position="bottom-right" autoClose={3000} />
-        <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+        <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
         <span className="text-[11px] font-bold uppercase tracking-widest text-[#141311]">
           Curating Subcategory Gallery...
         </span>
@@ -115,12 +115,12 @@ const SubcategoryPage = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Header & Breadcrumb */}
-      <div className="border-b border-[#E8DFC8] bg-white">
+      <div className="border-b border-[#F0DCE3] bg-white">
         <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 py-6">
           <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2">
             <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/')}>
-              Atelier
-            </span>
+                  Home
+                </span>
             <span className="text-gray-300">/</span>
             <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/customer/pages/allproducts')}>
               Collections
@@ -136,14 +136,14 @@ const SubcategoryPage = () => {
 
       <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 pt-8">
         {/* Filters and Sorting Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 bg-white p-5 sm:p-6 rounded-none border border-[#E8DFC8]">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 bg-white p-5 sm:p-6 rounded-none border border-[#F0DCE3]">
           {/* Price Filter */}
           <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-4 bg-[#B98C2D] rounded-none" />
+              <span className="w-1.5 h-4 bg-[#C53261] rounded-none" />
               <span className="text-xs font-bold uppercase tracking-wider text-[#141311]">Price Spectrum (PKR)</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#F9F5EC] px-4 py-2 border border-[#E8DFC8]">
+            <div className="flex items-center gap-2 bg-[#FFF5F8] px-4 py-2 border border-[#F0DCE3]">
               <input
                 type="number"
                 value={minPrice}
@@ -173,7 +173,7 @@ const SubcategoryPage = () => {
                 setTempStatusFilter(statusFilter);
                 setShowFilters(true);
               }}
-              className="flex items-center gap-2 bg-white text-[#141311] px-4 py-2 text-xs font-bold uppercase tracking-wider border border-[#E8DFC8] hover:border-[#141311] transition-colors"
+              className="flex items-center gap-2 bg-white text-[#141311] px-4 py-2 text-xs font-bold uppercase tracking-wider border border-[#F0DCE3] hover:border-[#141311] transition-colors"
             >
               <FiFilter size={14} />
               <span>Filter & Sort</span>
@@ -191,12 +191,12 @@ const SubcategoryPage = () => {
               return (
                 <div
                   key={product.id}
-                  className="bg-white border border-[#E8DFC8] hover:border-[#B98C2D] rounded-none cursor-pointer transition-all flex flex-col justify-between group p-3.5"
+                  className="bg-white border border-[#F0DCE3] hover:border-[#C53261] rounded-none cursor-pointer transition-all flex flex-col justify-between group p-3.5"
                   onClick={() => handleProductClick(product.slug)}
                 >
-                  <div className="relative aspect-square w-full bg-[#F9F5EC] border border-[#E8DFC8]/50 mb-3 overflow-hidden flex items-center justify-center">
+                  <div className="relative aspect-square w-full bg-[#FFF5F8] border border-[#F0DCE3]/50 mb-3 overflow-hidden flex items-center justify-center">
                     {product.discount > 0 && (
-                      <div className="absolute top-2 left-2 z-10 bg-[#B98C2D] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none">
+                      <div className="absolute top-2 left-2 z-10 bg-[#C53261] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none">
                         -{product.discount.toFixed(0)}%
                       </div>
                     )}
@@ -217,18 +217,18 @@ const SubcategoryPage = () => {
                         loading="lazy"
                       />
                     ) : (
-                      <div className="text-gray-300 text-xs font-serif">Beauty Atelier</div>
+                      <div className="text-gray-300 text-xs font-serif">Gloria Cosmetics</div>
                     )}
                   </div>
 
                   <div className="flex flex-col flex-1">
-                    <div className="flex items-center gap-0.5 text-[#B98C2D] mb-1.5">
+                    <div className="flex items-center gap-0.5 text-[#C53261] mb-1.5">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <GoStarFill key={i} size={10} />
                       ))}
                     </div>
 
-                    <h4 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#B98C2D] transition-colors line-clamp-2 leading-snug mb-2 h-8 overflow-hidden">
+                    <h4 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#C53261] transition-colors line-clamp-2 leading-snug mb-2 h-8 overflow-hidden">
                       {product.name}
                     </h4>
 
@@ -269,7 +269,7 @@ const SubcategoryPage = () => {
               );
             })
           ) : (
-            <div className="col-span-full py-20 text-center bg-white border border-dashed border-[#E8DFC8] p-8">
+            <div className="col-span-full py-20 text-center bg-white border border-dashed border-[#F0DCE3] p-8">
               <p className="text-sm font-serif text-[#141311] mb-1">No items found matching criteria.</p>
               <p className="text-xs text-gray-400 font-light">Try expanding your price range or clearing active filters.</p>
             </div>
@@ -293,9 +293,9 @@ const SubcategoryPage = () => {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute left-0 right-0 bottom-0 bg-white border-t border-[#E8DFC8] flex flex-col max-h-[85vh] max-w-xl mx-auto"
+              className="absolute left-0 right-0 bottom-0 bg-white border-t border-[#F0DCE3] flex flex-col max-h-[85vh] max-w-xl mx-auto"
             >
-              <div className="px-6 py-4 flex items-center justify-between border-b border-[#E8DFC8]">
+              <div className="px-6 py-4 flex items-center justify-between border-b border-[#F0DCE3]">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-[#141311]">Filters & Refinement</h3>
                 <button onClick={() => setShowFilters(false)} className="p-1 text-gray-400 hover:text-black">
                   <FiX size={18} />
@@ -318,7 +318,7 @@ const SubcategoryPage = () => {
                         className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
                           tempSortOption === opt.id
                             ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#E8DFC8] text-gray-700"
+                            : "bg-white border-[#F0DCE3] text-gray-700"
                         }`}
                       >
                         {opt.label}
@@ -341,7 +341,7 @@ const SubcategoryPage = () => {
                         className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
                           tempStatusFilter === status.id
                             ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#E8DFC8] text-gray-700"
+                            : "bg-white border-[#F0DCE3] text-gray-700"
                         }`}
                       >
                         {status.label}
@@ -351,10 +351,10 @@ const SubcategoryPage = () => {
                 </div>
               </div>
 
-              <div className="px-6 py-4 border-t border-[#E8DFC8] flex gap-3">
+              <div className="px-6 py-4 border-t border-[#F0DCE3] flex gap-3">
                 <button
                   onClick={() => setShowFilters(false)}
-                  className="flex-1 py-3 border border-[#E8DFC8] text-[10px] font-bold uppercase tracking-widest text-gray-500 rounded-none"
+                  className="flex-1 py-3 border border-[#F0DCE3] text-[10px] font-bold uppercase tracking-widest text-gray-500 rounded-none"
                 >
                   Cancel
                 </button>

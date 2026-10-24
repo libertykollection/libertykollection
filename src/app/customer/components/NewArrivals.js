@@ -49,7 +49,7 @@ const NewArrivals = () => {
       <div className="container mx-auto max-w-[1536px] px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] xl:grid-cols-[320px_1fr] gap-6 items-stretch">
           {/* Left Promotional Banner (Gloria Onyx to Sunburst Gold) */}
-          <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#141311] via-[#241F16] to-[#B98C2D] text-white p-7 flex flex-col justify-between shadow-md min-h-[360px] group border border-theme-border">
+          <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#141311] via-[#241F16] to-[#C53261] text-white p-7 flex flex-col justify-between shadow-md min-h-[360px] group border border-theme-border">
             {/* Background Decorative Graphic */}
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
             <div className="relative z-10">
@@ -126,14 +126,14 @@ const NewArrivals = () => {
                   {/* Product Details */}
                   <div>
                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">
-                      {product.category?.name || product.category || 'Atelier Collection'}
+                      {product.category?.name || product.category || 'Featured Collection'}
                     </span>
                     <h4 className="text-xs font-bold text-gray-900 group-hover:text-theme-primary transition-colors line-clamp-2 h-8 leading-snug mb-1">
                       {product.name}
                     </h4>
 
                     {/* Star Rating */}
-                    <div className="flex items-center gap-0.5 text-theme-secondary mb-2">
+                    <div className="flex items-center gap-0.5 text-theme-primary mb-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <GoStarFill key={i} size={11} />
                       ))}

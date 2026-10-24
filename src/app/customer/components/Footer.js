@@ -69,7 +69,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-theme-dark text-[#E5DFD0] font-sans border-t border-theme-dark-border">
+    <footer className="bg-theme-dark text-[#F0E6EB] font-sans border-t border-theme-dark-border">
       {/* Brand Header Banner in Footer */}
       <div className="border-b border-theme-dark-border py-8 px-4 lg:px-8 bg-theme-dark-surface/50">
         <div className="container mx-auto max-w-[1536px] flex flex-col md:flex-row items-center justify-between gap-6">
@@ -85,17 +85,17 @@ const Footer = () => {
               />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white tracking-wide">
-                Gloria Cosmetics Atelier
+              <h3 style={{ fontFamily: 'var(--font-display-stack)', fontSize: '1.2rem', fontWeight: 600, color: '#FFFFFF', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                Gloria Cosmetics
               </h3>
-              <p className="text-xs text-[#B8AE99] max-w-lg mt-0.5">
+              <p style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, color: '#C5B4BD', lineHeight: 1.65, marginTop: '4px', letterSpacing: '0.01em' }}>
                 Luxury skincare, radiant complexion makeup, and bespoke fragrance rituals.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-theme-secondary mr-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-theme-primary mr-2">
               Follow Us:
             </span>
             {socialMediaLinks.facebook && (
@@ -122,19 +122,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Col 1: Contact Us */}
           <div>
-            <h4 className="text-theme-secondary text-xs sm:text-sm font-black uppercase tracking-[0.16em] mb-5">
+            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
               Contact Us
             </h4>
-            <div className="space-y-3.5 text-xs sm:text-[13px] text-[#C9BFAB]">
+            <div className="space-y-3.5 text-xs sm:text-[13px] text-[#C5B4BD]">
               {companyAddress && (
                 <div className="flex items-start gap-2.5">
-                  <FaMapMarkerAlt className="text-theme-secondary text-sm mt-0.5 flex-shrink-0" />
+                  <FaMapMarkerAlt className="text-theme-primary text-sm mt-0.5 flex-shrink-0" />
                   <span className="leading-relaxed">{companyAddress}</span>
                 </div>
               )}
               {companyPhone && (
                 <div className="flex items-center gap-2.5">
-                  <FaPhoneAlt className="text-theme-secondary text-xs flex-shrink-0" />
+                  <FaPhoneAlt className="text-theme-primary text-xs flex-shrink-0" />
                   <a href={`tel:${companyPhone}`} className="hover:text-white transition-colors">
                     {companyPhone}
                   </a>
@@ -142,7 +142,7 @@ const Footer = () => {
               )}
               {companyEmail && (
                 <div className="flex items-center gap-2.5">
-                  <FaEnvelope className="text-theme-secondary text-xs flex-shrink-0" />
+                  <FaEnvelope className="text-theme-primary text-xs flex-shrink-0" />
                   <a href={`mailto:${companyEmail}`} className="hover:text-white transition-colors">
                     {companyEmail}
                   </a>
@@ -166,10 +166,10 @@ const Footer = () => {
 
           {/* Col 2: User Account */}
           <div>
-            <h4 className="text-theme-secondary text-xs sm:text-sm font-black uppercase tracking-[0.16em] mb-5">
+            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
               User Account
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#C5B4BD]">
+            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
               <li>
                 <Link href="/customer/pages/profile" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
                   My Profile
@@ -200,10 +200,10 @@ const Footer = () => {
 
           {/* Col 3: Information */}
           <div>
-            <h4 className="text-theme-secondary text-xs sm:text-sm font-black uppercase tracking-[0.16em] mb-5">
+            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
               Information
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#C5B4BD]">
+            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
               <li>
                 <Link href="/customer/pages/aboutus" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
                   About Us
@@ -234,10 +234,10 @@ const Footer = () => {
 
           {/* Col 4: Quick Links */}
           <div>
-            <h4 className="text-theme-secondary text-xs sm:text-sm font-black uppercase tracking-[0.16em] mb-5">
+            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
               Quick Links
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#C5B4BD]">
+            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
               <li>
                 <Link href="/customer/pages/allproducts" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
                   All Beauty Products
@@ -268,7 +268,7 @@ const Footer = () => {
 
           {/* Col 5: Store Hours & Genuine Guarantee */}
           <div>
-            <h4 className="text-theme-secondary text-xs sm:text-sm font-black uppercase tracking-[0.16em] mb-5">
+            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
               Store Hours
             </h4>
             <div className="space-y-2.5 text-xs sm:text-[13px] text-[#C5B4BD]">
@@ -280,7 +280,7 @@ const Footer = () => {
                 Online orders are active 24/7 with swift nationwide delivery.
               </p>
               <div className="pt-2">
-                <span className="inline-block text-[11px] font-bold text-theme-secondary bg-theme-secondary/10 border border-theme-secondary/30 px-3 py-1.5 rounded-none shadow-xs">
+                <span className="inline-block text-[11px] font-bold text-theme-primary bg-theme-primary/10 border border-theme-primary/30 px-3 py-1.5 rounded-none shadow-xs">
                   100% Genuine Beauty Guarantee
                 </span>
               </div>
@@ -291,18 +291,18 @@ const Footer = () => {
 
       {/* Bottom Bar: Copyright & Payment Badges */}
       <div className="bg-theme-dark-surface border-t border-theme-dark-border py-5 px-4 lg:px-8">
-        <div className="container mx-auto max-w-[1536px] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#8E7B86]">
+        <div className="container mx-auto max-w-[1536px] flex flex-col md:flex-row items-center justify-between gap-4 text-[#8E7B86]" style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.75rem', letterSpacing: '0.04em' }}>
           <p className="text-center md:text-left">
-            &copy; {new Date().getFullYear()}, <strong className="text-white">{companyName || 'Atelier'}</strong>. All Rights Reserved.
+            &copy; {new Date().getFullYear()}, <strong className="text-white">{companyName || 'Gloria Cosmetics'}</strong>. All Rights Reserved.
           </p>
 
           {/* Styled Payment Badges */}
           <div className="flex items-center gap-3 text-2xl text-[#7A6973]">
-            <FaCcVisa className="hover:text-theme-secondary transition-colors" title="Visa" />
-            <FaCcMastercard className="hover:text-theme-secondary transition-colors" title="Mastercard" />
-            <FaCcAmex className="hover:text-theme-secondary transition-colors" title="American Express" />
-            <FaCcPaypal className="hover:text-theme-secondary transition-colors" title="PayPal" />
-            <FaCcDiscover className="hover:text-theme-secondary transition-colors" title="Discover" />
+            <FaCcVisa className="hover:text-theme-primary transition-colors" title="Visa" />
+            <FaCcMastercard className="hover:text-theme-primary transition-colors" title="Mastercard" />
+            <FaCcAmex className="hover:text-theme-primary transition-colors" title="American Express" />
+            <FaCcPaypal className="hover:text-theme-primary transition-colors" title="PayPal" />
+            <FaCcDiscover className="hover:text-theme-primary transition-colors" title="Discover" />
           </div>
         </div>
       </div>

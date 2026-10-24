@@ -298,7 +298,7 @@ const ProductPage = ({ productData }) => {
   if (!product && loading) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FBF9F7]">
-        <div className="w-16 h-16 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+        <div className="w-16 h-16 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
         <span className="text-xs uppercase tracking-widest font-bold text-[#141311]">
           Curating Product Experience...
         </span>
@@ -314,7 +314,7 @@ const ProductPage = ({ productData }) => {
           onClick={() => router.push('/')}
           className="bg-[#141311] hover:bg-[#2A1B24] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-none border border-[#141311] transition-colors"
         >
-          Return to Atelier
+          Return to Products
         </button>
       </div>
     );
@@ -336,12 +336,12 @@ const ProductPage = ({ productData }) => {
 
       <div className="container mx-auto max-w-[1536px] px-4 lg:px-10 py-6">
         {/* 1. Sleek Luxury Breadcrumb Trail */}
-        <nav className="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-wider text-gray-400 py-3 mb-6 border-b border-[#E8DFC8] overflow-x-auto whitespace-nowrap">
+        <nav className="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-wider text-gray-400 py-3 mb-6 border-b border-[#F0DCE3] overflow-x-auto whitespace-nowrap">
           <button
             onClick={() => router.push('/')}
             className="hover:text-[#141311] transition-colors"
           >
-            Atelier
+            Home
           </button>
           <span className="text-gray-300">/</span>
           <button
@@ -370,15 +370,15 @@ const ProductPage = ({ productData }) => {
         </nav>
 
         {/* 2. Main Two-Column Luxury Product Display */}
-        <div className="bg-white rounded-none p-6 sm:p-10 lg:p-12 border border-[#E8DFC8] shadow-none mb-12">
+        <div className="bg-white rounded-none p-6 sm:p-10 lg:p-12 border border-[#F0DCE3] shadow-none mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
             {/* LEFT: Product Gallery (5 cols) */}
             <div className="lg:col-span-6 xl:col-span-5 space-y-4">
               {/* Main Image Viewport with Badges & Zoom */}
-              <div className="relative aspect-square w-full bg-[#F9F5EC] rounded-none border border-[#E8DFC8] overflow-hidden flex items-center justify-center group">
+              <div className="relative aspect-square w-full bg-[#FFF5F8] rounded-none border border-[#F0DCE3] overflow-hidden flex items-center justify-center group">
                 {/* Sale Badge */}
                 {product?.discount > 0 && (
-                  <div className="absolute top-4 left-4 z-20 bg-[#B98C2D] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-none shadow-none">
+                  <div className="absolute top-4 left-4 z-20 bg-[#C53261] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-none shadow-none">
                     -{Math.round(product.discount)}% OFF
                   </div>
                 )}
@@ -387,10 +387,10 @@ const ProductPage = ({ productData }) => {
                 <button
                   onClick={() => setIsWishlist(!isWishlist)}
                   title="Save to Vanity Wishlist"
-                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-none bg-white border border-[#E8DFC8] flex items-center justify-center text-[#141311] hover:text-[#B98C2D] hover:border-[#B98C2D] transition-all shadow-none"
+                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-none bg-white border border-[#F0DCE3] flex items-center justify-center text-[#141311] hover:text-[#C53261] hover:border-[#C53261] transition-all shadow-none"
                 >
                   {isWishlist ? (
-                    <FaHeart className="text-[#B98C2D]" size={16} />
+                    <FaHeart className="text-[#C53261]" size={16} />
                   ) : (
                     <FaRegHeart size={16} />
                   )}
@@ -400,7 +400,7 @@ const ProductPage = ({ productData }) => {
                 <button
                   onClick={() => window.open(mainImageUrl, '_blank')}
                   title="Inspect High-Res Visual"
-                  className="absolute bottom-4 right-4 z-20 w-9 h-9 rounded-none bg-white border border-[#E8DFC8] flex items-center justify-center text-[#141311] hover:bg-[#141311] hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                  className="absolute bottom-4 right-4 z-20 w-9 h-9 rounded-none bg-white border border-[#F0DCE3] flex items-center justify-center text-[#141311] hover:bg-[#141311] hover:text-white transition-all opacity-0 group-hover:opacity-100"
                 >
                   <FiMaximize2 size={15} />
                 </button>
@@ -424,15 +424,15 @@ const ProductPage = ({ productData }) => {
                     <button
                       key={img.id || idx}
                       onClick={() => handleThumbnailClick(idx)}
-                      className={`relative w-20 h-20 rounded-none overflow-hidden bg-[#F9F5EC] flex-shrink-0 border transition-all ${
+                      className={`relative w-20 h-20 rounded-none overflow-hidden bg-[#FFF5F8] flex-shrink-0 border transition-all ${
                         currentImageIndex === idx
-                          ? 'border-[#B98C2D] ring-1 ring-[#B98C2D]'
-                          : 'border-[#E8DFC8] hover:border-gray-400'
+                          ? 'border-[#C53261] ring-1 ring-[#C53261]'
+                          : 'border-[#F0DCE3] hover:border-gray-400'
                       }`}
                     >
                       <Image
                         src={getImageUrl(img.url)}
-                        alt={`Atelier View ${idx + 1}`}
+                        alt={`Product View ${idx + 1}`}
                         fill
                         className="object-contain p-2"
                         unoptimized
@@ -447,13 +447,13 @@ const ProductPage = ({ productData }) => {
             <div className="lg:col-span-6 xl:col-span-7 flex flex-col space-y-6">
               {/* Category & Status */}
               <div className="flex items-center justify-between gap-4">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
                   <HiSparkles size={13} />
-                  {product?.subcategory?.category?.name || product?.category?.name || 'Velvet Beauty Atelier'}
+                  {product?.subcategory?.category?.name || product?.category?.name || 'Gloria Cosmetics'}
                 </span>
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-none bg-emerald-600 animate-pulse" />
-                  {stockCount > 0 ? `In Atelier Stock (${stockCount} units)` : 'Allocated / Sold Out'}
+                  {stockCount > 0 ? `In Stock (${stockCount} units)` : 'Sold Out'}
                 </span>
               </div>
 
@@ -464,28 +464,28 @@ const ProductPage = ({ productData }) => {
 
               {/* Rating & Reviews + Live Viewers */}
               <div className="flex flex-wrap items-center gap-4 text-xs">
-                <div className="flex items-center gap-1 text-[#B98C2D]">
+                <div className="flex items-center gap-1 text-[#C53261]">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <GoStarFill key={i} size={15} />
                   ))}
                   <span className="text-[#141311] font-bold ml-1.5">{averageRating}</span>
                 </div>
-                <span className="text-[#E8DFC8]">•</span>
+                <span className="text-[#F0DCE3]">•</span>
                 <button
                   onClick={() => setActiveTab('reviews')}
                   className="text-gray-500 hover:text-[#141311] underline font-medium"
                 >
                   {reviews.length} Client Reviews
                 </button>
-                <span className="text-[#E8DFC8]">•</span>
+                <span className="text-[#F0DCE3]">•</span>
                 <div className="flex items-center gap-1.5 text-gray-500 font-medium">
-                  <FiEye className="text-[#B98C2D]" />
+                  <FiEye className="text-[#C53261]" />
                   <span>{viewerCount} admirers viewing currently</span>
                 </div>
               </div>
 
               {/* Price Box */}
-              <div className="bg-[#F9F5EC] p-5 sm:p-6 rounded-none border border-[#E8DFC8] flex items-baseline gap-4 flex-wrap">
+              <div className="bg-[#FFF5F8] p-5 sm:p-6 rounded-none border border-[#F0DCE3] flex items-baseline gap-4 flex-wrap">
                 <span className="text-3xl sm:text-4xl font-black text-[#141311] tracking-tight">
                   Rs. {formatPrice(product?.price)}
                 </span>
@@ -494,7 +494,7 @@ const ProductPage = ({ productData }) => {
                     <span className="text-base sm:text-lg text-gray-400 line-through font-medium">
                       Rs. {formatPrice(originalPrice)}
                     </span>
-                    <span className="bg-[#B98C2D]/10 text-[#B98C2D] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-none border border-[#B98C2D]/20">
+                    <span className="bg-[#C53261]/10 text-[#C53261] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-none border border-[#C53261]/20">
                       Privilege Savings Rs. {formatPrice(savingsAmount)} ({Math.round(product.discount)}% OFF)
                     </span>
                   </>
@@ -504,15 +504,15 @@ const ProductPage = ({ productData }) => {
               {/* Inventory Urgency Bar */}
               <div className="space-y-2 pt-1">
                 <div className="flex items-center justify-between text-xs font-bold text-[#141311]">
-                  <span className="flex items-center gap-1.5 text-[#B98C2D]">
+                  <span className="flex items-center gap-1.5 text-[#C53261]">
                     <FiClock />
-                    Atelier Allocation: Only {stockCount} crafted pieces available
+                    Stock Alert: Only {stockCount} items available
                   </span>
                   <span className="text-gray-400 font-medium">{stockCount} remaining</span>
                 </div>
-                <div className="w-full h-1.5 bg-[#E8DFC8] rounded-none overflow-hidden">
+                <div className="w-full h-1.5 bg-[#F0DCE3] rounded-none overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#D2AA2D] to-[#B98C2D] rounded-none transition-all duration-700"
+                    className="h-full bg-gradient-to-r from-[#C5A059] to-[#C53261] rounded-none transition-all duration-700"
                     style={{ width: `${stockPercentage}%` }}
                   />
                 </div>
@@ -528,14 +528,14 @@ const ProductPage = ({ productData }) => {
                 }}
               />
 
-              <div className="h-px bg-[#E8DFC8] w-full" />
+              <div className="h-px bg-[#F0DCE3] w-full" />
 
               {/* Variants: Colors & Sizes */}
               <div className="space-y-5">
                 {/* Size / Volume Selector */}
                 <div>
                   <label className="text-[11px] font-bold uppercase tracking-widest text-[#141311] block mb-2.5">
-                    Size / Volume: <span className="text-[#B98C2D] font-bold">{selectedSize}</span>
+                    Size / Volume: <span className="text-[#C53261] font-bold">{selectedSize}</span>
                   </label>
                   <div className="flex flex-wrap gap-2.5">
                     {(sizes.length > 0 ? sizes : [{ name: '30ml' }, { name: '50ml' }, { name: '100ml' }]).map(
@@ -546,7 +546,7 @@ const ProductPage = ({ productData }) => {
                           className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-none border transition-all ${
                             selectedSize === s.name
                               ? 'bg-[#141311] text-white border-[#141311]'
-                              : 'bg-white text-[#141311] border-[#E8DFC8] hover:border-[#141311]'
+                              : 'bg-white text-[#141311] border-[#F0DCE3] hover:border-[#141311]'
                           }`}
                         >
                           {s.name}
@@ -560,7 +560,7 @@ const ProductPage = ({ productData }) => {
                 {colors.length > 0 && (
                   <div>
                     <label className="text-[11px] font-bold uppercase tracking-widest text-[#141311] block mb-2.5">
-                      Shade Spectrum: <span className="text-[#B98C2D] font-bold">{selectedColor || 'Choose Shade'}</span>
+                      Shade Spectrum: <span className="text-[#C53261] font-bold">{selectedColor || 'Choose Shade'}</span>
                     </label>
                     <div className="flex flex-wrap items-center gap-3">
                       {colors.map((c, i) => (
@@ -570,7 +570,7 @@ const ProductPage = ({ productData }) => {
                           className={`w-9 h-9 rounded-none border transition-all relative ${
                             selectedColor === c.name
                               ? 'ring-2 ring-offset-2 ring-[#141311] border-white scale-105'
-                              : 'border-[#E8DFC8] hover:border-black'
+                              : 'border-[#F0DCE3] hover:border-black'
                           }`}
                           style={{ backgroundColor: c.hex || '#141311' }}
                           title={c.name}
@@ -588,17 +588,17 @@ const ProductPage = ({ productData }) => {
                   <div className="flex flex-col sm:flex-row items-stretch gap-3">
                     {/* Stepper */}
                     {!isDigital && (
-                      <div className="flex items-center justify-between border border-[#E8DFC8] rounded-none w-36 h-12 bg-white px-2">
+                      <div className="flex items-center justify-between border border-[#F0DCE3] rounded-none w-36 h-12 bg-white px-2">
                         <button
                           onClick={handleQuantityDecrease}
-                          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#141311] transition-colors rounded-none hover:bg-[#F9F5EC]"
+                          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#141311] transition-colors rounded-none hover:bg-[#FFF5F8]"
                         >
                           <FiMinus size={13} />
                         </button>
                         <span className="font-bold text-sm text-[#141311]">{quantity}</span>
                         <button
                           onClick={handleQuantityIncrease}
-                          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#141311] transition-colors rounded-none hover:bg-[#F9F5EC]"
+                          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#141311] transition-colors rounded-none hover:bg-[#FFF5F8]"
                         >
                           <FiPlus size={13} />
                         </button>
@@ -621,7 +621,7 @@ const ProductPage = ({ productData }) => {
                     <button
                       onClick={handleBuyNow}
                       disabled={loading || (!isDigital && product?.stock === 0)}
-                      className="w-full h-12 bg-[#B98C2D] hover:bg-[#9E7420] text-white text-xs font-bold uppercase tracking-widest rounded-none border border-[#B98C2D] transition-all flex items-center justify-center gap-2.5 disabled:opacity-50"
+                      className="w-full h-12 bg-[#C53261] hover:bg-[#A8224E] text-white text-xs font-bold uppercase tracking-widest rounded-none border border-[#C53261] transition-all flex items-center justify-center gap-2.5 disabled:opacity-50"
                     >
                       <FiZap size={15} />
                       <span>{isDigital ? 'Download Masterclass' : 'Acquire Now (Instant Checkout)'}</span>
@@ -638,10 +638,10 @@ const ProductPage = ({ productData }) => {
               </div>
 
               {/* 3. Luxury Trust & Assurance Card */}
-              <div className="bg-[#F9F5EC] rounded-none border border-[#E8DFC8] p-5 sm:p-6 mt-4">
+              <div className="bg-[#FFF5F8] rounded-none border border-[#F0DCE3] p-5 sm:p-6 mt-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="flex items-start gap-3 text-gray-700">
-                    <FiTruck className="text-[#B98C2D] text-lg flex-shrink-0 mt-0.5" />
+                    <FiTruck className="text-[#C53261] text-lg flex-shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#141311] font-bold tracking-tight">White-Glove Delivery</strong>
                       <span className="text-[11px] text-gray-500">Complimentary shipping on orders over Rs. 2,000</span>
@@ -649,7 +649,7 @@ const ProductPage = ({ productData }) => {
                   </div>
 
                   <div className="flex items-start gap-3 text-gray-700">
-                    <FiRotateCcw className="text-[#B98C2D] text-lg flex-shrink-0 mt-0.5" />
+                    <FiRotateCcw className="text-[#C53261] text-lg flex-shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#141311] font-bold tracking-tight">Complimentary Exchange</strong>
                       <span className="text-[11px] text-gray-500">30-day effortless client satisfaction policy</span>
@@ -657,7 +657,7 @@ const ProductPage = ({ productData }) => {
                   </div>
 
                   <div className="flex items-start gap-3 text-gray-700">
-                    <FiShield className="text-[#B98C2D] text-lg flex-shrink-0 mt-0.5" />
+                    <FiShield className="text-[#C53261] text-lg flex-shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#141311] font-bold tracking-tight">Encrypted Concierge Checkout</strong>
                       <span className="text-[11px] text-gray-500">Cash on Delivery & Secure Bank Settlement</span>
@@ -665,7 +665,7 @@ const ProductPage = ({ productData }) => {
                   </div>
 
                   <div className="flex items-start gap-3 text-gray-700">
-                    <FiCheck className="text-[#B98C2D] text-lg flex-shrink-0 mt-0.5" />
+                    <FiCheck className="text-[#C53261] text-lg flex-shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#141311] font-bold tracking-tight">Guaranteed Authenticity</strong>
                       <span className="text-[11px] text-gray-500">Directly bottled & certified original</span>
@@ -675,7 +675,7 @@ const ProductPage = ({ productData }) => {
               </div>
 
               {/* Meta & Share Info */}
-              <div className="pt-2 text-xs text-gray-500 space-y-2 border-t border-[#E8DFC8]">
+              <div className="pt-2 text-xs text-gray-500 space-y-2 border-t border-[#F0DCE3]">
                 {product?.sku && (
                   <p>
                     <span className="font-bold text-[#141311] uppercase tracking-wider text-[11px]">SKU:</span> {product.sku}
@@ -683,12 +683,12 @@ const ProductPage = ({ productData }) => {
                 )}
                 <p>
                   <span className="font-bold text-[#141311] uppercase tracking-wider text-[11px]">Collection:</span>{' '}
-                  <span className="text-[#B98C2D] font-semibold capitalize">
+                  <span className="text-[#C53261] font-semibold capitalize">
                     {product?.subcategory?.category?.name || product?.subcategorySlug || 'Exclusive Beauty'}
                   </span>
                 </p>
                 <div className="flex items-center gap-3 pt-2">
-                  <span className="font-bold text-[#141311] uppercase tracking-wider text-[11px]">Share Atelier:</span>
+                  <span className="font-bold text-[#141311] uppercase tracking-wider text-[11px]">Share Product:</span>
                   <div className="flex items-center gap-2">
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -696,7 +696,7 @@ const ProductPage = ({ productData }) => {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+                      className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
                     >
                       <FaFacebookF size={11} />
                     </a>
@@ -706,7 +706,7 @@ const ProductPage = ({ productData }) => {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+                      className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
                     >
                       <FaTwitter size={11} />
                     </a>
@@ -718,7 +718,7 @@ const ProductPage = ({ productData }) => {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+                      className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
                     >
                       <FaWhatsapp size={12} />
                     </a>
@@ -730,9 +730,9 @@ const ProductPage = ({ productData }) => {
         </div>
 
         {/* 3. Product Tabs Section (Description, Formulation Specs, Reviews, Shipping) */}
-        <div className="bg-white rounded-none p-6 sm:p-10 lg:p-12 border border-[#E8DFC8] shadow-none mb-12">
+        <div className="bg-white rounded-none p-6 sm:p-10 lg:p-12 border border-[#F0DCE3] shadow-none mb-12">
           {/* Tab Navigation */}
-          <div className="flex items-center gap-6 sm:gap-10 border-b border-[#E8DFC8] pb-4 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center gap-6 sm:gap-10 border-b border-[#F0DCE3] pb-4 overflow-x-auto scrollbar-hide">
             {[
               { id: 'description', label: 'Formulation & Story' },
               { id: 'specs', label: 'Specifications & Provenance' },
@@ -750,7 +750,7 @@ const ProductPage = ({ productData }) => {
               >
                 {tab.label}
                 {activeTab === tab.id && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#B98C2D]" />
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#C53261]" />
                 )}
               </button>
             ))}
@@ -768,10 +768,10 @@ const ProductPage = ({ productData }) => {
                       '<p>Experience pure cosmetic refinement. Masterfully blended with notes of pure botanical essences, enriching emollients, and silky textures designed to enhance your signature beauty.</p>',
                   }}
                 />
-                <div className="bg-[#F9F5EC] p-6 rounded-none border border-[#E8DFC8] mt-6">
+                <div className="bg-[#FFF5F8] p-6 rounded-none border border-[#F0DCE3] mt-6">
                   <h4 className="text-xs font-bold uppercase tracking-widest text-[#141311] mb-3 flex items-center gap-2">
-                    <HiSparkles className="text-[#B98C2D]" />
-                    Atelier Formulation Distinctions
+                    <HiSparkles className="text-[#C53261]" />
+                    Product Specifications & Formulation
                   </h4>
                   <ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 space-y-2">
                     <li>Long-lasting concentration engineered for day-long illumination and flawless performance.</li>
@@ -788,27 +788,27 @@ const ProductPage = ({ productData }) => {
               <div className="max-w-2xl">
                 <table className="w-full text-xs sm:text-sm text-left border-collapse">
                   <tbody>
-                    <tr className="border-b border-[#E8DFC8]">
+                    <tr className="border-b border-[#F0DCE3]">
                       <th className="py-3.5 font-bold uppercase tracking-wider text-[11px] text-[#141311] w-1/3">Creations Name</th>
                       <td className="py-3.5 text-gray-700">{product?.name}</td>
                     </tr>
-                    <tr className="border-b border-[#E8DFC8]">
+                    <tr className="border-b border-[#F0DCE3]">
                       <th className="py-3.5 font-bold uppercase tracking-wider text-[11px] text-[#141311]">Archive SKU</th>
                       <td className="py-3.5 text-gray-700 font-mono">{product?.sku || 'S2U-CT-892'}</td>
                     </tr>
-                    <tr className="border-b border-[#E8DFC8]">
+                    <tr className="border-b border-[#F0DCE3]">
                       <th className="py-3.5 font-bold uppercase tracking-wider text-[11px] text-[#141311]">Category</th>
                       <td className="py-3.5 text-gray-700 capitalize">
                         {product?.subcategory?.category?.name || product?.subcategorySlug || 'Cosmetics & Beauty'}
                       </td>
                     </tr>
-                    <tr className="border-b border-[#E8DFC8]">
+                    <tr className="border-b border-[#F0DCE3]">
                       <th className="py-3.5 font-bold uppercase tracking-wider text-[11px] text-[#141311]">Product Type</th>
                       <td className="py-3.5 text-gray-700 capitalize">
                         {product?.productType || 'Tangible Luxury Cosmetic'}
                       </td>
                     </tr>
-                    <tr className="border-b border-[#E8DFC8]">
+                    <tr className="border-b border-[#F0DCE3]">
                       <th className="py-3.5 font-bold uppercase tracking-wider text-[11px] text-[#141311]">Dispatch Protocol</th>
                       <td className="py-3.5 text-emerald-800 font-semibold">
                         Ready for Express White-Glove Dispatch (Within 24 Hours)
@@ -823,12 +823,12 @@ const ProductPage = ({ productData }) => {
             {activeTab === 'reviews' && (
               <div className="space-y-8">
                 {/* Score Summary */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 p-6 bg-[#F9F5EC] rounded-none border border-[#E8DFC8]">
+                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 p-6 bg-[#FFF5F8] rounded-none border border-[#F0DCE3]">
                   <div className="text-center">
                     <span className="text-4xl sm:text-5xl font-serif font-bold text-[#141311] block">
                       {averageRating}
                     </span>
-                    <div className="flex items-center justify-center gap-0.5 text-[#B98C2D] my-2">
+                    <div className="flex items-center justify-center gap-0.5 text-[#C53261] my-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <GoStarFill key={i} size={16} />
                       ))}
@@ -842,9 +842,9 @@ const ProductPage = ({ productData }) => {
                     {[5, 4, 3, 2, 1].map((stars) => (
                       <div key={stars} className="flex items-center gap-2">
                         <span className="w-8 font-bold text-[#141311]">{stars} ★</span>
-                        <div className="flex-1 h-1.5 bg-[#E8DFC8] rounded-none overflow-hidden">
+                        <div className="flex-1 h-1.5 bg-[#F0DCE3] rounded-none overflow-hidden">
                           <div
-                            className="h-full bg-[#B98C2D] rounded-none"
+                            className="h-full bg-[#C53261] rounded-none"
                             style={{
                               width: stars === 5 ? '92%' : stars === 4 ? '6%' : '2%',
                             }}
@@ -859,11 +859,11 @@ const ProductPage = ({ productData }) => {
                 </div>
 
                 {/* Review Form */}
-                <div className="p-6 bg-[#F9F5EC] rounded-none border border-[#E8DFC8]">
+                <div className="p-6 bg-[#FFF5F8] rounded-none border border-[#F0DCE3]">
                   <h4 className="font-serif font-bold text-base text-[#141311] mb-3">Add Your Evaluation</h4>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#141311]">Your Rating:</span>
-                    <div className="flex gap-1 text-[#B98C2D]">
+                    <div className="flex gap-1 text-[#C53261]">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
@@ -880,7 +880,7 @@ const ProductPage = ({ productData }) => {
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Share your experience with the formulation, texture, wear, and finish..."
-                    className="w-full p-4 bg-white border border-[#E8DFC8] rounded-none text-xs sm:text-sm outline-none focus:border-[#B98C2D] transition-colors mb-4"
+                    className="w-full p-4 bg-white border border-[#F0DCE3] rounded-none text-xs sm:text-sm outline-none focus:border-[#C53261] transition-colors mb-4"
                   />
                   <button
                     onClick={handleReviewSubmit}
@@ -894,19 +894,19 @@ const ProductPage = ({ productData }) => {
                 {/* Reviews List */}
                 <div className="space-y-4">
                   {reviews.length === 0 ? (
-                    <div className="p-10 text-center bg-[#F9F5EC] rounded-none border border-dashed border-[#E8DFC8]">
+                    <div className="p-10 text-center bg-[#FFF5F8] rounded-none border border-dashed border-[#F0DCE3]">
                       <p className="text-xs uppercase tracking-widest text-gray-500 font-bold">
                         No client evaluations recorded yet. Be the first to grace this creation.
                       </p>
                     </div>
                   ) : (
                     reviews.map((r, i) => (
-                      <div key={r.id || i} className="p-5 bg-white rounded-none border border-[#E8DFC8]">
+                      <div key={r.id || i} className="p-5 bg-white rounded-none border border-[#F0DCE3]">
                         <div className="flex items-center justify-between mb-2">
                           <h5 className="font-bold text-xs uppercase tracking-wider text-[#141311]">
                             {r.reviewer || r.name || 'Verified Beauty Client'}
                           </h5>
-                          <div className="flex items-center text-[#B98C2D] text-xs">
+                          <div className="flex items-center text-[#C53261] text-xs">
                             {Array.from({ length: r.rating || 5 }).map((_, idx) => (
                               <GoStarFill key={idx} size={13} />
                             ))}
@@ -952,13 +952,13 @@ const ProductPage = ({ productData }) => {
         {/* 5. Related Products Section ("You May Also Admire") */}
         {relatedProducts && relatedProducts.length > 0 && (
           <div className="mb-14">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#E8DFC8]">
+            <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#F0DCE3]">
               <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#141311] tracking-tight">
                 You May Also Admire
               </h3>
               <button
                 onClick={() => router.push('/customer/pages/allproducts')}
-                className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] hover:underline"
+                className="text-xs font-bold uppercase tracking-widest text-[#C53261] hover:underline"
               >
                 View Full Collection
               </button>
@@ -974,11 +974,11 @@ const ProductPage = ({ productData }) => {
                   <div
                     key={rp.id || idx}
                     onClick={() => router.push(`/customer/pages/products/${rp.slug || rp.id}`)}
-                    className="bg-white rounded-none border border-[#E8DFC8] hover:border-[#B98C2D] transition-all p-4 flex flex-col justify-between cursor-pointer group"
+                    className="bg-white rounded-none border border-[#F0DCE3] hover:border-[#C53261] transition-all p-4 flex flex-col justify-between cursor-pointer group"
                   >
-                    <div className="relative aspect-square w-full bg-[#F9F5EC] rounded-none mb-3.5 flex items-center justify-center overflow-hidden border border-[#E8DFC8]/50">
+                    <div className="relative aspect-square w-full bg-[#FFF5F8] rounded-none mb-3.5 flex items-center justify-center overflow-hidden border border-[#F0DCE3]/50">
                       {rp.discount > 0 && (
-                        <span className="absolute top-2 left-2 z-10 bg-[#B98C2D] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-none">
+                        <span className="absolute top-2 left-2 z-10 bg-[#C53261] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-none">
                           -{Math.round(rp.discount)}%
                         </span>
                       )}
@@ -996,10 +996,10 @@ const ProductPage = ({ productData }) => {
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
                         {rp.category || rp.subcategory?.name || 'Exclusive'}
                       </span>
-                      <h4 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#B98C2D] transition-colors line-clamp-2 h-8 leading-snug mb-1">
+                      <h4 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#C53261] transition-colors line-clamp-2 h-8 leading-snug mb-1">
                         {rp.name}
                       </h4>
-                      <div className="flex items-center gap-0.5 text-[#B98C2D] mb-2">
+                      <div className="flex items-center gap-0.5 text-[#C53261] mb-2">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <GoStarFill key={i} size={11} />
                         ))}
@@ -1031,13 +1031,13 @@ const ProductPage = ({ productData }) => {
                 maxWidth: '92vw',
                 padding: '32px',
                 borderRadius: '0px',
-                border: '1px solid #E8DFC8',
+                border: '1px solid #F0DCE3',
                 background: '#FFFFFF',
               },
             }}
           >
             <div className="flex flex-col items-center p-2 text-center max-w-sm">
-              <div className="w-12 h-12 rounded-none bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-none bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center mb-4">
                 <FiCheck size={22} />
               </div>
               <h2 className="text-lg font-serif font-bold text-[#141311] mb-1.5 uppercase tracking-wide">
@@ -1049,7 +1049,7 @@ const ProductPage = ({ productData }) => {
               <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="flex-1 px-5 py-3 border border-[#E8DFC8] text-[#141311] text-[11px] font-bold uppercase tracking-widest rounded-none hover:border-black transition-colors"
+                  className="flex-1 px-5 py-3 border border-[#F0DCE3] text-[#141311] text-[11px] font-bold uppercase tracking-widest rounded-none hover:border-black transition-colors"
                 >
                   Continue Browsing
                 </button>

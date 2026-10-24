@@ -30,7 +30,7 @@ const ProductTabs = () => {
   const tab = TABS.find((t) => t.id === active);
 
   return (
-    <section className="py-14 sm:py-20 bg-[#FAF7F0]">
+    <section className="py-14 sm:py-20 bg-[#FCF4F7]">
       <div className="container mx-auto max-w-[1440px] px-4 lg:px-8">
         <SectionHeader
           eyebrow="Curated for you"

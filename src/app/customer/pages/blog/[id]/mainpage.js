@@ -139,7 +139,7 @@ const BlogDetailPage = ({ id, initialBlog }) => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] bg-[#FBF9F7]">
-        <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+        <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
         <p className="text-xs uppercase tracking-widest font-bold text-[#141311]">
           Loading Journal Story...
         </p>
@@ -176,11 +176,11 @@ const BlogDetailPage = ({ id, initialBlog }) => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* 1. Breadcrumbs */}
-      <div className="bg-white border-b border-[#E8DFC8] py-5">
+      <div className="bg-white border-b border-[#F0DCE3] py-5">
         <div className="container mx-auto max-w-[1200px] px-4 lg:px-8 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 overflow-hidden">
           <Link href="/" className="hover:text-[#141311] transition-colors shrink-0">
-            Atelier
-          </Link>
+                Home
+              </Link>
           <span className="text-gray-300 shrink-0">/</span>
           <Link href="/customer/pages/blog" className="hover:text-[#141311] transition-colors shrink-0">
             Beauty Journal
@@ -194,17 +194,17 @@ const BlogDetailPage = ({ id, initialBlog }) => {
       <article className="container mx-auto max-w-[1000px] px-4 lg:px-8 py-10 sm:py-14">
         {/* Category & Metadata */}
         <div className="flex flex-wrap items-center gap-3 text-[11px] font-bold uppercase tracking-widest mb-4">
-          <span className="bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] px-3 py-1 rounded-none flex items-center gap-1.5 font-bold">
+          <span className="bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] px-3 py-1 rounded-none flex items-center gap-1.5 font-bold">
             <FiTag size={12} />
-            {blog.category || 'Atelier Masterclass'}
+            {blog.category || 'Beauty Guide'}
           </span>
           <span className="text-gray-400 flex items-center gap-1">
-            <FiCalendar size={13} className="text-[#B98C2D]" />
+            <FiCalendar size={13} className="text-[#C53261]" />
             {formatDate(blog.createdAt || blog.date)}
           </span>
-          <span className="text-[#E8DFC8]">•</span>
+          <span className="text-[#F0DCE3]">•</span>
           <span className="text-gray-400 flex items-center gap-1">
-            <FiClock size={13} className="text-[#B98C2D]" />
+            <FiClock size={13} className="text-[#C53261]" />
             {readingTime} min read
           </span>
         </div>
@@ -215,7 +215,7 @@ const BlogDetailPage = ({ id, initialBlog }) => {
         </h1>
 
         {/* Author bar */}
-        <div className="flex items-center justify-between border-y border-[#E8DFC8] py-4 mb-8">
+        <div className="flex items-center justify-between border-y border-[#F0DCE3] py-4 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-none bg-[#141311] text-white flex items-center justify-center font-bold text-sm">
               <FiUser size={18} />
@@ -234,28 +234,28 @@ const BlogDetailPage = ({ id, initialBlog }) => {
             <button
               onClick={() => handleShare('facebook')}
               aria-label="Share on Facebook"
-              className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
             >
               <FiFacebook size={13} />
             </button>
             <button
               onClick={() => handleShare('twitter')}
               aria-label="Share on Twitter"
-              className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
             >
               <FiTwitter size={13} />
             </button>
             <button
               onClick={() => handleShare('linkedin')}
               aria-label="Share on LinkedIn"
-              className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
             >
               <FiLinkedin size={13} />
             </button>
             <button
               onClick={() => handleShare('copy')}
               aria-label="Copy link"
-              className="w-8 h-8 rounded-none border border-[#E8DFC8] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-none border border-[#F0DCE3] bg-white text-[#141311] hover:bg-[#141311] hover:text-white flex items-center justify-center transition-colors"
             >
               <FiCopy size={13} />
             </button>
@@ -263,7 +263,7 @@ const BlogDetailPage = ({ id, initialBlog }) => {
         </div>
 
         {/* Featured Main Image */}
-        <div className="relative aspect-[16/9] w-full rounded-none overflow-hidden mb-10 border border-[#E8DFC8] bg-[#F9F5EC]">
+        <div className="relative aspect-[16/9] w-full rounded-none overflow-hidden mb-10 border border-[#F0DCE3] bg-[#FFF5F8]">
           <Image
             src={imageSrc}
             alt={blog.title}
@@ -275,7 +275,7 @@ const BlogDetailPage = ({ id, initialBlog }) => {
         </div>
 
         {/* Article Body Content */}
-        <div className="bg-white p-8 sm:p-12 border border-[#E8DFC8] mb-10">
+        <div className="bg-white p-8 sm:p-12 border border-[#F0DCE3] mb-10">
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6 font-light">
             {blog.description ? (
               <div
@@ -296,16 +296,16 @@ const BlogDetailPage = ({ id, initialBlog }) => {
         </div>
 
         {/* Footer Navigation */}
-        <div className="pt-6 border-t border-[#E8DFC8] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-6 border-t border-[#F0DCE3] flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link
             href="/customer/pages/blog"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#141311] hover:text-[#B98C2D] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#141311] hover:text-[#C53261] transition-colors"
           >
             <FiArrowLeft size={14} /> Back to Journal Chronicles
           </Link>
 
           <div className="flex items-center gap-2 text-xs text-gray-400 font-light">
-            <HiSparkles className="text-[#B98C2D]" />
+            <HiSparkles className="text-[#C53261]" />
             <span>Certified Beauty & Cosmetic Insights</span>
           </div>
         </div>
@@ -313,7 +313,7 @@ const BlogDetailPage = ({ id, initialBlog }) => {
 
       {/* 3. Related Articles Section */}
       {relatedPosts.length > 0 && (
-        <section className="bg-white py-14 border-t border-[#E8DFC8]">
+        <section className="bg-white py-14 border-t border-[#F0DCE3]">
           <div className="container mx-auto max-w-[1200px] px-4 lg:px-8">
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#141311] mb-8 tracking-tight">
               Complementary Reading
@@ -323,11 +323,11 @@ const BlogDetailPage = ({ id, initialBlog }) => {
               {relatedPosts.map((post) => (
                 <article
                   key={post.id}
-                  className="group flex flex-col bg-[#F9F5EC] rounded-none p-4 border border-[#E8DFC8] hover:border-[#B98C2D] transition-all"
+                  className="group flex flex-col bg-[#FFF5F8] rounded-none p-4 border border-[#F0DCE3] hover:border-[#C53261] transition-all"
                 >
                   <Link
                     href={`/customer/pages/blog/${post.id}`}
-                    className="relative aspect-[16/10] w-full rounded-none overflow-hidden mb-4 bg-white border border-[#E8DFC8]/50 block"
+                    className="relative aspect-[16/10] w-full rounded-none overflow-hidden mb-4 bg-white border border-[#F0DCE3]/50 block"
                   >
                     <Image
                       src={post.image}
@@ -339,18 +339,18 @@ const BlogDetailPage = ({ id, initialBlog }) => {
                   </Link>
 
                   <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">
-                    <FiClock size={11} className="text-[#B98C2D]" />
+                    <FiClock size={11} className="text-[#C53261]" />
                     <span>{post.date}</span>
                   </div>
 
-                  <h3 className="text-sm font-serif font-bold text-[#141311] leading-snug group-hover:text-[#B98C2D] transition-colors mb-3 line-clamp-2">
+                  <h3 className="text-sm font-serif font-bold text-[#141311] leading-snug group-hover:text-[#C53261] transition-colors mb-3 line-clamp-2">
                     <Link href={`/customer/pages/blog/${post.id}`}>{post.title}</Link>
                   </h3>
 
-                  <div className="mt-auto pt-2 border-t border-[#E8DFC8]/60">
+                  <div className="mt-auto pt-2 border-t border-[#F0DCE3]/60">
                     <Link
                       href={`/customer/pages/blog/${post.id}`}
-                      className="text-[11px] font-bold uppercase tracking-widest text-[#141311] group-hover:text-[#B98C2D] transition-colors inline-block"
+                      className="text-[11px] font-bold uppercase tracking-widest text-[#141311] group-hover:text-[#C53261] transition-colors inline-block"
                     >
                       Read Chronicle &rarr;
                     </Link>

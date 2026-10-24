@@ -29,13 +29,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -43,7 +43,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -148,7 +148,7 @@ const ContactInfoPage = () => {
             Boutique Contact & Headquarters
           </Typography>
           <Typography variant="body2" sx={{ color: '#8C7A70', letterSpacing: '0.02em' }}>
-            Manage direct phone hotlines, official atelier address, customer care inbox, and domain
+            Manage direct phone hotlines, official company address, customer care inbox, and domain
           </Typography>
         </Box>
       </Box>
@@ -158,7 +158,7 @@ const ContactInfoPage = () => {
         sx={{
           p: { xs: 2.5, sm: 4 },
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           maxWidth: '860px',
         }}
@@ -256,7 +256,7 @@ const ContactInfoPage = () => {
 
             <Grid item xs={12}>
               <Typography variant="caption" sx={{ color: '#8C7A70', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', mb: 0.75 }}>
-                Atelier & Dispatch Headquarters Address
+                Company & Dispatch Headquarters Address
               </Typography>
               <TextField
                 fullWidth
@@ -295,7 +295,7 @@ const ContactInfoPage = () => {
                   px: 4,
                   py: 1.5,
                   boxShadow: 'none',
-                  '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                  '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
                 }}
               >
                 {isLoading ? 'Saving...' : 'Save Contact Details'}

@@ -89,9 +89,9 @@ const CategoryPage = () => {
   if (loading) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#FBF9F7]">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+      <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
       <span className="text-[11px] font-bold uppercase tracking-widest text-[#141311]">
-        Loading Atelier Collection...
+        Loading Products...
       </span>
     </div>
   );
@@ -104,7 +104,7 @@ const CategoryPage = () => {
         onClick={() => router.push('/')}
         className="px-6 py-2.5 bg-[#141311] text-white text-xs font-bold uppercase tracking-widest rounded-none border border-[#141311]"
       >
-        Return to Atelier
+        Return to Home
       </button>
     </div>
   );
@@ -137,13 +137,13 @@ const CategoryPage = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Navigation Breadcrumb & Search Header */}
-      <div className="border-b border-[#E8DFC8] bg-white">
+      <div className="border-b border-[#F0DCE3] bg-white">
         <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center justify-between w-full md:w-auto">
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400">
                 <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/')}>
-                  Atelier
+                  Home
                 </span>
                 <span className="text-gray-300">/</span>
                 <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/customer/pages/allproducts')}>
@@ -160,7 +160,7 @@ const CategoryPage = () => {
                   setTempStatusFilter(statusFilter);
                   setShowFilters(true);
                 }}
-                className="md:hidden flex items-center justify-center bg-white text-[#141311] w-10 h-10 rounded-none border border-[#E8DFC8] transition-colors"
+                className="md:hidden flex items-center justify-center bg-white text-[#141311] w-10 h-10 rounded-none border border-[#F0DCE3] transition-colors"
               >
                 <FiFilter size={16} />
               </button>
@@ -177,7 +177,7 @@ const CategoryPage = () => {
                   placeholder="SEARCH IN THIS COLLECTION..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-[#F9F5EC] border border-[#E8DFC8] rounded-none py-2.5 pl-10 pr-4 text-xs font-medium tracking-wide focus:border-[#B98C2D] transition-all outline-none w-full md:w-[280px]"
+                  className="bg-[#FFF5F8] border border-[#F0DCE3] rounded-none py-2.5 pl-10 pr-4 text-xs font-medium tracking-wide focus:border-[#C53261] transition-all outline-none w-full md:w-[280px]"
                 />
               </div>
             </div>
@@ -188,9 +188,9 @@ const CategoryPage = () => {
       <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
         {/* Sidebar */}
         <aside className={`${showFilters ? 'block' : 'hidden'} md:block md:col-span-3 space-y-6`}>
-          <div className="bg-white border border-[#E8DFC8] rounded-none p-6 sticky top-28">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 pb-3 border-b border-[#E8DFC8] flex items-center gap-2 text-[#141311]">
-              <span className="w-1.5 h-1.5 bg-[#B98C2D] rounded-none" />
+          <div className="bg-white border border-[#F0DCE3] rounded-none p-6 sticky top-28">
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 pb-3 border-b border-[#F0DCE3] flex items-center gap-2 text-[#141311]">
+              <span className="w-1.5 h-1.5 bg-[#C53261] rounded-none" />
               Department Tiers
             </h3>
 
@@ -198,8 +198,8 @@ const CategoryPage = () => {
               <div
                 className={`group flex items-center justify-between p-3 rounded-none cursor-pointer border transition-all ${
                   !activeSubcategory
-                    ? 'bg-[#F9F5EC] border-[#B98C2D] text-[#141311] font-bold'
-                    : 'bg-white border-transparent hover:bg-[#F9F5EC] text-gray-600'
+                    ? 'bg-[#FFF5F8] border-[#C53261] text-[#141311] font-bold'
+                    : 'bg-white border-transparent hover:bg-[#FFF5F8] text-gray-600'
                 }`}
                 onClick={() => setActiveSubcategory(null)}
               >
@@ -218,8 +218,8 @@ const CategoryPage = () => {
                   key={sub.id}
                   className={`group flex items-center justify-between p-3 rounded-none cursor-pointer border transition-all ${
                     activeSubcategory === sub.id
-                      ? 'bg-[#F9F5EC] border-[#B98C2D] text-[#141311] font-bold'
-                      : 'bg-white border-transparent hover:bg-[#F9F5EC] text-gray-600'
+                      ? 'bg-[#FFF5F8] border-[#C53261] text-[#141311] font-bold'
+                      : 'bg-white border-transparent hover:bg-[#FFF5F8] text-gray-600'
                   }`}
                   onClick={() => setActiveSubcategory(sub.id)}
                 >
@@ -235,11 +235,11 @@ const CategoryPage = () => {
               ))}
             </div>
 
-            {/* Atelier Assurance Box */}
-            <div className="mt-8 pt-6 border-t border-[#E8DFC8]">
-              <div className="bg-[#F9F5EC] border border-[#E8DFC8] text-[#141311] p-5">
-                <span className="text-[9px] font-bold text-white bg-[#B98C2D] px-2 py-0.5 rounded-none uppercase tracking-widest mb-2.5 inline-block">
-                  Atelier Guarantee
+            {/* Assurance Box */}
+            <div className="mt-8 pt-6 border-t border-[#F0DCE3]">
+              <div className="bg-[#FFF5F8] border border-[#F0DCE3] text-[#141311] p-5">
+                <span className="text-[9px] font-bold text-white bg-[#C53261] px-2 py-0.5 rounded-none uppercase tracking-widest mb-2.5 inline-block">
+                  Authenticity Guarantee
                 </span>
                 <h4 className="text-sm font-serif font-bold mb-1.5 uppercase tracking-wide">100% Authentic Beauty</h4>
                 <p className="text-[11px] text-gray-500 mb-3 font-light leading-relaxed">
@@ -247,7 +247,7 @@ const CategoryPage = () => {
                 </p>
                 <button
                   onClick={() => router.push('/customer/pages/allproducts')}
-                  className="text-[#141311] text-[10px] font-bold uppercase tracking-widest border-b border-[#141311] pb-0.5 hover:text-[#B98C2D] hover:border-[#B98C2D] transition-all"
+                  className="text-[#141311] text-[10px] font-bold uppercase tracking-widest border-b border-[#141311] pb-0.5 hover:text-[#C53261] hover:border-[#C53261] transition-all"
                 >
                   Explore All Collections &rarr;
                 </button>
@@ -265,10 +265,10 @@ const CategoryPage = () => {
                 return (
                   <div
                     key={product.id}
-                    className="group flex flex-col bg-white border border-[#E8DFC8] hover:border-[#B98C2D] rounded-none overflow-hidden transition-all duration-300 cursor-pointer"
+                    className="group flex flex-col bg-white border border-[#F0DCE3] hover:border-[#C53261] rounded-none overflow-hidden transition-all duration-300 cursor-pointer"
                     onClick={() => handleProductClick(product.slug)}
                   >
-                    <div className="relative aspect-square bg-[#F9F5EC] overflow-hidden rounded-none border-b border-[#E8DFC8]/60">
+                    <div className="relative aspect-square bg-[#FFF5F8] overflow-hidden rounded-none border-b border-[#F0DCE3]/60">
                       {product.images?.[0] && (
                         <Image
                           fill
@@ -287,14 +287,14 @@ const CategoryPage = () => {
                         />
                       )}
                       {product.discount > 0 && (
-                        <div className="absolute top-2 left-2 bg-[#B98C2D] text-white text-[9px] font-bold px-2 py-0.5 rounded-none uppercase tracking-widest">
+                        <div className="absolute top-2 left-2 bg-[#C53261] text-white text-[9px] font-bold px-2 py-0.5 rounded-none uppercase tracking-widest">
                           -{product.discount.toFixed(0)}%
                         </div>
                       )}
                     </div>
                     <div className="p-4 flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-0.5 text-[#B98C2D]">
+                        <div className="flex items-center gap-0.5 text-[#C53261]">
                           <GoStarFill size={11} />
                           <GoStarFill size={11} />
                           <GoStarFill size={11} />
@@ -305,7 +305,7 @@ const CategoryPage = () => {
                           Authentic
                         </span>
                       </div>
-                      <h4 className="mb-2 line-clamp-2 text-xs sm:text-[13px] font-serif font-bold text-[#141311] group-hover:text-[#B98C2D] transition-colors leading-snug h-[2.8em] overflow-hidden">
+                      <h4 className="mb-2 line-clamp-2 text-xs sm:text-[13px] font-serif font-bold text-[#141311] group-hover:text-[#C53261] transition-colors leading-snug h-[2.8em] overflow-hidden">
                         {product.name}
                       </h4>
 
@@ -342,10 +342,10 @@ const CategoryPage = () => {
               })}
             </div>
           ) : (
-            <div className="py-24 text-center bg-white rounded-none border border-dashed border-[#E8DFC8] p-8">
+            <div className="py-24 text-center bg-white rounded-none border border-dashed border-[#F0DCE3] p-8">
               <h3 className="text-lg font-serif font-bold text-[#141311] mb-2">No Formulations In This Collection</h3>
               <p className="text-xs text-gray-400 font-light">
-                Our atelier curators are currently crafting new arrivals. Please explore our other beauty collections.
+                We are currently preparing new arrivals for this collection. Please explore our other beauty collections.
               </p>
             </div>
           )}
@@ -354,11 +354,11 @@ const CategoryPage = () => {
 
       {/* Recommendations Section */}
       {recommendations.length > 0 && (
-        <div className="mt-24 pt-16 border-t border-[#E8DFC8] px-4 max-w-[1536px] mx-auto">
+        <div className="mt-24 pt-16 border-t border-[#F0DCE3] px-4 max-w-[1536px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
             <div>
-              <span className="text-[10px] font-bold text-[#B98C2D] uppercase tracking-widest block mb-1">
-                Atelier Handpicked
+              <span className="text-[10px] font-bold text-[#C53261] uppercase tracking-widest block mb-1">
+                Handpicked Products
               </span>
               <h3 className="text-xl sm:text-2xl font-serif font-bold uppercase tracking-tight text-[#141311]">
                 Explore Recommendations
@@ -370,10 +370,10 @@ const CategoryPage = () => {
             {recommendations.map((p) => (
               <div
                 key={p.id}
-                className="group cursor-pointer bg-white border border-[#E8DFC8] hover:border-[#B98C2D] p-4 rounded-none transition-all"
+                className="group cursor-pointer bg-white border border-[#F0DCE3] hover:border-[#C53261] p-4 rounded-none transition-all"
                 onClick={() => handleProductClick(p.slug)}
               >
-                <div className="relative aspect-square rounded-none overflow-hidden bg-[#F9F5EC] border border-[#E8DFC8]/50 mb-3">
+                <div className="relative aspect-square rounded-none overflow-hidden bg-[#FFF5F8] border border-[#F0DCE3]/50 mb-3">
                   {p.images?.[0] && (
                     <Image
                       fill
@@ -389,7 +389,7 @@ const CategoryPage = () => {
                     />
                   )}
                 </div>
-                <h4 className="text-xs font-serif font-bold truncate group-hover:text-[#B98C2D] transition-colors uppercase tracking-wide mb-1 text-[#141311]">
+                <h4 className="text-xs font-serif font-bold truncate group-hover:text-[#C53261] transition-colors uppercase tracking-wide mb-1 text-[#141311]">
                   {p.name}
                 </h4>
                 <p className="text-sm font-bold text-[#141311]">Rs. {formatPrice(p.price)}</p>
@@ -401,9 +401,9 @@ const CategoryPage = () => {
 
       {/* Newsletter Section */}
       <div className="mt-24 max-w-[1536px] px-4 mx-auto">
-        <div className="bg-[#F9F5EC] border border-[#E8DFC8] rounded-none p-8 md:p-14 text-center">
+        <div className="bg-[#FFF5F8] border border-[#F0DCE3] rounded-none p-8 md:p-14 text-center">
           <div className="max-w-xl mx-auto">
-            <span className="text-[10px] font-bold text-[#B98C2D] uppercase tracking-widest block mb-2">
+            <span className="text-[10px] font-bold text-[#C53261] uppercase tracking-widest block mb-2">
               Privileged Access
             </span>
             <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#141311] mb-3 uppercase tracking-tight">
@@ -417,7 +417,7 @@ const CategoryPage = () => {
               <input
                 type="email"
                 placeholder="ENTER YOUR EMAIL..."
-                className="flex-1 bg-white border border-[#E8DFC8] rounded-none py-3 px-4 text-xs tracking-wider focus:border-[#B98C2D] transition-all outline-none"
+                className="flex-1 bg-white border border-[#F0DCE3] rounded-none py-3 px-4 text-xs tracking-wider focus:border-[#C53261] transition-all outline-none"
               />
               <button className="bg-[#141311] hover:bg-[#2A1B24] text-white px-8 py-3 rounded-none font-bold text-xs uppercase tracking-widest transition-all border border-[#141311]">
                 Subscribe
@@ -443,9 +443,9 @@ const CategoryPage = () => {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute left-0 right-0 bottom-0 bg-white rounded-none border-t border-[#E8DFC8] flex flex-col max-h-[85vh]"
+              className="absolute left-0 right-0 bottom-0 bg-white rounded-none border-t border-[#F0DCE3] flex flex-col max-h-[85vh]"
             >
-              <div className="px-6 py-4 flex items-center justify-between border-b border-[#E8DFC8]">
+              <div className="px-6 py-4 flex items-center justify-between border-b border-[#F0DCE3]">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-[#141311]">Filter Formulations</h3>
                 <button
                   onClick={() => setShowFilters(false)}
@@ -471,7 +471,7 @@ const CategoryPage = () => {
                         className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
                           tempSortOption === opt.id
                             ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#E8DFC8] text-gray-700"
+                            : "bg-white border-[#F0DCE3] text-gray-700"
                         }`}
                       >
                         {opt.label}
@@ -494,7 +494,7 @@ const CategoryPage = () => {
                         className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
                           tempStatusFilter === status.id
                             ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#E8DFC8] text-gray-700"
+                            : "bg-white border-[#F0DCE3] text-gray-700"
                         }`}
                       >
                         {status.label}
@@ -504,10 +504,10 @@ const CategoryPage = () => {
                 </div>
               </div>
 
-              <div className="px-6 py-4 border-t border-[#E8DFC8] flex gap-3">
+              <div className="px-6 py-4 border-t border-[#F0DCE3] flex gap-3">
                 <button
                   onClick={() => setShowFilters(false)}
-                  className="flex-1 py-3 border border-[#E8DFC8] text-[10px] font-bold uppercase tracking-widest text-gray-500 rounded-none"
+                  className="flex-1 py-3 border border-[#F0DCE3] text-[10px] font-bold uppercase tracking-widest text-gray-500 rounded-none"
                 >
                   Cancel
                 </button>

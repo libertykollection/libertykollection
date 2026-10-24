@@ -133,12 +133,12 @@ export default function CollectionsPage() {
   return (
     <div className="bg-[#FBF9F7] min-h-screen text-[#141311]">
       {/* 1. Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
               <Link href="/" className="hover:text-[#141311] transition-colors">
-                Atelier
+                Home
               </Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Curated Collections</span>
@@ -147,7 +147,7 @@ export default function CollectionsPage() {
               Signature Beauty Collections
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Exclusive Formulations
           </span>
@@ -165,10 +165,10 @@ export default function CollectionsPage() {
                 <Link
                   key={item.id}
                   href={targetUrl}
-                  className="group flex flex-col items-center cursor-pointer text-center bg-white border border-[#E8DFC8] hover:border-[#B98C2D] transition-all p-3"
+                  className="group flex flex-col items-center cursor-pointer text-center bg-white border border-[#F0DCE3] hover:border-[#C53261] transition-all p-3"
                 >
                   {/* Clean Ivory Box with Centered Cutout Beauty Image */}
-                  <div className="w-full aspect-square bg-[#F9F5EC] border border-[#E8DFC8]/50 flex items-center justify-center p-3 relative overflow-hidden mb-3">
+                  <div className="w-full aspect-square bg-[#FFF5F8] border border-[#F0DCE3]/50 flex items-center justify-center p-3 relative overflow-hidden mb-3">
                     <div className="relative w-full h-full">
                       <Image
                         src={item.image}
@@ -181,7 +181,7 @@ export default function CollectionsPage() {
                   </div>
 
                   {/* Centered Collection Name */}
-                  <h2 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#B98C2D] transition-colors text-center leading-snug line-clamp-1 uppercase tracking-wider">
+                  <h2 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#C53261] transition-colors text-center leading-snug line-clamp-1 uppercase tracking-wider">
                     {item.name}
                   </h2>
                 </Link>
@@ -191,7 +191,7 @@ export default function CollectionsPage() {
 
           {/* 3. Numbered Pagination Bar (Sharp Square Luxury Buttons) */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-12 pt-6 border-t border-[#E8DFC8]">
+            <div className="flex items-center justify-center gap-2 mt-12 pt-6 border-t border-[#F0DCE3]">
               {Array.from({ length: totalPages }).map((_, i) => {
                 const pageNum = i + 1;
                 return (
@@ -201,7 +201,7 @@ export default function CollectionsPage() {
                     className={`w-10 h-10 rounded-none flex items-center justify-center text-xs font-bold uppercase tracking-wider transition-all border ${
                       currentPage === pageNum
                         ? 'bg-[#141311] text-white border-[#141311]'
-                        : 'bg-white text-[#141311] border-[#E8DFC8] hover:border-[#141311]'
+                        : 'bg-white text-[#141311] border-[#F0DCE3] hover:border-[#141311]'
                     }`}
                   >
                     {pageNum}

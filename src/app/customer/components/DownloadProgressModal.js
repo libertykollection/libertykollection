@@ -59,7 +59,7 @@ const DownloadProgressModal = ({ isOpen, onRequestClose, fileName, onComplete })
                 <hr className="w-full border-gray-100 mb-6" />
 
                 <div className="bg-orange-50 p-4 rounded-2xl w-full">
-                    <p className="text-orange-800 font-bold mb-1">Thank you for shopping with our Atelier!</p>
+                    <p className="text-orange-800 font-bold mb-1">Thank you for shopping with Gloria Cosmetics!</p>
                     <p className="text-orange-600/70 text-xs">Your file "{fileName}" will be saved to your device shortly.</p>
                 </div>
             </div>

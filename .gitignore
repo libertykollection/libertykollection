@@ -8,3 +8,4 @@ customer_api_docs.md
 stress-test-api.js
 test-db.js
 test-prisma.js
+test-db-connection.js

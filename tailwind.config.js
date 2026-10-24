@@ -13,9 +13,15 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'var(--font-poppins)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        poppins: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-sans)', 'var(--font-poppins)', 'sans-serif'],
+        /* Body — DM Sans (geometric, clean) */
+        sans:    ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        /* Display headings — Cormorant Garamond (luxury serif) */
+        display: ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
+        serif:   ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
+        /* UI labels / nav / buttons — Jost (humanist geometric) */
+        ui:      ['var(--font-ui)', 'var(--font-sans)', 'system-ui', 'sans-serif'],
+        /* Legacy compat */
+        poppins: ['var(--font-ui)',  'system-ui', 'sans-serif'],
       },
       colors: {
         theme: {

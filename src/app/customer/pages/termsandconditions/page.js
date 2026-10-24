@@ -30,12 +30,12 @@ const Terms = () => {
   return (
     <div className="bg-[#FBF9F7] min-h-screen text-[#141311]">
       {/* 1. Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1200px] px-4 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">
               <Link href="/" className="hover:text-[#141311] transition-colors">
-                Atelier
+                Home
               </Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Client Agreement</span>
@@ -44,7 +44,7 @@ const Terms = () => {
               Terms of Service & Client Conditions
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Official Governance
           </span>
@@ -55,15 +55,15 @@ const Terms = () => {
       <div className="container mx-auto max-w-[1000px] px-4 lg:px-8 py-12 sm:py-16">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+            <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
             <p className="text-[11px] font-bold uppercase tracking-widest text-[#141311]">
               Loading Agreement Terms...
             </p>
           </div>
         ) : termsData ? (
-          <div className="bg-white p-8 sm:p-14 rounded-none border border-[#E8DFC8] space-y-6">
-            <div className="flex items-center justify-between border-b border-[#E8DFC8] pb-4 text-xs">
-              <span className="inline-flex items-center gap-1.5 bg-[#F9F5EC] text-[#B98C2D] border border-[#E8DFC8] px-3 py-1 rounded-none font-bold text-[10px] uppercase tracking-wider">
+          <div className="bg-white p-8 sm:p-14 rounded-none border border-[#F0DCE3] space-y-6">
+            <div className="flex items-center justify-between border-b border-[#F0DCE3] pb-4 text-xs">
+              <span className="inline-flex items-center gap-1.5 bg-[#FFF5F8] text-[#C53261] border border-[#F0DCE3] px-3 py-1 rounded-none font-bold text-[10px] uppercase tracking-wider">
                 <FiFileText size={12} /> Legal User Terms
               </span>
               <span className="flex items-center gap-1 text-gray-400 text-[11px]">
@@ -77,7 +77,7 @@ const Terms = () => {
             />
           </div>
         ) : (
-          <div className="text-center py-16 bg-white border border-dashed border-[#E8DFC8] p-8">
+          <div className="text-center py-16 bg-white border border-dashed border-[#F0DCE3] p-8">
             <p className="text-xs text-gray-400 uppercase tracking-widest font-bold">Terms and conditions records are currently unavailable.</p>
           </div>
         )}

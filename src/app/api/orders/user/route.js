@@ -1,7 +1,7 @@
 import prisma from '../../../util/prisma';
 import jwt from 'jsonwebtoken';
 
-const SECRET_KEY = process.env.JWT_SECRET || 'your_secret_key';
+const SECRET_KEY = process.env.JWT_SECRET || process.env.JWT_KEY || 'your_secret_key';
 
 // Fetch user orders
 export async function GET(req) {

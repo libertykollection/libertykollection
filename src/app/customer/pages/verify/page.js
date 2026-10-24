@@ -52,10 +52,10 @@ export default function VerifyPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] bg-[#FBF9F7] text-[#141311] px-4">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#E8DFC8] w-full max-w-md text-center">
+      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#F0DCE3] w-full max-w-md text-center">
         {loading ? (
           <div>
-            <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mx-auto mb-4" />
+            <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mx-auto mb-4" />
             <h2 className="text-lg font-serif font-bold text-[#141311] mb-1">
               Verifying Client Account...
             </h2>

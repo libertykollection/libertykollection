@@ -35,7 +35,7 @@ export default function BlogPage() {
                 : 'RECENT',
               excerpt: item.description
                 ? item.description.replace(/<[^>]*>/g, '').substring(0, 140) + '...'
-                : 'Discover beauty secrets, formulation deep dives, and expert makeup artistry tips from our Beauty Atelier.',
+                : 'Discover beauty secrets, formulation deep dives, and expert makeup artistry tips from Gloria Cosmetics.',
               image: item.image
                 ? getSafeImageUrl(item.image)
                 : 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&auto=format&fit=crop&q=80',
@@ -66,12 +66,12 @@ export default function BlogPage() {
   return (
     <div className="bg-[#FBF9F7] min-h-screen text-[#141311]">
       {/* 1. Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1400px] px-4 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
               <Link href="/" className="hover:text-[#141311] transition-colors">
-                Atelier
+                Home
               </Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Beauty Journal</span>
@@ -80,7 +80,7 @@ export default function BlogPage() {
               The Beauty Journal & Editorial Chronicles
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Expert Formulations & Masterclasses
           </span>
@@ -92,13 +92,13 @@ export default function BlogPage() {
         <div className="container mx-auto max-w-[1400px] px-4 lg:px-8">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-              <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+              <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
               <p className="text-xs uppercase tracking-widest font-bold text-[#141311]">
                 Compiling Journal Chronicles...
               </p>
             </div>
           ) : blogs.length === 0 ? (
-            <div className="py-20 text-center bg-white border border-dashed border-[#E8DFC8] p-8">
+            <div className="py-20 text-center bg-white border border-dashed border-[#F0DCE3] p-8">
               <h3 className="text-lg font-serif font-bold text-[#141311] mb-2">No Articles In This Issue</h3>
               <p className="text-xs text-gray-400 font-light">
                 Our editorial team is preparing fresh skincare and cosmetic masterclasses. Please check back shortly.
@@ -112,12 +112,12 @@ export default function BlogPage() {
                   return (
                     <article
                       key={post.id || idx}
-                      className="group flex flex-col bg-white border border-[#E8DFC8] hover:border-[#B98C2D] rounded-none transition-all p-5"
+                      className="group flex flex-col bg-white border border-[#F0DCE3] hover:border-[#C53261] rounded-none transition-all p-5"
                     >
                       {/* Blog Image */}
                       <Link
                         href={targetUrl}
-                        className="relative aspect-[16/10] w-full bg-[#F9F5EC] border border-[#E8DFC8]/50 mb-4 block overflow-hidden"
+                        className="relative aspect-[16/10] w-full bg-[#FFF5F8] border border-[#F0DCE3]/50 mb-4 block overflow-hidden"
                       >
                         <Image
                           src={post.image}
@@ -130,12 +130,12 @@ export default function BlogPage() {
 
                       {/* Date */}
                       <div className="flex items-center gap-1.5 text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-2">
-                        <FiClock size={12} className="text-[#B98C2D]" />
+                        <FiClock size={12} className="text-[#C53261]" />
                         <span>{post.date}</span>
                       </div>
 
                       {/* Blog Title */}
-                      <h2 className="text-base font-serif font-bold text-[#141311] leading-snug group-hover:text-[#B98C2D] transition-colors mb-2.5 line-clamp-2">
+                      <h2 className="text-base font-serif font-bold text-[#141311] leading-snug group-hover:text-[#C53261] transition-colors mb-2.5 line-clamp-2">
                         <Link href={targetUrl}>{post.title}</Link>
                       </h2>
 
@@ -145,10 +145,10 @@ export default function BlogPage() {
                       </p>
 
                       {/* Read More */}
-                      <div className="mt-auto pt-3 border-t border-[#E8DFC8]/60">
+                      <div className="mt-auto pt-3 border-t border-[#F0DCE3]/60">
                         <Link
                           href={targetUrl}
-                          className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-[#141311] group-hover:text-[#B98C2D] transition-colors"
+                          className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-[#141311] group-hover:text-[#C53261] transition-colors"
                         >
                           <span>Read Full Story</span>
                           <FiArrowRight size={13} />
@@ -161,7 +161,7 @@ export default function BlogPage() {
 
               {/* Numbered Pagination Bar */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-14 pt-6 border-t border-[#E8DFC8]">
+                <div className="flex items-center justify-center gap-2 mt-14 pt-6 border-t border-[#F0DCE3]">
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <button
                       key={page}
@@ -169,7 +169,7 @@ export default function BlogPage() {
                       className={`w-10 h-10 rounded-none flex items-center justify-center text-xs font-bold uppercase tracking-wider transition-all border ${
                         currentPage === page
                           ? 'bg-[#141311] text-white border-[#141311]'
-                          : 'bg-white text-[#141311] border-[#E8DFC8] hover:border-[#141311]'
+                          : 'bg-white text-[#141311] border-[#F0DCE3] hover:border-[#141311]'
                       }`}
                     >
                       {page}

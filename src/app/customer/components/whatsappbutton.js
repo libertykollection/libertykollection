@@ -5,7 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 export default function WhatsAppButton() {
   const [phoneNumber, setPhoneNumber] = useState('92310356111');
-  const [companyName, setCompanyName] = useState('Atelier');
+  const [companyName, setCompanyName] = useState('Gloria Cosmetics');
 
   useEffect(() => {
     fetch('/api/contactinfo')

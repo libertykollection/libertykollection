@@ -92,12 +92,12 @@ const ContactUsPage = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* 1. Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1400px] px-4 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1">
               <Link href="/" className="hover:text-[#141311] transition-colors">
-                Atelier
+                Home
               </Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Client Concierge</span>
@@ -106,7 +106,7 @@ const ContactUsPage = () => {
               Contact {brandName ? `${brandName} Concierge` : 'Client Concierge'}
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Dedicated Consultation & Assistance
           </span>
@@ -118,8 +118,8 @@ const ContactUsPage = () => {
         <div className="container mx-auto max-w-[1400px] px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* LEFT CARD: Contact Form */}
-            <div className="lg:col-span-7 xl:col-span-8 bg-white rounded-none border border-[#E8DFC8] p-6 sm:p-12">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98C2D] block mb-1">
+            <div className="lg:col-span-7 xl:col-span-8 bg-white rounded-none border border-[#F0DCE3] p-6 sm:p-12">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] block mb-1">
                 Direct Inquiry
               </span>
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#141311] mb-6 tracking-tight">
@@ -139,7 +139,7 @@ const ContactUsPage = () => {
                       placeholder="e.g. Ayesha Khan"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] outline-none focus:border-[#B98C2D] transition-colors"
+                      className="w-full px-4 py-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] outline-none focus:border-[#C53261] transition-colors"
                     />
                   </div>
                   <div>
@@ -153,7 +153,7 @@ const ContactUsPage = () => {
                       placeholder="ayesha@example.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] outline-none focus:border-[#B98C2D] transition-colors"
+                      className="w-full px-4 py-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] outline-none focus:border-[#C53261] transition-colors"
                     />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ const ContactUsPage = () => {
                     placeholder="+92 300 1234567"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] outline-none focus:border-[#B98C2D] transition-colors"
+                    className="w-full px-4 py-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] outline-none focus:border-[#C53261] transition-colors"
                   />
                 </div>
 
@@ -183,7 +183,7 @@ const ContactUsPage = () => {
                     placeholder="Tell us how our beauty specialists can assist you..."
                     value={formData.comment}
                     onChange={handleChange}
-                    className="w-full p-4 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] outline-none focus:border-[#B98C2D] transition-colors"
+                    className="w-full p-4 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] outline-none focus:border-[#C53261] transition-colors"
                   />
                 </div>
 
@@ -201,9 +201,9 @@ const ContactUsPage = () => {
             </div>
 
             {/* RIGHT CARD: Concierge Coordinates */}
-            <div className="lg:col-span-5 xl:col-span-4 bg-white rounded-none border border-[#E8DFC8] p-6 sm:p-10 space-y-6">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98C2D] block mb-1">
-                Atelier Location
+            <div className="lg:col-span-5 xl:col-span-4 bg-white rounded-none border border-[#F0DCE3] p-6 sm:p-10 space-y-6">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] block mb-1">
+                Store Location
               </span>
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#141311] mb-6 tracking-tight">
                 Our Coordinates
@@ -211,7 +211,7 @@ const ContactUsPage = () => {
 
               <div className="space-y-6 text-xs sm:text-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-none bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-none bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <FiHome size={15} />
                   </div>
                   <div>
@@ -223,7 +223,7 @@ const ContactUsPage = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-none bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-none bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <FiPhone size={15} />
                   </div>
                   <div>
@@ -232,7 +232,7 @@ const ContactUsPage = () => {
                     </strong>
                     <a
                       href={`tel:${contactInfo.phone}`}
-                      className="text-gray-700 font-mono hover:text-[#B98C2D] transition-colors"
+                      className="text-gray-700 font-mono hover:text-[#C53261] transition-colors"
                     >
                       {contactInfo.phone}
                     </a>
@@ -240,7 +240,7 @@ const ContactUsPage = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-none bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-none bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <FiMail size={15} />
                   </div>
                   <div>
@@ -249,7 +249,7 @@ const ContactUsPage = () => {
                     </strong>
                     <a
                       href={`mailto:${contactInfo.email}`}
-                      className="text-gray-700 hover:text-[#B98C2D] transition-colors"
+                      className="text-gray-700 hover:text-[#C53261] transition-colors"
                     >
                       {contactInfo.email}
                     </a>
@@ -257,7 +257,7 @@ const ContactUsPage = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-none bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-none bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <FiInfo size={15} />
                   </div>
                   <div>
@@ -274,7 +274,7 @@ const ContactUsPage = () => {
       </div>
 
       {/* 3. Full-Width Embedded Map */}
-      <div className="w-full border-t border-[#E8DFC8] overflow-hidden">
+      <div className="w-full border-t border-[#F0DCE3] overflow-hidden">
         <iframe
           title="Store Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107147.28828854497!2d73.41164924376375!3d32.58474249339235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391f7c0fb2ef0a2d%3A0xe74e98f480cb4a14!2sMandi%20Bahauddin%2C%20Punjab!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"

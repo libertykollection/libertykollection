@@ -45,7 +45,7 @@ const OrderInfoPage = () => {
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-10">
-          <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#B98C2D] mb-1">
+          <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#C53261] mb-1">
             <FiLock size={12} />
             <span>Encrypted Concierge Protocol</span>
           </div>
@@ -61,9 +61,9 @@ const OrderInfoPage = () => {
           {/* Main Form Section */}
           <form className="w-full lg:w-2/3 space-y-6" onSubmit={handlePlaceOrder}>
             {/* Shipping Details Card */}
-            <div className="bg-white rounded-none border border-[#E8DFC8] p-6 sm:p-8">
-              <div className="pb-4 mb-6 border-b border-[#E8DFC8] flex items-center space-x-3">
-                <span className="w-1.5 h-5 bg-[#B98C2D] rounded-none" />
+            <div className="bg-white rounded-none border border-[#F0DCE3] p-6 sm:p-8">
+              <div className="pb-4 mb-6 border-b border-[#F0DCE3] flex items-center space-x-3">
+                <span className="w-1.5 h-5 bg-[#C53261] rounded-none" />
                 <h2 className="text-base font-serif font-bold uppercase tracking-wider text-[#141311]">
                   1. Shipping Destination
                 </h2>
@@ -78,7 +78,7 @@ const OrderInfoPage = () => {
                     value={shippingAddress}
                     onChange={(e) => setShippingAddress(e.target.value)}
                     placeholder="Enter your complete doorstep delivery address..."
-                    className="w-full p-4 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none focus:bg-white focus:border-[#B98C2D] transition-all outline-none resize-none text-xs text-[#141311]"
+                    className="w-full p-4 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none focus:bg-white focus:border-[#C53261] transition-all outline-none resize-none text-xs text-[#141311]"
                     required
                   />
                 </div>
@@ -97,13 +97,13 @@ const OrderInfoPage = () => {
                         onClick={() => setDeliveryMethod(m.id)}
                         className={`cursor-pointer p-4 rounded-none border transition-all flex flex-col justify-center ${
                           deliveryMethod === m.id
-                            ? 'border-[#141311] bg-[#F9F5EC] text-[#141311]'
-                            : 'border-[#E8DFC8] bg-white text-gray-600 hover:border-gray-400'
+                            ? 'border-[#141311] bg-[#FFF5F8] text-[#141311]'
+                            : 'border-[#F0DCE3] bg-white text-gray-600 hover:border-gray-400'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-bold uppercase tracking-wider">{m.label}</span>
-                          {deliveryMethod === m.id && <FiCheck className="text-[#B98C2D]" size={14} />}
+                          {deliveryMethod === m.id && <FiCheck className="text-[#C53261]" size={14} />}
                         </div>
                         <span className="text-[10px] text-gray-400">{m.time}</span>
                       </div>
@@ -114,9 +114,9 @@ const OrderInfoPage = () => {
             </div>
 
             {/* Payment Method Card */}
-            <div className="bg-white rounded-none border border-[#E8DFC8] p-6 sm:p-8">
-              <div className="pb-4 mb-6 border-b border-[#E8DFC8] flex items-center space-x-3">
-                <span className="w-1.5 h-5 bg-[#B98C2D] rounded-none" />
+            <div className="bg-white rounded-none border border-[#F0DCE3] p-6 sm:p-8">
+              <div className="pb-4 mb-6 border-b border-[#F0DCE3] flex items-center space-x-3">
+                <span className="w-1.5 h-5 bg-[#C53261] rounded-none" />
                 <h2 className="text-base font-serif font-bold uppercase tracking-wider text-[#141311]">
                   2. Settlement Selection
                 </h2>
@@ -132,8 +132,8 @@ const OrderInfoPage = () => {
                     onClick={() => setPaymentMethod(m.id)}
                     className={`cursor-pointer flex items-center justify-between p-4 rounded-none border transition-all ${
                       paymentMethod === m.id
-                        ? 'border-[#141311] bg-[#F9F5EC]'
-                        : 'border-[#E8DFC8] bg-white hover:border-gray-400'
+                        ? 'border-[#141311] bg-[#FFF5F8]'
+                        : 'border-[#F0DCE3] bg-white hover:border-gray-400'
                     }`}
                   >
                     <div>
@@ -157,8 +157,8 @@ const OrderInfoPage = () => {
 
           {/* Sidebar / Summary Section */}
           <div className="w-full lg:w-1/3 space-y-6">
-            <div className="bg-white rounded-none border border-[#E8DFC8] p-6 sm:p-8 sticky top-24">
-              <h2 className="text-lg font-serif font-bold uppercase tracking-wider text-[#141311] mb-6 pb-3 border-b border-[#E8DFC8]">
+            <div className="bg-white rounded-none border border-[#F0DCE3] p-6 sm:p-8 sticky top-24">
+              <h2 className="text-lg font-serif font-bold uppercase tracking-wider text-[#141311] mb-6 pb-3 border-b border-[#F0DCE3]">
                 Order Summary
               </h2>
 
@@ -173,7 +173,7 @@ const OrderInfoPage = () => {
                   <span>Settlement Channel</span>
                   <span className="font-bold text-[#141311]">{paymentMethod}</span>
                 </div>
-                <div className="h-px bg-[#E8DFC8]" />
+                <div className="h-px bg-[#F0DCE3]" />
                 <div className="flex justify-between items-center pt-1">
                   <span className="text-[11px] uppercase tracking-wider font-bold text-gray-400">Security</span>
                   <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-widest">
@@ -191,13 +191,13 @@ const OrderInfoPage = () => {
 
               <div className="mt-6 flex items-center justify-center gap-2 text-gray-400 text-[10px] uppercase tracking-widest">
                 <FiLock size={12} />
-                <span>Protected by Atelier Authenticity Guarantee</span>
+                <span>Protected by Gloria Authenticity Guarantee</span>
               </div>
             </div>
 
             {/* Assistance Box */}
-            <div className="bg-[#F9F5EC] border border-[#E8DFC8] p-6 text-[#141311]">
-              <div className="flex items-center gap-2 mb-2 text-[#B98C2D]">
+            <div className="bg-[#FFF5F8] border border-[#F0DCE3] p-6 text-[#141311]">
+              <div className="flex items-center gap-2 mb-2 text-[#C53261]">
                 <FiHelpCircle size={16} />
                 <h3 className="font-serif font-bold text-sm uppercase tracking-wide text-[#141311]">
                   Client Concierge

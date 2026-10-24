@@ -234,7 +234,7 @@ export default function AdminDashboardPage() {
           {
             label: 'Paid Orders',
             data: paidSeries,
-            borderColor: '#D2AA2D',
+            borderColor: '#C5A059',
             backgroundColor: 'rgba(197, 155, 142, 0.08)',
             fill: true,
             tension: 0.35,
@@ -245,7 +245,7 @@ export default function AdminDashboardPage() {
           {
             label: 'Pending Orders',
             data: pendingSeries,
-            borderColor: '#B98C2D',
+            borderColor: '#C53261',
             backgroundColor: 'rgba(183, 110, 121, 0.08)',
             fill: true,
             tension: 0.35,
@@ -323,8 +323,8 @@ export default function AdminDashboardPage() {
         label: 'Paid',
         count: paid.count || 0,
         amount: paid.amount || 0,
-        color: '#D2AA2D',
-        bg: 'bg-[#D2AA2D]',
+        color: '#C5A059',
+        bg: 'bg-[#C5A059]',
       },
       {
         label: 'Shipped',
@@ -337,8 +337,8 @@ export default function AdminDashboardPage() {
         label: 'Pending',
         count: pending.count || 0,
         amount: pending.amount || 0,
-        color: '#B98C2D',
-        bg: 'bg-[#B98C2D]',
+        color: '#C53261',
+        bg: 'bg-[#C53261]',
       },
       {
         label: 'Cancelled',
@@ -386,7 +386,7 @@ export default function AdminDashboardPage() {
         titleFont: { size: 12, weight: '700' },
         bodyFont: { size: 12 },
         cornerRadius: 0,
-        borderColor: '#241720',
+        borderColor: '#281B24',
         borderWidth: 1,
       },
     },
@@ -417,32 +417,32 @@ export default function AdminDashboardPage() {
     <div className="space-y-6 pb-12 relative">
       {/* Sleek Top Luxury Data Loading Bar */}
       <div
-        className={`fixed top-16 left-0 lg:left-[270px] right-0 z-50 h-[3px] bg-[#E8DFC8] overflow-hidden transition-all duration-300 ${
+        className={`fixed top-16 left-0 lg:left-[270px] right-0 z-50 h-[3px] bg-[#F0DCE3] overflow-hidden transition-all duration-300 ${
           isLoading ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
         }`}
       >
-        <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#141311] via-[#B98C2D] to-[#D2AA2D] s2u-progress-bar-primary shadow-[0_0_10px_rgba(183,110,121,0.9)]" />
-        <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#B98C2D] via-[#D2AA2D] to-[#141311] s2u-progress-bar-secondary shadow-[0_0_10px_rgba(197,155,142,0.9)]" />
+        <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#141311] via-[#C53261] to-[#C5A059] s2u-progress-bar-primary shadow-[0_0_10px_rgba(183,110,121,0.9)]" />
+        <div className="absolute top-0 bottom-0 bg-gradient-to-r from-[#C53261] via-[#C5A059] to-[#141311] s2u-progress-bar-secondary shadow-[0_0_10px_rgba(197,155,142,0.9)]" />
       </div>
 
       {/* 1. Header Banner & Filter Presets */}
-      <div className="bg-white border border-[#E8DFC8] p-6 shadow-xs flex flex-col xl:flex-row xl:items-center justify-between gap-6 relative overflow-hidden">
+      <div className="bg-white border border-[#F0DCE3] p-6 shadow-xs flex flex-col xl:flex-row xl:items-center justify-between gap-6 relative overflow-hidden">
         {/* Subtle accent bar at top of banner during load */}
         {isLoading && (
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#B98C2D] via-[#D2AA2D] to-[#B98C2D] animate-pulse" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C53261] via-[#C5A059] to-[#C53261] animate-pulse" />
         )}
 
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#B98C2D]"></span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B98C2D]">
+            <span className="w-2 h-2 rounded-full bg-[#C53261]"></span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C53261]">
               Executive Overview
             </span>
 
             {/* Live syncing status badge */}
             {isLoading ? (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#B98C2D]/15 text-[#B98C2D] border border-[#B98C2D]/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B98C2D] animate-ping"></span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#C53261]/15 text-[#C53261] border border-[#C53261]/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C53261] animate-ping"></span>
                 Syncing Realtime Data...
               </span>
             ) : (
@@ -462,7 +462,7 @@ export default function AdminDashboardPage() {
 
         {/* Date Filter Toolbar */}
         <div className="flex flex-wrap items-center gap-2">
-          <div className="inline-flex p-1 bg-[#F8F5F2] border border-[#E8DFC8]">
+          <div className="inline-flex p-1 bg-[#F8F5F2] border border-[#F0DCE3]">
             <button
               type="button"
               onClick={() => applyPreset('today')}
@@ -521,8 +521,8 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Custom Date Pickers */}
-          <div className="flex items-center gap-2 bg-[#F8F5F2] px-3 py-1.5 border border-[#E8DFC8]">
-            <FiCalendar className="text-[#B98C2D] text-xs" />
+          <div className="flex items-center gap-2 bg-[#F8F5F2] px-3 py-1.5 border border-[#F0DCE3]">
+            <FiCalendar className="text-[#C53261] text-xs" />
             <input
               type="date"
               value={startDateStr}
@@ -549,7 +549,7 @@ export default function AdminDashboardPage() {
             type="button"
             onClick={() => fetchDashboardData(startDateStr, endDateStr)}
             disabled={isLoading}
-            className="p-2 text-[#141311] hover:text-white bg-[#F8F5F2] hover:bg-[#B98C2D] border border-[#E8DFC8] transition-colors"
+            className="p-2 text-[#141311] hover:text-white bg-[#F8F5F2] hover:bg-[#C53261] border border-[#F0DCE3] transition-colors"
             title="Refresh Data"
           >
             <FiRefreshCw className={`text-sm ${isLoading ? 'animate-spin' : ''}`} />
@@ -560,10 +560,10 @@ export default function AdminDashboardPage() {
       {/* 2. Top Executive KPI Cards (5 Cards) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Card 1: Total Revenue */}
-        <div className="bg-white border border-[#E8DFC8] p-5 shadow-xs relative overflow-hidden group hover:border-[#B98C2D] transition-all">
+        <div className="bg-white border border-[#F0DCE3] p-5 shadow-xs relative overflow-hidden group hover:border-[#C53261] transition-all">
           <div className="flex items-center justify-between text-xs text-[#8C7A70] font-semibold uppercase tracking-wider mb-2">
             <span>Period Revenue</span>
-            <span className="p-1.5 bg-[#B98C2D]/10 text-[#B98C2D]">
+            <span className="p-1.5 bg-[#C53261]/10 text-[#C53261]">
               <FiTrendingUp className="text-sm" />
             </span>
           </div>
@@ -574,14 +574,14 @@ export default function AdminDashboardPage() {
             <span>Net sales value</span>
             <span className="text-emerald-600 font-bold">Active</span>
           </div>
-          <div className="absolute bottom-0 left-0 h-0.5 w-full bg-[#B98C2D] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          <div className="absolute bottom-0 left-0 h-0.5 w-full bg-[#C53261] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
         </div>
 
         {/* Card 2: Total Orders */}
-        <div className="bg-white border border-[#E8DFC8] p-5 shadow-xs relative overflow-hidden group hover:border-[#D2AA2D] transition-all">
+        <div className="bg-white border border-[#F0DCE3] p-5 shadow-xs relative overflow-hidden group hover:border-[#C5A059] transition-all">
           <div className="flex items-center justify-between text-xs text-[#8C7A70] font-semibold uppercase tracking-wider mb-2">
             <span>Total Orders</span>
-            <span className="p-1.5 bg-[#D2AA2D]/10 text-[#D2AA2D]">
+            <span className="p-1.5 bg-[#C5A059]/10 text-[#C5A059]">
               <FiShoppingBag className="text-sm" />
             </span>
           </div>
@@ -590,13 +590,13 @@ export default function AdminDashboardPage() {
           </div>
           <div className="mt-3 flex items-center justify-between text-[11px] text-[#6B5E55] pt-3 border-t border-[#F8F5F2]">
             <span>In selected date range</span>
-            <span className="text-[#D2AA2D] font-bold">100% Total</span>
+            <span className="text-[#C5A059] font-bold">100% Total</span>
           </div>
-          <div className="absolute bottom-0 left-0 h-0.5 w-full bg-[#D2AA2D] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          <div className="absolute bottom-0 left-0 h-0.5 w-full bg-[#C5A059] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
         </div>
 
         {/* Card 3: Pending Orders */}
-        <div className="bg-white border border-[#E8DFC8] p-5 shadow-xs relative overflow-hidden group hover:border-amber-500 transition-all">
+        <div className="bg-white border border-[#F0DCE3] p-5 shadow-xs relative overflow-hidden group hover:border-amber-500 transition-all">
           <div className="flex items-center justify-between text-xs text-[#8C7A70] font-semibold uppercase tracking-wider mb-2">
             <span>Pending Action</span>
             <span className="p-1.5 bg-amber-50 text-amber-600">
@@ -618,7 +618,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Card 4: Fulfilled / Completed */}
-        <div className="bg-white border border-[#E8DFC8] p-5 shadow-xs relative overflow-hidden group hover:border-emerald-500 transition-all">
+        <div className="bg-white border border-[#F0DCE3] p-5 shadow-xs relative overflow-hidden group hover:border-emerald-500 transition-all">
           <div className="flex items-center justify-between text-xs text-[#8C7A70] font-semibold uppercase tracking-wider mb-2">
             <span>Completed Orders</span>
             <span className="p-1.5 bg-emerald-50 text-emerald-600">
@@ -636,7 +636,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Card 5: Catalog Items */}
-        <div className="bg-white border border-[#E8DFC8] p-5 shadow-xs relative overflow-hidden group hover:border-[#141311] transition-all">
+        <div className="bg-white border border-[#F0DCE3] p-5 shadow-xs relative overflow-hidden group hover:border-[#141311] transition-all">
           <div className="flex items-center justify-between text-xs text-[#8C7A70] font-semibold uppercase tracking-wider mb-2">
             <span>Cosmetics Catalog</span>
             <span className="p-1.5 bg-[#141311]/5 text-[#141311]">
@@ -648,7 +648,7 @@ export default function AdminDashboardPage() {
           </div>
           <div className="mt-3 flex items-center justify-between text-[11px] text-[#6B5E55] pt-3 border-t border-[#F8F5F2]">
             <span>Active SKUs</span>
-            <Link href="/admin/pages/Products" className="text-[#B98C2D] font-bold hover:underline">
+            <Link href="/admin/pages/Products" className="text-[#C53261] font-bold hover:underline">
               Manage →
             </Link>
           </div>
@@ -659,11 +659,11 @@ export default function AdminDashboardPage() {
       {/* 3. Analytics & Distribution Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left: Performance Trends Chart (8 cols) */}
-        <div className="lg:col-span-8 bg-white border border-[#E8DFC8] p-6 shadow-xs flex flex-col justify-between relative overflow-hidden">
+        <div className="lg:col-span-8 bg-white border border-[#F0DCE3] p-6 shadow-xs flex flex-col justify-between relative overflow-hidden">
           {/* Subtle loading overlay on chart */}
           {isLoading && (
             <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center transition-all duration-300">
-              <div className="w-9 h-9 rounded-full border-2 border-[#E8DFC8] border-t-[#B98C2D] animate-spin mb-2.5"></div>
+              <div className="w-9 h-9 rounded-full border-2 border-[#F0DCE3] border-t-[#C53261] animate-spin mb-2.5"></div>
               <div className="text-xs font-semibold text-[#141311]">Refreshing Sales Analytics...</div>
               <div className="text-[10px] text-[#8C7A70] mt-0.5">Fetching latest order metrics</div>
             </div>
@@ -691,21 +691,21 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[#E8DFC8] flex flex-wrap items-center justify-between gap-4 text-xs text-[#6B5E55]">
+          <div className="mt-4 pt-4 border-t border-[#F0DCE3] flex flex-wrap items-center justify-between gap-4 text-xs text-[#6B5E55]">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Completed / Shipped
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#D2AA2D]"></span> Paid Orders
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C5A059]"></span> Paid Orders
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#B98C2D]"></span> Pending Orders
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C53261]"></span> Pending Orders
               </span>
             </div>
             <Link
               href="/admin/pages/orders"
-              className="inline-flex items-center gap-1 text-[#B98C2D] font-semibold hover:underline"
+              className="inline-flex items-center gap-1 text-[#C53261] font-semibold hover:underline"
             >
               <span>View full ledger</span>
               <FiChevronRight />
@@ -716,7 +716,7 @@ export default function AdminDashboardPage() {
         {/* Right: Revenue Distribution & Quick Shortcuts (4 cols) */}
         <div className="lg:col-span-4 space-y-6">
           {/* Status Breakdown Card */}
-          <div className="bg-white border border-[#E8DFC8] p-6 shadow-xs">
+          <div className="bg-white border border-[#F0DCE3] p-6 shadow-xs">
             <h2 className="text-base font-serif font-bold text-[#141311] mb-1">
               Order Fulfillment Ratio
             </h2>
@@ -754,47 +754,47 @@ export default function AdminDashboardPage() {
               })}
             </div>
 
-            <div className="mt-5 pt-4 border-t border-[#E8DFC8] flex items-center justify-between text-xs">
+            <div className="mt-5 pt-4 border-t border-[#F0DCE3] flex items-center justify-between text-xs">
               <span className="text-[#8C7A70] font-medium">Aggregated Volume</span>
               <span className="font-bold text-[#141311]">{totalOrderCount} Orders Placed</span>
             </div>
           </div>
 
           {/* Quick Management Shortcuts */}
-          <div className="bg-[#141311] text-[#E8DCD5] p-6 shadow-xs border border-[#241720]">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#D2AA2D] mb-3">
+          <div className="bg-[#141311] text-[#F0E6EB] p-6 shadow-xs border border-[#281B24]">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#C5A059] mb-3">
               Store Quick Controls
             </h3>
             <div className="grid grid-cols-2 gap-2.5">
               <Link
                 href="/admin/pages/add-product"
-                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E131B] hover:bg-[#B98C2D] text-white border border-[#241720] transition-colors group"
+                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E141B] hover:bg-[#C53261] text-white border border-[#281B24] transition-colors group"
               >
-                <FiPlus className="text-base text-[#D2AA2D] group-hover:text-white mb-1.5" />
+                <FiPlus className="text-base text-[#C5A059] group-hover:text-white mb-1.5" />
                 <span className="text-[11px] font-semibold leading-tight">Add Product</span>
               </Link>
 
               <Link
                 href="/admin/pages/orders"
-                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E131B] hover:bg-[#B98C2D] text-white border border-[#241720] transition-colors group"
+                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E141B] hover:bg-[#C53261] text-white border border-[#281B24] transition-colors group"
               >
-                <FiShoppingBag className="text-base text-[#D2AA2D] group-hover:text-white mb-1.5" />
+                <FiShoppingBag className="text-base text-[#C5A059] group-hover:text-white mb-1.5" />
                 <span className="text-[11px] font-semibold leading-tight">View Orders</span>
               </Link>
 
               <Link
                 href="/admin/pages/coupons"
-                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E131B] hover:bg-[#B98C2D] text-white border border-[#241720] transition-colors group"
+                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E141B] hover:bg-[#C53261] text-white border border-[#281B24] transition-colors group"
               >
-                <FiPercent className="text-base text-[#D2AA2D] group-hover:text-white mb-1.5" />
+                <FiPercent className="text-base text-[#C5A059] group-hover:text-white mb-1.5" />
                 <span className="text-[11px] font-semibold leading-tight">Promo Codes</span>
               </Link>
 
               <Link
                 href="/admin/pages/slider"
-                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E131B] hover:bg-[#B98C2D] text-white border border-[#241720] transition-colors group"
+                className="flex flex-col items-center justify-center p-3 text-center bg-[#1E141B] hover:bg-[#C53261] text-white border border-[#281B24] transition-colors group"
               >
-                <FiPackage className="text-base text-[#D2AA2D] group-hover:text-white mb-1.5" />
+                <FiPackage className="text-base text-[#C5A059] group-hover:text-white mb-1.5" />
                 <span className="text-[11px] font-semibold leading-tight">Hero Banners</span>
               </Link>
             </div>
@@ -803,8 +803,8 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* 4. Recent Real Orders Table */}
-      <div className="bg-white border border-[#E8DFC8] p-6 shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E8DFC8]">
+      <div className="bg-white border border-[#F0DCE3] p-6 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#F0DCE3]">
           <div>
             <h2 className="text-base font-serif font-bold text-[#141311]">
               Recent Customer Orders
@@ -815,7 +815,7 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/pages/orders"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#141311] bg-[#F8F5F2] hover:bg-[#B98C2D] hover:text-white border border-[#E8DFC8] transition-all"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#141311] bg-[#F8F5F2] hover:bg-[#C53261] hover:text-white border border-[#F0DCE3] transition-all"
           >
             <span>All Orders ({totalOrderCount})</span>
             <FiArrowRight className="text-xs" />
@@ -824,8 +824,8 @@ export default function AdminDashboardPage() {
 
         {/* Loading shimmer across table during sync */}
         {isLoading && (
-          <div className="h-0.5 w-full bg-[#E8DFC8] overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-[#B98C2D] to-[#D2AA2D] s2u-progress-bar-primary" />
+          <div className="h-0.5 w-full bg-[#F0DCE3] overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-[#C53261] to-[#C5A059] s2u-progress-bar-primary" />
           </div>
         )}
 
@@ -834,7 +834,7 @@ export default function AdminDashboardPage() {
           {recentOrders.length > 0 ? (
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-[#E8DFC8] text-[10px] font-bold uppercase tracking-wider text-[#8C7A70] bg-[#FBF9F7]">
+                <tr className="border-b border-[#F0DCE3] text-[10px] font-bold uppercase tracking-wider text-[#8C7A70] bg-[#FBF9F7]">
                   <th className="py-3 px-4">Order ID</th>
                   <th className="py-3 px-4">Customer Details</th>
                   <th className="py-3 px-4">Items</th>
@@ -845,7 +845,7 @@ export default function AdminDashboardPage() {
                   <th className="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E8DFC8]">
+              <tbody className="divide-y divide-[#F0DCE3]">
                 {recentOrders.map((order) => {
                   const itemsCount = order.orderItems?.length || 1;
                   const formattedDate = order.createdAt
@@ -920,7 +920,7 @@ export default function AdminDashboardPage() {
                       <td className="py-3.5 px-4 text-right">
                         <Link
                           href="/admin/pages/orders"
-                          className="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider bg-[#141311] text-white hover:bg-[#B98C2D] transition-colors"
+                          className="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider bg-[#141311] text-white hover:bg-[#C53261] transition-colors"
                         >
                           Details
                         </Link>
@@ -932,7 +932,7 @@ export default function AdminDashboardPage() {
             </table>
           ) : (
             <div className="text-center py-12">
-              <FiAlertCircle className="mx-auto text-3xl text-[#D2AA2D] mb-2" />
+              <FiAlertCircle className="mx-auto text-3xl text-[#C5A059] mb-2" />
               <p className="text-sm font-semibold text-[#141311]">No Orders Recorded Yet</p>
               <p className="text-xs text-[#8C7A70] mt-1">
                 When customers place orders, they will appear here in real time.

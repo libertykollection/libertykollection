@@ -38,13 +38,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -52,7 +52,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -146,14 +146,14 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
       {/* Top Loading Line */}
       {isLoading && (
         <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#B98C2D' }} />
+          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#C53261' }} />
         </Box>
       )}
 
       {/* Header section */}
       <Box sx={{ mb: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'flex-end' }, gap: 2 }}>
         <Box>
-          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#B98C2D', display: 'block', mb: 0.5 }}>
+          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#C53261', display: 'block', mb: 0.5 }}>
             Admin Console • Product Variants
           </Typography>
           <Typography variant="h4" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.02em' }}>
@@ -195,8 +195,8 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
       {/* Metrics Row */}
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <SizeIcon />
             </Box>
             <Box>
@@ -212,9 +212,9 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
       </Grid>
 
       {/* Main Table Card */}
-      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
+      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden' }}>
         {/* Search Bar */}
-        <Box sx={{ p: 2.5, borderBottom: '1px solid #E8DFC8', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
+        <Box sx={{ p: 2.5, borderBottom: '1px solid #F0DCE3', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
           <TextField
             size="small"
             placeholder="Search sizes..."
@@ -239,13 +239,13 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '80px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '80px' }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Size / Volume Specification
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '120px' }}>
+                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '120px' }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -258,19 +258,19 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
                     sx={{
                       bgcolor: index % 2 === 0 ? '#fff' : '#FAF8F6',
                       '&:hover': { bgcolor: '#F5EFEB' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
-                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #F0DCE3' }}>
                       #{item.id}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Chip
                         label={item.name}
                         sx={{
                           borderRadius: '0px',
                           bgcolor: '#FBF9F7',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           color: '#141311',
                           fontWeight: 700,
                           fontSize: '0.8rem',
@@ -278,7 +278,7 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
                         }}
                       />
                     </TableCell>
-                    <TableCell align="right" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell align="right" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Stack direction="row" spacing={0.5} justifyContent="flex-end">
                         <IconButton
                           size="small"
@@ -286,7 +286,7 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
                           sx={{
                             borderRadius: '0px',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#141311', color: '#fff' },
                           }}
@@ -298,8 +298,8 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
                           onClick={() => handleDeleteClick(item.id)}
                           sx={{
                             borderRadius: '0px',
-                            color: '#B98C2D',
-                            border: '1px solid #E8DFC8',
+                            color: '#C53261',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#EF4444', color: '#fff', borderColor: '#EF4444' },
                           }}
@@ -313,7 +313,7 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={3} sx={{ textAlign: 'center', py: 8, color: '#8C7A70' }}>
-                    <SizeIcon sx={{ fontSize: '2.5rem', color: '#D2AA2D', mb: 1, display: 'block', mx: 'auto' }} />
+                    <SizeIcon sx={{ fontSize: '2.5rem', color: '#C5A059', mb: 1, display: 'block', mx: 'auto' }} />
                     <Typography variant="body1" sx={{ fontWeight: 600, color: '#141311' }}>No size configurations found</Typography>
                     <Typography variant="caption" sx={{ color: '#8C7A70' }}>Click &quot;Add New Size&quot; to configure dimensions or volumes.</Typography>
                   </TableCell>
@@ -333,14 +333,14 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 24px 60px rgba(18, 11, 16, 0.15)',
           }
         }}
       >
-        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 3.5, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #E8DFC8' }}>
+        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 3.5, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #F0DCE3' }}>
           <Box>
-            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#B98C2D', display: 'block' }}>
+            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#C53261', display: 'block' }}>
               Size Attribute
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif' }}>
@@ -363,13 +363,13 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
             />
           </Box>
         </DialogContent>
-        <DialogActions sx={{ p: 3, px: 3.5, borderTop: '1px solid #E8DFC8', display: 'flex', gap: 1.5 }}>
+        <DialogActions sx={{ p: 3, px: 3.5, borderTop: '1px solid #F0DCE3', display: 'flex', gap: 1.5 }}>
           <Button
             variant="outlined"
             onClick={() => setIsModalOpen(false)}
             sx={{
               borderRadius: '0px',
-              borderColor: '#E8DFC8',
+              borderColor: '#F0DCE3',
               color: '#8C7A70',
               px: 3,
               py: 1,
@@ -377,7 +377,7 @@ const FilterableTable = ({ sizes = [], fetchSizes }) => {
               fontSize: '0.8rem',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7', color: '#141311' }
+              '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7', color: '#141311' }
             }}
           >
             Cancel

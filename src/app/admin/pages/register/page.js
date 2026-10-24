@@ -22,13 +22,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -36,7 +36,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -172,7 +172,7 @@ const Register = () => {
         sx={{
           p: { xs: 3, sm: 4.5 },
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           maxWidth: '460px',
           width: '100%',
@@ -298,13 +298,13 @@ const Register = () => {
                 startIcon={<UploadIcon />}
                 sx={{
                   borderRadius: '0px',
-                  borderColor: '#E8DFC8',
+                  borderColor: '#F0DCE3',
                   color: '#141311',
                   textTransform: 'uppercase',
                   fontSize: '0.7rem',
                   fontWeight: 600,
                   py: 1,
-                  '&:hover': { borderColor: '#B98C2D', bgcolor: '#F9F5EC' },
+                  '&:hover': { borderColor: '#C53261', bgcolor: '#FFF5F8' },
                 }}
               >
                 {formData.image ? formData.image.name : 'Select Profile Photo'}
@@ -328,7 +328,7 @@ const Register = () => {
                 py: 1.5,
                 mt: 1,
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
               }}
             >
               {isLoading ? 'Creating Account...' : 'Register Administrator'}

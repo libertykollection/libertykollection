@@ -28,13 +28,18 @@ export async function PUT(request, { params }) {
     const data = await request.json();
     const { deliveryCharge, taxPercentage, other1, other2 } = data;
 
+    const parsedDelivery = isNaN(parseFloat(deliveryCharge)) ? 0 : parseFloat(deliveryCharge);
+    const parsedTax = isNaN(parseFloat(taxPercentage)) ? 0 : parseFloat(taxPercentage);
+    const parsedOther1 = isNaN(parseFloat(other1)) ? 0 : parseFloat(other1);
+    const parsedOther2 = isNaN(parseFloat(other2)) ? 0 : parseFloat(other2);
+
     const updatedSetting = await prisma.settings.update({
       where: { id: parseInt(id) },
       data: {
-        deliveryCharge: parseFloat(deliveryCharge),
-        taxPercentage: parseFloat(taxPercentage),
-        other1: parseFloat(other1) || 0,
-        other2: parseFloat(other2) || 0,
+        deliveryCharge: parsedDelivery,
+        taxPercentage: parsedTax,
+        other1: parsedOther1,
+        other2: parsedOther2,
       },
     });
 

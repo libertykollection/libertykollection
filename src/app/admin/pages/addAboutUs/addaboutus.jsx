@@ -26,13 +26,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -40,7 +40,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -147,7 +147,7 @@ const AboutUs = () => {
               mb: 0.5,
             }}
           >
-            Brand Story & Atelier Heritage
+            Brand Story & Company Heritage
           </Typography>
           <Typography variant="body2" sx={{ color: '#8C7A70', letterSpacing: '0.02em' }}>
             Edit the cosmetic brand mission, beauty philosophy, and craftsmanship story
@@ -161,7 +161,7 @@ const AboutUs = () => {
         sx={{
           p: { xs: 2.5, sm: 4 },
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           maxWidth: '1080px',
         }}
@@ -200,10 +200,10 @@ const AboutUs = () => {
 
             <Grid item xs={12}>
               <Typography variant="caption" sx={{ color: '#8C7A70', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', mb: 0.75 }}>
-                Detailed Atelier Story & Brand Text
+                Detailed Company Story & Brand Text
               </Typography>
               {isEditorReady && (
-                <Box sx={{ border: '1px solid #E8DFC8' }}>
+                <Box sx={{ border: '1px solid #F0DCE3' }}>
                   <JoditEditor
                     ref={editorRef}
                     value={editorContent}
@@ -231,7 +231,7 @@ const AboutUs = () => {
                   px: 4,
                   py: 1.5,
                   boxShadow: 'none',
-                  '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                  '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
                 }}
               >
                 {isLoading ? 'Saving Story...' : aboutUs ? 'Update Brand Story' : 'Publish Brand Story'}

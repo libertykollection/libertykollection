@@ -26,7 +26,7 @@ const modalStyles = {
     maxWidth: '460px',
     padding: '32px',
     borderRadius: '0px',
-    border: '1px solid #E8DFC8',
+    border: '1px solid #F0DCE3',
     background: '#FFFFFF',
     boxShadow: 'none',
   },
@@ -142,24 +142,24 @@ const ProfilePage = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Header */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
               <span className="cursor-pointer hover:text-[#141311]" onClick={() => router.push('/')}>
-                Atelier
-              </span>
+                  Home
+                </span>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Client Membership</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#141311]">
-              My Beauty Atelier Profile
+              My Account Profile
             </h1>
           </div>
           <div className="flex gap-3">
             <button
               onClick={() => router.push('/customer/pages/orders')}
-              className="px-5 py-2.5 bg-white border border-[#E8DFC8] hover:border-[#141311] text-[#141311] text-xs font-bold uppercase tracking-widest rounded-none transition-all flex items-center gap-2"
+              className="px-5 py-2.5 bg-white border border-[#F0DCE3] hover:border-[#141311] text-[#141311] text-xs font-bold uppercase tracking-widest rounded-none transition-all flex items-center gap-2"
             >
               <FiPackage size={14} /> View Order Archive
             </button>
@@ -174,9 +174,9 @@ const ProfilePage = () => {
       </div>
 
       <div className="container mx-auto max-w-4xl px-4 lg:px-8 pt-10">
-        <div className="bg-white border border-[#E8DFC8] rounded-none p-8 sm:p-12">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 pb-8 border-b border-[#E8DFC8]">
-            <div className="w-28 h-28 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none flex items-center justify-center relative overflow-hidden flex-shrink-0">
+        <div className="bg-white border border-[#F0DCE3] rounded-none p-8 sm:p-12">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 pb-8 border-b border-[#F0DCE3]">
+            <div className="w-28 h-28 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none flex items-center justify-center relative overflow-hidden flex-shrink-0">
               {userData.imageUrl ? (
                 <Image
                   src={
@@ -190,12 +190,12 @@ const ProfilePage = () => {
                   unoptimized
                 />
               ) : (
-                <FiUser size={40} className="text-[#B98C2D]" />
+                <FiUser size={40} className="text-[#C53261]" />
               )}
             </div>
 
             <div className="text-center sm:text-left flex-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98C2D] flex items-center justify-center sm:justify-start gap-1 mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] flex items-center justify-center sm:justify-start gap-1 mb-1">
                 <HiSparkles size={12} />
                 Privilege Beauty Client
               </span>
@@ -204,7 +204,7 @@ const ProfilePage = () => {
               </h2>
               <p className="text-xs text-gray-400 font-light mb-4">{userData.email || '—'}</p>
 
-              <div className="inline-flex items-center gap-2 bg-[#F9F5EC] px-3 py-1.5 border border-[#E8DFC8] text-[11px] font-bold uppercase tracking-wider text-[#141311]">
+              <div className="inline-flex items-center gap-2 bg-[#FFF5F8] px-3 py-1.5 border border-[#F0DCE3] text-[11px] font-bold uppercase tracking-wider text-[#141311]">
                 <span>Status:</span>
                 <span className="text-emerald-700">Verified Client Member</span>
               </div>
@@ -213,33 +213,33 @@ const ProfilePage = () => {
 
           {/* Details Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
-            <div className="p-5 bg-[#F9F5EC] border border-[#E8DFC8]">
+            <div className="p-5 bg-[#FFF5F8] border border-[#F0DCE3]">
               <div className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <FiUser className="text-[#B98C2D]" />
+                <FiUser className="text-[#C53261]" />
                 <span>Full Legal Name</span>
               </div>
               <p className="text-sm font-bold text-[#141311]">{userData.name || '—'}</p>
             </div>
 
-            <div className="p-5 bg-[#F9F5EC] border border-[#E8DFC8]">
+            <div className="p-5 bg-[#FFF5F8] border border-[#F0DCE3]">
               <div className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <FiMail className="text-[#B98C2D]" />
+                <FiMail className="text-[#C53261]" />
                 <span>Dispatch Email</span>
               </div>
               <p className="text-sm font-bold text-[#141311] truncate">{userData.email || '—'}</p>
             </div>
 
-            <div className="p-5 bg-[#F9F5EC] border border-[#E8DFC8]">
+            <div className="p-5 bg-[#FFF5F8] border border-[#F0DCE3]">
               <div className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <FiPhone className="text-[#B98C2D]" />
+                <FiPhone className="text-[#C53261]" />
                 <span>Primary Mobile Number</span>
               </div>
               <p className="text-sm font-bold text-[#141311] font-mono">{userData.phoneno || '—'}</p>
             </div>
 
-            <div className="p-5 bg-[#F9F5EC] border border-[#E8DFC8]">
+            <div className="p-5 bg-[#FFF5F8] border border-[#F0DCE3]">
               <div className="flex items-center gap-2 text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <FiMapPin className="text-[#B98C2D]" />
+                <FiMapPin className="text-[#C53261]" />
                 <span>Default Region / City</span>
               </div>
               <p className="text-sm font-bold text-[#141311]">{userData.city || '—'}</p>
@@ -256,7 +256,7 @@ const ProfilePage = () => {
         contentLabel="Edit Profile Modal"
         ariaHideApp={false}
       >
-        <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#E8DFC8]">
+        <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#F0DCE3]">
           <h3 className="text-sm font-serif font-bold uppercase tracking-wider text-[#141311]">
             Edit Client Profile
           </h3>
@@ -275,7 +275,7 @@ const ProfilePage = () => {
               name="name"
               value={editData.name}
               onChange={handleInputChange}
-              className="w-full p-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none focus:border-[#B98C2D] outline-none"
+              className="w-full p-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none focus:border-[#C53261] outline-none"
               required
             />
           </div>
@@ -289,7 +289,7 @@ const ProfilePage = () => {
               name="phoneno"
               value={editData.phoneno}
               onChange={handleInputChange}
-              className="w-full p-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none focus:border-[#B98C2D] outline-none font-mono"
+              className="w-full p-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none focus:border-[#C53261] outline-none font-mono"
               required
             />
           </div>
@@ -303,7 +303,7 @@ const ProfilePage = () => {
               name="city"
               value={editData.city}
               onChange={handleInputChange}
-              className="w-full p-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none focus:border-[#B98C2D] outline-none"
+              className="w-full p-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none focus:border-[#C53261] outline-none"
               required
             />
           </div>
@@ -312,7 +312,7 @@ const ProfilePage = () => {
             <button
               type="button"
               onClick={closeModal}
-              className="flex-1 py-3 border border-[#E8DFC8] text-[#141311] text-[11px] font-bold uppercase tracking-widest rounded-none hover:border-black"
+              className="flex-1 py-3 border border-[#F0DCE3] text-[#141311] text-[11px] font-bold uppercase tracking-widest rounded-none hover:border-black"
             >
               Cancel
             </button>

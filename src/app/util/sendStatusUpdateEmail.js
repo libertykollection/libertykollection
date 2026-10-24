@@ -9,7 +9,7 @@ export async function sendStatusUpdateEmail({ email, name, orderId, status }) {
     if (!transporter) return;
 
     const mailUser = getMailUser();
-    const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca';
+    const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk';
 
     let brandName = 'Official Store';
     try {

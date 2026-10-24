@@ -41,13 +41,13 @@ export default function ForgotPassword() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-[#FBF9F7] py-12 px-4 text-[#141311]">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#E8DFC8] w-full max-w-md">
+      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#F0DCE3] w-full max-w-md">
         {/* Title */}
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center mx-auto mb-3">
+          <div className="w-12 h-12 bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center mx-auto mb-3">
             <FiMail size={22} />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98C2D] flex items-center justify-center gap-1 mb-1">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] flex items-center justify-center gap-1 mb-1">
             <HiSparkles size={12} />
             Security Protocol
           </span>
@@ -61,12 +61,12 @@ export default function ForgotPassword() {
 
         {submitted ? (
           <div className="text-center py-4">
-            <div className="bg-[#F9F5EC] text-emerald-800 p-4 rounded-none text-xs font-semibold mb-6 border border-emerald-200">
+            <div className="bg-[#FFF5F8] text-emerald-800 p-4 rounded-none text-xs font-semibold mb-6 border border-emerald-200">
               Check your inbox! We've dispatched a reset link to <span className="font-bold">{email}</span>.
             </div>
             <Link
               href="/login"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#141311] hover:text-[#B98C2D] transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#141311] hover:text-[#C53261] transition-colors"
             >
               <FiArrowLeft /> Return to Sign In
             </Link>
@@ -85,7 +85,7 @@ export default function ForgotPassword() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
                   required
-                  className="w-full pl-11 pr-4 py-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] placeholder-gray-400 focus:bg-white focus:border-[#B98C2D] outline-none transition-all"
+                  className="w-full pl-11 pr-4 py-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] placeholder-gray-400 focus:bg-white focus:border-[#C53261] outline-none transition-all"
                 />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function ForgotPassword() {
               {loading ? 'Dispatching Instructions...' : 'Send Reset Link'}
             </button>
 
-            <div className="text-center pt-4 border-t border-[#E8DFC8]">
+            <div className="text-center pt-4 border-t border-[#F0DCE3]">
               <Link
                 href="/login"
                 className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-[#141311] transition-colors"

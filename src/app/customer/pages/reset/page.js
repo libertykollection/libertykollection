@@ -51,12 +51,12 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#FBF9F7] py-12 px-4 text-[#141311]">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#E8DFC8] w-full max-w-md">
+      <div className="bg-white p-8 sm:p-12 rounded-none border border-[#F0DCE3] w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-[#F9F5EC] border border-[#E8DFC8] text-[#B98C2D] flex items-center justify-center mx-auto mb-3">
+          <div className="w-12 h-12 bg-[#FFF5F8] border border-[#F0DCE3] text-[#C53261] flex items-center justify-center mx-auto mb-3">
             <FiLock size={22} />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98C2D] flex items-center justify-center gap-1 mb-1">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] flex items-center justify-center gap-1 mb-1">
             <HiSparkles size={12} />
             Security Credential Update
           </span>
@@ -78,7 +78,7 @@ export default function ResetPasswordPage() {
               placeholder="••••••••"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full p-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] focus:bg-white focus:border-[#B98C2D] outline-none transition-all"
+              className="w-full p-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] focus:bg-white focus:border-[#C53261] outline-none transition-all"
               required
             />
           </div>
@@ -92,7 +92,7 @@ export default function ResetPasswordPage() {
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full p-3 bg-[#F9F5EC] border border-[#E8DFC8] rounded-none text-xs text-[#141311] focus:bg-white focus:border-[#B98C2D] outline-none transition-all"
+              className="w-full p-3 bg-[#FFF5F8] border border-[#F0DCE3] rounded-none text-xs text-[#141311] focus:bg-white focus:border-[#C53261] outline-none transition-all"
               required
             />
           </div>

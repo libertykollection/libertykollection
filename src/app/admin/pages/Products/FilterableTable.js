@@ -176,11 +176,11 @@ const FilterableTable = ({
     '& .MuiOutlinedInput-root': {
       borderRadius: '0px',
       bgcolor: '#fff',
-      '& fieldset': { borderColor: '#E8DFC8' },
-      '&:hover fieldset': { borderColor: '#B98C2D' },
-      '&.Mui-focused fieldset': { borderColor: '#B98C2D' },
+      '& fieldset': { borderColor: '#F0DCE3' },
+      '&:hover fieldset': { borderColor: '#C53261' },
+      '&.Mui-focused fieldset': { borderColor: '#C53261' },
     },
-    '& .MuiInputLabel-root.Mui-focused': { color: '#B98C2D' },
+    '& .MuiInputLabel-root.Mui-focused': { color: '#C53261' },
   };
 
   const sectionHeaderStyles = {
@@ -189,7 +189,7 @@ const FilterableTable = ({
     gap: 1.5,
     mb: 2.5,
     pb: 1,
-    borderBottom: '1px solid #E8DFC8'
+    borderBottom: '1px solid #F0DCE3'
   };
 
   const selectMenuProps = {
@@ -198,7 +198,7 @@ const FilterableTable = ({
         borderRadius: '0px',
         mt: 1,
         boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-        border: '1px solid #E8DFC8',
+        border: '1px solid #F0DCE3',
         '& .MuiList-root': { p: 1 },
         '& .MuiMenuItem-root': {
           fontSize: '0.875rem',
@@ -206,10 +206,10 @@ const FilterableTable = ({
           borderRadius: '0px',
           mb: 0.5,
           color: '#374151',
-          '&:hover': { bgcolor: '#F8F5F2', color: '#B98C2D' },
+          '&:hover': { bgcolor: '#F8F5F2', color: '#C53261' },
           '&.Mui-selected': {
             bgcolor: '#FBF9F7',
-            color: '#B98C2D',
+            color: '#C53261',
             fontWeight: 700,
             '&:hover': { bgcolor: '#F8F5F2' }
           },
@@ -440,7 +440,7 @@ const FilterableTable = ({
     let badgeClass = "bg-emerald-50 text-emerald-800 border-emerald-200";
     if (stockNum === 0) badgeClass = "bg-red-50 text-red-700 border-red-200";
     else if (stockNum < 10) badgeClass = "bg-amber-50 text-amber-700 border-amber-200";
-    else if (stockNum < 50) badgeClass = "bg-[#B98C2D]/10 text-[#B98C2D] border-[#B98C2D]/30";
+    else if (stockNum < 50) badgeClass = "bg-[#C53261]/10 text-[#C53261] border-[#C53261]/30";
 
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -468,7 +468,7 @@ const FilterableTable = ({
         open={isPopupVisible}
         onClose={handleCancelDelete}
         PaperProps={{
-          sx: { borderRadius: '0px', p: 1, maxWidth: '420px', border: '1px solid #E8DFC8' }
+          sx: { borderRadius: '0px', p: 1, maxWidth: '420px', border: '1px solid #F0DCE3' }
         }}
       >
         <DialogTitle sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, pt: 4 }}>
@@ -496,8 +496,8 @@ const FilterableTable = ({
               fontWeight: 700,
               color: '#141311',
               bgcolor: '#F8F5F2',
-              border: '1px solid #E8DFC8',
-              '&:hover': { bgcolor: '#E8DFC8' }
+              border: '1px solid #F0DCE3',
+              '&:hover': { bgcolor: '#F0DCE3' }
             }}
           >
             Cancel
@@ -540,19 +540,19 @@ const FilterableTable = ({
             zIndex: 100,
           }}
         >
-          <CircularProgress sx={{ color: '#B98C2D' }} />
+          <CircularProgress sx={{ color: '#C53261' }} />
         </Box>
       )}
 
       {/* Products Card Container */}
-      <Card elevation={0} sx={{ borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff', overflow: 'hidden' }}>
+      <Card elevation={0} sx={{ borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff', overflow: 'hidden' }}>
         <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
           {/* Header Banner */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexWrap: 'wrap', gap: 2, pb: 3, borderBottom: '1px solid #E8DFC8' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexWrap: 'wrap', gap: 2, pb: 3, borderBottom: '1px solid #F0DCE3' }}>
             <Box>
               <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-[#B98C2D]"></span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B98C2D]">
+                <span className="w-2 h-2 rounded-full bg-[#C53261]"></span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#C53261]">
                   Catalog Management
                 </span>
               </div>
@@ -575,10 +575,10 @@ const FilterableTable = ({
                   py: 1,
                   fontSize: '0.8rem',
                   fontWeight: 600,
-                  borderColor: isSearchVisible ? '#B98C2D' : '#E8DFC8',
-                  color: isSearchVisible ? '#B98C2D' : '#141311',
+                  borderColor: isSearchVisible ? '#C53261' : '#F0DCE3',
+                  color: isSearchVisible ? '#C53261' : '#141311',
                   bgcolor: isSearchVisible ? '#F8F5F2' : 'transparent',
-                  '&:hover': { borderColor: '#B98C2D', bgcolor: '#F8F5F2' }
+                  '&:hover': { borderColor: '#C53261', bgcolor: '#F8F5F2' }
                 }}
               >
                 Search Bar
@@ -598,7 +598,7 @@ const FilterableTable = ({
                   bgcolor: '#141311',
                   color: '#fff',
                   boxShadow: 'none',
-                  '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' }
+                  '&:hover': { bgcolor: '#C53261', boxShadow: 'none' }
                 }}
               >
                 Add Product
@@ -618,7 +618,7 @@ const FilterableTable = ({
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon sx={{ color: '#B98C2D', fontSize: '1.1rem' }} />
+                    <SearchIcon sx={{ color: '#C53261', fontSize: '1.1rem' }} />
                   </InputAdornment>
                 ),
               }}
@@ -627,9 +627,9 @@ const FilterableTable = ({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '0px',
                   bgcolor: '#FBF9F7',
-                  '& fieldset': { borderColor: '#E8DFC8' },
-                  '&:hover fieldset': { borderColor: '#B98C2D' },
-                  '&.Mui-focused fieldset': { borderColor: '#B98C2D' },
+                  '& fieldset': { borderColor: '#F0DCE3' },
+                  '&:hover fieldset': { borderColor: '#C53261' },
+                  '&.Mui-focused fieldset': { borderColor: '#C53261' },
                 },
               }}
             />
@@ -640,14 +640,14 @@ const FilterableTable = ({
             {[
               { label: 'Out of Stock', count: filteredData.filter((p) => parseInt(p.stock || 0) === 0).length, color: '#EF4444', icon: <WarningIcon sx={{ fontSize: '1.1rem', color: '#EF4444' }} /> },
               { label: 'Low Stock (1-9)', count: filteredData.filter((p) => { const s = parseInt(p.stock || 0); return s > 0 && s < 10; }).length, color: '#F59E0B', icon: <WarningIcon sx={{ fontSize: '1.1rem', color: '#F59E0B' }} /> },
-              { label: 'Medium Stock (10-49)', count: filteredData.filter((p) => { const s = parseInt(p.stock || 0); return s >= 10 && s < 50; }).length, color: '#B98C2D', icon: <InventoryIcon sx={{ fontSize: '1.1rem', color: '#B98C2D' }} /> },
+              { label: 'Medium Stock (10-49)', count: filteredData.filter((p) => { const s = parseInt(p.stock || 0); return s >= 10 && s < 50; }).length, color: '#C53261', icon: <InventoryIcon sx={{ fontSize: '1.1rem', color: '#C53261' }} /> },
               { label: 'Healthy Stock (50+)', count: filteredData.filter((p) => parseInt(p.stock || 0) >= 50).length, color: '#10B981', icon: <CheckCircleIcon sx={{ fontSize: '1.1rem', color: '#10B981' }} /> }
             ].map((card, idx) => (
               <Grid item xs={12} sm={6} md={3} key={idx}>
                 <Card sx={{
                   p: 2.5,
                   borderRadius: '0px',
-                  border: '1px solid #E8DFC8',
+                  border: '1px solid #F0DCE3',
                   boxShadow: 'none',
                   bgcolor: '#fff',
                   height: '100%',
@@ -688,7 +688,7 @@ const FilterableTable = ({
             bgcolor: '#F8F5F2',
             p: 2,
             borderRadius: '0px',
-            border: '1px solid #E8DFC8'
+            border: '1px solid #F0DCE3'
           }}>
             <Box sx={{ minWidth: '160px', flex: 1 }}>
               <TextField
@@ -761,15 +761,15 @@ const FilterableTable = ({
             elevation={0}
             sx={{
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               overflow: 'hidden',
             }}
           >
             <Table>
               <TableHead>
-                <TableRow sx={{ bgcolor: '#FBF9F7', borderBottom: '1px solid #E8DFC8' }}>
+                <TableRow sx={{ bgcolor: '#FBF9F7', borderBottom: '1px solid #F0DCE3' }}>
                   {['ID', 'Product', 'SKU', 'Price', 'Inventory', 'Updated', 'Actions'].map((head) => (
-                    <TableCell key={head} sx={{ color: '#8C7A70', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase', py: 2, borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell key={head} sx={{ color: '#8C7A70', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase', py: 2, borderBottom: '1px solid #F0DCE3' }}>
                       {head}
                     </TableCell>
                   ))}
@@ -783,7 +783,7 @@ const FilterableTable = ({
                       sx={{
                         '&:hover': { bgcolor: '#FDFBF9' },
                         transition: 'background-color 0.15s',
-                        borderBottom: '1px solid #E8DFC8'
+                        borderBottom: '1px solid #F0DCE3'
                       }}
                     >
                       <TableCell sx={{ fontWeight: 600, color: '#141311', fontSize: '0.8rem', fontFamily: 'monospace' }}>
@@ -793,7 +793,7 @@ const FilterableTable = ({
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                           <Box sx={{
                             width: 44, height: 44, borderRadius: '0px', overflow: 'hidden',
-                            border: '1px solid #E8DFC8', bgcolor: '#F8F5F2', flexShrink: 0,
+                            border: '1px solid #F0DCE3', bgcolor: '#F8F5F2', flexShrink: 0,
                             display: 'flex', alignItems: 'center', justifyContent: 'center'
                           }}>
                             {item.images && item.images.length > 0 ? (
@@ -806,7 +806,7 @@ const FilterableTable = ({
                                 style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                               />
                             ) : (
-                              <InventoryIcon sx={{ fontSize: '1.2rem', color: '#D2AA2D' }} />
+                              <InventoryIcon sx={{ fontSize: '1.2rem', color: '#C5A059' }} />
                             )}
                           </Box>
                           <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', maxWidth: 220, lineHeight: 1.3, fontSize: '0.85rem' }}>
@@ -815,7 +815,7 @@ const FilterableTable = ({
                         </Box>
                       </TableCell>
                       <TableCell>
-                        <span className="px-2 py-0.5 text-[11px] font-mono bg-[#F8F5F2] text-[#6B5E55] border border-[#E8DFC8] rounded-none">
+                        <span className="px-2 py-0.5 text-[11px] font-mono bg-[#F8F5F2] text-[#6B5E55] border border-[#F0DCE3] rounded-none">
                           {item.sku || 'No SKU'}
                         </span>
                       </TableCell>
@@ -838,7 +838,7 @@ const FilterableTable = ({
                             type="button"
                             onClick={() => handleEditItem(item)}
                             title="Edit Product"
-                            className="p-1.5 bg-[#F8F5F2] hover:bg-[#141311] text-[#141311] hover:text-[#D2AA2D] border border-[#E8DFC8] transition-colors"
+                            className="p-1.5 bg-[#F8F5F2] hover:bg-[#141311] text-[#141311] hover:text-[#C5A059] border border-[#F0DCE3] transition-colors"
                           >
                             <EditIcon sx={{ fontSize: '1rem' }} />
                           </button>
@@ -858,7 +858,7 @@ const FilterableTable = ({
                   <TableRow>
                     <TableCell colSpan={7} align="center" sx={{ py: 8 }}>
                       <Box sx={{ textAlign: 'center' }}>
-                        <InventoryIcon sx={{ fontSize: '2.5rem', mb: 1, color: '#D2AA2D' }} />
+                        <InventoryIcon sx={{ fontSize: '2.5rem', mb: 1, color: '#C5A059' }} />
                         <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311' }}>No products match your filter</Typography>
                         <Typography variant="caption" sx={{ color: '#8C7A70' }}>Try resetting or modifying your search keyword</Typography>
                       </Box>
@@ -895,14 +895,14 @@ const FilterableTable = ({
           maxWidth="lg"
           fullWidth
           PaperProps={{
-            sx: { borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', backgroundImage: 'none' }
+            sx: { borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', backgroundImage: 'none' }
           }}
         >
-          <DialogTitle sx={{ p: 3, pb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: '#fff', borderBottom: '1px solid #E8DFC8' }}>
+          <DialogTitle sx={{ p: 3, pb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: '#fff', borderBottom: '1px solid #F0DCE3' }}>
             <Box>
               <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-[#B98C2D]"></span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B98C2D]">
+                <span className="w-2 h-2 rounded-full bg-[#C53261]"></span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C53261]">
                   Inventory Editor
                 </span>
               </div>
@@ -910,7 +910,7 @@ const FilterableTable = ({
                 Edit Product #{editProduct.id}
               </Typography>
             </Box>
-            <IconButton onClick={handleCancelEdit} sx={{ bgcolor: '#F8F5F2', borderRadius: '0px', border: '1px solid #E8DFC8', '&:hover': { bgcolor: '#E8DFC8' } }}>
+            <IconButton onClick={handleCancelEdit} sx={{ bgcolor: '#F8F5F2', borderRadius: '0px', border: '1px solid #F0DCE3', '&:hover': { bgcolor: '#F0DCE3' } }}>
               <CloseIcon sx={{ fontSize: '1.1rem' }} />
             </IconButton>
           </DialogTitle>
@@ -920,9 +920,9 @@ const FilterableTable = ({
               <Grid item xs={12} lg={8}>
                 <Stack spacing={3}>
                   {/* General Info Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
-                      <Box sx={{ p: 1, bgcolor: '#B98C2D]/15', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                      <Box sx={{ p: 1, bgcolor: '#C53261]/15', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                         <InfoIcon sx={{ fontSize: '1.1rem' }} />
                       </Box>
                       <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem' }}>General Details</Typography>
@@ -982,16 +982,16 @@ const FilterableTable = ({
                   </Paper>
 
                   {/* Description Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
-                      <Box sx={{ p: 1, bgcolor: '#D2AA2D]/15', borderRadius: '0px', color: '#D2AA2D', display: 'flex' }}>
+                      <Box sx={{ p: 1, bgcolor: '#C5A059]/15', borderRadius: '0px', color: '#C5A059', display: 'flex' }}>
                         <DescriptionIcon sx={{ fontSize: '1.1rem' }} />
                       </Box>
                       <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem' }}>Product Description</Typography>
                     </Box>
                     <Box sx={{
-                      '& .ql-toolbar': { borderRadius: '0px', borderColor: '#E8DFC8', bgcolor: '#FBF9F7' },
-                      '& .ql-container': { borderRadius: '0px', borderColor: '#E8DFC8', minHeight: '180px', fontSize: '0.9rem' }
+                      '& .ql-toolbar': { borderRadius: '0px', borderColor: '#F0DCE3', bgcolor: '#FBF9F7' },
+                      '& .ql-container': { borderRadius: '0px', borderColor: '#F0DCE3', minHeight: '180px', fontSize: '0.9rem' }
                     }}>
                       <ReactQuill
                         value={productForm.description}
@@ -1001,7 +1001,7 @@ const FilterableTable = ({
                   </Paper>
 
                   {/* SEO Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
                       <Box sx={{ p: 1, bgcolor: '#10B981]/15', borderRadius: '0px', color: '#10B981', display: 'flex' }}>
                         <PublicIcon sx={{ fontSize: '1.1rem' }} />
@@ -1037,7 +1037,7 @@ const FilterableTable = ({
               <Grid item xs={12} lg={4}>
                 <Stack spacing={3}>
                   {/* Pricing Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
                       <Box sx={{ p: 1, bgcolor: '#141311]/10', borderRadius: '0px', color: '#141311', display: 'flex' }}>
                         <LocalOfferIcon sx={{ fontSize: '1.1rem' }} />
@@ -1065,7 +1065,7 @@ const FilterableTable = ({
                         onChange={(e) => setProductForm({ ...productForm, discount: roundToTwoDecimalPlaces(parseFloat(e.target.value) || 0) })}
                         sx={inputStyles}
                       />
-                      <Box sx={{ bgcolor: '#F8F5F2', p: 2, borderRadius: '0px', border: '1px solid #E8DFC8', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <Box sx={{ bgcolor: '#F8F5F2', p: 2, borderRadius: '0px', border: '1px solid #F0DCE3', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.8rem' }}>Stock Quantity</Typography>
                         <TextField
                           type="number"
@@ -1077,16 +1077,16 @@ const FilterableTable = ({
                         />
                       </Box>
                       <FormControlLabel
-                        control={<Checkbox checked={productForm.isTopRated} onChange={handleFormChange} name="isTopRated" sx={{ color: '#B98C2D', '&.Mui-checked': { color: '#B98C2D' } }} />}
+                        control={<Checkbox checked={productForm.isTopRated} onChange={handleFormChange} name="isTopRated" sx={{ color: '#C53261', '&.Mui-checked': { color: '#C53261' } }} />}
                         label={<Typography variant="body2" sx={{ fontWeight: 600, color: '#141311', fontSize: '0.85rem' }}>Feature as Top Rated</Typography>}
                       />
                     </Stack>
                   </Paper>
 
                   {/* Media Gallery Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
-                      <Box sx={{ p: 1, bgcolor: '#B98C2D]/15', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                      <Box sx={{ p: 1, bgcolor: '#C53261]/15', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                         <CloudUploadIcon sx={{ fontSize: '1.1rem' }} />
                       </Box>
                       <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem' }}>Media Gallery</Typography>
@@ -1094,24 +1094,24 @@ const FilterableTable = ({
                     <Box
                       onClick={() => fileInputRef.current.click()}
                       sx={{
-                        border: '1px dashed #D2AA2D',
+                        border: '1px dashed #C5A059',
                         borderRadius: '0px',
                         p: 3,
                         textAlign: 'center',
                         cursor: 'pointer',
                         mb: 2,
                         bgcolor: '#FBF9F7',
-                        '&:hover': { bgcolor: '#F8F5F2', borderColor: '#B98C2D' }
+                        '&:hover': { bgcolor: '#F8F5F2', borderColor: '#C53261' }
                       }}
                     >
-                      <CloudUploadIcon sx={{ fontSize: '1.75rem', color: '#B98C2D', mb: 1 }} />
+                      <CloudUploadIcon sx={{ fontSize: '1.75rem', color: '#C53261', mb: 1 }} />
                       <Typography variant="body2" sx={{ fontWeight: 600, color: '#141311', fontSize: '0.8rem' }}>Click to upload new images</Typography>
                       <input type="file" hidden ref={fileInputRef} onChange={handleImageChange} multiple accept="image/*" />
                     </Box>
                     <Grid container spacing={1}>
                       {existingImages.map((img, index) => (
                         <Grid item xs={4} key={`existing-${index}`}>
-                          <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #E8DFC8' }}>
+                          <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #F0DCE3' }}>
                             <Image fill src={`${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${img}`} alt="" style={{ objectFit: 'cover' }} />
                             <IconButton
                               size="small"
@@ -1125,7 +1125,7 @@ const FilterableTable = ({
                       ))}
                       {productForm.images.map((img, index) => (
                         <Grid item xs={4} key={`new-${index}`}>
-                          <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #B98C2D' }}>
+                          <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #C53261' }}>
                             <Image fill src={URL.createObjectURL(img)} alt="" style={{ objectFit: 'cover' }} />
                             <IconButton
                               size="small"
@@ -1141,9 +1141,9 @@ const FilterableTable = ({
                   </Paper>
 
                   {/* Attributes Card */}
-                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+                  <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                     <Box sx={sectionHeaderStyles}>
-                      <Box sx={{ p: 1, bgcolor: '#D2AA2D]/15', borderRadius: '0px', color: '#D2AA2D', display: 'flex' }}>
+                      <Box sx={{ p: 1, bgcolor: '#C5A059]/15', borderRadius: '0px', color: '#C5A059', display: 'flex' }}>
                         <StyleIcon sx={{ fontSize: '1.1rem' }} />
                       </Box>
                       <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem' }}>Attributes</Typography>
@@ -1162,7 +1162,7 @@ const FilterableTable = ({
                               {selected.map((color) => (
                                 <span
                                   key={color.value}
-                                  className="px-2 py-0.5 text-[10px] font-semibold bg-[#F8F5F2] border border-[#E8DFC8] rounded-none text-[#141311]"
+                                  className="px-2 py-0.5 text-[10px] font-semibold bg-[#F8F5F2] border border-[#F0DCE3] rounded-none text-[#141311]"
                                 >
                                   {color.label}
                                 </span>
@@ -1172,8 +1172,8 @@ const FilterableTable = ({
                         >
                           {colors.map((color) => (
                             <MenuItem key={color.id} value={{ value: color.id, label: color.name, hex: color.hex }}>
-                              <Checkbox checked={productForm.colors.some((c) => c.value === color.id)} sx={{ color: '#B98C2D', '&.Mui-checked': { color: '#B98C2D' } }} />
-                              <Box sx={{ width: 12, height: 12, borderRadius: '0px', bgcolor: color.hex, mr: 1, border: '1px solid #E8DFC8' }} />
+                              <Checkbox checked={productForm.colors.some((c) => c.value === color.id)} sx={{ color: '#C53261', '&.Mui-checked': { color: '#C53261' } }} />
+                              <Box sx={{ width: 12, height: 12, borderRadius: '0px', bgcolor: color.hex, mr: 1, border: '1px solid #F0DCE3' }} />
                               {color.name}
                             </MenuItem>
                           ))}
@@ -1192,7 +1192,7 @@ const FilterableTable = ({
                               {selected.map((size) => (
                                 <span
                                   key={size.value}
-                                  className="px-2 py-0.5 text-[10px] font-semibold bg-[#F8F5F2] border border-[#E8DFC8] rounded-none text-[#141311]"
+                                  className="px-2 py-0.5 text-[10px] font-semibold bg-[#F8F5F2] border border-[#F0DCE3] rounded-none text-[#141311]"
                                 >
                                   {size.label}
                                 </span>
@@ -1202,7 +1202,7 @@ const FilterableTable = ({
                         >
                           {sizes.map((size) => (
                             <MenuItem key={size.id} value={{ value: size.id, label: size.name }}>
-                              <Checkbox checked={productForm.sizes.some((s) => s.value === size.id)} sx={{ color: '#B98C2D', '&.Mui-checked': { color: '#B98C2D' } }} />
+                              <Checkbox checked={productForm.sizes.some((s) => s.value === size.id)} sx={{ color: '#C53261', '&.Mui-checked': { color: '#C53261' } }} />
                               {size.name}
                             </MenuItem>
                           ))}
@@ -1214,7 +1214,7 @@ const FilterableTable = ({
               </Grid>
             </Grid>
           </DialogContent>
-          <DialogActions sx={{ p: 3, bgcolor: '#fff', borderTop: '1px solid #E8DFC8' }}>
+          <DialogActions sx={{ p: 3, bgcolor: '#fff', borderTop: '1px solid #F0DCE3' }}>
             <Button
               onClick={handleCancelEdit}
               sx={{
@@ -1223,11 +1223,11 @@ const FilterableTable = ({
                 color: '#141311',
                 borderRadius: '0px',
                 bgcolor: '#F8F5F2',
-                border: '1px solid #E8DFC8',
+                border: '1px solid #F0DCE3',
                 px: 3,
                 py: 1,
                 fontSize: '0.8rem',
-                '&:hover': { bgcolor: '#E8DFC8' }
+                '&:hover': { bgcolor: '#F0DCE3' }
               }}
             >
               Cancel
@@ -1247,7 +1247,7 @@ const FilterableTable = ({
                 bgcolor: '#141311',
                 color: '#fff',
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' }
+                '&:hover': { bgcolor: '#C53261', boxShadow: 'none' }
               }}
             >
               Update Product

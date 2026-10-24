@@ -1,19 +1,19 @@
 {
-    "name": "Store2U",
-    "short_name": "Store2U",
-    "description": "Store2U - Your Gateway to Digital & Physical Goods",
+    "name": "Gloria Cosmetics",
+    "short_name": "Gloria",
+    "description": "Gloria Cosmetics - Luxury Skincare, Makeup & Fragrances",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#F25C2C",
+    "background_color": "#FFF5F8",
+    "theme_color": "#C53261",
     "icons": [
         {
-            "src": "/store2ulogo.png",
+            "src": "/gloria_logo.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/store2ulogo.png",
+            "src": "/gloria_logo.png",
             "sizes": "512x512",
             "type": "image/png"
         }

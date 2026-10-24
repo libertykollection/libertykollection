@@ -65,7 +65,7 @@ const DiscountedProducts = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] bg-[#FBF9F7]">
         <ToastContainer position="bottom-right" autoClose={3000} />
-        <div className="w-14 h-14 border-2 border-[#E8DFC8] border-t-[#B98C2D] rounded-none animate-spin mb-4" />
+        <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
         <span className="text-[11px] font-bold uppercase tracking-widest text-[#141311]">
           Gathering Privilege Offers...
         </span>
@@ -78,21 +78,21 @@ const DiscountedProducts = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       {/* Header & Breadcrumb */}
-      <div className="bg-white border-b border-[#E8DFC8] py-8">
+      <div className="bg-white border-b border-[#F0DCE3] py-8">
         <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">
               <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/')}>
-                Atelier
-              </span>
+                  Home
+                </span>
               <span className="text-gray-300">/</span>
               <span className="text-[#141311] font-bold">Privilege Offers</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#141311]">
-              Exclusive Atelier Promotions & Archive Discounts
+              Exclusive Promotions & Special Discounts
             </h1>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B98C2D] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
             <HiSparkles size={14} />
             Limited Quantities Available
           </span>
@@ -106,12 +106,12 @@ const DiscountedProducts = () => {
             return (
               <div
                 key={product.id}
-                className="group flex flex-col bg-white border border-[#E8DFC8] hover:border-[#B98C2D] rounded-none overflow-hidden transition-all duration-300 cursor-pointer p-3.5"
+                className="group flex flex-col bg-white border border-[#F0DCE3] hover:border-[#C53261] rounded-none overflow-hidden transition-all duration-300 cursor-pointer p-3.5"
                 onClick={() => handleProductClick(product.slug)}
               >
-                <div className="relative aspect-square w-full bg-[#F9F5EC] border border-[#E8DFC8]/50 mb-3 overflow-hidden flex items-center justify-center">
+                <div className="relative aspect-square w-full bg-[#FFF5F8] border border-[#F0DCE3]/50 mb-3 overflow-hidden flex items-center justify-center">
                   {/* Badge */}
-                  <div className="absolute top-2 left-2 z-20 bg-[#B98C2D] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none">
+                  <div className="absolute top-2 left-2 z-20 bg-[#C53261] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none">
                     {product.discount > 0 ? `-${product.discount.toFixed(0)}% OFF` : 'Privilege'}
                   </div>
 
@@ -131,13 +131,13 @@ const DiscountedProducts = () => {
                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest truncate max-w-[65%]">
                       {product.category?.name || 'Exclusive'}
                     </p>
-                    <div className="flex items-center gap-1 text-[#B98C2D] text-xs">
+                    <div className="flex items-center gap-1 text-[#C53261] text-xs">
                       <GoStarFill size={10} />
                       <span className="text-[11px] font-bold text-[#141311]">4.9</span>
                     </div>
                   </div>
 
-                  <h4 className="text-xs font-serif font-bold mb-2 line-clamp-2 text-[#141311] group-hover:text-[#B98C2D] transition-colors leading-snug h-8 overflow-hidden">
+                  <h4 className="text-xs font-serif font-bold mb-2 line-clamp-2 text-[#141311] group-hover:text-[#C53261] transition-colors leading-snug h-8 overflow-hidden">
                     {product.name}
                   </h4>
 

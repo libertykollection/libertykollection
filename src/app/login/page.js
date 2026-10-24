@@ -70,7 +70,7 @@ const LoginPage = () => {
                     toast.success('Welcome back to the Admin Concierge.');
                     setTimeout(() => router.push('/admin/pages/Main'), 1200);
                 } else if (user.role === 'CUSTOMER') {
-                    toast.success('Welcome back to the Beauty Atelier.');
+                    toast.success('Welcome back to Gloria Cosmetics.');
                     setTimeout(() => router.push('/'), 1200);
                 }
             }
@@ -106,9 +106,9 @@ const LoginPage = () => {
     const inputStyle = {
         '& .MuiOutlinedInput-root': {
             borderRadius: '0px',
-            bgcolor: '#F9F5EC',
-            '& fieldset': { borderColor: '#E8DFC8' },
-            '&:hover fieldset': { borderColor: '#B98C2D' },
+            bgcolor: '#FFF5F8',
+            '& fieldset': { borderColor: '#F0DCE3' },
+            '&:hover fieldset': { borderColor: '#C53261' },
             '&.Mui-focused fieldset': { borderColor: '#141311', borderWidth: '1px' },
             '&.Mui-focused': { bgcolor: '#fff' },
         },
@@ -130,14 +130,14 @@ const LoginPage = () => {
                         p: { xs: 4, sm: 6 },
                         borderRadius: '0px',
                         background: '#FFFFFF',
-                        border: '1px solid #E8DFC8',
+                        border: '1px solid #F0DCE3',
                         boxShadow: 'none',
                     }}
                 >
                     <Box sx={{ textAlign: 'center', mb: 5 }}>
-                        <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#B98C2D', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
+                        <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#C53261', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
                             <HiSparkles size={14} />
-                            {brandName ? `${brandName} Atelier` : 'Prestige Atelier'}
+                            {brandName ? `${brandName}` : 'Gloria Cosmetics'}
                         </Box>
                         <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.01em' }}>
                             Welcome Back
@@ -151,7 +151,7 @@ const LoginPage = () => {
                         <Box sx={{ mb: 3, p: 2, bgcolor: '#FFF1F2', color: '#9F1239', border: '1px solid #FECDD3', borderRadius: '0px', fontSize: '0.8rem', fontWeight: 600, textAlign: 'center' }}>
                             {error}
                             {error.includes('verify your email') && (
-                                <Button onClick={handleResendVerification} disabled={resendLoading} sx={{ mt: 1, width: '100%', textTransform: 'none', color: '#B98C2D', fontWeight: 700, fontSize: '0.75rem' }}>
+                                <Button onClick={handleResendVerification} disabled={resendLoading} sx={{ mt: 1, width: '100%', textTransform: 'none', color: '#C53261', fontWeight: 700, fontSize: '0.75rem' }}>
                                     {resendLoading ? <CircularProgress size={16} /> : 'Resend Verification Dispatch'}
                                 </Button>
                             )}
@@ -211,7 +211,7 @@ const LoginPage = () => {
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                                 <Typography
                                     onClick={() => router.push('/customer/pages/forgot-password')}
-                                    sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#B98C2D', cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                                    sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#C53261', cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
                                 >
                                     Forgot Password?
                                 </Typography>
@@ -242,17 +242,17 @@ const LoginPage = () => {
                                     }
                                 }}
                             >
-                                {loading ? <CircularProgress size={20} sx={{ color: '#fff' }} /> : 'Sign In to Atelier'}
+                                {loading ? <CircularProgress size={20} sx={{ color: '#fff' }} /> : 'Sign In to Account'}
                             </Button>
 
-                            <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid #E8DFC8', textAlign: 'center' }}>
+                            <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid #F0DCE3', textAlign: 'center' }}>
                                 <Typography variant="body2" sx={{ color: '#6B7280', fontSize: '0.8rem' }}>
-                                    New to {brandName || 'our Atelier'}?{' '}
+                                    New to {brandName || 'Gloria Cosmetics'}?{' '}
                                     <Typography
                                         component="span"
                                         onClick={() => router.push('/customer/pages/register')}
                                         sx={{
-                                            color: '#B98C2D',
+                                            color: '#C53261',
                                             fontWeight: 700,
                                             cursor: 'pointer',
                                             textTransform: 'uppercase',

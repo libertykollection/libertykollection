@@ -5,53 +5,47 @@
 @layer base {
   :root {
     /* ==========================================================================
-       GLOBAL WEBSITE THEME CONFIGURATION
-       Simply change the color codes in this section to update the ENTIRE website!
-
-    /* ==========================================================================
-       GLORIA COSMETICS GLOBAL THEME CONFIGURATION
-       Extracted directly from the official Gloria Cosmetics logo:
-       • Primary: Royal Sunburst Gold (#B98C2D)
-       • Secondary: Radiant Sun Gold (#D2AA2D)
-       • Dark Surfaces / Noir: Deep Onyx Charcoal (#141311)
-       • Soft Accent / Light: Champagne Ivory (#F9F5EC)
-       • Borders: Warm Gold Pearl (#E8DFC8)
+       GLORIA COSMETICS — GLOBAL THEME CONFIGURATION
+       Primary: Gloria Rose Magenta (#C53261)
+       Secondary: Champagne Gold (#C5A059)
+       Dark: Deep Velvet Noir (#141013)
+       Light: Rose Quartz Blush (#FFF5F8)
        ========================================================================== */
 
-    /* 1. Primary Brand Accent & Action Buttons (Gloria Sunburst Gold) */
-    --theme-primary: #B98C2D;
-    --theme-primary-rgb: 185, 140, 45;
-    --theme-primary-hover: #9E7420;
-    --theme-primary-dark: #826017;
+    /* 1. Primary Brand Accent & Action Buttons */
+    --theme-primary: #C53261;
+    --theme-primary-rgb: 197, 50, 97;
+    --theme-primary-hover: #A8224E;
+    --theme-primary-dark: #87143A;
     --theme-primary-contrast: #FFFFFF;
 
-    /* 2. Secondary Accent (Gloria Radiant Gold Highlight - Badges, Stars, Accents) */
-    --theme-secondary: #D2AA2D;
-    --theme-secondary-rgb: 210, 170, 45;
-    --theme-secondary-hover: #B98C2D;
+    /* 2. Secondary Accent — Champagne Gold */
+    --theme-secondary: #C5A059;
+    --theme-secondary-rgb: 197, 160, 89;
+    --theme-secondary-hover: #B08C45;
 
-    /* 3. Dark Elements (Gloria Onyx Noir Footer & Deep Surfaces) */
-    --theme-dark: #141311;
-    --theme-dark-rgb: 20, 19, 17;
-    --theme-dark-surface: #0E0D0B;
-    --theme-dark-border: #2C2822;
-    --theme-dark-text: #E5DFD0;
+    /* 3. Dark Elements */
+    --theme-dark: #141013;
+    --theme-dark-rgb: 20, 16, 19;
+    --theme-dark-surface: #0D0A0C;
+    --theme-dark-border: #281B24;
+    --theme-dark-text: #F0E6EB;
 
-    /* 4. Light Backgrounds & Tinted Surfaces (Champagne Silk & Warm Ivory) */
-    --theme-light: #F9F5EC;
-    --theme-light-hover: #F2EBDA;
+    /* 4. Light Backgrounds */
+    --theme-light: #FFF5F8;
+    --theme-light-hover: #FAEDF2;
     --theme-surface: #FFFFFF;
-    --theme-muted: #FAF7F0;
+    --theme-muted: #FCF4F7;
 
-    /* 5. Borders & Dividers (Warm Golden Pearl) */
-    --theme-border: #E8DFC8;
-    --theme-border-subtle: #F2ECDC;
+    /* 5. Borders & Dividers */
+    --theme-border: #F0DCE3;
+    --theme-border-subtle: #F7EBF0;
 
     /* 6. Functional Status */
     --theme-sale: #C23934;
     --theme-success: #10B981;
 
-    /* 7. Backward Compatibility Mappings */
+    /* 7. Backward Compatibility */
     --brand-primary: var(--theme-primary);
     --brand-primary-rgb: var(--theme-primary-rgb);
     --brand-primary-hover: var(--theme-primary-hover);
@@ -66,31 +60,207 @@
     --brand-gold: var(--theme-secondary);
     --brand-gold-light: var(--theme-light);
     --brand-orange: var(--theme-secondary-hover);
+
+    /* ==========================================================================
+       GLORIA COSMETICS — TYPOGRAPHY SYSTEM
+       Display:  Cormorant Garamond — luxury serif for headings & editorial
+       Body:     DM Sans — clean, modern geometric sans for body text
+       UI/Nav:   Jost — humanist geometric caps for labels, buttons, nav
+       ========================================================================== */
+
+    /* Font stacks via CSS variables set by Next.js */
+    --font-display-stack: var(--font-display), 'Georgia', 'Times New Roman', serif;
+    --font-sans-stack:    var(--font-sans), system-ui, -apple-system, sans-serif;
+    --font-ui-stack:      var(--font-ui), var(--font-sans), system-ui, sans-serif;
+
+    /* Type Scale */
+    --text-xs:   0.6875rem;  /* 11px  — micro labels, badges */
+    --text-sm:   0.8125rem;  /* 13px  — secondary body, captions */
+    --text-base: 0.9375rem;  /* 15px  — primary body copy */
+    --text-md:   1.0625rem;  /* 17px  — lead text */
+    --text-lg:   1.25rem;    /* 20px  — large body / small headings */
+    --text-xl:   1.5rem;     /* 24px  — card headings */
+    --text-2xl:  1.875rem;   /* 30px  — section subheadings */
+    --text-3xl:  2.25rem;    /* 36px  — section headings */
+    --text-4xl:  2.875rem;   /* 46px  — display headings */
+    --text-5xl:  3.75rem;    /* 60px  — hero display */
+    --text-6xl:  5rem;       /* 80px  — extra large display */
+
+    /* Leading (line-height) */
+    --leading-tight:   1.08;
+    --leading-snug:    1.2;
+    --leading-normal:  1.5;
+    --leading-relaxed: 1.65;
+    --leading-loose:   1.8;
+
+    /* Tracking (letter-spacing) */
+    --tracking-tighter: -0.04em;
+    --tracking-tight:   -0.025em;
+    --tracking-snug:    -0.015em;
+    --tracking-normal:   0em;
+    --tracking-wide:     0.06em;
+    --tracking-wider:    0.12em;
+    --tracking-widest:   0.22em;
+    --tracking-caps:     0.32em;
   }
 
+  /* ── Base HTML / Body ───────────────────────────────────── */
   html {
-    font-family: var(--font-sans), var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans-stack);
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
 
   body {
-    font-family: inherit;
-    color: #1f2937;
-    letter-spacing: -0.01em;
+    font-family: var(--font-sans-stack);
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: var(--leading-relaxed);
+    color: #1A1118;   /* warm near-black — pairs with rose palette */
+    letter-spacing: var(--tracking-snug);
   }
 
-  /* Professional typography utilities */
+  /* ── Heading defaults — Cormorant Garamond display serif ── */
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.025em;
+    font-family: var(--font-display-stack);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: #1A1118;
   }
 
-  /* Numeric alignment for currency/prices */
+  h1 { font-size: clamp(2.4rem, 5vw, 4rem);   font-weight: 600; }
+  h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; }
+  h3 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); font-weight: 500; }
+  h4 { font-size: 1.25rem;  font-weight: 500; }
+  h5 { font-size: 1.0625rem; font-weight: 500; }
+  h6 { font-size: 0.9375rem; font-weight: 600; }
+
+  p {
+    font-family: var(--font-sans-stack);
+    line-height: var(--leading-relaxed);
+    color: #3D2E37;   /* warm plum-grey for body copy */
+  }
+
+  /* Links */
+  a {
+    font-family: inherit;
+    letter-spacing: inherit;
+  }
+
+  /* Numeric alignment */
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
 }
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ========================================================================== */
+
+/* Font family helpers */
+.font-display {
+  font-family: var(--font-display-stack) !important;
+}
+
+.font-ui {
+  font-family: var(--font-ui-stack) !important;
+}
+
+.font-body {
+  font-family: var(--font-sans-stack) !important;
+}
+
+/* Eyebrow / Label style — used above section headings */
+.text-eyebrow {
+  font-family: var(--font-ui-stack);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--theme-primary);
+}
+
+/* Display heading — large serif editorial */
+.heading-display {
+  font-family: var(--font-display-stack);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+/* Subheading — medium weight serif */
+.heading-sub {
+  font-family: var(--font-display-stack);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(110deg, #F5D778 0%, #C5A059 45%, #E8C96B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Rose gradient text */
+.text-gradient-rose {
+  background: linear-gradient(110deg, #E8527F 0%, #C53261 55%, #A8224E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Luxury gradient text — gold to rose */
+.text-gradient-luxury {
+  background: linear-gradient(110deg, #F5D778 0%, #C5A059 40%, #E8527F 75%, #C53261 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* UI label — Jost caps */
+.text-label {
+  font-family: var(--font-ui-stack);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Lead paragraph */
+.text-lead {
+  font-size: var(--text-md);
+  font-weight: 300;
+  line-height: var(--leading-loose);
+  letter-spacing: var(--tracking-snug);
+  color: #5A4250;
+}
+
+/* Price typography */
+.text-price {
+  font-family: var(--font-ui-stack);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Section number — large decorative */
+.text-num {
+  font-family: var(--font-display-stack);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--theme-primary);
+  opacity: 0.25;
+}
+
 
 /* Shimmer loading animation */
 @keyframes shimmer {

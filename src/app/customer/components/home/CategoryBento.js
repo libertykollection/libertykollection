@@ -9,7 +9,7 @@ import SectionHeader from './SectionHeader';
 import { useApi } from './homeUtils';
 import { getSafeImageUrl } from '../../../util/imageUtils';
 
-const TINTS = ['#F9F5EC', '#F6F0DF', '#FBF8F1', '#F4EDE0', '#F8F3E8', '#F5EEDC', '#FAF6EE', '#F3EBD8'];
+const TINTS = ['#FFF5F8', '#F6F0DF', '#FBF8F1', '#F4EDE0', '#F8F3E8', '#F5EEDC', '#FAF6EE', '#F3EBD8'];
 
 const CategoryBento = () => {
   const { data: categories, loading } = useApi('/api/categories');
@@ -77,14 +77,14 @@ const CategoryBento = () => {
 
                     <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
                       {count > 0 && (
-                        <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-theme-secondary mb-1 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <span className="block text-[10px] font-bold uppercase tracking-[0.25em] text-theme-primary mb-1 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                           {count} collection{count > 1 ? 's' : ''}
                         </span>
                       )}
                       <h3 className={`font-black text-white leading-tight ${featured ? 'text-2xl sm:text-4xl' : 'text-base sm:text-lg'}`}>
                         {cat.name}
                       </h3>
-                      <span className="mt-2 inline-block h-[2px] w-8 bg-theme-secondary group-hover:w-20 transition-all duration-500" />
+                      <span className="mt-2 inline-block h-[2px] w-8 bg-theme-primary group-hover:w-20 transition-all duration-500" />
                     </div>
                   </Link>
                 </motion.div>

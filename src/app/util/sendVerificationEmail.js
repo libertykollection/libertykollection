@@ -4,7 +4,7 @@ import prisma from './prisma';
 
 export async function sendVerificationEmail(email, token) {
   const mailUser = getMailUser();
-  const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca';
+  const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk';
 
   const transporter = getTransporter();
   if (!transporter) {

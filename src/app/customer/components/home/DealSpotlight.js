@@ -156,7 +156,7 @@ const DealSpotlight = () => {
               transition={{ duration: 0.35 }}
               className="flex flex-col justify-center text-white"
             >
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-theme-secondary mb-3">Today&apos;s featured deal</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-theme-primary mb-3">Today&apos;s featured deal</span>
               <h3 className="text-2xl sm:text-3xl font-black leading-tight mb-4">{deal.name}</h3>
               {deal.description && (
                 <p className="text-sm text-white/60 leading-relaxed mb-6 line-clamp-3">{stripHtml(deal.description)}</p>
@@ -167,7 +167,7 @@ const DealSpotlight = () => {
                 {original && <span className="text-lg text-white/40 line-through tabular-nums mb-1">Rs. {formatPrice(original)}</span>}
               </div>
               {saved > 0 && (
-                <span className="inline-block self-start bg-theme-secondary/20 text-theme-secondary text-xs font-bold px-3 py-1 mb-6">
+                <span className="inline-block self-start bg-theme-primary/20 text-theme-primary text-xs font-bold px-3 py-1 mb-6">
                   You save Rs. {formatPrice(saved)}
                 </span>
               )}
@@ -187,11 +187,11 @@ const DealSpotlight = () => {
                 <div className="mb-6 max-w-sm">
                   <div className="flex justify-between text-[11px] mb-1.5">
                     <span className="text-white/60">Hurry — limited stock</span>
-                    <span className="font-bold text-theme-secondary">{deal.stock} left</span>
+                    <span className="font-bold text-theme-primary">{deal.stock} left</span>
                   </div>
                   <div className="h-1 bg-white/10">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-theme-primary to-theme-secondary"
+                      className="h-full bg-theme-primary"
                       initial={{ width: 0 }}
                       animate={{ width: `${Math.max(8, (deal.stock / 20) * 100)}%` }}
                       transition={{ duration: 1 }}
@@ -239,10 +239,10 @@ const DealSpotlight = () => {
                   key={d.id}
                   onClick={() => setSelected(i)}
                   className={`group relative flex items-center gap-3 p-2.5 text-left min-w-[240px] lg:min-w-0 border transition-all ${
-                    isActive ? 'bg-white/10 border-theme-secondary' : 'border-white/10 hover:border-white/30 hover:bg-white/5'
+                    isActive ? 'bg-white/10 border-theme-primary' : 'border-white/10 hover:border-white/30 hover:bg-white/5'
                   }`}
                 >
-                  {isActive && <motion.span layoutId="deal-active-bar" className="absolute left-0 top-0 bottom-0 w-[3px] bg-theme-secondary" />}
+                  {isActive && <motion.span layoutId="deal-active-bar" className="absolute left-0 top-0 bottom-0 w-[3px] bg-theme-primary" />}
                   <div className="relative w-16 h-16 bg-[#FBF8F7] flex-shrink-0">
                     {img && <Image fill unoptimized src={img} alt="" className="object-contain p-1.5" />}
                   </div>
@@ -250,7 +250,7 @@ const DealSpotlight = () => {
                     <p className="text-xs font-semibold text-white line-clamp-2 leading-snug">{d.name}</p>
                     <p className="mt-1 text-xs">
                       <span className="font-black text-white tabular-nums">Rs. {formatPrice(d.price)}</span>
-                      <span className="ml-2 text-theme-secondary font-bold">-{Math.round(d.discount)}%</span>
+                      <span className="ml-2 text-theme-primary font-bold">-{Math.round(d.discount)}%</span>
                     </p>
                   </div>
                 </button>

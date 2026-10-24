@@ -366,11 +366,11 @@ const AddProductPageContent = () => {
     '& .MuiOutlinedInput-root': {
       borderRadius: '0px',
       bgcolor: '#fff',
-      '& fieldset': { borderColor: '#E8DFC8' },
-      '&:hover fieldset': { borderColor: '#B98C2D' },
-      '&.Mui-focused fieldset': { borderColor: '#B98C2D' },
+      '& fieldset': { borderColor: '#F0DCE3' },
+      '&:hover fieldset': { borderColor: '#C53261' },
+      '&.Mui-focused fieldset': { borderColor: '#C53261' },
     },
-    '& .MuiInputLabel-root.Mui-focused': { color: '#B98C2D' },
+    '& .MuiInputLabel-root.Mui-focused': { color: '#C53261' },
   };
 
   const sectionHeaderStyles = {
@@ -379,7 +379,7 @@ const AddProductPageContent = () => {
     gap: 1.5,
     mb: 2.5,
     pb: 1,
-    borderBottom: '1px solid #E8DFC8'
+    borderBottom: '1px solid #F0DCE3'
   };
 
   const selectMenuProps = {
@@ -388,7 +388,7 @@ const AddProductPageContent = () => {
         borderRadius: '0px',
         mt: 1,
         boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-        border: '1px solid #E8DFC8',
+        border: '1px solid #F0DCE3',
         '& .MuiList-root': { p: 1 },
         '& .MuiMenuItem-root': {
           fontSize: '0.875rem',
@@ -396,10 +396,10 @@ const AddProductPageContent = () => {
           borderRadius: '0px',
           mb: 0.5,
           color: '#374151',
-          '&:hover': { bgcolor: '#F8F5F2', color: '#B98C2D' },
+          '&:hover': { bgcolor: '#F8F5F2', color: '#C53261' },
           '&.Mui-selected': {
             bgcolor: '#FBF9F7',
-            color: '#B98C2D',
+            color: '#C53261',
             fontWeight: 700,
             '&:hover': { bgcolor: '#F8F5F2' }
           },
@@ -433,18 +433,18 @@ const AddProductPageContent = () => {
               bgcolor: '#fff',
               borderRadius: '0px',
               p: 4,
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
             }}
           >
-            <CircularProgress sx={{ color: '#B98C2D', mb: 2 }} />
+            <CircularProgress sx={{ color: '#C53261', mb: 2 }} />
             <Typography variant="body2" sx={{ color: '#141311', fontWeight: 700 }}>Processing Request...</Typography>
           </Box>
         </Box>
       )}
 
       {/* Header & Actions */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexWrap: 'wrap', gap: 2, pb: 3, borderBottom: '1px solid #E8DFC8' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4, flexWrap: 'wrap', gap: 2, pb: 3, borderBottom: '1px solid #F0DCE3' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Button
             onClick={() => router.back()}
@@ -455,16 +455,16 @@ const AddProductPageContent = () => {
               borderRadius: '0px',
               bgcolor: '#fff',
               color: '#141311',
-              border: '1px solid #E8DFC8',
-              '&:hover': { bgcolor: '#F8F5F2', borderColor: '#B98C2D' },
+              border: '1px solid #F0DCE3',
+              '&:hover': { bgcolor: '#F8F5F2', borderColor: '#C53261' },
             }}
           >
             <ArrowBackIcon sx={{ fontSize: '1.1rem' }} />
           </Button>
           <Box>
             <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-[#B98C2D]"></span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B98C2D]">
+              <span className="w-2 h-2 rounded-full bg-[#C53261]"></span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C53261]">
                 Catalog Entry
               </span>
             </div>
@@ -487,10 +487,10 @@ const AddProductPageContent = () => {
               py: 1,
               fontSize: '0.8rem',
               fontWeight: 600,
-              borderColor: '#E8DFC8',
+              borderColor: '#F0DCE3',
               color: '#141311',
               bgcolor: '#fff',
-              '&:hover': { borderColor: '#B98C2D', bgcolor: '#F8F5F2' }
+              '&:hover': { borderColor: '#C53261', bgcolor: '#F8F5F2' }
             }}
           >
             Discard
@@ -510,7 +510,7 @@ const AddProductPageContent = () => {
               bgcolor: '#141311',
               color: '#fff',
               boxShadow: 'none',
-              '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' }
+              '&:hover': { bgcolor: '#C53261', boxShadow: 'none' }
             }}
           >
             {newProduct.id ? 'Save Changes' : 'Create Product'}
@@ -531,7 +531,7 @@ const AddProductPageContent = () => {
           sx={{
             bgcolor: '#fff',
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             '& .MuiToggleButton-root': {
               borderRadius: '0px',
               border: 'none',
@@ -545,7 +545,7 @@ const AddProductPageContent = () => {
               '&.Mui-selected': {
                 bgcolor: '#141311',
                 color: '#fff',
-                '&:hover': { bgcolor: '#1E131B' }
+                '&:hover': { bgcolor: '#1E141B' }
               }
             }
           }}
@@ -564,9 +564,9 @@ const AddProductPageContent = () => {
         <Grid item xs={12} lg={8}>
           <Stack spacing={3}>
             {/* General Info Card */}
-            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
               <Box sx={sectionHeaderStyles}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <InfoIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>General Details</Typography>
@@ -652,16 +652,16 @@ const AddProductPageContent = () => {
             </Paper>
 
             {/* Description Card */}
-            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
               <Box sx={sectionHeaderStyles}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <DescriptionIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Product Description</Typography>
               </Box>
               <Box sx={{
-                '& .ql-toolbar': { borderRadius: '0px', borderColor: '#E8DFC8', bgcolor: '#FBF9F7' },
-                '& .ql-container': { borderRadius: '0px', borderColor: '#E8DFC8', minHeight: '220px', fontSize: '0.95rem' }
+                '& .ql-toolbar': { borderRadius: '0px', borderColor: '#F0DCE3', bgcolor: '#FBF9F7' },
+                '& .ql-container': { borderRadius: '0px', borderColor: '#F0DCE3', minHeight: '220px', fontSize: '0.95rem' }
               }}>
                 <ReactQuill
                   theme="snow"
@@ -675,9 +675,9 @@ const AddProductPageContent = () => {
 
             {/* Attributes & Options (Tangible) */}
             {newProduct.productType === 'tangible' && (
-              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                 <Box sx={sectionHeaderStyles}>
-                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                     <StyleIcon sx={{ fontSize: '1.25rem' }} />
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Attributes & Options</Typography>
@@ -702,7 +702,7 @@ const AddProductPageContent = () => {
                               size="small"
                               sx={{
                                 bgcolor: '#FBF9F7',
-                                border: '1px solid #E8DFC8',
+                                border: '1px solid #F0DCE3',
                                 borderRadius: '0px',
                                 fontWeight: 600,
                                 fontSize: '0.75rem',
@@ -716,7 +716,7 @@ const AddProductPageContent = () => {
                     >
                       {colors.map((color) => (
                         <MenuItem key={color.value} value={color}>
-                          <Checkbox checked={newProduct.colors.some((c) => c.value === color.value)} sx={{ color: '#D2AA2D', '&.Mui-checked': { color: '#B98C2D' } }} />
+                          <Checkbox checked={newProduct.colors.some((c) => c.value === color.value)} sx={{ color: '#C5A059', '&.Mui-checked': { color: '#C53261' } }} />
                           {color.label}
                         </MenuItem>
                       ))}
@@ -735,14 +735,14 @@ const AddProductPageContent = () => {
                       renderValue={(selected) => (
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                           {selected.map((size) => (
-                            <Chip key={size.value} label={size.label} size="small" sx={{ bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', fontWeight: 600, fontSize: '0.75rem' }} />
+                            <Chip key={size.value} label={size.label} size="small" sx={{ bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', fontWeight: 600, fontSize: '0.75rem' }} />
                           ))}
                         </Box>
                       )}
                     >
                       {sizes.map((size) => (
                         <MenuItem key={size.value} value={size}>
-                          <Checkbox checked={newProduct.sizes.some((s) => s.value === size.value)} sx={{ color: '#D2AA2D', '&.Mui-checked': { color: '#B98C2D' } }} />
+                          <Checkbox checked={newProduct.sizes.some((s) => s.value === size.value)} sx={{ color: '#C5A059', '&.Mui-checked': { color: '#C53261' } }} />
                           {size.label}
                         </MenuItem>
                       ))}
@@ -754,9 +754,9 @@ const AddProductPageContent = () => {
 
             {/* Digital Files & Core Details Card */}
             {newProduct.productType === 'digital' && (
-              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                 <Box sx={sectionHeaderStyles}>
-                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                     <CloudUploadIcon sx={{ fontSize: '1.25rem' }} />
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Digital files *</Typography>
@@ -769,13 +769,13 @@ const AddProductPageContent = () => {
                     <Box
                       onClick={() => document.getElementById('digital-file-input').click()}
                       sx={{
-                        border: '1px dashed #D2AA2D',
+                        border: '1px dashed #C5A059',
                         borderRadius: '0px',
                         bgcolor: '#FBF9F7',
                         p: 4,
                         textAlign: 'center',
                         cursor: 'pointer',
-                        '&:hover': { bgcolor: '#F5EFEB', borderColor: '#B98C2D' },
+                        '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' },
                         transition: 'all 0.2s',
                         display: 'flex',
                         flexDirection: 'column',
@@ -783,7 +783,7 @@ const AddProductPageContent = () => {
                         gap: 1
                       }}
                     >
-                      <CloudUploadIcon sx={{ fontSize: '2rem', color: '#B98C2D' }} />
+                      <CloudUploadIcon sx={{ fontSize: '2rem', color: '#C53261' }} />
                       <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311' }}>Drag and drop or click to add files</Typography>
                       <input
                         id="digital-file-input"
@@ -803,9 +803,9 @@ const AddProductPageContent = () => {
                     <Grid container spacing={1.5} sx={{ mt: 2 }}>
                       {digitalFiles.map((file, i) => (
                         <Grid item xs={12} key={i}>
-                          <Box sx={{ p: 2, border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: '#fff' }}>
+                          <Box sx={{ p: 2, border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: '#fff' }}>
                             <Stack direction="row" spacing={2} alignItems="center">
-                              <DescriptionIcon sx={{ color: '#B98C2D' }} />
+                              <DescriptionIcon sx={{ color: '#C53261' }} />
                               <Box>
                                 <Typography variant="body2" sx={{ fontWeight: 600, color: '#141311' }}>{file.name}</Typography>
                                 <Typography variant="caption" sx={{ color: '#8C7A70' }}>{(file.size / 1024 / 1024).toFixed(2)} MB</Typography>
@@ -820,11 +820,11 @@ const AddProductPageContent = () => {
                     </Grid>
                   </Box>
 
-                  <Box sx={{ borderTop: '1px solid #E8DFC8', pt: 3 }}>
+                  <Box sx={{ borderTop: '1px solid #F0DCE3', pt: 3 }}>
                     <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 700, color: '#141311', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.8rem' }}>Core details *</Typography>
-                    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', p: 2, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #E8DFC8' }}>
-                      <Box sx={{ p: 1, bgcolor: '#fff', borderRadius: '0px', border: '1px solid #E8DFC8' }}>
-                        <CloudUploadIcon sx={{ color: '#B98C2D' }} />
+                    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', p: 2, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #F0DCE3' }}>
+                      <Box sx={{ p: 1, bgcolor: '#fff', borderRadius: '0px', border: '1px solid #F0DCE3' }}>
+                        <CloudUploadIcon sx={{ color: '#C53261' }} />
                       </Box>
                       <Box>
                         <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311' }}>Digital files</Typography>
@@ -839,9 +839,9 @@ const AddProductPageContent = () => {
 
             {/* Attributes Section (Digital) */}
             {newProduct.productType === 'digital' && (
-              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                 <Box sx={sectionHeaderStyles}>
-                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                     <StyleIcon sx={{ fontSize: '1.25rem' }} />
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Attributes</Typography>
@@ -964,7 +964,7 @@ const AddProductPageContent = () => {
                             input.value = '';
                           }
                         }}
-                        sx={{ borderRadius: '0px', borderColor: '#E8DFC8', color: '#141311', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7' } }}
+                        sx={{ borderRadius: '0px', borderColor: '#F0DCE3', color: '#141311', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7' } }}
                       >
                         Add
                       </Button>
@@ -976,7 +976,7 @@ const AddProductPageContent = () => {
                           key={idx}
                           label={tag}
                           onDelete={() => setDigitalTags(digitalTags.filter((_, i) => i !== idx))}
-                          sx={{ borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', fontWeight: 600, color: '#141311' }}
+                          sx={{ borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', fontWeight: 600, color: '#141311' }}
                         />
                       ))}
                     </Box>
@@ -1016,7 +1016,7 @@ const AddProductPageContent = () => {
                             input.value = '';
                           }
                         }}
-                        sx={{ borderRadius: '0px', borderColor: '#E8DFC8', color: '#141311', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7' } }}
+                        sx={{ borderRadius: '0px', borderColor: '#F0DCE3', color: '#141311', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7' } }}
                       >
                         Add
                       </Button>
@@ -1028,7 +1028,7 @@ const AddProductPageContent = () => {
                           key={idx}
                           label={mat}
                           onDelete={() => setDigitalMaterials(digitalMaterials.filter((_, i) => i !== idx))}
-                          sx={{ borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', fontWeight: 600, color: '#141311' }}
+                          sx={{ borderRadius: '0px', bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', fontWeight: 600, color: '#141311' }}
                         />
                       ))}
                     </Box>
@@ -1039,9 +1039,9 @@ const AddProductPageContent = () => {
 
             {/* Variations Notice (Digital) */}
             {newProduct.productType === 'digital' && (
-              <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px dashed #E8DFC8', bgcolor: '#FBF9F7' }}>
+              <Paper elevation={0} sx={{ p: 3, borderRadius: '0px', border: '1px dashed #F0DCE3', bgcolor: '#FBF9F7' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <InfoIcon sx={{ color: '#B98C2D' }} />
+                  <InfoIcon sx={{ color: '#C53261' }} />
                   <Typography variant="body2" sx={{ color: '#8C7A70', fontWeight: 500 }}>
                     Variations are not applicable for digital listings.
                   </Typography>
@@ -1051,10 +1051,10 @@ const AddProductPageContent = () => {
 
             {/* Personalization Card */}
             {newProduct.productType === 'digital' && (
-              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                    <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                    <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                       <DescriptionIcon sx={{ fontSize: '1.25rem' }} />
                     </Box>
                     <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Personalization</Typography>
@@ -1062,7 +1062,7 @@ const AddProductPageContent = () => {
                   <Checkbox
                     checked={personalization.enabled}
                     onChange={(e) => setPersonalization({ ...personalization, enabled: e.target.checked })}
-                    sx={{ color: '#D2AA2D', '&.Mui-checked': { color: '#B98C2D' } }}
+                    sx={{ color: '#C5A059', '&.Mui-checked': { color: '#C53261' } }}
                   />
                 </Box>
                 <Typography variant="body2" sx={{ mb: 3, color: '#8C7A70' }}>
@@ -1094,9 +1094,9 @@ const AddProductPageContent = () => {
         <Grid item xs={12} lg={4}>
           <Stack spacing={3}>
             {/* Pricing Card */}
-            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
               <Box sx={sectionHeaderStyles}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <LocalOfferIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pricing & Stock</Typography>
@@ -1128,13 +1128,13 @@ const AddProductPageContent = () => {
                     bgcolor: '#FBF9F7',
                     p: 2,
                     borderRadius: '0px',
-                    border: '1px solid #E8DFC8',
+                    border: '1px solid #F0DCE3',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
                   }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <InventoryIcon sx={{ color: '#B98C2D', fontSize: '1.2rem' }} />
+                      <InventoryIcon sx={{ color: '#C53261', fontSize: '1.2rem' }} />
                       <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Current Stock</Typography>
                     </Box>
                     <TextField
@@ -1154,7 +1154,7 @@ const AddProductPageContent = () => {
                       id="product-is-top-rated"
                       checked={newProduct.isTopRated}
                       onChange={(e) => setNewProduct({ ...newProduct, isTopRated: e.target.checked })}
-                      sx={{ color: '#D2AA2D', '&.Mui-checked': { color: '#B98C2D' } }}
+                      sx={{ color: '#C5A059', '&.Mui-checked': { color: '#C53261' } }}
                     />
                   }
                   label={<Typography variant="body2" sx={{ fontWeight: 600, color: '#141311', fontSize: '0.85rem' }}>Mark as Exclusive / Top Rated</Typography>}
@@ -1163,9 +1163,9 @@ const AddProductPageContent = () => {
             </Paper>
 
             {/* Media Card */}
-            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
               <Box sx={sectionHeaderStyles}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <CloudUploadIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Media Gallery</Typography>
@@ -1174,18 +1174,18 @@ const AddProductPageContent = () => {
               <Box
                 onClick={() => fileInputRef.current.click()}
                 sx={{
-                  border: '1px dashed #D2AA2D',
+                  border: '1px dashed #C5A059',
                   borderRadius: '0px',
                   bgcolor: '#FBF9F7',
                   p: 3.5,
                   textAlign: 'center',
                   cursor: 'pointer',
-                  '&:hover': { bgcolor: '#F5EFEB', borderColor: '#B98C2D' },
+                  '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' },
                   transition: 'all 0.2s',
                   mb: 2.5
                 }}
               >
-                <CloudUploadIcon sx={{ fontSize: '2.2rem', color: '#B98C2D', mb: 1 }} />
+                <CloudUploadIcon sx={{ fontSize: '2.2rem', color: '#C53261', mb: 1 }} />
                 <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {newProduct.productType === 'digital' ? "Upload Asset Files or Media" : "Upload High-Res Product Photos"}
                 </Typography>
@@ -1206,7 +1206,7 @@ const AddProductPageContent = () => {
               <Grid container spacing={1.5}>
                 {existingImages.map((img, index) => (
                   <Grid item xs={4} key={`existing-${index}`}>
-                    <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #E8DFC8' }}>
+                    <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #F0DCE3' }}>
                       <Image
                         fill
                         src={`${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${img}`}
@@ -1225,7 +1225,7 @@ const AddProductPageContent = () => {
                 ))}
                 {images.map((img, index) => (
                   <Grid item xs={4} key={`new-${index}`}>
-                    <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #B98C2D' }}>
+                    <Box sx={{ position: 'relative', pt: '100%', borderRadius: '0px', overflow: 'hidden', border: '1px solid #C53261' }}>
                       <Image
                         fill
                         src={URL.createObjectURL(img)}
@@ -1246,9 +1246,9 @@ const AddProductPageContent = () => {
             </Paper>
 
             {/* SEO Card */}
-            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+            <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
               <Box sx={sectionHeaderStyles}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <PublicIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Search Optimization</Typography>
@@ -1288,9 +1288,9 @@ const AddProductPageContent = () => {
 
             {/* Settings & Renewal Card */}
             {newProduct.productType === 'digital' && (
-              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #E8DFC8', bgcolor: '#fff' }}>
+              <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: '0px', border: '1px solid #F0DCE3', bgcolor: '#fff' }}>
                 <Box sx={sectionHeaderStyles}>
-                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                  <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                     <InventoryIcon sx={{ fontSize: '1.25rem' }} />
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Settings</Typography>
@@ -1298,7 +1298,7 @@ const AddProductPageContent = () => {
                 <Stack spacing={4}>
                   <Box>
                     <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1, color: '#141311' }}>Returns and exchanges *</Typography>
-                    <Box sx={{ p: 2.5, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #E8DFC8' }}>
+                    <Box sx={{ p: 2.5, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #F0DCE3' }}>
                       <Typography variant="body2" sx={{ fontWeight: 700, mb: 0.5, color: '#141311' }}>No returns or exchanges</Typography>
                       <Typography variant="body2" sx={{ color: '#8C7A70', fontSize: '0.85rem' }}>
                         Digital items aren't eligible for returns or exchanges because of the instant digital delivery.
@@ -1321,7 +1321,7 @@ const AddProductPageContent = () => {
                     </Select>
                   </FormControl>
 
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #E8DFC8' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2, bgcolor: '#FBF9F7', borderRadius: '0px', border: '1px solid #F0DCE3' }}>
                     <Box>
                       <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311' }}>Feature this listing</Typography>
                       <Typography variant="caption" sx={{ color: '#8C7A70' }}>Showcase this listing at the top of shop homepage</Typography>
@@ -1329,7 +1329,7 @@ const AddProductPageContent = () => {
                     <Checkbox
                       checked={settings.featureListing}
                       onChange={(e) => setSettings({ ...settings, featureListing: e.target.checked })}
-                      sx={{ color: '#D2AA2D', '&.Mui-checked': { color: '#B98C2D' } }}
+                      sx={{ color: '#C5A059', '&.Mui-checked': { color: '#C53261' } }}
                     />
                   </Box>
 
@@ -1345,7 +1345,7 @@ const AddProductPageContent = () => {
                         sx={{
                           bgcolor: '#fff',
                           borderRadius: '0px',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           '& .MuiToggleButton-root': {
                             borderRadius: '0px',
                             border: 'none',
@@ -1359,7 +1359,7 @@ const AddProductPageContent = () => {
                             '&.Mui-selected': {
                               bgcolor: '#141311',
                               color: '#fff',
-                              '&:hover': { bgcolor: '#1E131B' }
+                              '&:hover': { bgcolor: '#1E141B' }
                             }
                           }
                         }}

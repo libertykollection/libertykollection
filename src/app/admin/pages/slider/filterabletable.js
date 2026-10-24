@@ -43,13 +43,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -57,7 +57,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -206,14 +206,14 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
       {/* Top Loading Line */}
       {isLoading && (
         <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#B98C2D' }} />
+          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#C53261' }} />
         </Box>
       )}
 
       {/* Header section */}
       <Box sx={{ mb: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'flex-end' }, gap: 2 }}>
         <Box>
-          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#B98C2D', display: 'block', mb: 0.5 }}>
+          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#C53261', display: 'block', mb: 0.5 }}>
             Admin Console • Storefront Visual Merchandising
           </Typography>
           <Typography variant="h4" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.02em' }}>
@@ -252,8 +252,8 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
       {/* Metrics Row */}
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <SliderIcon />
             </Box>
             <Box>
@@ -267,8 +267,8 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <LinkIcon />
             </Box>
             <Box>
@@ -282,8 +282,8 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <CloudUploadIcon />
             </Box>
             <Box>
@@ -299,9 +299,9 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
       </Grid>
 
       {/* Main Table Card */}
-      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
+      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden' }}>
         {/* Search Bar */}
-        <Box sx={{ p: 2.5, borderBottom: '1px solid #E8DFC8', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
+        <Box sx={{ p: 2.5, borderBottom: '1px solid #F0DCE3', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
           <TextField
             size="small"
             placeholder="Search slides by target link or ID..."
@@ -326,16 +326,16 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '70px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '70px' }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '220px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '220px' }}>
                   Banner Graphic
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Target Destination URL
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '120px' }}>
+                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '120px' }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -348,18 +348,18 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                     sx={{
                       bgcolor: index % 2 === 0 ? '#fff' : '#FAF8F6',
                       '&:hover': { bgcolor: '#F5EFEB' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
-                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #F0DCE3' }}>
                       #{item.id}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Box
                         sx={{
                           width: 180,
                           height: 75,
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           borderRadius: '0px',
                           overflow: 'hidden',
                           position: 'relative',
@@ -376,12 +376,12 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                           />
                         ) : (
                           <Box sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8C7A70' }}>
-                            <SliderIcon sx={{ fontSize: '1.5rem', color: '#D2AA2D' }} />
+                            <SliderIcon sx={{ fontSize: '1.5rem', color: '#C5A059' }} />
                           </Box>
                         )}
                       </Box>
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       {item.link ? (
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                           <Chip
@@ -390,7 +390,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                             sx={{
                               borderRadius: '0px',
                               bgcolor: '#FBF9F7',
-                              border: '1px solid #E8DFC8',
+                              border: '1px solid #F0DCE3',
                               color: '#141311',
                               fontWeight: 600,
                               fontSize: '0.75rem',
@@ -410,7 +410,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                         <Typography variant="caption" sx={{ color: '#8C7A70' }}>No Destination Linked (Static Banner)</Typography>
                       )}
                     </TableCell>
-                    <TableCell align="right" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell align="right" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Stack direction="row" spacing={0.5} justifyContent="flex-end">
                         <IconButton
                           size="small"
@@ -418,7 +418,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                           sx={{
                             borderRadius: '0px',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#141311', color: '#fff' },
                           }}
@@ -430,8 +430,8 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                           onClick={() => handleDeleteItem(item.id)}
                           sx={{
                             borderRadius: '0px',
-                            color: '#B98C2D',
-                            border: '1px solid #E8DFC8',
+                            color: '#C53261',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#EF4444', color: '#fff', borderColor: '#EF4444' },
                           }}
@@ -445,7 +445,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={4} sx={{ textAlign: 'center', py: 8, color: '#8C7A70' }}>
-                    <SliderIcon sx={{ fontSize: '2.5rem', color: '#D2AA2D', mb: 1, display: 'block', mx: 'auto' }} />
+                    <SliderIcon sx={{ fontSize: '2.5rem', color: '#C5A059', mb: 1, display: 'block', mx: 'auto' }} />
                     <Typography variant="body1" sx={{ fontWeight: 600, color: '#141311' }}>No hero banners found</Typography>
                     <Typography variant="caption" sx={{ color: '#8C7A70' }}>Click &quot;Add New Hero Slide&quot; to configure storefront visuals.</Typography>
                   </TableCell>
@@ -465,14 +465,14 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 24px 60px rgba(18, 11, 16, 0.15)',
           }
         }}
       >
-        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #E8DFC8' }}>
+        <DialogTitle sx={{ pb: 1, pt: 3.5, px: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid #F0DCE3' }}>
           <Box>
-            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#B98C2D', display: 'block' }}>
+            <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#C53261', display: 'block' }}>
               Carousel Slide
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif' }}>
@@ -505,7 +505,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                 {existingImage && (
                   <Box sx={{ mb: 2 }}>
                     <Typography variant="caption" sx={{ color: '#8C7A70', display: 'block', mb: 0.5 }}>Current Image Preview:</Typography>
-                    <Box sx={{ width: '100%', height: 120, position: 'relative', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
+                    <Box sx={{ width: '100%', height: 120, position: 'relative', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden' }}>
                       <Image
                         src={existingImage.startsWith('http') || existingImage.startsWith('/') ? existingImage : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${existingImage}`}
                         alt="Existing banner"
@@ -520,17 +520,17 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                 <Box
                   onClick={() => fileInputRef.current && fileInputRef.current.click()}
                   sx={{
-                    border: '1px dashed #D2AA2D',
+                    border: '1px dashed #C5A059',
                     borderRadius: '0px',
                     bgcolor: '#FBF9F7',
                     p: 3,
                     textAlign: 'center',
                     cursor: 'pointer',
-                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#B98C2D' },
+                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' },
                     transition: 'all 0.2s',
                   }}
                 >
-                  <CloudUploadIcon sx={{ color: '#B98C2D', fontSize: '2rem', mb: 0.5 }} />
+                  <CloudUploadIcon sx={{ color: '#C53261', fontSize: '2rem', mb: 0.5 }} />
                   <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     {sliderForm.imgurl ? sliderForm.imgurl.name : (existingImage ? 'Replace Banner Graphic' : 'Upload High-Res Banner')}
                   </Typography>
@@ -548,14 +548,14 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
               </Box>
             </Box>
           </DialogContent>
-          <DialogActions sx={{ p: 3, px: 4, borderTop: '1px solid #E8DFC8', display: 'flex', gap: 1.5 }}>
+          <DialogActions sx={{ p: 3, px: 4, borderTop: '1px solid #F0DCE3', display: 'flex', gap: 1.5 }}>
             <Button
               type="button"
               variant="outlined"
               onClick={() => setIsModalOpen(false)}
               sx={{
                 borderRadius: '0px',
-                borderColor: '#E8DFC8',
+                borderColor: '#F0DCE3',
                 color: '#8C7A70',
                 px: 3,
                 py: 1,
@@ -563,7 +563,7 @@ const FilterableSliderTable = ({ sliders = [], fetchSliders }) => {
                 fontSize: '0.8rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7', color: '#141311' }
+                '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7', color: '#141311' }
               }}
             >
               Cancel

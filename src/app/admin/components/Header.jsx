@@ -79,14 +79,14 @@ export default function Header() {
   else if (pathname?.includes('/settings')) pageTitle = 'Store Settings';
 
   return (
-    <header className="sticky top-0 z-20 bg-white border-b border-[#E8DFC8] shadow-xs">
+    <header className="sticky top-0 z-20 bg-white border-b border-[#F0DCE3] shadow-xs">
       <div className="h-16 px-6 lg:px-8 flex items-center justify-between gap-4">
         {/* Left: Page Title & Breadcrumb */}
         <div>
           <div className="flex items-center gap-2 text-[11px] font-semibold text-[#8C7A70] uppercase tracking-wider">
             <span>Admin Console</span>
             <span>/</span>
-            <span className="text-[#B98C2D]">{pageTitle}</span>
+            <span className="text-[#C53261]">{pageTitle}</span>
           </div>
           <h1 className="text-lg font-serif font-bold text-[#141311] leading-none mt-1">
             {pageTitle}
@@ -96,8 +96,8 @@ export default function Header() {
         {/* Right: Date, Storefront Link, Quick Actions, Profile */}
         <div className="flex items-center gap-3">
           {/* Today's Date */}
-          <div className="hidden md:flex items-center text-xs text-[#6B5E55] bg-[#F8F5F2] px-3 py-1.5 border border-[#E8DFC8]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B98C2D] mr-2"></span>
+          <div className="hidden md:flex items-center text-xs text-[#6B5E55] bg-[#F8F5F2] px-3 py-1.5 border border-[#F0DCE3]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C53261] mr-2"></span>
             {todayFormatted}
           </div>
 
@@ -106,7 +106,7 @@ export default function Header() {
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#141311] bg-white border border-[#E8DFC8] hover:border-[#B98C2D] hover:text-[#B98C2D] transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#141311] bg-white border border-[#F0DCE3] hover:border-[#C53261] hover:text-[#C53261] transition-all"
           >
             <span>Live Store</span>
             <FiExternalLink className="text-xs" />
@@ -115,7 +115,7 @@ export default function Header() {
           {/* Quick Add Product */}
           <Link
             href="/admin/pages/add-product"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#141311] hover:bg-[#B98C2D] transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-[#141311] hover:bg-[#C53261] transition-all shadow-xs"
           >
             <FiPlus className="text-sm" />
             <span className="hidden sm:inline">New Product</span>
@@ -125,7 +125,7 @@ export default function Header() {
           <Link
             href="/admin/pages/orders"
             title="View Orders"
-            className="relative p-2 text-[#6B5E55] hover:text-[#141311] hover:bg-[#F8F5F2] border border-[#E8DFC8] transition-colors"
+            className="relative p-2 text-[#6B5E55] hover:text-[#141311] hover:bg-[#F8F5F2] border border-[#F0DCE3] transition-colors"
           >
             <FiBell className="text-base" />
             {pendingCount > 0 && (
@@ -140,9 +140,9 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="flex items-center gap-2.5 p-1 pl-2 text-left hover:bg-[#F8F5F2] border border-transparent hover:border-[#E8DFC8] transition-all"
+              className="flex items-center gap-2.5 p-1 pl-2 text-left hover:bg-[#F8F5F2] border border-transparent hover:border-[#F0DCE3] transition-all"
             >
-              <div className="w-7 h-7 bg-[#141311] text-[#D2AA2D] font-bold flex items-center justify-center text-xs">
+              <div className="w-7 h-7 bg-[#141311] text-[#C5A059] font-bold flex items-center justify-center text-xs">
                 A
               </div>
               <div className="hidden lg:block text-left">
@@ -159,8 +159,8 @@ export default function Header() {
                   className="fixed inset-0 z-30"
                   onClick={() => setMenuOpen(false)}
                 />
-                <div className="absolute right-0 mt-2 w-52 bg-white border border-[#E8DFC8] shadow-xl py-1 z-40">
-                  <div className="px-4 py-3 border-b border-[#E8DFC8] bg-[#F8F5F2]">
+                <div className="absolute right-0 mt-2 w-52 bg-white border border-[#F0DCE3] shadow-xl py-1 z-40">
+                  <div className="px-4 py-3 border-b border-[#F0DCE3] bg-[#F8F5F2]">
                     <p className="text-xs font-bold text-[#141311]">Super Administrator</p>
                     <p className="text-[11px] text-[#8C7A70] truncate">Admin Console</p>
                   </div>
@@ -168,7 +168,7 @@ export default function Header() {
                   <Link
                     href="/admin/pages/settings"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#3A2E35] hover:bg-[#F8F5F2] hover:text-[#B98C2D] transition-colors"
+                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#3A2E35] hover:bg-[#F8F5F2] hover:text-[#C53261] transition-colors"
                   >
                     <FiShield className="text-sm" />
                     <span>Store Settings</span>
@@ -178,13 +178,13 @@ export default function Header() {
                     href="/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#3A2E35] hover:bg-[#F8F5F2] hover:text-[#B98C2D] transition-colors"
+                    className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-[#3A2E35] hover:bg-[#F8F5F2] hover:text-[#C53261] transition-colors"
                   >
                     <FiExternalLink className="text-sm" />
                     <span>View Storefront</span>
                   </a>
 
-                  <div className="border-t border-[#E8DFC8] my-1" />
+                  <div className="border-t border-[#F0DCE3] my-1" />
 
                   <button
                     type="button"

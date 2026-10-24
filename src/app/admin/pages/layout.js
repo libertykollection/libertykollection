@@ -8,7 +8,7 @@ const AdminLayout = ({ children, setActiveComponent }) => {
   return (
     <div className="min-h-screen flex bg-[#F8F9FA] text-gray-900 font-sans">
       {/* Sidebar with luxury deep espresso background */}
-      <aside className="w-[270px] flex-shrink-0 bg-[#141311] border-r border-[#241720] z-30">
+      <aside className="w-[270px] flex-shrink-0 bg-[#141311] border-r border-[#281B24] z-30">
         <Sidebar setActiveComponent={setActiveComponent} />
       </aside>
 

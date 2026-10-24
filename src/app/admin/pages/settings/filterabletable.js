@@ -38,13 +38,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -52,7 +52,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -166,33 +166,31 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             Configure default delivery rates, sales tax percentages, and Cash on Delivery surcharges
           </Typography>
         </Box>
-        {activeSetting && (
-          <Button
-            variant="contained"
-            startIcon={<EditIcon />}
-            onClick={() => handleEditItem(activeSetting)}
-            sx={{
-              bgcolor: '#141311',
-              color: '#fff',
-              borderRadius: '0px',
-              textTransform: 'uppercase',
-              fontSize: '0.75rem',
-              letterSpacing: '0.1em',
-              fontWeight: 600,
-              px: 3,
-              py: 1.25,
-              border: '1px solid #141311',
+        <Button
+          variant="contained"
+          startIcon={<EditIcon />}
+          onClick={() => handleEditItem(activeSetting || { deliveryCharge: 200, taxPercentage: 0, other1: 0, other2: 0 })}
+          sx={{
+            bgcolor: '#141311',
+            color: '#fff',
+            borderRadius: '0px',
+            textTransform: 'uppercase',
+            fontSize: '0.75rem',
+            letterSpacing: '0.1em',
+            fontWeight: 600,
+            px: 3,
+            py: 1.25,
+            border: '1px solid #141311',
+            boxShadow: 'none',
+            '&:hover': {
+              bgcolor: '#C53261',
+              borderColor: '#C53261',
               boxShadow: 'none',
-              '&:hover': {
-                bgcolor: '#B98C2D',
-                borderColor: '#B98C2D',
-                boxShadow: 'none',
-              },
-            }}
-          >
-            Edit Store Rates
-          </Button>
-        )}
+            },
+          }}
+        >
+          {activeSetting ? 'Edit Store Rates' : 'Configure Store Rates'}
+        </Button>
       </Box>
 
       {/* Metric Cards */}
@@ -203,7 +201,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -222,8 +220,8 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -240,7 +238,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -259,8 +257,8 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -277,7 +275,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -296,8 +294,8 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -314,7 +312,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
         elevation={0}
         sx={{
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           overflow: 'hidden',
         }}
@@ -323,19 +321,19 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Standard Delivery Charge
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Tax Percentage (%)
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Cash On Delivery Fee
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Additional Handling
                 </TableCell>
-                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 120 }}>
+                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 120 }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -348,7 +346,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
                     hover
                     sx={{
                       '&:hover': { bgcolor: '#FDFBF9' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
                     <TableCell sx={{ color: '#141311', fontWeight: 600, fontSize: '0.9rem' }}>
@@ -375,10 +373,10 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
                         sx={{
                           borderRadius: '0px',
                           color: '#141311',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           fontSize: '0.75rem',
                           fontWeight: 600,
-                          '&:hover': { borderColor: '#B98C2D', color: '#B98C2D', bgcolor: '#F9F5EC' },
+                          '&:hover': { borderColor: '#C53261', color: '#C53261', bgcolor: '#FFF5F8' },
                         }}
                       >
                         Edit
@@ -389,10 +387,26 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
               ) : (
                 <TableRow>
                   <TableCell colSpan={5} align="center" sx={{ py: 6, color: '#8C7A70' }}>
-                    <SettingsIcon sx={{ fontSize: 36, color: '#D2AA2D', mb: 1 }} />
-                    <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311' }}>
+                    <SettingsIcon sx={{ fontSize: 36, color: '#C5A059', mb: 1 }} />
+                    <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311', mb: 2 }}>
                       No store settings configured yet
                     </Typography>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      startIcon={<EditIcon />}
+                      onClick={() => handleEditItem({ deliveryCharge: 200, taxPercentage: 0, other1: 0, other2: 0 })}
+                      sx={{
+                        borderRadius: '0px',
+                        color: '#141311',
+                        borderColor: '#141311',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        '&:hover': { borderColor: '#C53261', color: '#C53261', bgcolor: '#FFF5F8' },
+                      }}
+                    >
+                      Configure Store Rates Now
+                    </Button>
                   </TableCell>
                 </TableRow>
               )}
@@ -410,7 +424,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 20px 40px rgba(18, 11, 16, 0.1)',
           },
         }}
@@ -420,7 +434,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             p: 2.5,
           }}
         >
@@ -514,7 +528,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
             </Box>
           </DialogContent>
 
-          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #E8DFC8', gap: 1 }}>
+          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #F0DCE3', gap: 1 }}>
             <Button
               onClick={() => setIsModalVisible(false)}
               disabled={isLoading}
@@ -526,7 +540,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
                 letterSpacing: '0.08em',
                 fontWeight: 600,
                 px: 2.5,
-                '&:hover': { bgcolor: '#F9F5EC', color: '#141311' },
+                '&:hover': { bgcolor: '#FFF5F8', color: '#141311' },
               }}
             >
               Cancel
@@ -545,7 +559,7 @@ const FilterableTable = ({ settings = [], fetchSettings, isPageLoading = false }
                 fontWeight: 600,
                 px: 3,
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
               }}
             >
               {isLoading ? 'Updating...' : 'Save Settings'}

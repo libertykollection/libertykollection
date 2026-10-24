@@ -1,7 +1,7 @@
 import prisma from './util/prisma';
 
 export default async function sitemap() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk';
 
     try {
         // 1. Fetch Products
@@ -59,8 +59,15 @@ export default async function sitemap() {
             ...categoryEntries,
             ...blogEntries,
         ];
+    } catch (error) {
+        console.warn('Could not query database for dynamic sitemap entries:', error?.message);
+        return [
+            { url: baseUrl, lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
+            { url: `${baseUrl}/customer/pages/blog`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
+            { url: `${baseUrl}/customer/pages/aboutus`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
+            { url: `${baseUrl}/customer/pages/contactus`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.4 },
+        ];
     } finally {
-        // Disconnect to release the connection back to the pool immediately in tight connection environments
         await prisma.$disconnect();
     }
 }

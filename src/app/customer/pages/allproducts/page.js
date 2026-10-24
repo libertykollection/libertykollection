@@ -181,7 +181,7 @@ const AllProducts = () => {
 
       <div className="container mx-auto max-w-7xl px-4 md:px-8 py-10">
         {/* Filters Bar */}
-        <div className="flex items-center justify-between gap-3 mb-10 overflow-x-auto pb-2 border-b border-[#E8DFC8]">
+        <div className="flex items-center justify-between gap-3 mb-10 overflow-x-auto pb-2 border-b border-[#F0DCE3]">
           <div className="flex items-center gap-2">
             {['All', 'New Release', 'Popularity', 'Best Seller', 'Sale'].map((filter) => (
               <button
@@ -190,7 +190,7 @@ const AllProducts = () => {
                 className={`px-5 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition-all border ${
                   activeFilter === filter
                     ? 'bg-[#141311] text-white border-[#141311]'
-                    : 'bg-white text-[#8C7A70] border-[#E8DFC8] hover:border-[#B98C2D] hover:text-[#141311]'
+                    : 'bg-white text-[#8C7A70] border-[#F0DCE3] hover:border-[#C53261] hover:text-[#141311]'
                 }`}
               >
                 {filter}
@@ -245,7 +245,7 @@ const AllProducts = () => {
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-theme-secondary">
+                      <div className="w-full h-full flex items-center justify-center text-theme-primary">
                         <FiShoppingBag size={28} />
                       </div>
                     )}
@@ -301,7 +301,7 @@ const AllProducts = () => {
           </div>
         ) : (
           <div className="py-24 text-center bg-white border border-theme-border p-8">
-            <FiShoppingBag className="mx-auto text-4xl text-theme-secondary mb-3" />
+            <FiShoppingBag className="mx-auto text-4xl text-theme-primary mb-3" />
             <p className="text-sm font-serif text-theme-dark">No products found matching &ldquo;{searchQuery}&rdquo;</p>
             <button
               className="mt-4 text-theme-primary text-xs font-bold uppercase tracking-widest hover:underline"

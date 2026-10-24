@@ -39,8 +39,8 @@ import ntc from 'ntcjs';
 
 const COSMETIC_PRESETS = [
   { name: 'Velvet Espresso', hex: '#141311' },
-  { name: 'Dusty Rose', hex: '#B98C2D' },
-  { name: 'Rose Gold', hex: '#D2AA2D' },
+  { name: 'Dusty Rose', hex: '#C53261' },
+  { name: 'Rose Gold', hex: '#C5A059' },
   { name: 'Pillow Talk Nude', hex: '#C98A7D' },
   { name: 'Berry Velvet', hex: '#6B1D2F' },
   { name: 'Ruby Satin', hex: '#9E1B32' },
@@ -56,13 +56,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -70,7 +70,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -82,7 +82,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
   const [isLoading, setIsLoading] = useState(false);
   const [editColorId, setEditColorId] = useState(null);
   const [newColorName, setNewColorName] = useState('');
-  const [newColorHex, setNewColorHex] = useState('#B98C2D');
+  const [newColorHex, setNewColorHex] = useState('#C53261');
   const [copiedHex, setCopiedHex] = useState(null);
 
   useEffect(() => {
@@ -126,12 +126,12 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
     if (color) {
       setEditColorId(color.id);
       setNewColorName(color.name || '');
-      setNewColorHex(color.hex || '#B98C2D');
+      setNewColorHex(color.hex || '#C53261');
     } else {
       setEditColorId(null);
-      setNewColorHex('#B98C2D');
+      setNewColorHex('#C53261');
       try {
-        const ntcResult = ntc.name('#B98C2D');
+        const ntcResult = ntc.name('#C53261');
         setNewColorName(ntcResult[1] || 'Dusty Rose');
       } catch {
         setNewColorName('Dusty Rose');
@@ -270,8 +270,8 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
             border: '1px solid #141311',
             boxShadow: 'none',
             '&:hover': {
-              bgcolor: '#B98C2D',
-              borderColor: '#B98C2D',
+              bgcolor: '#C53261',
+              borderColor: '#C53261',
               boxShadow: 'none',
             },
           }}
@@ -288,7 +288,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -307,8 +307,8 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -325,7 +325,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               height: '100%',
               display: 'flex',
@@ -344,7 +344,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                       width: 24,
                       height: 24,
                       bgcolor: item.hex || '#000',
-                      border: '1px solid #E8DFC8',
+                      border: '1px solid #F0DCE3',
                       cursor: 'pointer',
                       transition: 'transform 0.15s ease',
                       '&:hover': {
@@ -372,7 +372,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
         elevation={0}
         sx={{
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           overflow: 'hidden',
         }}
@@ -381,7 +381,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
         <Box
           sx={{
             p: 2,
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
             justifyContent: 'space-between',
@@ -421,19 +421,19 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 80 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 80 }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 140 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 140 }}>
                   Swatch
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Shade Name
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Hex Code
                 </TableCell>
-                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 120 }}>
+                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 120 }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -446,7 +446,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                     hover
                     sx={{
                       '&:hover': { bgcolor: '#FDFBF9' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
                     <TableCell sx={{ color: '#8C7A70', fontSize: '0.85rem', fontWeight: 500 }}>
@@ -460,7 +460,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                             width: 36,
                             height: 36,
                             bgcolor: item.hex || '#000',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                           }}
                         />
@@ -486,16 +486,16 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                             fontFamily: 'monospace',
                             fontSize: '0.75rem',
                             fontWeight: 600,
-                            bgcolor: '#F9F5EC',
+                            bgcolor: '#FFF5F8',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                           }}
                         />
                         <Tooltip title={copiedHex === item.hex ? 'Copied!' : 'Copy Hex'}>
                           <IconButton
                             size="small"
                             onClick={() => copyToClipboard(item.hex)}
-                            sx={{ color: '#8C7A70', p: 0.5, '&:hover': { color: '#B98C2D' } }}
+                            sx={{ color: '#8C7A70', p: 0.5, '&:hover': { color: '#C53261' } }}
                           >
                             {copiedHex === item.hex ? <CheckIcon sx={{ fontSize: 16, color: '#2E7D32' }} /> : <CopyIcon sx={{ fontSize: 16 }} />}
                           </IconButton>
@@ -511,7 +511,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                           sx={{
                             color: '#8C7A70',
                             borderRadius: '0px',
-                            '&:hover': { color: '#B98C2D', bgcolor: '#F9F5EC' },
+                            '&:hover': { color: '#C53261', bgcolor: '#FFF5F8' },
                           }}
                         >
                           <EditIcon sx={{ fontSize: 18 }} />
@@ -534,7 +534,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
               ) : (
                 <TableRow>
                   <TableCell colSpan={5} align="center" sx={{ py: 6, color: '#8C7A70' }}>
-                    <PaletteIcon sx={{ fontSize: 36, color: '#D2AA2D', mb: 1 }} />
+                    <PaletteIcon sx={{ fontSize: 36, color: '#C5A059', mb: 1 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311' }}>
                       No shades found matching your search
                     </Typography>
@@ -558,7 +558,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 20px 40px rgba(18, 11, 16, 0.1)',
           },
         }}
@@ -568,7 +568,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             p: 2.5,
           }}
         >
@@ -591,7 +591,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
             sx={{
               p: 2.5,
               mb: 3,
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#FBF9F7',
               display: 'flex',
               alignItems: 'center',
@@ -603,7 +603,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                 width: 64,
                 height: 64,
                 bgcolor: newColorHex,
-                border: '1px solid #E8DFC8',
+                border: '1px solid #F0DCE3',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                 flexShrink: 0,
               }}
@@ -615,7 +615,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
               <Typography variant="h6" sx={{ color: '#141311', fontWeight: 600, fontFamily: 'serif' }}>
                 {newColorName || 'Select Shade Name'}
               </Typography>
-              <Typography variant="caption" sx={{ fontFamily: 'monospace', color: '#B98C2D', fontWeight: 600 }}>
+              <Typography variant="caption" sx={{ fontFamily: 'monospace', color: '#C53261', fontWeight: 600 }}>
                 {newColorHex.toUpperCase()}
               </Typography>
             </Box>
@@ -631,7 +631,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  border: '1px solid #E8DFC8',
+                  border: '1px solid #F0DCE3',
                   p: 0.75,
                   bgcolor: '#fff',
                   height: 48,
@@ -684,7 +684,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                   } catch {}
                 }}
                 sx={{
-                  color: '#B98C2D',
+                  color: '#C53261',
                   textTransform: 'none',
                   fontSize: '0.75rem',
                   p: 0,
@@ -726,22 +726,22 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
                         height: 12,
                         bgcolor: preset.hex,
                         borderRadius: '0px',
-                        border: '1px solid #E8DFC8',
+                        border: '1px solid #F0DCE3',
                         ml: 0.5,
                       }}
                     />
                   }
                   sx={{
                     borderRadius: '0px',
-                    border: '1px solid #E8DFC8',
-                    bgcolor: newColorHex.toLowerCase() === preset.hex.toLowerCase() ? '#F9F5EC' : '#fff',
+                    border: '1px solid #F0DCE3',
+                    bgcolor: newColorHex.toLowerCase() === preset.hex.toLowerCase() ? '#FFF5F8' : '#fff',
                     color: '#141311',
                     fontWeight: 500,
                     fontSize: '0.75rem',
                     cursor: 'pointer',
                     '&:hover': {
-                      bgcolor: '#F9F5EC',
-                      borderColor: '#D2AA2D',
+                      bgcolor: '#FFF5F8',
+                      borderColor: '#C5A059',
                     },
                   }}
                 />
@@ -750,7 +750,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
           </Box>
         </DialogContent>
 
-        <DialogActions sx={{ p: 2.5, borderTop: '1px solid #E8DFC8', gap: 1 }}>
+        <DialogActions sx={{ p: 2.5, borderTop: '1px solid #F0DCE3', gap: 1 }}>
           <Button
             onClick={() => setIsModalOpen(false)}
             disabled={isLoading}
@@ -762,7 +762,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
               letterSpacing: '0.08em',
               fontWeight: 600,
               px: 2.5,
-              '&:hover': { bgcolor: '#F9F5EC', color: '#141311' },
+              '&:hover': { bgcolor: '#FFF5F8', color: '#141311' },
             }}
           >
             Cancel
@@ -781,7 +781,7 @@ const FilterableTable = ({ colors = [], fetchColors, isPageLoading = false }) =>
               fontWeight: 600,
               px: 3,
               boxShadow: 'none',
-              '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+              '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
             }}
           >
             {isLoading ? 'Saving...' : editColorId ? 'Update Shade' : 'Save Shade'}

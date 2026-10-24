@@ -48,13 +48,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -62,14 +62,14 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
 
 const getImageUrl = (url) => {
   if (!url) return null;
-  if (url.startsWith('http')) return url;
+  if (url.startsWith('http') || url.startsWith('/') || url.startsWith('data:')) return url;
   return `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${url}`;
 };
 
@@ -158,7 +158,7 @@ const AdminOrdersPage = () => {
   if (loading) {
     return (
       <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-        <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#B98C2D' }} />
+        <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#C53261' }} />
       </Box>
     );
   }
@@ -194,7 +194,7 @@ const AdminOrdersPage = () => {
               borderRadius: '0px',
               bgcolor: '#fff',
               color: '#141311',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               p: 1.25,
               '&:hover': { bgcolor: '#141311', color: '#fff' }
             }}
@@ -202,7 +202,7 @@ const AdminOrdersPage = () => {
             <ArrowBackIcon sx={{ fontSize: '0.9rem', ml: 0.5 }} />
           </IconButton>
           <Box>
-            <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#B98C2D', display: 'block', mb: 0.2 }}>
+            <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#C53261', display: 'block', mb: 0.2 }}>
               Admin Console • Order Details
             </Typography>
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.02em' }}>
@@ -218,7 +218,7 @@ const AdminOrdersPage = () => {
             startIcon={<PrintIcon />}
             sx={{
               borderRadius: '0px',
-              borderColor: '#E8DFC8',
+              borderColor: '#F0DCE3',
               color: '#141311',
               bgcolor: '#fff',
               px: 3,
@@ -227,7 +227,7 @@ const AdminOrdersPage = () => {
               fontSize: '0.8rem',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7' }
+              '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7' }
             }}
           >
             Print Packing Slip
@@ -242,7 +242,7 @@ const AdminOrdersPage = () => {
           sx={{
             p: { xs: 2.5, md: 4 },
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             bgcolor: '#fff'
           }}
         >
@@ -250,7 +250,7 @@ const AdminOrdersPage = () => {
             {/* General Information Section */}
             <Grid item xs={12} lg={6}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
-                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                   <CalendarIcon sx={{ fontSize: '1.25rem' }} />
                 </Box>
                 <Typography variant="h6" sx={{ fontWeight: 800, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -284,7 +284,7 @@ const AdminOrdersPage = () => {
                           PaperProps: {
                             sx: {
                               borderRadius: '0px',
-                              border: '1px solid #E8DFC8',
+                              border: '1px solid #F0DCE3',
                               '& .MuiMenuItem-root': { fontSize: '0.85rem' }
                             }
                           }
@@ -325,13 +325,13 @@ const AdminOrdersPage = () => {
                     Customer:
                   </Typography>
                   <Chip
-                    icon={<PersonIcon sx={{ fontSize: '1rem !important', color: '#B98C2D' }} />}
+                    icon={<PersonIcon sx={{ fontSize: '1rem !important', color: '#C53261' }} />}
                     label={order.user?.name || `Customer ID: ${order.userId || 'Guest'}`}
                     size="small"
                     sx={{
                       borderRadius: '0px',
                       bgcolor: '#FBF9F7',
-                      border: '1px solid #E8DFC8',
+                      border: '1px solid #F0DCE3',
                       fontWeight: 700,
                       color: '#141311',
                       fontSize: '0.75rem'
@@ -349,7 +349,7 @@ const AdminOrdersPage = () => {
                     sx={{
                       borderRadius: '0px',
                       bgcolor: '#FBF9F7',
-                      border: '1px solid #E8DFC8',
+                      border: '1px solid #F0DCE3',
                       fontWeight: 700,
                       color: '#141311',
                       fontSize: '0.75rem'
@@ -365,13 +365,13 @@ const AdminOrdersPage = () => {
                 sx={{
                   bgcolor: '#FBF9F7',
                   borderRadius: '0px',
-                  border: '1px solid #E8DFC8',
+                  border: '1px solid #F0DCE3',
                   p: 3,
                   height: '100%'
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
-                  <Box sx={{ p: 1, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+                  <Box sx={{ p: 1, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                     <MapPinIcon sx={{ fontSize: '1.25rem' }} />
                   </Box>
                   <Typography variant="h6" sx={{ fontWeight: 800, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -381,7 +381,7 @@ const AdminOrdersPage = () => {
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <MapPinIcon sx={{ color: '#D2AA2D', fontSize: '1.25rem', mt: 0.5 }} />
+                    <MapPinIcon sx={{ color: '#C5A059', fontSize: '1.25rem', mt: 0.5 }} />
                     <Box>
                       <Typography variant="body2" sx={{ color: '#141311', fontWeight: 700, mb: 0.5, fontSize: '0.85rem' }}>
                         Delivery Destination
@@ -393,12 +393,12 @@ const AdminOrdersPage = () => {
                   </Box>
 
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <EmailIcon sx={{ color: '#D2AA2D', fontSize: '1.25rem', mt: 0.5 }} />
+                    <EmailIcon sx={{ color: '#C5A059', fontSize: '1.25rem', mt: 0.5 }} />
                     <Box>
                       <Typography variant="body2" sx={{ color: '#141311', fontWeight: 700, mb: 0.5, fontSize: '0.85rem' }}>
                         Contact Channel
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#B98C2D', fontWeight: 600, fontSize: '0.85rem' }}>
+                      <Typography variant="body2" sx={{ color: '#C53261', fontWeight: 600, fontSize: '0.85rem' }}>
                         {order.email || order.user?.email || 'N/A'} {order.phone && `• ${order.phone}`}
                       </Typography>
                     </Box>
@@ -409,9 +409,9 @@ const AdminOrdersPage = () => {
           </Grid>
 
           {/* Shipping Information & Tracking Form */}
-          <Box sx={{ mt: 5, pt: 4, borderTop: '1px solid #E8DFC8' }}>
+          <Box sx={{ mt: 5, pt: 4, borderTop: '1px solid #F0DCE3' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
-              <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D', display: 'flex' }}>
+              <Box sx={{ p: 1, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261', display: 'flex' }}>
                 <ShippingIcon sx={{ fontSize: '1.25rem' }} />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 800, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -500,25 +500,25 @@ const AdminOrdersPage = () => {
           </Box>
 
           {/* Line Items Table */}
-          <Box sx={{ mt: 5, pt: 4, borderTop: '1px solid #E8DFC8' }}>
+          <Box sx={{ mt: 5, pt: 4, borderTop: '1px solid #F0DCE3' }}>
             <Typography variant="h6" sx={{ fontWeight: 800, color: '#141311', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em', mb: 2.5 }}>
               Purchased Cosmetics Products ({order.orderItems?.length || 0})
             </Typography>
-            <TableContainer sx={{ border: '1px solid #E8DFC8', borderRadius: '0px', overflowX: 'auto', mb: 3 }}>
+            <TableContainer sx={{ border: '1px solid #F0DCE3', borderRadius: '0px', overflowX: 'auto', mb: 3 }}>
               <Table stickyHeader>
                 <TableHead>
                   <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #E8DFC8' }}>Product</TableCell>
-                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #E8DFC8' }}>Shade & Details</TableCell>
-                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #E8DFC8' }}>Quantity</TableCell>
-                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #E8DFC8' }}>Unit Price</TableCell>
-                    <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #E8DFC8' }}>Line Total</TableCell>
+                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #F0DCE3' }}>Product</TableCell>
+                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #F0DCE3' }}>Shade & Details</TableCell>
+                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #F0DCE3' }}>Quantity</TableCell>
+                    <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #F0DCE3' }}>Unit Price</TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: '1px solid #F0DCE3' }}>Line Total</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {order.orderItems?.map((item, idx) => (
-                    <TableRow key={item.id || idx} sx={{ bgcolor: idx % 2 === 0 ? '#fff' : '#FAF8F6', borderBottom: '1px solid #E8DFC8' }}>
-                      <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableRow key={item.id || idx} sx={{ bgcolor: idx % 2 === 0 ? '#fff' : '#FAF8F6', borderBottom: '1px solid #F0DCE3' }}>
+                      <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                           {item.product && item.product.images && item.product.images.length > 0 ? (
                             <Box sx={{
@@ -527,7 +527,7 @@ const AdminOrdersPage = () => {
                               height: 52,
                               borderRadius: '0px',
                               overflow: 'hidden',
-                              border: '1px solid #E8DFC8',
+                              border: '1px solid #F0DCE3',
                               flexShrink: 0,
                               bgcolor: '#FBF9F7'
                             }}>
@@ -544,12 +544,12 @@ const AdminOrdersPage = () => {
                               width: 52,
                               height: 52,
                               bgcolor: '#FBF9F7',
-                              border: '1px solid #E8DFC8',
+                              border: '1px solid #F0DCE3',
                               borderRadius: '0px',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              color: '#D2AA2D',
+                              color: '#C5A059',
                               flexShrink: 0
                             }}>
                               <InventoryIcon sx={{ fontSize: '1.2rem' }} />
@@ -565,7 +565,7 @@ const AdminOrdersPage = () => {
                           </Box>
                         </Box>
                       </TableCell>
-                      <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                      <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                           {item.selectedColor && (
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -581,17 +581,17 @@ const AdminOrdersPage = () => {
                           )}
                         </Box>
                       </TableCell>
-                      <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                      <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                         <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311' }}>
                           × {item.quantity}
                         </Typography>
                       </TableCell>
-                      <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                      <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                         <Typography variant="body2" sx={{ color: '#8C7A70', fontWeight: 600 }}>
                           {item.price?.toLocaleString()} PKR
                         </Typography>
                       </TableCell>
-                      <TableCell align="right" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                      <TableCell align="right" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                         <Typography variant="body2" sx={{ fontWeight: 800, color: '#141311' }}>
                           {(item.quantity * item.price).toLocaleString()} PKR
                         </Typography>
@@ -611,7 +611,7 @@ const AdminOrdersPage = () => {
                 bgcolor: '#FBF9F7',
                 p: 3,
                 borderRadius: '0px',
-                border: '1px solid #E8DFC8',
+                border: '1px solid #F0DCE3',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 1.5
@@ -626,8 +626,8 @@ const AdminOrdersPage = () => {
 
               {order.discount > 0 && (
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#B98C2D', fontSize: '0.85rem' }}>Coupon / Discount</Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#B98C2D', fontSize: '0.85rem' }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#C53261', fontSize: '0.85rem' }}>Coupon / Discount</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#C53261', fontSize: '0.85rem' }}>
                     - {order.discount.toLocaleString()} PKR
                   </Typography>
                 </Box>
@@ -660,9 +660,9 @@ const AdminOrdersPage = () => {
                 color: '#fff'
               }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <PaymentIcon sx={{ color: '#B98C2D', fontSize: '1.25rem' }} />
+                  <PaymentIcon sx={{ color: '#C53261', fontSize: '1.25rem' }} />
                   <Box>
-                    <Typography variant="caption" sx={{ color: '#D2AA2D', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.65rem' }}>
+                    <Typography variant="caption" sx={{ color: '#C5A059', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.65rem' }}>
                       Grand Total Payable
                     </Typography>
                     <Typography variant="body1" sx={{ fontWeight: 800, color: '#fff', fontSize: '0.9rem' }}>

@@ -195,7 +195,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 transition-all font-sans">
       {/* 1. Main Header Bar (Soft Cashmere Cream & Warm Espresso) */}
-      <div className="w-full bg-[#FAF6F4] text-[#141311] py-3 sm:py-3.5 px-4 lg:px-8 border-b border-[#E8DFC8] shadow-xs">
+      <div className="w-full bg-[#FAF6F4] text-[#141311] py-3 sm:py-3.5 px-4 lg:px-8 border-b border-[#F0DCE3] shadow-xs">
         <div className="container mx-auto flex items-center justify-between gap-4 lg:gap-6 max-w-[1536px]">
           {/* Logo & Mobile Menu Toggle */}
           <div className="flex items-center gap-3">
@@ -246,13 +246,13 @@ const Header = () => {
 
             {/* Live Search Suggestion Box */}
             {((searchResults.length > 0 || searchCategories.length > 0) || isSearching) && searchQuery.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white text-gray-900 rounded-none shadow-2xl border border-[#E8DFC8] max-h-[60vh] overflow-y-auto z-50 py-2">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white text-gray-900 rounded-none shadow-2xl border border-[#F0DCE3] max-h-[60vh] overflow-y-auto z-50 py-2">
                 {isSearching ? (
                   <div className="p-4 text-center text-xs text-gray-500 font-medium">Searching beauty products...</div>
                 ) : (
                   <>
                     {searchCategories.length > 0 && (
-                      <div className="px-3 pb-2 border-b border-[#E8DFC8]">
+                      <div className="px-3 pb-2 border-b border-[#F0DCE3]">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block px-2 py-1">
                           Beauty Categories
                         </span>
@@ -321,7 +321,7 @@ const Header = () => {
 
                     <div
                       onClick={handleSearch}
-                      className="p-2.5 text-center text-xs font-bold text-theme-primary hover:bg-theme-light cursor-pointer transition-colors border-t border-[#E8DFC8]"
+                      className="p-2.5 text-center text-xs font-bold text-theme-primary hover:bg-theme-light cursor-pointer transition-colors border-t border-[#F0DCE3]"
                     >
                       View All Results &rarr;
                     </div>
@@ -334,7 +334,7 @@ const Header = () => {
           {/* Right Section: Call For Order + Account + Wishlist + Cart */}
           <div className="flex items-center gap-5 sm:gap-6 flex-shrink-0">
             {/* Call For Order */}
-            <div className="hidden xl:flex flex-col text-left leading-tight shrink-0 border-r border-[#E8DFC8] pr-5">
+            <div className="hidden xl:flex flex-col text-left leading-tight shrink-0 border-r border-[#F0DCE3] pr-5">
               <span className="text-[11px] text-[#8A7973] font-medium">Call For Order:</span>
               <a
                 href={`tel:${companyPhone}`}
@@ -369,7 +369,7 @@ const Header = () => {
               {isProfileDropdownOpen && (
                 <div
                   ref={profileDropdownRef}
-                  className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-none shadow-xl border border-[#E8DFC8] py-2 z-50"
+                  className="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-none shadow-xl border border-[#F0DCE3] py-2 z-50"
                 >
                   {userRole === 'ADMIN' ? (
                     <Link
@@ -394,7 +394,7 @@ const Header = () => {
                       </Link>
                     </>
                   )}
-                  <div className="border-t border-[#E8DFC8] my-1"></div>
+                  <div className="border-t border-[#F0DCE3] my-1"></div>
                   <button
                     onClick={handleSignOut}
                     className="w-full text-left px-4 py-2 text-xs font-bold text-red-600 hover:bg-red-50 flex items-center gap-1.5"
@@ -435,7 +435,7 @@ const Header = () => {
         <div className="md:hidden mt-3 pt-2">
           <form
             onSubmit={handleSearch}
-            className="relative flex items-center bg-white border border-[#E8DFC8] rounded-none h-10 pl-4 pr-1"
+            className="relative flex items-center bg-white border border-[#F0DCE3] rounded-none h-10 pl-4 pr-1"
           >
             <input
               type="text"
@@ -454,8 +454,8 @@ const Header = () => {
         </div>
       </div>
 
-      {/* 2. Sub-Navigation Bar (Clean Soft White Nav with Gloria Onyx Typography) */}
-      <nav className="hidden lg:block bg-white border-b border-theme-border text-sm font-bold text-theme-dark shadow-xs">
+      {/* 2. Sub-Navigation Bar */}
+      <nav className="hidden lg:block bg-white border-b border-theme-border shadow-xs" style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.8125rem', fontWeight: 600, color: 'var(--theme-dark)' }}>
         <div className="container mx-auto px-4 lg:px-8 max-w-[1536px] flex items-center justify-between min-h-[64px]">
           <div className="flex items-center">
             {/* Shop by Categories Button */}
@@ -508,7 +508,7 @@ const Header = () => {
 
             {/* Standard Nav Links */}
             <div className="flex items-center space-x-7">
-              <Link href="/" className="py-5 text-theme-dark hover:text-theme-primary transition-colors font-bold">
+              <Link href="/" className="py-5 text-theme-dark hover:text-theme-primary transition-colors font-bold" style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.8125rem', letterSpacing: '0.02em' }}>
                 Home
               </Link>
 
@@ -558,7 +558,7 @@ const Header = () => {
                       <Link
                         href="/customer/pages/allproducts?category=Makeup"
                         onClick={() => setIsShopDropdownOpen(false)}
-                        className="text-xs font-bold uppercase tracking-wider text-theme-primary block pb-2 border-b border-[#E8DFC8]"
+                        className="text-xs font-bold uppercase tracking-wider text-theme-primary block pb-2 border-b border-[#F0DCE3]"
                       >
                         Luxe Makeup
                       </Link>
@@ -582,7 +582,7 @@ const Header = () => {
                       <Link
                         href="/customer/pages/allproducts?category=Haircare"
                         onClick={() => setIsShopDropdownOpen(false)}
-                        className="text-xs font-bold uppercase tracking-wider text-theme-primary block pb-2 border-b border-[#E8DFC8]"
+                        className="text-xs font-bold uppercase tracking-wider text-theme-primary block pb-2 border-b border-[#F0DCE3]"
                       >
                         Hair & Body Care
                       </Link>
@@ -624,7 +624,7 @@ const Header = () => {
                 </Link>
 
                 {isFragranceDropdownOpen && (
-                  <div className="absolute left-0 top-full w-48 bg-white shadow-2xl rounded-none border border-[#E8DFC8] py-3 z-50 animate-in fade-in duration-150">
+                  <div className="absolute left-0 top-full w-48 bg-white shadow-2xl rounded-none border border-[#F0DCE3] py-3 z-50 animate-in fade-in duration-150">
                     <ul className="space-y-1 text-xs text-gray-700 font-normal">
                       {['Eau de Parfum', 'Body Mists & Sprays', 'Luxury Floral Scents', 'Warm Vanilla & Amber', 'Travel Minis'].map((item) => (
                         <li key={item}>
@@ -663,7 +663,7 @@ const Header = () => {
               <FiChevronDown size={12} className="text-[#8A7973]" />
             </div>
 
-            <span className="h-4 w-px bg-[#E8DFC8]"></span>
+            <span className="h-4 w-px bg-[#F0DCE3]"></span>
 
             <div className="flex items-center gap-1 cursor-pointer hover:text-theme-primary transition-colors py-5">
               <span>English</span>
@@ -677,7 +677,7 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm">
           <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-white shadow-2xl flex flex-col">
-            <div className="p-4 bg-[#FAF6F4] border-b border-[#E8DFC8] text-[#141311] flex items-center justify-between">
+            <div className="p-4 bg-[#FAF6F4] border-b border-[#F0DCE3] text-[#141311] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xl font-black tracking-tight text-[#141311]">
                   Store<span className="text-theme-primary">2u</span>
@@ -718,7 +718,7 @@ const Header = () => {
                 ))}
               </div>
 
-              <div className="border-t border-[#E8DFC8] my-4 pt-4 space-y-2 text-sm font-semibold">
+              <div className="border-t border-[#F0DCE3] my-4 pt-4 space-y-2 text-sm font-semibold">
                 <Link href="/customer/pages/collections" onClick={() => setIsMobileMenuOpen(false)} className="block p-2 text-gray-700 hover:text-theme-primary">
                   Collections
                 </Link>

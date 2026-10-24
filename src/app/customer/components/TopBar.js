@@ -25,7 +25,7 @@ const TopBar = () => {
         <div className="hidden sm:flex items-center space-x-3 text-[11px] font-semibold">
           <span className="flex items-center gap-1.5">
             <FiTruck className="text-brand-primary text-sm" />
-            <span>{brandName ? `${brandName} Atelier` : 'Prestige Atelier'} • Express White-Glove Delivery</span>
+            <span>{brandName ? `${brandName}` : 'Gloria Cosmetics'} • Express Delivery</span>
           </span>
           <span className="text-brand-border">•</span>
           <span className="text-brand-hover">Complimentary Shipping on luxury orders</span>
@@ -33,7 +33,7 @@ const TopBar = () => {
 
         {/* Center: Welcome Banner */}
         <div className="flex-1 text-center font-bold text-[12px] sm:text-[12px] text-brand-darker tracking-wide font-serif">
-          <span>{brandName ? `Welcome To ${brandName}` : 'Welcome To Our Atelier'}</span>
+          <span>{brandName ? `Welcome To ${brandName}` : 'Welcome To Gloria Cosmetics'}</span>
         </div>
 
         {/* Right: Quick Links */}

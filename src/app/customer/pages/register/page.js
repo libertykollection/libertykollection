@@ -150,9 +150,9 @@ const Register = () => {
   const inputStyle = {
     '& .MuiOutlinedInput-root': {
       borderRadius: '0px',
-      bgcolor: '#F9F5EC',
-      '& fieldset': { borderColor: '#E8DFC8' },
-      '&:hover fieldset': { borderColor: '#B98C2D' },
+      bgcolor: '#FFF5F8',
+      '& fieldset': { borderColor: '#F0DCE3' },
+      '&:hover fieldset': { borderColor: '#C53261' },
       '&.Mui-focused fieldset': { borderColor: '#141311', borderWidth: '1px' },
       '&.Mui-focused': { bgcolor: '#fff' },
     },
@@ -180,13 +180,13 @@ const Register = () => {
           p: { xs: 4, sm: 6 },
           borderRadius: '0px',
           background: '#FFFFFF',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           boxShadow: 'none',
         }}>
           <Box sx={{ textAlign: 'center', mb: 4 }}>
-            <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#B98C2D', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
+            <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#C53261', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
               <HiSparkles size={14} />
-              {brandName ? `${brandName} Atelier` : 'Prestige Atelier'}
+              {brandName ? `${brandName}` : 'Gloria Cosmetics'}
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.01em' }}>
               Create Account
@@ -277,13 +277,13 @@ const Register = () => {
                     sx={{
                       height: '48px',
                       borderRadius: '0px',
-                      border: '1px dashed #E8DFC8',
+                      border: '1px dashed #F0DCE3',
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      color: formData.image ? '#B98C2D' : '#6B7280',
-                      bgcolor: '#F9F5EC',
+                      color: formData.image ? '#C53261' : '#6B7280',
+                      bgcolor: '#FFF5F8',
                       '&:hover': { bgcolor: '#fff', borderColor: '#141311' }
                     }}
                   >
@@ -324,7 +324,7 @@ const Register = () => {
                   <Typography
                     component="span" onClick={() => router.push('/login')}
                     sx={{
-                      color: '#B98C2D',
+                      color: '#C53261',
                       fontWeight: 700,
                       cursor: 'pointer',
                       textTransform: 'uppercase',

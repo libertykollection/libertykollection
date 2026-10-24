@@ -53,13 +53,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -67,7 +67,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -385,8 +385,8 @@ const AddBlogs = () => {
             border: '1px solid #141311',
             boxShadow: 'none',
             '&:hover': {
-              bgcolor: '#B98C2D',
-              borderColor: '#B98C2D',
+              bgcolor: '#C53261',
+              borderColor: '#C53261',
               boxShadow: 'none',
             },
           }}
@@ -403,7 +403,7 @@ const AddBlogs = () => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -422,8 +422,8 @@ const AddBlogs = () => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -440,7 +440,7 @@ const AddBlogs = () => {
             sx={{
               p: 2.5,
               borderRadius: '0px',
-              border: '1px solid #E8DFC8',
+              border: '1px solid #F0DCE3',
               bgcolor: '#fff',
               display: 'flex',
               alignItems: 'center',
@@ -459,8 +459,8 @@ const AddBlogs = () => {
               sx={{
                 width: 44,
                 height: 44,
-                bgcolor: '#F9F5EC',
-                color: '#B98C2D',
+                bgcolor: '#FFF5F8',
+                color: '#C53261',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -477,7 +477,7 @@ const AddBlogs = () => {
         elevation={0}
         sx={{
           borderRadius: '0px',
-          border: '1px solid #E8DFC8',
+          border: '1px solid #F0DCE3',
           bgcolor: '#fff',
           overflow: 'hidden',
         }}
@@ -486,7 +486,7 @@ const AddBlogs = () => {
         <Box
           sx={{
             p: 2,
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
             justifyContent: 'space-between',
@@ -542,22 +542,22 @@ const AddBlogs = () => {
           <Table>
             <TableHead>
               <TableRow sx={{ bgcolor: '#FBF9F7' }}>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 70 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 70 }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 80 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 80 }}>
                   Cover
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Article Details
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 160 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 160 }}>
                   Category
                 </TableCell>
-                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 180 }}>
+                <TableCell sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 180 }}>
                   Web Slug
                 </TableCell>
-                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: 110 }}>
+                <TableCell align="right" sx={{ color: '#8C7A70', fontWeight: 600, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: 110 }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -577,7 +577,7 @@ const AddBlogs = () => {
                       hover
                       sx={{
                         '&:hover': { bgcolor: '#FDFBF9' },
-                        borderBottom: '1px solid #E8DFC8',
+                        borderBottom: '1px solid #F0DCE3',
                       }}
                     >
                       <TableCell sx={{ color: '#8C7A70', fontSize: '0.85rem', fontWeight: 500 }}>
@@ -589,8 +589,8 @@ const AddBlogs = () => {
                           sx={{
                             width: 48,
                             height: 48,
-                            bgcolor: '#F9F5EC',
-                            border: '1px solid #E8DFC8',
+                            bgcolor: '#FFF5F8',
+                            border: '1px solid #F0DCE3',
                             position: 'relative',
                             overflow: 'hidden',
                           }}
@@ -605,7 +605,7 @@ const AddBlogs = () => {
                             />
                           ) : (
                             <Box sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                              <ArticleIcon sx={{ fontSize: 20, color: '#D2AA2D' }} />
+                              <ArticleIcon sx={{ fontSize: 20, color: '#C5A059' }} />
                             </Box>
                           )}
                         </Box>
@@ -628,15 +628,15 @@ const AddBlogs = () => {
                             borderRadius: '0px',
                             fontWeight: 600,
                             fontSize: '0.75rem',
-                            bgcolor: '#F9F5EC',
+                            bgcolor: '#FFF5F8',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                           }}
                         />
                       </TableCell>
 
                       <TableCell>
-                        <Typography variant="caption" sx={{ fontFamily: 'monospace', color: '#B98C2D', bgcolor: '#FBF9F7', px: 1, py: 0.5, border: '1px solid #E8DFC8', display: 'inline-block' }}>
+                        <Typography variant="caption" sx={{ fontFamily: 'monospace', color: '#C53261', bgcolor: '#FBF9F7', px: 1, py: 0.5, border: '1px solid #F0DCE3', display: 'inline-block' }}>
                           /{item.web_slug || 'no-slug'}
                         </Typography>
                       </TableCell>
@@ -649,7 +649,7 @@ const AddBlogs = () => {
                             sx={{
                               color: '#8C7A70',
                               borderRadius: '0px',
-                              '&:hover': { color: '#B98C2D', bgcolor: '#F9F5EC' },
+                              '&:hover': { color: '#C53261', bgcolor: '#FFF5F8' },
                             }}
                           >
                             <EditIcon sx={{ fontSize: 18 }} />
@@ -673,7 +673,7 @@ const AddBlogs = () => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={6} align="center" sx={{ py: 6, color: '#8C7A70' }}>
-                    <ArticleIcon sx={{ fontSize: 36, color: '#D2AA2D', mb: 1 }} />
+                    <ArticleIcon sx={{ fontSize: 36, color: '#C5A059', mb: 1 }} />
                     <Typography variant="body2" sx={{ fontWeight: 500, color: '#141311' }}>
                       No articles found matching criteria
                     </Typography>
@@ -695,7 +695,7 @@ const AddBlogs = () => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 24px 48px rgba(18, 11, 16, 0.15)',
           },
         }}
@@ -705,7 +705,7 @@ const AddBlogs = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderBottom: '1px solid #E8DFC8',
+            borderBottom: '1px solid #F0DCE3',
             p: 2.5,
           }}
         >
@@ -766,7 +766,7 @@ const AddBlogs = () => {
                   <Typography variant="caption" sx={{ color: '#8C7A70', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', mb: 0.75 }}>
                     Article Body & Rich Content *
                   </Typography>
-                  <Box sx={{ border: '1px solid #E8DFC8' }}>
+                  <Box sx={{ border: '1px solid #F0DCE3' }}>
                     <JoditEditor
                       ref={editorRef}
                       value={formData.description}
@@ -786,7 +786,7 @@ const AddBlogs = () => {
                   elevation={0}
                   sx={{
                     p: 2.5,
-                    border: '1px solid #E8DFC8',
+                    border: '1px solid #F0DCE3',
                     borderRadius: '0px',
                     bgcolor: '#FBF9F7',
                     mb: 3,
@@ -801,7 +801,7 @@ const AddBlogs = () => {
                       width: '100%',
                       height: 180,
                       bgcolor: '#fff',
-                      border: '1px dashed #D2AA2D',
+                      border: '1px dashed #C5A059',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
@@ -829,7 +829,7 @@ const AddBlogs = () => {
                       )
                     ) : (
                       <>
-                        <PhotoCameraIcon sx={{ fontSize: 32, color: '#D2AA2D', mb: 0.5 }} />
+                        <PhotoCameraIcon sx={{ fontSize: 32, color: '#C5A059', mb: 0.5 }} />
                         <Typography variant="caption" sx={{ color: '#8C7A70' }}>
                           Upload square/wide banner
                         </Typography>
@@ -849,7 +849,7 @@ const AddBlogs = () => {
                       textTransform: 'uppercase',
                       fontSize: '0.7rem',
                       fontWeight: 600,
-                      '&:hover': { borderColor: '#B98C2D', bgcolor: '#F9F5EC' },
+                      '&:hover': { borderColor: '#C53261', bgcolor: '#FFF5F8' },
                     }}
                   >
                     Select Cover Photo
@@ -862,13 +862,13 @@ const AddBlogs = () => {
                   elevation={0}
                   sx={{
                     p: 2.5,
-                    border: '1px solid #E8DFC8',
+                    border: '1px solid #F0DCE3',
                     borderRadius: '0px',
                     bgcolor: '#FBF9F7',
                   }}
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                    <SeoIcon sx={{ fontSize: 18, color: '#B98C2D' }} />
+                    <SeoIcon sx={{ fontSize: 18, color: '#C53261' }} />
                     <Typography variant="caption" sx={{ color: '#141311', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                       SEO & Meta Settings
                     </Typography>
@@ -940,7 +940,7 @@ const AddBlogs = () => {
             </Grid>
           </DialogContent>
 
-          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #E8DFC8', gap: 1 }}>
+          <DialogActions sx={{ p: 2.5, borderTop: '1px solid #F0DCE3', gap: 1 }}>
             <Button
               onClick={handleCloseDialog}
               disabled={loading}
@@ -952,7 +952,7 @@ const AddBlogs = () => {
                 letterSpacing: '0.08em',
                 fontWeight: 600,
                 px: 2.5,
-                '&:hover': { bgcolor: '#F9F5EC', color: '#141311' },
+                '&:hover': { bgcolor: '#FFF5F8', color: '#141311' },
               }}
             >
               Cancel
@@ -971,7 +971,7 @@ const AddBlogs = () => {
                 fontWeight: 600,
                 px: 3,
                 boxShadow: 'none',
-                '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
               }}
             >
               {loading ? 'Publishing...' : isEditing ? 'Update Article' : 'Publish Article'}
@@ -987,7 +987,7 @@ const AddBlogs = () => {
         PaperProps={{
           sx: {
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             p: 1,
           },
         }}

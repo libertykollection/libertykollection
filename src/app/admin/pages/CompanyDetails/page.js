@@ -27,13 +27,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -41,7 +41,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -265,7 +265,7 @@ const CompanyDetailsPage = () => {
               sx={{
                 p: { xs: 2.5, sm: 3.5 },
                 borderRadius: '0px',
-                border: '1px solid #E8DFC8',
+                border: '1px solid #F0DCE3',
                 bgcolor: '#fff',
                 height: '100%',
               }}
@@ -300,7 +300,7 @@ const CompanyDetailsPage = () => {
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  placeholder="Brief synopsis of your cosmetics atelier, ethos, and prestige products..."
+                  placeholder="Brief synopsis of your cosmetics store, ethos, and authentic products..."
                   multiline
                   rows={4}
                   sx={inputStyles}
@@ -323,7 +323,7 @@ const CompanyDetailsPage = () => {
                   px: 4,
                   py: 1.5,
                   boxShadow: 'none',
-                  '&:hover': { bgcolor: '#B98C2D', boxShadow: 'none' },
+                  '&:hover': { bgcolor: '#C53261', boxShadow: 'none' },
                 }}
               >
                 {isLoading ? 'Saving Changes...' : companyDetails ? 'Update Brand Identity' : 'Save Brand Identity'}
@@ -340,7 +340,7 @@ const CompanyDetailsPage = () => {
                 sx={{
                   p: { xs: 2.5, sm: 3 },
                   borderRadius: '0px',
-                  border: '1px solid #E8DFC8',
+                  border: '1px solid #F0DCE3',
                   bgcolor: '#fff',
                 }}
               >
@@ -353,7 +353,7 @@ const CompanyDetailsPage = () => {
                     width: '100%',
                     height: 120,
                     bgcolor: '#FBF9F7',
-                    border: '1px dashed #D2AA2D',
+                    border: '1px dashed #C5A059',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -371,7 +371,7 @@ const CompanyDetailsPage = () => {
                     />
                   ) : (
                     <Box sx={{ textAlign: 'center' }}>
-                      <CompanyIcon sx={{ color: '#D2AA2D', fontSize: 32, mb: 0.5 }} />
+                      <CompanyIcon sx={{ color: '#C5A059', fontSize: 32, mb: 0.5 }} />
                       <Typography variant="caption" sx={{ color: '#8C7A70', display: 'block' }}>
                         No logo uploaded
                       </Typography>
@@ -392,7 +392,7 @@ const CompanyDetailsPage = () => {
                     textTransform: 'uppercase',
                     fontSize: '0.7rem',
                     fontWeight: 600,
-                    '&:hover': { borderColor: '#B98C2D', bgcolor: '#F9F5EC' },
+                    '&:hover': { borderColor: '#C53261', bgcolor: '#FFF5F8' },
                   }}
                 >
                   Upload Store Logo
@@ -406,7 +406,7 @@ const CompanyDetailsPage = () => {
                 sx={{
                   p: { xs: 2.5, sm: 3 },
                   borderRadius: '0px',
-                  border: '1px solid #E8DFC8',
+                  border: '1px solid #F0DCE3',
                   bgcolor: '#fff',
                 }}
               >
@@ -419,7 +419,7 @@ const CompanyDetailsPage = () => {
                     width: 72,
                     height: 72,
                     bgcolor: '#FBF9F7',
-                    border: '1px dashed #D2AA2D',
+                    border: '1px dashed #C5A059',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -455,7 +455,7 @@ const CompanyDetailsPage = () => {
                     textTransform: 'uppercase',
                     fontSize: '0.7rem',
                     fontWeight: 600,
-                    '&:hover': { borderColor: '#B98C2D', bgcolor: '#F9F5EC' },
+                    '&:hover': { borderColor: '#C53261', bgcolor: '#FFF5F8' },
                   }}
                 >
                   Upload Favicon

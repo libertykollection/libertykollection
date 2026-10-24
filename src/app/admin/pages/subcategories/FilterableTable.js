@@ -41,13 +41,13 @@ const inputStyles = {
     backgroundColor: '#fff',
     fontSize: '0.875rem',
     '& fieldset': {
-      borderColor: '#E8DFC8',
+      borderColor: '#F0DCE3',
     },
     '&:hover fieldset': {
-      borderColor: '#D2AA2D',
+      borderColor: '#C5A059',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#B98C2D',
+      borderColor: '#C53261',
       borderWidth: '1px',
     },
   },
@@ -55,7 +55,7 @@ const inputStyles = {
     fontSize: '0.875rem',
     color: '#8C7A70',
     '&.Mui-focused': {
-      color: '#B98C2D',
+      color: '#C53261',
     },
   },
 };
@@ -64,13 +64,13 @@ const selectMenuProps = {
   PaperProps: {
     sx: {
       borderRadius: '0px',
-      border: '1px solid #E8DFC8',
+      border: '1px solid #F0DCE3',
       boxShadow: '0 12px 30px rgba(18, 11, 16, 0.08)',
       '& .MuiMenuItem-root': {
         fontSize: '0.875rem',
         '&.Mui-selected': {
           bgcolor: '#FBF9F7',
-          color: '#B98C2D',
+          color: '#C53261',
           fontWeight: 700,
         },
       },
@@ -281,14 +281,14 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
       {/* Top Loading Line */}
       {isLoading && (
         <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999 }}>
-          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#B98C2D' }} />
+          <Box className="s2u-progress-bar-primary" sx={{ height: '100%', bgcolor: '#C53261' }} />
         </Box>
       )}
 
       {/* Header section with Cosmetics branding */}
       <Box sx={{ mb: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'flex-end' }, gap: 2 }}>
         <Box>
-          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#B98C2D', display: 'block', mb: 0.5 }}>
+          <Typography variant="overline" sx={{ letterSpacing: '0.15em', fontWeight: 700, color: '#C53261', display: 'block', mb: 0.5 }}>
             Admin Console • Granular Classification
           </Typography>
           <Typography variant="h4" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.02em' }}>
@@ -330,8 +330,8 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
       {/* Metrics Row */}
       <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6} md={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <AccountTreeIcon />
             </Box>
             <Box>
@@ -345,8 +345,8 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <SearchIcon />
             </Box>
             <Box>
@@ -360,8 +360,8 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', color: '#B98C2D' }}>
+          <Paper elevation={0} sx={{ p: 2.5, bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ p: 1.5, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', color: '#C53261' }}>
               <CloudUploadIcon />
             </Box>
             <Box>
@@ -377,9 +377,9 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
       </Grid>
 
       {/* Main Table Container */}
-      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden' }}>
+      <Paper elevation={0} sx={{ bgcolor: '#fff', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden' }}>
         {/* Search Bar */}
-        <Box sx={{ p: 2.5, borderBottom: '1px solid #E8DFC8', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
+        <Box sx={{ p: 2.5, borderBottom: '1px solid #F0DCE3', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, bgcolor: '#fff' }}>
           <TextField
             size="small"
             placeholder="Search by subcategory name, parent category, or slug..."
@@ -404,25 +404,25 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '70px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '70px' }}>
                   ID
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '90px' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '90px' }}>
                   Thumbnail
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Subcategory Name
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Parent Category
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Slug ID
                 </TableCell>
-                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8' }}>
+                <TableCell sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3' }}>
                   Last Updated
                 </TableCell>
-                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #E8DFC8', width: '120px' }}>
+                <TableCell align="right" sx={{ fontWeight: 800, bgcolor: '#FBF9F7', color: '#141311', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderBottom: '1px solid #F0DCE3', width: '120px' }}>
                   Actions
                 </TableCell>
               </TableRow>
@@ -435,14 +435,14 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                     sx={{
                       bgcolor: index % 2 === 0 ? '#fff' : '#FAF8F6',
                       '&:hover': { bgcolor: '#F5EFEB' },
-                      borderBottom: '1px solid #E8DFC8',
+                      borderBottom: '1px solid #F0DCE3',
                     }}
                   >
-                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 700, color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #F0DCE3' }}>
                       #{item.id}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
-                      <Box sx={{ width: 48, height: 48, bgcolor: '#FBF9F7', border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
+                      <Box sx={{ width: 48, height: 48, bgcolor: '#FBF9F7', border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {item.imageUrl ? (
                           <Image
                             width={48}
@@ -452,35 +452,35 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                           />
                         ) : (
-                          <AccountTreeIcon sx={{ color: '#D2AA2D', fontSize: '1.25rem' }} />
+                          <AccountTreeIcon sx={{ color: '#C5A059', fontSize: '1.25rem' }} />
                         )}
                       </Box>
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 700, color: '#141311', fontSize: '0.9rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ fontWeight: 700, color: '#141311', fontSize: '0.9rem', borderBottom: '1px solid #F0DCE3' }}>
                       {item.name}
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Chip
                         label={item.category ? item.category.name : `Category #${item.categoryId || '—'}`}
                         size="small"
                         sx={{
                           bgcolor: '#FBF9F7',
                           color: '#141311',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           borderRadius: '0px',
                           fontWeight: 700,
                           fontSize: '0.75rem',
                         }}
                       />
                     </TableCell>
-                    <TableCell sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Chip
                         label={item.slug}
                         size="small"
                         sx={{
                           bgcolor: '#FBF9F7',
                           color: '#8C7A70',
-                          border: '1px solid #E8DFC8',
+                          border: '1px solid #F0DCE3',
                           borderRadius: '0px',
                           fontWeight: 600,
                           fontSize: '0.75rem',
@@ -488,10 +488,10 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                         }}
                       />
                     </TableCell>
-                    <TableCell sx={{ color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell sx={{ color: '#8C7A70', fontSize: '0.8rem', borderBottom: '1px solid #F0DCE3' }}>
                       {item.updatedAt ? new Date(item.updatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
                     </TableCell>
-                    <TableCell align="right" sx={{ borderBottom: '1px solid #E8DFC8' }}>
+                    <TableCell align="right" sx={{ borderBottom: '1px solid #F0DCE3' }}>
                       <Stack direction="row" spacing={0.5} justifyContent="flex-end">
                         <IconButton
                           size="small"
@@ -499,7 +499,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                           sx={{
                             borderRadius: '0px',
                             color: '#141311',
-                            border: '1px solid #E8DFC8',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#141311', color: '#fff' },
                           }}
@@ -511,8 +511,8 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                           onClick={() => handleDeleteItem(item.slug)}
                           sx={{
                             borderRadius: '0px',
-                            color: '#B98C2D',
-                            border: '1px solid #E8DFC8',
+                            color: '#C53261',
+                            border: '1px solid #F0DCE3',
                             p: 0.75,
                             '&:hover': { bgcolor: '#EF4444', color: '#fff', borderColor: '#EF4444' },
                           }}
@@ -526,7 +526,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
               ) : (
                 <TableRow>
                   <TableCell colSpan={7} sx={{ textAlign: 'center', py: 8, color: '#8C7A70' }}>
-                    <AccountTreeIcon sx={{ fontSize: '2.5rem', color: '#D2AA2D', mb: 1, display: 'block', mx: 'auto' }} />
+                    <AccountTreeIcon sx={{ fontSize: '2.5rem', color: '#C5A059', mb: 1, display: 'block', mx: 'auto' }} />
                     <Typography variant="body1" sx={{ fontWeight: 600, color: '#141311' }}>No subcategories found</Typography>
                     <Typography variant="caption" sx={{ color: '#8C7A70' }}>Try searching with different terms or click &quot;Add New Subcategory&quot;.</Typography>
                   </TableCell>
@@ -546,7 +546,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           sx={{
-            borderTop: '1px solid #E8DFC8',
+            borderTop: '1px solid #F0DCE3',
             bgcolor: '#FBF9F7',
             '& .MuiTablePagination-select': { borderRadius: '0px' },
           }}
@@ -564,7 +564,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
             bgcolor: '#fff',
             p: { xs: 3, md: 4.5 },
             borderRadius: '0px',
-            border: '1px solid #E8DFC8',
+            border: '1px solid #F0DCE3',
             boxShadow: '0 24px 60px rgba(18, 11, 16, 0.15)',
             width: '92%',
             maxWidth: '680px',
@@ -573,9 +573,9 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           }}
         >
           {/* Modal Header */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3, pb: 2, borderBottom: '1px solid #E8DFC8' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3, pb: 2, borderBottom: '1px solid #F0DCE3' }}>
             <Box>
-              <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#B98C2D', display: 'block' }}>
+              <Typography variant="overline" sx={{ letterSpacing: '0.12em', fontWeight: 700, color: '#C53261', display: 'block' }}>
                 Classification Form
               </Typography>
               <Typography variant="h5" sx={{ fontWeight: 800, color: '#141311', fontFamily: 'serif' }}>
@@ -647,7 +647,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
               
               <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
                 {(newSubcategory.imageUrl || image) && (
-                  <Box sx={{ width: 80, height: 80, border: '1px solid #E8DFC8', borderRadius: '0px', overflow: 'hidden', position: 'relative', bgcolor: '#FBF9F7', flexShrink: 0 }}>
+                  <Box sx={{ width: 80, height: 80, border: '1px solid #F0DCE3', borderRadius: '0px', overflow: 'hidden', position: 'relative', bgcolor: '#FBF9F7', flexShrink: 0 }}>
                     <Image
                       fill
                       src={image ? URL.createObjectURL(image) : (newSubcategory.imageUrl.startsWith('http') ? newSubcategory.imageUrl : `https://data.tascpa.ca/uploads/${newSubcategory.imageUrl}`)}
@@ -662,16 +662,16 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                   sx={{
                     flex: 1,
                     p: 2.5,
-                    border: '1px dashed #D2AA2D',
+                    border: '1px dashed #C5A059',
                     borderRadius: '0px',
                     bgcolor: '#FBF9F7',
                     textAlign: 'center',
                     cursor: 'pointer',
-                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#B98C2D' },
+                    '&:hover': { bgcolor: '#F5EFEB', borderColor: '#C53261' },
                     transition: 'all 0.2s',
                   }}
                 >
-                  <CloudUploadIcon sx={{ color: '#B98C2D', fontSize: '1.75rem', mb: 0.5 }} />
+                  <CloudUploadIcon sx={{ color: '#C53261', fontSize: '1.75rem', mb: 0.5 }} />
                   <Typography variant="body2" sx={{ fontWeight: 700, color: '#141311', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     {image ? image.name : 'Upload Subcategory Visual'}
                   </Typography>
@@ -691,7 +691,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
 
             {/* SEO Section */}
             <Grid item xs={12}>
-              <Box sx={{ pt: 1, borderTop: '1px solid #E8DFC8' }}>
+              <Box sx={{ pt: 1, borderTop: '1px solid #F0DCE3' }}>
                 <Typography variant="overline" sx={{ color: '#8C7A70', fontWeight: 700, letterSpacing: '0.08em', display: 'block', mb: 1.5 }}>
                   SEO & Meta Information
                 </Typography>
@@ -735,13 +735,13 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
           </Grid>
 
           {/* Action buttons */}
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1.5, mt: 4, pt: 2, borderTop: '1px solid #E8DFC8' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1.5, mt: 4, pt: 2, borderTop: '1px solid #F0DCE3' }}>
             <Button
               onClick={() => setIsModalOpen(false)}
               variant="outlined"
               sx={{
                 borderRadius: '0px',
-                borderColor: '#E8DFC8',
+                borderColor: '#F0DCE3',
                 color: '#8C7A70',
                 px: 3,
                 py: 1,
@@ -749,7 +749,7 @@ const FilterableTable = ({ subcategories = [], fetchSubcategories }) => {
                 fontSize: '0.8rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                '&:hover': { borderColor: '#B98C2D', bgcolor: '#FBF9F7', color: '#141311' },
+                '&:hover': { borderColor: '#C53261', bgcolor: '#FBF9F7', color: '#141311' },
               }}
             >
               Cancel

@@ -68,10 +68,31 @@ const saveCartToLocalStorage = (cart) => {
   }
 };
 
+const normalizeCartItem = (item) => {
+  if (!item) return item;
+  let rawId = item.productId !== undefined && item.productId !== null ? item.productId : item.id;
+  if (typeof rawId === 'string' && rawId.includes('-')) {
+    rawId = rawId.split('-')[0];
+  }
+  const parsedId = parseInt(rawId, 10);
+  const productId = !isNaN(parsedId) ? parsedId : (item.productId || item.id);
+
+  return {
+    ...item,
+    productId,
+  };
+};
+
 const loadCartFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
     const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    if (!savedCart) return [];
+    try {
+      const parsed = JSON.parse(savedCart);
+      return Array.isArray(parsed) ? parsed.map(normalizeCartItem) : [];
+    } catch (e) {
+      return [];
+    }
   }
   return [];
 };
@@ -83,14 +104,19 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      const { id, quantity } = action.payload;
+      const normalized = normalizeCartItem(action.payload);
+      const id = normalized.id || normalized.productId;
+      const quantity = normalized.quantity || 1;
 
       const existingProductIndex = state.items.findIndex((item) => item.id === id);
 
       if (existingProductIndex !== -1) {
-        state.items[existingProductIndex].quantity += quantity || 1;
+        state.items[existingProductIndex].quantity += quantity;
+        if (!state.items[existingProductIndex].productId) {
+          state.items[existingProductIndex].productId = normalized.productId;
+        }
       } else {
-        state.items.push({ ...action.payload, quantity: quantity || 1 });
+        state.items.push({ ...normalized, id, quantity });
       }
 
       saveCartToLocalStorage(state.items);
@@ -109,7 +135,9 @@ const cartSlice = createSlice({
       }
     },
     setCart: (state, action) => {
-      state.items = action.payload;
+      state.items = Array.isArray(action.payload)
+        ? action.payload.map(normalizeCartItem)
+        : [];
       saveCartToLocalStorage(state.items);
     },
     clearCart: (state) => {
