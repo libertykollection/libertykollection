@@ -48,7 +48,7 @@ const NewArrivals = () => {
     <section className="py-10 bg-white border-t border-gray-100">
       <div className="container mx-auto max-w-[1536px] px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] xl:grid-cols-[320px_1fr] gap-6 items-stretch">
-          {/* Left Promotional Banner (Gloria Onyx to Sunburst Gold) */}
+          {/* Left Promotional Banner (Liberty Onyx to Sunburst Gold) */}
           <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#141311] via-[#241F16] to-[#C53261] text-white p-7 flex flex-col justify-between shadow-md min-h-[360px] group border border-theme-border">
             {/* Background Decorative Graphic */}
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
@@ -141,7 +141,7 @@ const NewArrivals = () => {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-black text-gray-900">
+                      <span className={`text-sm font-black ${originalPrice ? 'text-theme-sale' : 'text-gray-900'}`}>
                         Rs. {formatPrice(product.price || product.retailPrice)}
                       </span>
                       {originalPrice && (

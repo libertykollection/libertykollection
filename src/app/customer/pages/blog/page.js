@@ -35,7 +35,7 @@ export default function BlogPage() {
                 : 'RECENT',
               excerpt: item.description
                 ? item.description.replace(/<[^>]*>/g, '').substring(0, 140) + '...'
-                : 'Discover beauty secrets, formulation deep dives, and expert makeup artistry tips from Gloria Cosmetics.',
+                : 'Discover beauty secrets, formulation deep dives, and expert makeup artistry tips from Liberty Kollection.',
               image: item.image
                 ? getSafeImageUrl(item.image)
                 : 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&auto=format&fit=crop&q=80',

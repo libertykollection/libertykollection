@@ -8,7 +8,7 @@ export async function sendResetPasswordEmail(email, token) {
     if (!transporter) throw new Error('SMTP Configuration Error');
 
     const mailUser = getMailUser();
-    const baseUrl = process.env.BASE_URL || 'https://gloriacosmetics.pk';
+    const baseUrl = process.env.BASE_URL || 'https://libertykollection.com';
     const resetUrl = `${baseUrl}/customer/pages/reset?token=${token}`;
 
     let brandName = 'Official Store';

@@ -19,34 +19,34 @@ const TopBar = () => {
   }, []);
 
   return (
-    <div className="w-full bg-brand-light text-brand-dark py-1.5 px-4 text-xs font-medium border-b border-brand-border transition-all">
+    <div className="w-full bg-theme-primary text-theme-primary-contrast py-2 px-4 text-xs font-medium transition-all shadow-xs">
       <div className="container mx-auto flex items-center justify-between max-w-[1536px]">
         {/* Left: Express Delivery Notice */}
-        <div className="hidden sm:flex items-center space-x-3 text-[11px] font-semibold">
+        <div className="hidden sm:flex items-center space-x-3 text-[11px] font-medium tracking-wide">
           <span className="flex items-center gap-1.5">
-            <FiTruck className="text-brand-primary text-sm" />
-            <span>{brandName ? `${brandName}` : 'Gloria Cosmetics'} • Express Delivery</span>
+            <FiTruck className="text-[#F6D0E3] text-sm" />
+            <span>{brandName ? `${brandName}` : 'Liberty Kollection'} • Nationwide Delivery</span>
           </span>
-          <span className="text-brand-border">•</span>
-          <span className="text-brand-hover">Complimentary Shipping on luxury orders</span>
+          <span className="opacity-40">•</span>
+          <span className="text-[#F6D0E3]">Complimentary Shipping on special orders</span>
         </div>
 
         {/* Center: Welcome Banner */}
-        <div className="flex-1 text-center font-bold text-[12px] sm:text-[12px] text-brand-darker tracking-wide font-serif">
-          <span>{brandName ? `Welcome To ${brandName}` : 'Welcome To Gloria Cosmetics'}</span>
+        <div className="flex-1 text-center font-semibold text-[11px] sm:text-[12px] tracking-wider uppercase font-display">
+          <span>{brandName ? `Welcome To ${brandName}` : 'Welcome To Liberty Kollection'}</span>
         </div>
 
         {/* Right: Quick Links */}
-        <div className="hidden md:flex items-center space-x-4 text-[11px] font-semibold">
-          <Link href="/customer/pages/aboutus" className="hover:text-brand-primary transition-colors">
+        <div className="hidden md:flex items-center space-x-4 text-[11px] font-medium">
+          <Link href="/customer/pages/aboutus" className="hover:text-[#F6D0E3] transition-colors">
             About Us
           </Link>
-          <span className="text-brand-border">•</span>
-          <Link href="/customer/pages/contactus" className="hover:text-brand-primary transition-colors">
+          <span className="opacity-40">•</span>
+          <Link href="/customer/pages/contactus" className="hover:text-[#F6D0E3] transition-colors">
             Contact
           </Link>
-          <span className="text-brand-border">•</span>
-          <Link href="/customer/pages/orders" className="hover:text-brand-primary transition-colors flex items-center gap-1">
+          <span className="opacity-40">•</span>
+          <Link href="/customer/pages/orders" className="hover:text-[#F6D0E3] transition-colors flex items-center gap-1">
             <FiHelpCircle className="text-xs" /> Track Order
           </Link>
         </div>

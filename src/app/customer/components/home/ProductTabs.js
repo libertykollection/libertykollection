@@ -22,71 +22,77 @@ const ProductTabs = () => {
   const current = sources[active];
 
   const items = useMemo(() => {
-    const list = [...current.data];
+    let list = [...current.data];
     if (active === 'sale') list.sort((a, b) => (b.discount || 0) - (a.discount || 0));
     return list.slice(0, 10);
   }, [current.data, active]);
 
+  const hasAnyData = best.data.length > 0 || fresh.data.length > 0 || sale.data.length > 0;
+  const anyLoading = best.loading || fresh.loading || sale.loading;
+
+  // Don't render empty section with fake data if no products exist
+  if (!anyLoading && !hasAnyData) {
+    return null;
+  }
+
   const tab = TABS.find((t) => t.id === active);
 
   return (
-    <section className="py-14 sm:py-20 bg-[#FCF4F7]">
-      <div className="container mx-auto max-w-[1440px] px-4 lg:px-8">
+    <section className="py-14 sm:py-20 bg-[#FFFDF5] border-b border-[#EAE3D5]/50 overflow-hidden">
+      <div className="container mx-auto max-w-[1536px] px-4 lg:px-8">
         <SectionHeader
-          eyebrow="Curated for you"
-          title="Shop the most-loved picks"
-          subtitle="Hand-selected favourites, fresh arrivals and limited-time offers."
+          eyebrow="✨ Freshly Launched & Curated"
+          title="Most-Loved Beauty Essentials"
+          subtitle="Explore trending cosmetics, verified skincare, and exclusive deals."
           href={tab.href}
         >
-          <div role="tablist" aria-label="Product collections" className="flex border border-gray-200 bg-white">
-            {TABS.map((t) => {
-              const count = sources[t.id].data.length;
-              return (
-                <button
-                  key={t.id}
-                  id={`tab-${t.id}`}
-                  role="tab"
-                  aria-selected={active === t.id}
-                  onClick={() => setActive(t.id)}
-                  className={`relative px-4 sm:px-6 py-2.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] transition-colors ${
-                    active === t.id ? 'text-white' : 'text-gray-600 hover:text-theme-dark'
-                  }`}
-                >
-                  {active === t.id && (
-                    <motion.span
-                      layoutId="product-tab-pill"
-                      className="absolute inset-0 bg-theme-dark"
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative z-10">
-                    {t.label}
-                    {count > 0 && <span className="ml-1.5 opacity-60 tabular-nums">({count})</span>}
-                  </span>
-                </button>
-              );
-            })}
+          <div role="tablist" aria-label="Product collections" className="flex border border-[#EAE3D5] bg-white rounded-full p-1 shadow-xs">
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                id={`tab-${t.id}`}
+                role="tab"
+                aria-selected={active === t.id}
+                onClick={() => setActive(t.id)}
+                className={`relative px-4 sm:px-6 py-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-colors ${
+                  active === t.id ? 'text-white' : 'text-gray-700 hover:text-[#77104C]'
+                }`}
+              >
+                {active === t.id && (
+                  <motion.span
+                    layoutId="active-product-tab"
+                    className="absolute inset-0 bg-[#77104C] rounded-full shadow-xs"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{t.label}</span>
+              </button>
+            ))}
           </div>
         </SectionHeader>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            role="tabpanel"
-            aria-labelledby={`tab-${active}`}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4"
-          >
-            {current.loading
-              ? Array.from({ length: 10 }).map((_, i) => <ProductCardSkeleton key={i} />)
-              : items.length === 0
-              ? <p className="col-span-full text-center text-sm text-gray-400 py-12">No products in this collection yet.</p>
-              : items.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
-          </motion.div>
-        </AnimatePresence>
+        {current.loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7"
+            >
+              {items.map((product, i) => (
+                <ProductCard key={product.id || i} product={product} index={i} showBottomBar={true} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
     </section>
   );

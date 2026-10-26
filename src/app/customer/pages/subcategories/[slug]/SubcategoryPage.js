@@ -1,50 +1,66 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import axios from 'axios';
-import Image from 'next/image';
-import { FiFilter, FiX, FiPlus, FiChevronRight, FiSearch, FiShoppingCart } from 'react-icons/fi';
-import { GoStarFill } from 'react-icons/go';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../../store/cartSlice';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  FiFilter,
+  FiX,
+  FiSearch,
+  FiChevronDown,
+  FiShield,
+  FiTruck,
+  FiCheck,
+} from 'react-icons/fi';
+import { BsStars } from 'react-icons/bs';
+import ProductCard from '../../../components/home/ProductCard';
+import { QuickViewProvider } from '../../../components/home/QuickView';
+
+const SORT_OPTIONS = [
+  { id: 'newest', label: 'Newest Arrivals' },
+  { id: 'price-asc', label: 'Price: Low to High' },
+  { id: 'price-desc', label: 'Price: High to Low' },
+  { id: 'discount', label: 'Biggest Discount' },
+  { id: 'name-asc', label: 'Name: A to Z' },
+];
+
+const STATUS_FILTERS = [
+  { id: 'all', label: 'All Items' },
+  { id: 'on-sale', label: '⚡ Sale Offers' },
+  { id: 'top-rated', label: '★ Highly Rated' },
+];
 
 const SubcategoryPage = () => {
   const { slug } = useParams();
   const router = useRouter();
-  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [subcategory, setSubcategory] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000000);
-  const [sortOption, setSortOption] = useState("newest");
-  const [statusFilter, setStatusFilter] = useState("all");
-  const [showFilters, setShowFilters] = useState(false);
-  const [tempSortOption, setTempSortOption] = useState("newest");
-  const [tempStatusFilter, setTempStatusFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState('newest');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   useEffect(() => {
     const fetchProductsAndSubcategory = async () => {
       setIsLoading(true);
       try {
-        const productsResponse = await axios.get('/api/products');
-        const prodData = productsResponse.data || [];
+        const [prodRes, subRes] = await Promise.all([
+          axios.get('/api/products').catch(() => ({ data: [] })),
+          axios.get(`/api/subcatdetail/${slug}`).catch(() => ({ data: null })),
+        ]);
+
+        const prodData = Array.isArray(prodRes.data) ? prodRes.data : [];
         setProducts(prodData);
 
-        const filtered = prodData.filter(product => product.subcategorySlug === slug);
-        setFilteredProducts(filtered);
-
-        const subcategoryResponse = await axios.get(`/api/subcatdetail/${slug}`);
-        if (subcategoryResponse.data && subcategoryResponse.data.status) {
-          setSubcategory(subcategoryResponse.data.data);
+        if (subRes.data && subRes.data.status && subRes.data.data) {
+          setSubcategory(subRes.data.data);
         }
       } catch (error) {
-        console.error('Error fetching subcategory or products data:', error.message);
+        console.error('Error fetching subcategory or products data:', error);
       } finally {
         setIsLoading(false);
       }
@@ -53,327 +69,251 @@ const SubcategoryPage = () => {
     fetchProductsAndSubcategory();
   }, [slug]);
 
-  const handleProductClick = (productSlug) => {
-    router.push(`/customer/pages/products/${productSlug}`);
-  };
+  // Filter & sort products for this subcategory
+  const filteredProducts = useMemo(() => {
+    return products
+      .filter((p) => {
+        const matchesSubcat =
+          p.subcategorySlug === slug ||
+          p.subCategoryId === subcategory?.id ||
+          p.subcategory?.slug === slug;
 
-  const formatPrice = (price) => {
-    return Number(price || 0).toLocaleString('en-PK', { maximumFractionDigits: 0 });
-  };
+        const matchesSearch =
+          !searchQuery.trim() ||
+          p.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.description?.toLowerCase().includes(searchQuery.toLowerCase());
 
-  const handleAddToCart = (product, e) => {
-    e.stopPropagation();
-    dispatch(addToCart(product));
-    toast.success(`${product.name} added to Vanity Bag`);
-  };
-
-  const handleBuyNow = (product, e) => {
-    e.stopPropagation();
-    dispatch(addToCart(product));
-    router.push('/customer/pages/cart');
-  };
-
-  useEffect(() => {
-    const filtered = products
-      .filter(product => {
-        const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
-        const matchesSubcategory = product.subcategorySlug === slug;
-
-        const isTopRated = product.rating >= 4.5;
-        const isOnSale = product.discount > 0;
+        const isTopRated = (p.rating || 0) >= 4.5 || (p.reviews?.length || 0) > 0;
+        const isOnSale = (p.discount || 0) > 0;
         const matchesStatus =
-          statusFilter === "all" ||
-          (statusFilter === "top-rated" && isTopRated) ||
-          (statusFilter === "on-sale" && isOnSale);
+          statusFilter === 'all' ||
+          (statusFilter === 'top-rated' && isTopRated) ||
+          (statusFilter === 'on-sale' && isOnSale);
 
-        return matchesPrice && matchesSubcategory && matchesStatus;
+        return matchesSubcat && matchesSearch && matchesStatus;
       })
       .sort((a, b) => {
-        if (sortOption === "price-asc") return a.price - b.price;
-        if (sortOption === "price-desc") return b.price - a.price;
-        if (sortOption === "name-asc") return a.name.localeCompare(b.name);
-        if (sortOption === "newest") return new Date(b.createdAt) - new Date(a.createdAt);
+        if (sortOption === 'price-asc') return (a.price || 0) - (b.price || 0);
+        if (sortOption === 'price-desc') return (b.price || 0) - (a.price || 0);
+        if (sortOption === 'discount') return (b.discount || 0) - (a.discount || 0);
+        if (sortOption === 'name-asc') return (a.name || '').localeCompare(b.name || '');
+        if (sortOption === 'newest') {
+          return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+        }
         return 0;
       });
-    setFilteredProducts(filtered);
-  }, [minPrice, maxPrice, sortOption, statusFilter, products, slug]);
+  }, [products, slug, subcategory, searchQuery, statusFilter, sortOption]);
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-[#FBF9F7]">
-        <ToastContainer position="bottom-right" autoClose={3000} />
-        <div className="w-14 h-14 border-2 border-[#F0DCE3] border-t-[#C53261] rounded-none animate-spin mb-4" />
-        <span className="text-[11px] font-bold uppercase tracking-widest text-[#141311]">
-          Curating Subcategory Gallery...
+      <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FFFDF5]">
+        <div className="w-12 h-12 border-3 border-[#77104C]/20 border-t-[#77104C] rounded-full animate-spin mb-4" />
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#77104C] font-display">
+          Curating Collection...
         </span>
       </div>
     );
   }
 
+  const subName = subcategory?.name || (slug ? slug.replace(/-/g, ' ') : 'Collection');
+  const parentCategory = subcategory?.category;
+
   return (
-    <div className="bg-[#FBF9F7] min-h-screen pb-20 text-[#141311]">
-      <ToastContainer position="bottom-right" autoClose={3000} />
+    <QuickViewProvider>
+      <div className="bg-[#FFFDF5] min-h-screen pb-24 text-[#1A1A1A]">
+        {/* 1. Subcategory Hero Banner */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#77104C] via-[#5C0C3A] to-[#360522] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-12">
+          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#AD4A81]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#F6D0E3]/10 blur-3xl" />
 
-      {/* Header & Breadcrumb */}
-      <div className="border-b border-[#F0DCE3] bg-white">
-        <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 py-6">
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2">
-            <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/')}>
-                  Home
-                </span>
-            <span className="text-gray-300">/</span>
-            <span className="cursor-pointer hover:text-[#141311] transition-colors" onClick={() => router.push('/customer/pages/allproducts')}>
-              Collections
-            </span>
-            <span className="text-gray-300">/</span>
-            <span className="text-[#141311] font-bold">{subcategory?.name || slug}</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#141311]">
-            {subcategory ? subcategory.name : 'Exclusive Tier'}
-          </h1>
-        </div>
-      </div>
+          <div className="relative z-10 max-w-[1536px] mx-auto">
+            {/* Breadcrumb Navigation */}
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#F6D0E3]/90 font-medium mb-6 flex-wrap">
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <span className="text-[#F6D0E3]/40">/</span>
+              {parentCategory && (
+                <>
+                  <Link
+                    href={`/customer/pages/category/${parentCategory.slug}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {parentCategory.name}
+                  </Link>
+                  <span className="text-[#F6D0E3]/40">/</span>
+                </>
+              )}
+              <span className="text-white font-semibold capitalize truncate max-w-[240px] sm:max-w-none">
+                {subName}
+              </span>
+            </nav>
 
-      <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 pt-8">
-        {/* Filters and Sorting Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 bg-white p-5 sm:p-6 rounded-none border border-[#F0DCE3]">
-          {/* Price Filter */}
-          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-4 bg-[#C53261] rounded-none" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#141311]">Price Spectrum (PKR)</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] font-bold uppercase tracking-[0.2em] text-[#F6D0E3] mb-4">
+              <BsStars size={12} />
+              <span>Curated Sub-Collection</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#FFF5F8] px-4 py-2 border border-[#F0DCE3]">
-              <input
-                type="number"
-                value={minPrice}
-                onChange={(e) => setMinPrice(parseFloat(e.target.value) || 0)}
-                className="w-20 bg-transparent text-xs font-bold text-center placeholder:text-gray-300 outline-none"
-                placeholder="Min"
-              />
-              <span className="text-gray-300 font-bold">—</span>
-              <input
-                type="number"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(parseFloat(e.target.value) || 0)}
-                className="w-24 bg-transparent text-xs font-bold text-center placeholder:text-gray-300 outline-none"
-                placeholder="Max"
-              />
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight leading-tight max-w-4xl text-white capitalize">
+              {subName}
+            </h1>
+
+            <p className="text-sm sm:text-base text-white/85 max-w-2xl mt-4 font-light leading-relaxed">
+              Explore authentic luxury beauty formulations in {subName}, tested for performance, elegance, and all-day radiance.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-6 sm:gap-10 text-xs text-white/90 font-medium pt-4 border-t border-white/10">
+              <div className="flex items-center gap-2">
+                <FiShield className="text-[#F6D0E3]" size={15} />
+                <span>100% Genuine Formulations</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FiTruck className="text-[#F6D0E3]" size={15} />
+                <span>Fast Dispatch Nationwide</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span>{filteredProducts.length} Items Available</span>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Quick Sort Options (Desktop) & Filter Modal Button */}
-          <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400">
-              {filteredProducts.length} Formulations
-            </span>
-            <button
-              onClick={() => {
-                setTempSortOption(sortOption);
-                setTempStatusFilter(statusFilter);
-                setShowFilters(true);
-              }}
-              className="flex items-center gap-2 bg-white text-[#141311] px-4 py-2 text-xs font-bold uppercase tracking-wider border border-[#F0DCE3] hover:border-[#141311] transition-colors"
-            >
-              <FiFilter size={14} />
-              <span>Filter & Sort</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => {
-              const discountedPrice = product.discount
-                ? product.price - (product.price * product.discount) / 100
-                : null;
-              return (
-                <div
-                  key={product.id}
-                  className="bg-white border border-[#F0DCE3] hover:border-[#C53261] rounded-none cursor-pointer transition-all flex flex-col justify-between group p-3.5"
-                  onClick={() => handleProductClick(product.slug)}
+        {/* 2. Controls & Search Bar */}
+        <div className="max-w-[1536px] mx-auto px-4 lg:px-8 pt-8 pb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            {/* Search input */}
+            <div className="relative w-full md:w-[320px]">
+              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={15} />
+              <input
+                type="text"
+                placeholder={`Search in ${subName}...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-11 pl-11 pr-9 rounded-full bg-white border border-[#EAE3D5] text-xs font-medium text-[#1A1A1A] placeholder:text-gray-400 focus:outline-none focus:border-[#77104C] focus:ring-2 focus:ring-[#77104C]/15 transition-all shadow-2xs"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Clear search"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black"
                 >
-                  <div className="relative aspect-square w-full bg-[#FFF5F8] border border-[#F0DCE3]/50 mb-3 overflow-hidden flex items-center justify-center">
-                    {product.discount > 0 && (
-                      <div className="absolute top-2 left-2 z-10 bg-[#C53261] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none">
-                        -{product.discount.toFixed(0)}%
-                      </div>
-                    )}
-                    {product.images && product.images.length > 0 ? (
-                      <Image
-                        fill
-                        src={(() => {
-                          const img = product.images[0];
-                          const url = typeof img === 'string' ? img : img?.url;
-                          if (!url) return '/placeholder.png';
-                          return url.startsWith('http') || url.startsWith('data:')
-                            ? url
-                            : `${process.env.NEXT_PUBLIC_UPLOADED_IMAGE_URL}/${url}`;
-                        })()}
-                        alt={product.name}
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
-                        unoptimized
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="text-gray-300 text-xs font-serif">Gloria Cosmetics</div>
-                    )}
-                  </div>
+                  <FiX size={14} />
+                </button>
+              )}
+            </div>
 
-                  <div className="flex flex-col flex-1">
-                    <div className="flex items-center gap-0.5 text-[#C53261] mb-1.5">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <GoStarFill key={i} size={10} />
-                      ))}
-                    </div>
+            {/* Filter pills & Sorting */}
+            <div className="flex items-center gap-3 flex-wrap justify-between md:justify-end">
+              <div className="flex items-center gap-1.5 p-1 bg-white border border-[#EAE3D5] rounded-full shadow-2xs">
+                {STATUS_FILTERS.map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => setStatusFilter(f.id)}
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                      statusFilter === f.id
+                        ? 'bg-[#77104C] text-white shadow-2xs'
+                        : 'text-gray-600 hover:text-[#77104C]'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
 
-                    <h4 className="text-xs font-serif font-bold text-[#141311] group-hover:text-[#C53261] transition-colors line-clamp-2 leading-snug mb-2 h-8 overflow-hidden">
-                      {product.name}
-                    </h4>
+              <div className="relative">
+                <select
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                  className="h-10 pl-4 pr-9 rounded-full bg-white border border-[#EAE3D5] text-xs font-semibold text-[#333333] shadow-2xs appearance-none focus:outline-none focus:border-[#77104C] cursor-pointer hover:border-gray-400 transition-colors"
+                >
+                  {SORT_OPTIONS.map((opt) => (
+                    <option key={opt.id} value={opt.id}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                <FiChevronDown
+                  size={13}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                />
+              </div>
 
-                    <div className="flex items-baseline gap-2 mb-3 mt-auto">
-                      {discountedPrice ? (
-                        <>
-                          <span className="text-sm font-bold text-[#141311]">
-                            Rs. {formatPrice(discountedPrice)}
-                          </span>
-                          <span className="text-[10px] text-gray-400 line-through">
-                            Rs. {formatPrice(product.price)}
-                          </span>
-                        </>
-                      ) : (
-                        <span className="text-sm font-bold text-[#141311]">
-                          Rs. {formatPrice(product.price)}
-                        </span>
-                      )}
-                    </div>
+              <button
+                type="button"
+                onClick={() => setShowMobileFilters(true)}
+                className="md:hidden flex items-center gap-1.5 h-10 px-4 rounded-full bg-white border border-[#EAE3D5] text-xs font-bold text-[#1A1A1A] shadow-2xs"
+              >
+                <FiFilter size={14} />
+                <span>Filters</span>
+              </button>
+            </div>
+          </div>
 
-                    {/* Quick Buttons */}
-                    <div className="grid grid-cols-2 gap-1.5 mt-auto">
-                      <button
-                        className="border border-[#141311] text-[#141311] text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-none hover:bg-[#141311] hover:text-white transition-all flex items-center justify-center gap-1"
-                        onClick={(e) => handleAddToCart(product, e)}
-                      >
-                        <FiShoppingCart size={11} /> <span>Bag</span>
-                      </button>
-                      <button
-                        className="bg-[#141311] hover:bg-[#2A1B24] text-white text-[9px] font-bold uppercase tracking-wider py-1.5 rounded-none transition-all border border-[#141311]"
-                        onClick={(e) => handleBuyNow(product, e)}
-                      >
-                        Acquire
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })
+          <div className="mt-4 flex items-center justify-between text-xs text-[#777777]">
+            <p>
+              Showing <strong className="text-[#1A1A1A] font-semibold">{filteredProducts.length}</strong> creations
+            </p>
+
+            {(searchQuery || statusFilter !== 'all' || sortOption !== 'newest') && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setStatusFilter('all');
+                  setSortOption('newest');
+                }}
+                className="text-[#77104C] font-semibold hover:underline flex items-center gap-1"
+              >
+                <span>Reset Filters</span>
+                <FiX size={12} />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* 3. Products Grid */}
+        <main className="max-w-[1536px] mx-auto px-4 lg:px-8 mt-2">
+          {filteredProducts.length > 0 ? (
+            <motion.div
+              layout
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7"
+            >
+              {filteredProducts.map((product, index) => (
+                <ProductCard
+                  key={product.id || index}
+                  product={product}
+                  index={index}
+                  showBottomBar={true}
+                />
+              ))}
+            </motion.div>
           ) : (
-            <div className="col-span-full py-20 text-center bg-white border border-dashed border-[#F0DCE3] p-8">
-              <p className="text-sm font-serif text-[#141311] mb-1">No items found matching criteria.</p>
-              <p className="text-xs text-gray-400 font-light">Try expanding your price range or clearing active filters.</p>
+            <div className="py-20 text-center bg-white rounded-2xl border border-[#EAE3D5] p-8 max-w-xl mx-auto shadow-xs">
+              <span className="text-4xl block mb-3">🔍</span>
+              <h3 className="text-lg font-bold font-display text-[#1A1A1A] mb-2">
+                No Products Found
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-500 max-w-sm mx-auto mb-6 leading-relaxed">
+                We could not locate any formulations matching your search or filters in this sub-collection.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setStatusFilter('all');
+                }}
+                className="px-6 py-2.5 bg-[#77104C] hover:bg-[#5E0B3C] text-white text-xs font-bold uppercase tracking-wider rounded-full transition-all shadow-xs"
+              >
+                Clear Filters
+              </button>
             </div>
           )}
-        </div>
+        </main>
       </div>
-
-      {/* Filter Modal */}
-      <AnimatePresence>
-        {showFilters && (
-          <div className="fixed inset-0 z-[60]">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowFilters(false)}
-              className="absolute inset-0 bg-black/60"
-            />
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="absolute left-0 right-0 bottom-0 bg-white border-t border-[#F0DCE3] flex flex-col max-h-[85vh] max-w-xl mx-auto"
-            >
-              <div className="px-6 py-4 flex items-center justify-between border-b border-[#F0DCE3]">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#141311]">Filters & Refinement</h3>
-                <button onClick={() => setShowFilters(false)} className="p-1 text-gray-400 hover:text-black">
-                  <FiX size={18} />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Sort Order</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      { id: "newest", label: "Newest First" },
-                      { id: "price-asc", label: "Price: Low to High" },
-                      { id: "price-desc", label: "Price: High to Low" },
-                      { id: "name-asc", label: "Name: A-Z" },
-                    ].map((opt) => (
-                      <button
-                        key={opt.id}
-                        onClick={() => setTempSortOption(opt.id)}
-                        className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
-                          tempSortOption === opt.id
-                            ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#F0DCE3] text-gray-700"
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Status</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      { id: "all", label: "All Formulations" },
-                      { id: "top-rated", label: "Top Rated" },
-                      { id: "on-sale", label: "Privilege Offers" },
-                    ].map((status) => (
-                      <button
-                        key={status.id}
-                        onClick={() => setTempStatusFilter(status.id)}
-                        className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-none border transition-all ${
-                          tempStatusFilter === status.id
-                            ? "bg-[#141311] text-white border-[#141311]"
-                            : "bg-white border-[#F0DCE3] text-gray-700"
-                        }`}
-                      >
-                        {status.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="px-6 py-4 border-t border-[#F0DCE3] flex gap-3">
-                <button
-                  onClick={() => setShowFilters(false)}
-                  className="flex-1 py-3 border border-[#F0DCE3] text-[10px] font-bold uppercase tracking-widest text-gray-500 rounded-none"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={() => {
-                    setSortOption(tempSortOption);
-                    setStatusFilter(tempStatusFilter);
-                    setShowFilters(false);
-                  }}
-                  className="flex-1 py-3 bg-[#141311] text-white text-[10px] font-bold uppercase tracking-widest rounded-none border border-[#141311]"
-                >
-                  Apply Filters
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </div>
+    </QuickViewProvider>
   );
 };
 

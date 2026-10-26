@@ -1,19 +1,19 @@
 {
-    "name": "Gloria Cosmetics",
-    "short_name": "Gloria",
-    "description": "Gloria Cosmetics - Luxury Skincare, Makeup & Fragrances",
+    "name": "Liberty Kollection",
+    "short_name": "Liberty",
+    "description": "Liberty Kollection - Luxury Cosmetics, Bridal Jewellery & Beauty Essentials",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#FFF5F8",
-    "theme_color": "#C53261",
+    "background_color": "#FFFDF5",
+    "theme_color": "#77104C",
     "icons": [
         {
-            "src": "/gloria_logo.png",
+            "src": "/liberty-logo-transparent.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/gloria_logo.png",
+            "src": "/liberty-logo-transparent.png",
             "sizes": "512x512",
             "type": "image/png"
         }

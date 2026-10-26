@@ -684,9 +684,9 @@ async function main() {
         isTopRated: item.isTopRated,
         subcategorySlug: item.subcategorySlug,
         description: item.description,
-        meta_title: `${item.name} | Gloria Cosmetics`,
-        meta_description: `Shop authentic ${item.name} online at Gloria Cosmetics. Luxury formulations, verified botanical efficacy, and express nationwide delivery.`,
-        meta_keywords: 'gloria cosmetics, beauty, makeup, skincare, luxury, pakistan',
+        meta_title: `${item.name} | Liberty Kollection`,
+        meta_description: `Shop authentic ${item.name} online at Liberty Kollection. Luxury formulations, verified botanical efficacy, and express nationwide delivery.`,
+        meta_keywords: 'liberty kollection, beauty, makeup, skincare, luxury, pakistan',
         colors: JSON.stringify([
           { value: col1.id, label: col1.name, hex: col1.hex },
           { value: col2.id, label: col2.name, hex: col2.hex }

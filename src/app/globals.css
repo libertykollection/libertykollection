@@ -5,44 +5,45 @@
 @layer base {
   :root {
     /* ==========================================================================
-       GLORIA COSMETICS — GLOBAL THEME CONFIGURATION
-       Primary: Gloria Rose Magenta (#C53261)
-       Secondary: Champagne Gold (#C5A059)
-       Dark: Deep Velvet Noir (#141013)
-       Light: Rose Quartz Blush (#FFF5F8)
+       LIBERTY KOLLECTIONS — GLOBAL THEME CONFIGURATION
+       Primary: Signature Deep Wine / Plum Burgundy (#77104C)
+       Secondary Accent: Rose Berry (#AD4A81)
+       Dark: Charcoal Noir (#222222)
+       Light: Warm Ivory Cream (#FFFDF5)
+       Sale / Highlight: Ruby Red (#ED1C2A)
        ========================================================================== */
 
-    /* 1. Primary Brand Accent & Action Buttons */
-    --theme-primary: #C53261;
-    --theme-primary-rgb: 197, 50, 97;
-    --theme-primary-hover: #A8224E;
-    --theme-primary-dark: #87143A;
-    --theme-primary-contrast: #FFFFFF;
+    /* 1. Primary Brand Accent & Action Buttons (Liberty Signature Plum/Maroon) */
+    --theme-primary: #77104C;
+    --theme-primary-rgb: 119, 16, 76;
+    --theme-primary-hover: #5F0B3C;
+    --theme-primary-dark: #4A072E;
+    --theme-primary-contrast: #FFFDF5;
 
-    /* 2. Secondary Accent — Champagne Gold */
-    --theme-secondary: #C5A059;
-    --theme-secondary-rgb: 197, 160, 89;
-    --theme-secondary-hover: #B08C45;
+    /* 2. Secondary Accent — Berry Rose */
+    --theme-secondary: #AD4A81;
+    --theme-secondary-rgb: 173, 74, 129;
+    --theme-secondary-hover: #93386B;
 
-    /* 3. Dark Elements */
-    --theme-dark: #141013;
-    --theme-dark-rgb: 20, 16, 19;
-    --theme-dark-surface: #0D0A0C;
-    --theme-dark-border: #281B24;
-    --theme-dark-text: #F0E6EB;
+    /* 3. Dark Elements — Charcoal */
+    --theme-dark: #222222;
+    --theme-dark-rgb: 34, 34, 34;
+    --theme-dark-surface: #1A1A1A;
+    --theme-dark-border: #3A3A3A;
+    --theme-dark-text: #FFFDF5;
 
-    /* 4. Light Backgrounds */
-    --theme-light: #FFF5F8;
-    --theme-light-hover: #FAEDF2;
+    /* 4. Light Backgrounds — Warm Ivory Cream */
+    --theme-light: #FFFDF5;
+    --theme-light-hover: #F6F1E3;
     --theme-surface: #FFFFFF;
-    --theme-muted: #FCF4F7;
+    --theme-muted: #FAF7EE;
 
     /* 5. Borders & Dividers */
-    --theme-border: #F0DCE3;
-    --theme-border-subtle: #F7EBF0;
+    --theme-border: #E8E2D5;
+    --theme-border-subtle: #F2ECE0;
 
     /* 6. Functional Status */
-    --theme-sale: #C23934;
+    --theme-sale: #ED1C2A;
     --theme-success: #10B981;
 
     /* 7. Backward Compatibility */
@@ -62,16 +63,16 @@
     --brand-orange: var(--theme-secondary-hover);
 
     /* ==========================================================================
-       GLORIA COSMETICS — TYPOGRAPHY SYSTEM
-       Display:  Cormorant Garamond — luxury serif for headings & editorial
-       Body:     DM Sans — clean, modern geometric sans for body text
-       UI/Nav:   Jost — humanist geometric caps for labels, buttons, nav
+       LIBERTY KOLLECTIONS — TYPOGRAPHY SYSTEM
+       Display & Headings: Figtree — modern, crisp geometric sans
+       Body: DM Sans — clean, contemporary sans for body & buttons
+       UI/Nav: Figtree — bold geometric styling for labels and menus
        ========================================================================== */
 
     /* Font stacks via CSS variables set by Next.js */
-    --font-display-stack: var(--font-display), 'Georgia', 'Times New Roman', serif;
-    --font-sans-stack:    var(--font-sans), system-ui, -apple-system, sans-serif;
-    --font-ui-stack:      var(--font-ui), var(--font-sans), system-ui, sans-serif;
+    --font-display-stack: var(--font-display), 'Figtree', sans-serif;
+    --font-sans-stack:    var(--font-sans), 'DM Sans', sans-serif;
+    --font-ui-stack:      var(--font-display), var(--font-sans), 'Figtree', sans-serif;
 
     /* Type Scale */
     --text-xs:   0.6875rem;  /* 11px  — micro labels, badges */
@@ -119,30 +120,31 @@
     font-size: var(--text-base);
     font-weight: 400;
     line-height: var(--leading-relaxed);
-    color: #1A1118;   /* warm near-black — pairs with rose palette */
+    background-color: var(--theme-light);
+    color: #222222;
     letter-spacing: var(--tracking-snug);
   }
 
-  /* ── Heading defaults — Cormorant Garamond display serif ── */
+  /* ── Heading defaults — Figtree geometric ── */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display-stack);
     font-weight: 600;
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
-    color: #1A1118;
+    color: #222222;
   }
 
-  h1 { font-size: clamp(2.4rem, 5vw, 4rem);   font-weight: 600; }
+  h1 { font-size: clamp(2.4rem, 5vw, 4rem);   font-weight: 700; }
   h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; }
-  h3 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); font-weight: 500; }
-  h4 { font-size: 1.25rem;  font-weight: 500; }
-  h5 { font-size: 1.0625rem; font-weight: 500; }
+  h3 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); font-weight: 600; }
+  h4 { font-size: 1.25rem;  font-weight: 600; }
+  h5 { font-size: 1.0625rem; font-weight: 600; }
   h6 { font-size: 0.9375rem; font-weight: 600; }
 
   p {
     font-family: var(--font-sans-stack);
     line-height: var(--leading-relaxed);
-    color: #3D2E37;   /* warm plum-grey for body copy */
+    color: #444444;
   }
 
   /* Links */
@@ -200,25 +202,26 @@
   letter-spacing: -0.02em;
 }
 
-/* Gold gradient text */
-.text-gradient-gold {
-  background: linear-gradient(110deg, #F5D778 0%, #C5A059 45%, #E8C96B 100%);
+/* Liberty Plum gradient text */
+.text-gradient-gold,
+.text-gradient-plum {
+  background: linear-gradient(110deg, #93145F 0%, #77104C 50%, #5F0B3C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Rose gradient text */
+/* Liberty Rose/Berry gradient text */
 .text-gradient-rose {
-  background: linear-gradient(110deg, #E8527F 0%, #C53261 55%, #A8224E 100%);
+  background: linear-gradient(110deg, #C45793 0%, #AD4A81 55%, #77104C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Luxury gradient text — gold to rose */
+/* Liberty Luxury banner gradient text */
 .text-gradient-luxury {
-  background: linear-gradient(110deg, #F5D778 0%, #C5A059 40%, #E8527F 75%, #C53261 100%);
+  background: linear-gradient(92deg, #B02F79 0%, #77104C 50%, #AD4A81 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -1,308 +1,286 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTiktok,
-  FaWhatsapp,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaCcVisa,
-  FaCcMastercard,
-  FaCcAmex,
-  FaCcPaypal,
-  FaCcDiscover,
-} from 'react-icons/fa';
-import Link from 'next/link';
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { getSafeImageUrl } from '../../util/imageUtils';
+import { FaInstagram, FaFacebookSquare, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { FiChevronDown, FiArrowRight, FiShield, FiLock } from 'react-icons/fi';
+import Link from 'next/link';
+import axios from 'axios';
+
+const MENU = [
+  { label: 'Privacy Policy', href: '/customer/pages/privacypolicy' },
+  { label: 'Terms of Service', href: '/customer/pages/termsandconditions' },
+  { label: 'Shipping Policy', href: '/customer/pages/shippingpolicy' },
+  { label: 'Refund & Exchange', href: '/customer/pages/returnandexchangepolicy' },
+  { label: 'FAQs & Assurance', href: '/customer/pages/faq' },
+];
+
+const NAV = [
+  ['Home', '/'],
+  ['Shop All', '/customer/pages/allproducts'],
+  ['Collections', '/customer/pages/collections'],
+  ['New Arrivals', '/customer/pages/allproducts?filter=new'],
+  ['Special Offers', '/customer/pages/discounted-products'],
+  ['My Wishlist', '/customer/pages/wishlist'],
+  ['Track Order', '/customer/pages/orders'],
+  ['About Us', '/customer/pages/aboutus'],
+  ['Contact Us', '/customer/pages/contactus'],
+];
+
+const POLICIES = [
+  ['Refund Policy', '/customer/pages/returnandexchangepolicy'],
+  ['Privacy Policy', '/customer/pages/privacypolicy'],
+  ['Terms of Service', '/customer/pages/termsandconditions'],
+  ['Shipping Policy', '/customer/pages/shippingpolicy'],
+  ['Contact Information', '/customer/pages/contactus'],
+];
 
 const Footer = () => {
-  const [socialMediaLinks, setSocialMediaLinks] = useState({
-    facebook: '',
-    instagram: '',
-    tiktok: '',
-  });
-
-  const [companyName, setCompanyName] = useState('');
-  const [companyHeaderImage, setCompanyHeaderImage] = useState('');
-  const [companyEmail, setCompanyEmail] = useState('');
-  const [companyPhone, setCompanyPhone] = useState('');
-  const [companyAddress, setCompanyAddress] = useState('');
+  const [social, setSocial] = useState({ facebook: '', instagram: '', tiktok: '', twitter: '' });
+  const [phone, setPhone] = useState('');
+  const [aboutDesc, setAboutDesc] = useState('');
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    async function fetchDetails() {
+    (async () => {
       try {
-        const [compRes, contactRes, socialRes] = await Promise.all([
-          fetch('/api/companydetails').then(r => r.ok ? r.json() : null).catch(() => null),
-          axios.get('/api/contactinfo').then(r => r.data).catch(() => null),
-          fetch('/api/socialfirstrecodlink/2').then(r => r.ok ? r.json() : null).catch(() => null),
+        const [contactRes, socialRes, companyRes] = await Promise.all([
+          axios.get('/api/contactinfo').then((r) => r.data).catch(() => null),
+          fetch('/api/socialfirstrecodlink/2').then((r) => (r.ok ? r.json() : null)).catch(() => null),
+          fetch('/api/companydetails').then((r) => (r.ok ? r.json() : null)).catch(() => null),
         ]);
-
-        if (compRes) {
-          if (compRes.name) setCompanyName(compRes.name);
-          if (compRes.headerImage) setCompanyHeaderImage(compRes.headerImage);
-        }
-
-        if (Array.isArray(contactRes) && contactRes.length > 0) {
-          const c = contactRes[0];
-          if (c.email) setCompanyEmail(c.email);
-          if (c.phoneNumber) setCompanyPhone(c.phoneNumber);
-          if (c.address) setCompanyAddress(c.address);
-        }
-
+        if (Array.isArray(contactRes) && contactRes[0]) setPhone(contactRes[0].phoneNumber || '');
         if (socialRes) {
-          setSocialMediaLinks({
+          setSocial({
             facebook: socialRes.facebook || '',
             instagram: socialRes.instagram || '',
             tiktok: socialRes.tiktok || '',
+            twitter: socialRes.twitter || '',
           });
         }
-      } catch (err) {
-        console.error('Footer loading error:', err);
+        if (companyRes?.description) {
+          setAboutDesc(companyRes.description);
+        }
+      } catch (e) {
+        console.error('Footer loading error:', e);
       }
-    }
-    fetchDetails();
+    })();
   }, []);
 
+  const icons = [
+    social.instagram ? { Icon: FaInstagram, href: social.instagram, label: 'Instagram' } : null,
+    social.facebook ? { Icon: FaFacebookSquare, href: social.facebook, label: 'Facebook' } : null,
+    social.twitter ? { Icon: FaXTwitter, href: social.twitter, label: 'X' } : null,
+    social.tiktok ? { Icon: FaTiktok, href: social.tiktok, label: 'TikTok' } : null,
+    phone ? { Icon: FaWhatsapp, href: `https://wa.me/${phone.replace(/[^0-9]/g, '')}`, label: 'WhatsApp' } : null,
+  ].filter(Boolean);
+
   return (
-    <footer className="bg-theme-dark text-[#F0E6EB] font-sans border-t border-theme-dark-border">
-      {/* Brand Header Banner in Footer */}
-      <div className="border-b border-theme-dark-border py-8 px-4 lg:px-8 bg-theme-dark-surface/50">
-        <div className="container mx-auto max-w-[1536px] flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="bg-white p-2 rounded-none shadow-md inline-block">
+    <footer className="w-full bg-[#FFFDF5] text-[#2D2D2D] font-sans px-6 sm:px-10 lg:px-16 xl:px-24 pt-16 pb-12 border-t border-[#EAE3D5]/70" aria-label="Site footer">
+      <div className="w-full max-w-[1680px] mx-auto">
+        {/* 4-Column Grid spanning full width */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 xl:gap-14">
+          {/* Col 1: Brand About */}
+          <div>
+            <Link href="/" className="inline-block group mb-4" aria-label="Liberty Kollection Home">
               <Image
-                src="/gloria_logo.png"
-                alt="Gloria Cosmetics"
-                width={160}
-                height={50}
-                className="h-10 w-auto object-contain"
+                src="/liberty-logo-transparent.png"
+                alt="Liberty Kollection"
+                width={260}
+                height={140}
+                className="h-16 sm:h-20 lg:h-[86px] w-auto object-contain transition-transform group-hover:scale-[1.02] drop-shadow-sm"
                 unoptimized
               />
-            </div>
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-display-stack)', fontSize: '1.2rem', fontWeight: 600, color: '#FFFFFF', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                Gloria Cosmetics
-              </h3>
-              <p style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, color: '#C5B4BD', lineHeight: 1.65, marginTop: '4px', letterSpacing: '0.01em' }}>
-                Luxury skincare, radiant complexion makeup, and bespoke fragrance rituals.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-theme-primary mr-2">
-              Follow Us:
+            </Link>
+            <h4 className="font-display text-[13.5px] sm:text-[14.5px] font-bold text-[#1A1A1A] uppercase tracking-[0.16em] mb-3.5 mt-2">
+              About Liberty
+            </h4>
+            <p className="text-[13px] sm:text-[13.5px] text-[#555555] font-normal leading-[1.8] max-w-sm">
+              {aboutDesc ||
+                'Liberty Kollection is a premier luxury fashion and beauty boutique, delivering verified authentic cosmetics, exquisite bridal jewellery, and transformative skincare essentials.'}
+            </p>
+            <span className="text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#77104C] mt-3.5 block font-display">
+              Your Look, Your Liberty
             </span>
-            {socialMediaLinks.facebook && (
-              <a href={socialMediaLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-none bg-white/10 hover:bg-theme-primary text-white flex items-center justify-center transition-colors text-xs">
-                <FaFacebookF />
-              </a>
-            )}
-            {socialMediaLinks.instagram && (
-              <a href={socialMediaLinks.instagram} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-none bg-white/10 hover:bg-theme-primary text-white flex items-center justify-center transition-colors text-xs">
-                <FaInstagram />
-              </a>
-            )}
-            {socialMediaLinks.tiktok && (
-              <a href={socialMediaLinks.tiktok} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-none bg-white/10 hover:bg-theme-primary text-white flex items-center justify-center transition-colors text-xs">
-                <FaTiktok />
-              </a>
-            )}
           </div>
-        </div>
-      </div>
 
-      {/* 5-Column Grid Main Footer */}
-      <div className="container mx-auto max-w-[1536px] px-4 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
-          {/* Col 1: Contact Us */}
+          {/* Col 2: Quick Menu Links */}
           <div>
-            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
-              Contact Us
+            <h4 className="font-display text-[13.5px] sm:text-[14.5px] font-bold text-[#1A1A1A] uppercase tracking-[0.16em] mb-4 lg:mt-1">
+              Customer Support
             </h4>
-            <div className="space-y-3.5 text-xs sm:text-[13px] text-[#C5B4BD]">
-              {companyAddress && (
-                <div className="flex items-start gap-2.5">
-                  <FaMapMarkerAlt className="text-theme-primary text-sm mt-0.5 flex-shrink-0" />
-                  <span className="leading-relaxed">{companyAddress}</span>
-                </div>
-              )}
-              {companyPhone && (
-                <div className="flex items-center gap-2.5">
-                  <FaPhoneAlt className="text-theme-primary text-xs flex-shrink-0" />
-                  <a href={`tel:${companyPhone}`} className="hover:text-white transition-colors">
-                    {companyPhone}
-                  </a>
-                </div>
-              )}
-              {companyEmail && (
-                <div className="flex items-center gap-2.5">
-                  <FaEnvelope className="text-theme-primary text-xs flex-shrink-0" />
-                  <a href={`mailto:${companyEmail}`} className="hover:text-white transition-colors">
-                    {companyEmail}
-                  </a>
-                </div>
-              )}
-              {companyPhone && (
-                <div className="pt-2">
-                  <a
-                    href={`https://wa.me/${(companyPhone || '').replace(/[^0-9]/g, '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-white bg-[#25D366] hover:bg-[#20ba59] font-bold px-3.5 py-2 rounded-none text-xs transition-colors shadow-xs"
+            <ul className="space-y-3">
+              {MENU.map((m, i) => (
+                <li key={i}>
+                  <Link
+                    href={m.href}
+                    className="text-[13px] sm:text-[13.5px] text-[#4A4A4A] hover:text-[#77104C] font-normal hover:font-medium transition-all duration-200 inline-block hover:translate-x-1"
                   >
-                    <FaWhatsapp className="text-sm" />
-                    <span>24/7 WhatsApp Support</span>
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Col 2: User Account */}
-          <div>
-            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
-              User Account
-            </h4>
-            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
-              <li>
-                <Link href="/customer/pages/profile" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  My Profile
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/orders" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Order History
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/cart" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Shopping Cart
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/checkout" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Checkout
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/wishlist" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  My Wishlist
-                </Link>
-              </li>
+                    {m.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 3: Information */}
+          {/* Col 3: Customer Care & WhatsApp */}
           <div>
-            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
-              Information
+            <h4 className="font-display text-[13.5px] sm:text-[14.5px] font-bold text-[#1A1A1A] uppercase tracking-[0.16em] mb-4 lg:mt-1">
+              Concierge Desk
             </h4>
-            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
-              <li>
-                <Link href="/customer/pages/aboutus" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/shippingpolicy" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Delivery Information
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/privacypolicy" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/termsandconditions" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/returnandexchangepolicy" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Returns & Refunds
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <p className="text-[13px] sm:text-[13.5px] text-[#555555] font-normal leading-[1.75] max-w-sm mb-4">
+              Have questions regarding orders, product authenticity, or custom bridal sets? Our dedicated concierge is available 24/7.
+            </p>
 
-          {/* Col 4: Quick Links */}
-          <div>
-            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5 text-[#C5B4BD]" style={{ fontFamily: 'var(--font-sans-stack)', fontSize: '0.8125rem', fontWeight: 300, lineHeight: 1.6 }}>
-              <li>
-                <Link href="/customer/pages/allproducts" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  All Beauty Products
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/collections" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Cosmetics Collections
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/blog" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Beauty Blog & Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/faq" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Frequently Asked Questions
-                </Link>
-              </li>
-              <li>
-                <Link href="/customer/pages/discounted-products" className="hover:text-white hover:translate-x-1 inline-block transition-transform">
-                  Special Promotions
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: Store Hours & Genuine Guarantee */}
-          <div>
-            <h4 style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--theme-primary)', marginBottom: '1.25rem' }}>
-              Store Hours
-            </h4>
-            <div className="space-y-2.5 text-xs sm:text-[13px] text-[#C5B4BD]">
-              <p>
-                <strong className="text-white block font-semibold">Customer Advisory:</strong>
-                Mon – Sun: 10:00 AM – 11:00 PM
-              </p>
-              <p className="text-[#9E8B96]">
-                Online orders are active 24/7 with swift nationwide delivery.
-              </p>
-              <div className="pt-2">
-                <span className="inline-block text-[11px] font-bold text-theme-primary bg-theme-primary/10 border border-theme-primary/30 px-3 py-1.5 rounded-none shadow-xs">
-                  100% Genuine Beauty Guarantee
+            {phone && (
+              <div className="mb-4">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#888888] block mb-1">
+                  Direct WhatsApp Helpline
                 </span>
+                <a
+                  href={`https://wa.me/${phone.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-[13.5px] font-bold text-[#77104C] hover:text-[#5E0B3C] hover:underline transition-colors"
+                >
+                  <FaWhatsapp className="text-[#25D366]" size={16} />
+                  <span>{phone}</span>
+                </a>
               </div>
+            )}
+
+            {icons.length > 0 && (
+              <div className="mt-4">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#888888] block mb-2">
+                  Follow Our Journey
+                </span>
+                <div className="flex items-center gap-2.5">
+                  {icons.map(({ Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className="w-9 h-9 rounded-full bg-white border border-[#EAE3D5] text-[#77104C] hover:bg-[#77104C] hover:text-white hover:border-[#77104C] flex items-center justify-center transition-all duration-300 shadow-2xs hover:scale-110"
+                    >
+                      <Icon size={15} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Col 4: VIP Newsletter Subscription */}
+          <div>
+            <h4 className="font-display text-[13.5px] sm:text-[14.5px] font-bold text-[#1A1A1A] uppercase tracking-[0.16em] mb-4 lg:mt-1">
+              VIP Newsletter
+            </h4>
+            <p className="text-[13px] sm:text-[13.5px] text-[#555555] font-normal leading-[1.75] mb-4">
+              Join our exclusive club for private sale previews, new shade drops, and luxury beauty advice.
+            </p>
+
+            {subscribed ? (
+              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+                ✓ Thank you for subscribing! Your VIP welcome gift will arrive shortly.
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (email) {
+                    setSubscribed(true);
+                    setEmail('');
+                  }
+                }}
+                className="flex items-center h-[46px] max-w-sm border border-[#D5C7B8] hover:border-[#77104C] focus-within:border-[#77104C] focus-within:ring-2 focus-within:ring-[#77104C]/15 rounded-full overflow-hidden pl-4 pr-1.5 bg-white shadow-2xs transition-all"
+              >
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  aria-label="Email address for VIP newsletter"
+                  className="flex-1 bg-transparent text-[13px] text-[#1A1A1A] placeholder-[#999999] outline-none font-sans"
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe to VIP newsletter"
+                  className="h-[36px] px-4 bg-[#77104C] hover:bg-[#5E0B3C] text-white flex items-center gap-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-xs flex-shrink-0 active:scale-95"
+                >
+                  <span>Join</span>
+                  <FiArrowRight size={13} />
+                </button>
+              </form>
+            )}
+
+            <div className="flex items-center gap-2 mt-4 text-[11.5px] text-[#777777]">
+              <FiShield className="text-[#77104C]" size={13} />
+              <span>100% Secure Checkout & Authentic Formulations</span>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar: Copyright & Payment Badges */}
-      <div className="bg-theme-dark-surface border-t border-theme-dark-border py-5 px-4 lg:px-8">
-        <div className="container mx-auto max-w-[1536px] flex flex-col md:flex-row items-center justify-between gap-4 text-[#8E7B86]" style={{ fontFamily: 'var(--font-ui-stack)', fontSize: '0.75rem', letterSpacing: '0.04em' }}>
-          <p className="text-center md:text-left">
-            &copy; {new Date().getFullYear()}, <strong className="text-white">{companyName || 'Gloria Cosmetics'}</strong>. All Rights Reserved.
+        {/* Full-width Divider Line */}
+        <div className="mt-14 mb-8 border-t border-[#EAE3D5] w-full" />
+
+        {/* Secondary Navigation Row: Currency, Language & Catalog Links */}
+        <div className="flex flex-wrap items-center justify-between gap-y-4 gap-x-6">
+          {/* Currency & Language Selectors */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-[#EAE3D5] text-xs font-semibold text-[#333333] shadow-2xs cursor-pointer hover:border-[#77104C] transition-colors">
+              <span>English</span>
+              <FiChevronDown size={12} className="text-gray-400" />
+            </div>
+
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#EAE3D5] text-xs font-semibold text-[#333333] shadow-2xs cursor-pointer hover:border-[#77104C] transition-colors">
+              <span className="inline-block w-4 h-3 bg-[#01411C] rounded-[2px]" />
+              <span>PKR (₨)</span>
+              <FiChevronDown size={12} className="text-gray-400" />
+            </div>
+          </div>
+
+          {/* Catalog Links */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[12.5px] text-[#555555]">
+            {NAV.map(([label, href]) => (
+              <Link
+                key={label}
+                href={href}
+                className="hover:text-[#77104C] font-medium transition-colors hover:underline"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Legal Bar */}
+        <div className="mt-8 flex flex-col lg:flex-row items-center justify-between text-xs text-[#777777] border-t border-[#EAE3D5]/80 pt-6 gap-4">
+          <p className="font-normal text-center lg:text-left">
+            © {new Date().getFullYear()}, <strong className="font-semibold text-[#1A1A1A]">Liberty Kollection</strong>. All rights reserved. Crafted for timeless elegance.
           </p>
 
-          {/* Styled Payment Badges */}
-          <div className="flex items-center gap-3 text-2xl text-[#7A6973]">
-            <FaCcVisa className="hover:text-theme-primary transition-colors" title="Visa" />
-            <FaCcMastercard className="hover:text-theme-primary transition-colors" title="Mastercard" />
-            <FaCcAmex className="hover:text-theme-primary transition-colors" title="American Express" />
-            <FaCcPaypal className="hover:text-theme-primary transition-colors" title="PayPal" />
-            <FaCcDiscover className="hover:text-theme-primary transition-colors" title="Discover" />
+          <div className="flex items-center gap-1.5 text-xs text-[#555555]">
+            <span>Developed by:</span>
+            <strong className="font-extrabold text-[#77104C] tracking-wider uppercase font-display">
+              RAPIDTECHPRO
+            </strong>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {POLICIES.map(([title, link]) => (
+              <Link
+                key={title}
+                href={link}
+                className="hover:text-[#77104C] transition-colors"
+              >
+                {title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

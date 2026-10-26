@@ -254,7 +254,7 @@ const Products = () => {
 
                       {/* Price Row */}
                       <div className="mb-2">
-                        <span className="inline-block text-gray-900 font-bold tabular-nums text-xs sm:text-sm">
+                        <span className={`inline-block font-bold tabular-nums text-xs sm:text-sm ${product.discount > 0 ? 'text-theme-sale' : 'text-gray-900'}`}>
                           Rs.{formatPrice(product.price)}
                         </span>
                         {product.discount > 0 && (
@@ -276,7 +276,7 @@ const Products = () => {
                             handleAddToCart(product, e);
                           }
                         }}
-                        className="w-full py-1.5 sm:py-2 bg-theme-dark hover:bg-theme-primary text-white font-bold text-[11px] sm:text-xs rounded-none uppercase tracking-wider transition-colors shadow-xs flex items-center justify-center gap-1.5"
+                        className="w-full py-1.5 sm:py-2 bg-theme-primary hover:bg-theme-primary-hover text-white font-bold text-[11px] sm:text-xs rounded-none uppercase tracking-wider transition-colors shadow-xs flex items-center justify-center gap-1.5"
                       >
                         {product.productType === 'digital' ? (
                           <>

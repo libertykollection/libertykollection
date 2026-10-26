@@ -196,7 +196,7 @@ const CartPage = () => {
             return actions.order.create({
               purchase_units: [
                 {
-                  description: 'Gloria Cosmetics Order',
+                  description: 'Liberty Kollection Order',
                   amount: {
                     currency_code: 'USD',
                     value: Number(priceInUSD) > 0 ? priceInUSD : '1.00',
@@ -491,7 +491,7 @@ const CartPage = () => {
             The Order is Placed Successfully!
           </h1>
           <p className="text-xs sm:text-sm text-[#8C7A70] mb-8 max-w-md mx-auto leading-relaxed">
-            Thank you for shopping with Gloria Cosmetics. Your order has been registered and our atelier is preparing your luxury cosmetics formulation for dispatch.
+            Thank you for shopping with Liberty Kollection. Your order has been registered and our atelier is preparing your luxury cosmetics formulation for dispatch.
           </p>
 
           {/* Order Details Card */}
@@ -992,7 +992,7 @@ const CartPage = () => {
                     <div className="text-xs space-y-1.5 w-full">
                       <div className="flex items-center justify-between">
                         <span className="font-bold uppercase tracking-wider text-[#141311]">
-                          Gloria Official Settlement Account
+                          Liberty Kollection Settlement Account
                         </span>
                         <span className="text-[10px] font-bold uppercase tracking-widest text-[#C53261] bg-[#FFF5F8] px-2 py-0.5 border border-[#F0DCE3]">
                           Pre-Payment Proof
@@ -1003,7 +1003,7 @@ const CartPage = () => {
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1.5 border-t border-[#F0DCE3]">
                         <div><span className="font-semibold text-[#8C7A70]">Bank:</span> <span className="font-bold text-[#141311]">Meezan Bank</span></div>
-                        <div><span className="font-semibold text-[#8C7A70]">Account Title:</span> <span className="font-bold text-[#141311]">Gloria Luxury Cosmetics</span></div>
+                        <div><span className="font-semibold text-[#8C7A70]">Account Title:</span> <span className="font-bold text-[#141311]">Liberty Kollection Official</span></div>
                         <div><span className="font-semibold text-[#8C7A70]">Account / IBAN:</span> <span className="font-mono font-bold text-[#141311]">PK42MEZN0001234567890123</span></div>
                         <div><span className="font-semibold text-[#8C7A70]">JazzCash / EasyPaisa:</span> <span className="font-mono font-bold text-[#141311]">0300-1234567</span></div>
                       </div>
@@ -1287,7 +1287,7 @@ const CartPage = () => {
               </div>
             )}
             <p className="text-xs text-[#8C7A70] leading-relaxed mb-6">
-              Thank you for your order with Gloria Cosmetics. A confirmation email has been dispatched to your inbox.
+              Thank you for your order with Liberty Kollection. A confirmation email has been dispatched to your inbox.
             </p>
             <div className="w-full space-y-2.5">
               {confirmedOrder?.id && (

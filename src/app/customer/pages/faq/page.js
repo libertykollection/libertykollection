@@ -63,7 +63,7 @@ const FAQ = () => {
               <FiHelpCircle className="text-[#C53261]" /> The Quality Standard
             </h4>
             <p className="text-xs text-gray-500 font-light leading-relaxed">
-              {brandName ? `${brandName} is` : 'Gloria Cosmetics is'} devoted to providing authentic luxury cosmetic creations, swift white-glove dispatch, and unwavering client satisfaction.
+              {brandName ? `${brandName} is` : 'Liberty Kollection is'} devoted to providing authentic luxury cosmetic creations, swift white-glove dispatch, and unwavering client satisfaction.
             </p>
           </div>
 

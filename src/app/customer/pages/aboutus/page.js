@@ -48,7 +48,7 @@ const AboutUsPage = () => {
               <span className="text-[#141311] font-bold">About Our House</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#141311]">
-              The Story of {brandName || 'Gloria Cosmetics'}
+              The Story of {brandName || 'Liberty Kollection'}
             </h1>
           </div>
           <span className="text-xs font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
@@ -81,7 +81,7 @@ const AboutUsPage = () => {
                 {aboutData?.description ||
                   (brandName
                     ? `${brandName} was created to bring genuine international cosmetic formulations, niche artisan fragrances, and dermatologically verified skincare right to your vanity with speed, authenticity, and unmatched customer care.`
-                    : 'Gloria Cosmetics was created to bring genuine international cosmetic formulations, niche artisan fragrances, and dermatologically verified skincare right to your vanity with speed, authenticity, and unmatched customer care.')}
+                    : 'Liberty Kollection was created to bring genuine international cosmetic formulations, niche artisan fragrances, and dermatologically verified skincare right to your vanity with speed, authenticity, and unmatched customer care.')}
               </p>
             </div>
 

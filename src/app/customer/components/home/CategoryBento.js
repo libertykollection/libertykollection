@@ -18,6 +18,10 @@ const CategoryBento = () => {
   const subCount = (catId) => subcategories.filter((s) => s.categoryId === catId).length;
   const list = categories.slice(0, 8);
 
+  if (!loading && list.length === 0) {
+    return null;
+  }
+
   return (
     <section id="shop-by-category" className="py-14 sm:py-20 bg-white scroll-mt-24">
       <div className="container mx-auto max-w-[1440px] px-4 lg:px-8">

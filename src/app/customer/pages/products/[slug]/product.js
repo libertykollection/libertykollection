@@ -465,7 +465,7 @@ const ProductPage = ({ productData }) => {
               <div className="flex items-center justify-between gap-4">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-[#C53261] flex items-center gap-1.5">
                   <HiSparkles size={13} />
-                  {product?.subcategory?.category?.name || product?.category?.name || 'Gloria Cosmetics'}
+                  {product?.subcategory?.category?.name || product?.category?.name || 'Liberty Kollection'}
                 </span>
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-none text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-none bg-emerald-600 animate-pulse" />

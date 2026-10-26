@@ -13,15 +13,15 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        /* Body — DM Sans (geometric, clean) */
+        /* Body — DM Sans (Liberty body & buttons font) */
         sans:    ['var(--font-sans)', 'system-ui', '-apple-system', 'sans-serif'],
-        /* Display headings — Cormorant Garamond (luxury serif) */
-        display: ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
-        serif:   ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
-        /* UI labels / nav / buttons — Jost (humanist geometric) */
-        ui:      ['var(--font-ui)', 'var(--font-sans)', 'system-ui', 'sans-serif'],
+        /* Headings & Titles — Figtree (Liberty signature heading font) */
+        display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
+        serif:   ['var(--font-display)', 'Georgia', 'serif'],
+        /* UI labels / nav / buttons — Figtree */
+        ui:      ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
         /* Legacy compat */
-        poppins: ['var(--font-ui)',  'system-ui', 'sans-serif'],
+        poppins: ['var(--font-display)', 'sans-serif'],
       },
       colors: {
         theme: {

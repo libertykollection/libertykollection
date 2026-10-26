@@ -186,7 +186,7 @@ const Register = () => {
           <Box sx={{ textAlign: 'center', mb: 4 }}>
             <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#C53261', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
               <HiSparkles size={14} />
-              {brandName ? `${brandName}` : 'Gloria Cosmetics'}
+              {brandName ? `${brandName}` : 'Liberty Kollection'}
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.01em' }}>
               Create Account

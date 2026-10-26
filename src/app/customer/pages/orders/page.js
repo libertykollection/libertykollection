@@ -307,7 +307,7 @@ const UserOrders = () => {
                       </span>
                     </div>
                     <p className="text-xs text-[#166534] mt-0.5 leading-relaxed">
-                      Thank you for your order with Gloria Cosmetics. Your order has been placed and is currently being prepared with white-glove packaging for delivery.
+                      Thank you for your order with Liberty Kollection. Your order has been placed and is currently being prepared with white-glove packaging for delivery.
                     </p>
                   </div>
                 </div>

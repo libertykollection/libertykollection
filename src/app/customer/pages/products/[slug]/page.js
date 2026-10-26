@@ -38,9 +38,7 @@ async function getProductData(slug) {
     // Construct base URL - prefer dynamic host from headers in production
     // to avoid issues with hardcoded NEXT_PUBLIC_API_URL (like localhost:3000)
     let baseUrl = `${protocol}://${host}`;
-
-    // Fallback or override if specifically configured and not localhost in production
-    if (process.env.NEXT_PUBLIC_API_URL && !host.includes('store2u.ca') && !host.includes('vercel.app')) {
+    if (!host && process.env.NEXT_PUBLIC_API_URL) {
       baseUrl = process.env.NEXT_PUBLIC_API_URL;
     }
 

@@ -191,7 +191,7 @@ const OrderInfoPage = () => {
 
               <div className="mt-6 flex items-center justify-center gap-2 text-gray-400 text-[10px] uppercase tracking-widest">
                 <FiLock size={12} />
-                <span>Protected by Gloria Authenticity Guarantee</span>
+                <span>Protected by Liberty Kollection Authenticity Guarantee</span>
               </div>
             </div>
 

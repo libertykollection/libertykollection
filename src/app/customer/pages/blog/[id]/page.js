@@ -96,7 +96,7 @@ export default async function Home({ params }) {
       (blog.description ? blog.description.substring(0, 160).replace(/<[^>]*>/g, '') : ''),
     author: {
       '@type': 'Organization',
-      name: brandName || 'Gloria Cosmetics',
+      name: brandName || 'Liberty Kollection',
     },
   };
 

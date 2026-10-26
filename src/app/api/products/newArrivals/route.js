@@ -10,7 +10,12 @@ export async function GET() {
       },
       take: 10, // Limit the results to 10 products
       include: {
-        images: true, // Include related images
+        images: true,
+        subcategory: {
+          include: {
+            category: true,
+          },
+        },
       },
     });
 

@@ -85,7 +85,7 @@ const AllProducts = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 pb-3 border-b border-gray-100 gap-4">
           <div>
             <span className="text-[10px] font-bold text-theme-primary uppercase tracking-[0.2em] block mb-1">
-              Gloria Cosmetics • Prestige Beauty Bestsellers
+              Liberty Kollection • Luxury Collections
             </span>
             <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
               Prestige Cosmetics & Skincare
@@ -168,7 +168,7 @@ const AllProducts = () => {
 
                   {/* Price Row */}
                   <div className="mb-2">
-                    <span className="inline-block text-gray-900 font-bold tabular-nums text-xs sm:text-sm">
+                    <span className={`inline-block font-bold tabular-nums text-xs sm:text-sm ${product.discount > 0 ? 'text-theme-sale' : 'text-gray-900'}`}>
                       Rs.{formatPrice(product.price)}
                     </span>
                     {product.discount > 0 && (
@@ -190,7 +190,7 @@ const AllProducts = () => {
                         handleAddToCart(product, e);
                       }
                     }}
-                    className="w-full py-1.5 sm:py-2 bg-theme-dark hover:bg-theme-primary text-white font-bold text-[11px] sm:text-xs rounded-none uppercase tracking-wider transition-colors shadow-xs flex items-center justify-center gap-1.5"
+                    className="w-full py-1.5 sm:py-2 bg-theme-primary hover:bg-theme-primary-hover text-white font-bold text-[11px] sm:text-xs rounded-none uppercase tracking-wider transition-colors shadow-xs flex items-center justify-center gap-1.5"
                   >
                     {product.productType === 'digital' ? (
                       <>

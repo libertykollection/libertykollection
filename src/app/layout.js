@@ -1,38 +1,39 @@
-import { Cormorant_Garamond, DM_Sans, Jost } from 'next/font/google';
+import { Figtree, DM_Sans, Kaushan_Script } from 'next/font/google';
 import ClientLayout from './ClientLayout';
 import './globals.css';
 
-/* ─── Display / Heading serif — luxury editorial feel ─── */
-const cormorant = Cormorant_Garamond({
+/* ─── Liberty Display / Headings — Figtree font ─── */
+const figtree = Figtree({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-display',
   display: 'swap',
 });
 
-/* ─── Body / UI — clean geometric sans ─── */
+/* ─── Liberty Body / UI — DM Sans font ─── */
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-/* ─── Labels / Navigation — modern humanist caps ─── */
-const jost = Jost({
+/* ─── Liberty brush-script logo ─── */
+const kaushan = Kaushan_Script({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-ui',
+  weight: ['400'],
+  variable: '--font-logo',
   display: 'swap',
 });
 
 import prisma from './util/prisma';
 
 export async function generateMetadata() {
-  let title = 'Gloria Cosmetics - Official Online Store';
-  let description = 'Shop luxury authentic cosmetics, niche fragrances, and verified skincare.';
-  let icon = '/gloria_logo.png';
+  let title = 'Liberty Kollection - Official Online Store';
+  let description = 'Shop luxury authentic cosmetics, bridal jewellery, and verified beauty collections. Your Look, Your Liberty.';
+  let icon = '/liberty-logo-header.png';
 
   try {
     const details = await prisma.companyDetails.findFirst();
@@ -55,14 +56,14 @@ export async function generateMetadata() {
   }
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com'),
     title,
     description,
     manifest: '/manifest.json',
     icons: {
-      icon: '/gloria_logo.png',
+      icon: '/liberty-logo-header.png',
       shortcut: '/favicon.ico',
-      apple: '/gloria_logo.png',
+      apple: '/liberty-logo-header.png',
     },
     alternates: {
       canonical: '/',
@@ -72,7 +73,7 @@ export async function generateMetadata() {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${jost.variable}`}>
+    <html lang="en" className={`${figtree.variable} ${dmSans.variable} ${kaushan.variable}`}>
       <body className={`${dmSans.className} font-sans antialiased`} suppressHydrationWarning={true}>
         <ClientLayout>
           {children}

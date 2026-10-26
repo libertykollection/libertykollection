@@ -1,7 +1,7 @@
 import prisma from './util/prisma';
 
 export default async function sitemap() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com';
 
     try {
         // 1. Fetch Products

@@ -237,7 +237,7 @@ const FilterableTable = ({ data = [], fetchData }) => {
           shippingAddress: {
             recipientName: newItem.recipientName || 'Walk-in / Phone Customer',
             phoneNumber: newItem.phoneNumber || '+92',
-            email: newItem.email || 'customer@gloriacosmetics.shop',
+            email: newItem.email || 'customer@libertykollection.com',
             city: newItem.city || 'Karachi',
             streetAddress: newItem.streetAddress || 'Direct In-Store / Admin Order',
             state: 'Sindh',

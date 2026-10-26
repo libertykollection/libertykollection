@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterestP } from 'react-icons/fa';
-import { FiMail } from 'react-icons/fi';
 
 const NewsletterBar = () => {
   const [email, setEmail] = useState('');
@@ -17,84 +15,33 @@ const NewsletterBar = () => {
   };
 
   return (
-    <section className="bg-theme-primary py-5 text-white border-t border-white/10">
-      <div className="container mx-auto max-w-[1536px] px-4 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-5">
-          {/* Left: Newsletter Offer with Envelope Icon */}
-          <div className="flex items-center gap-3.5 text-center lg:text-left">
-            <div className="w-11 h-11 rounded-none bg-white/20 flex items-center justify-center text-white flex-shrink-0 shadow-inner">
-              <FiMail size={22} className="stroke-[2.2]" />
-            </div>
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
-                Join Our VIP Beauty Club & Get 15% Off
-              </h3>
-            </div>
-          </div>
-
-          {/* Center: Search / Subscribe Box */}
-          <form onSubmit={handleSubmit} className="flex w-full max-w-lg items-center bg-white rounded-none p-1 shadow-sm">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="flex-1 px-4 py-2 text-xs sm:text-sm text-gray-900 placeholder-gray-400 outline-none bg-transparent"
-            />
-            <button
-              type="submit"
-              className="bg-theme-dark hover:bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-2 rounded-none transition-colors flex-shrink-0 shadow-xs"
-            >
-              SUBSCRIBE
-            </button>
-          </form>
-
-          {/* Right: Keep In Touch Social Links */}
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <span className="text-xs font-bold text-white">
-              Keep in touch
-            </span>
-            <div className="flex items-center gap-2">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="w-7 h-7 rounded-none bg-white hover:bg-gray-900 hover:text-white text-gray-800 flex items-center justify-center transition-colors text-xs shadow-xs"
-              >
-                <FaFacebookF size={12} />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="w-7 h-7 rounded-none bg-white hover:bg-gray-900 hover:text-white text-gray-800 flex items-center justify-center transition-colors text-xs shadow-xs"
-              >
-                <FaInstagram size={12} />
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="w-7 h-7 rounded-none bg-white hover:bg-gray-900 hover:text-white text-gray-800 flex items-center justify-center transition-colors text-xs shadow-xs"
-              >
-                <FaYoutube size={12} />
-              </a>
-              <a
-                href="#"
-                aria-label="Twitter X"
-                className="w-7 h-7 rounded-none bg-white hover:bg-gray-900 hover:text-white text-gray-800 flex items-center justify-center transition-colors text-xs shadow-xs"
-              >
-                <FaTwitter size={12} />
-              </a>
-              <a
-                href="#"
-                aria-label="Pinterest"
-                className="w-7 h-7 rounded-none bg-white hover:bg-gray-900 hover:text-white text-gray-800 flex items-center justify-center transition-colors text-xs shadow-xs"
-              >
-                <FaPinterestP size={12} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section className="bg-[#FFFDF5] pt-24 pb-24 text-center px-4">
+      <p className="text-[11px] uppercase tracking-wide text-[#555] font-sans">Newsletter</p>
+      <h2 className="mt-3 text-[26px] font-medium text-[#222] font-display">Subscribe</h2>
+      <p className="mt-4 text-[13px] text-[#444]">
+        Invite customers to subscribe for early sale access, new in, promotions, and more.
+      </p>
+      {subscribed ? (
+        <p className="mt-8 text-sm font-semibold text-[#77104C]">Thank you for subscribing!</p>
+      ) : (
+        <form onSubmit={handleSubmit} className="mt-8 flex items-center justify-center gap-3">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email address"
+            aria-label="Email address"
+            className="w-[250px] sm:w-[330px] h-[46px] px-4 rounded-xl bg-[#AD4A81] text-[#4a0b2e] placeholder-[#5a1138] text-xs outline-none"
+          />
+          <button
+            type="submit"
+            className="h-[46px] px-6 rounded-xl bg-[#77104C] hover:bg-[#5E0B3C] text-white text-xs font-semibold transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+      )}
     </section>
   );
 };

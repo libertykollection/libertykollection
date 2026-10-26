@@ -12,7 +12,12 @@ export async function GET(request) {
                 }
             },
             include: {
-                images: true, // Include related images
+                images: true,
+                subcategory: {
+                    include: {
+                        category: true,
+                    },
+                },
             },
         });
         

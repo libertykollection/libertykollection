@@ -10,13 +10,13 @@ async function main() {
   await prisma.companyDetails.deleteMany({});
   await prisma.companyDetails.create({
     data: {
-      name: 'Gloria Cosmetics',
+      name: 'Liberty Kollection',
       description: 'Haute botanical beauty, clinical skincare, and luxury cosmetics crafted with royal radiance.',
-      headerImage: '/gloria_logo.png',
-      favIcon: '/gloria_logo.png'
+      headerImage: '/liberty-logo-transparent.png',
+      favIcon: '/liberty-logo-transparent.png'
     }
   });
-  console.log('✓ CompanyDetails updated for Gloria Cosmetics');
+  console.log('✓ CompanyDetails updated for Liberty Kollection');
 
   // 2. Admins & Customers
   const adminHash = await bcrypt.hash('GloriaAdmin2026!', 10);
@@ -28,7 +28,7 @@ async function main() {
   const admin1 = await prisma.user.create({
     data: {
       name: 'Gloria Executive',
-      email: 'admin@gloriacosmetics.shop',
+      email: 'admin@libertykollection.com',
       password: adminHash,
       role: 'ADMIN',
       city: 'Lahore',
@@ -401,8 +401,8 @@ async function main() {
         isTopRated: p.isTopRated,
         subcategorySlug: p.subcategorySlug,
         description: p.description,
-        meta_title: `${p.name} | Gloria Cosmetics`,
-        meta_description: `Shop ${p.name} online at Gloria Cosmetics. Luxury formulations, verified botanical efficacy and nationwide express delivery.`,
+        meta_title: `${p.name} | Liberty Kollection`,
+        meta_description: `Shop ${p.name} online at Liberty Kollection. Luxury formulations, verified botanical efficacy and nationwide express delivery.`,
         meta_keywords: 'cosmetics, skincare, beauty, makeup, luxury, pakistan',
         colors: JSON.stringify([
           { value: createdColors[0].id, label: createdColors[0].name, hex: createdColors[0].hex },
@@ -547,8 +547,8 @@ async function main() {
   await prisma.faq.deleteMany({});
   const faqs = [
     {
-      question: 'Are Gloria Cosmetics products cruelty-free and dermatologically tested?',
-      answer: 'Yes, 100%. All Gloria Cosmetics formulations are certified cruelty-free, paraben-free, and clinically evaluated by certified dermatologists for maximum skin safety and efficacy.'
+      question: 'Are Liberty Kollection products cruelty-free and dermatologically tested?',
+      answer: 'Yes, 100%. All Liberty Kollection formulations are certified cruelty-free, paraben-free, and clinically evaluated by certified dermatologists for maximum skin safety and efficacy.'
     },
     {
       question: 'How do I choose the correct foundation shade for my skin tone?',

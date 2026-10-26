@@ -153,7 +153,12 @@ export async function GET(request) {
     const products = await prisma.product.findMany({
       where,
       include: {
-        images: true, // Include related images
+        images: true,
+        subcategory: {
+          include: {
+            category: true,
+          },
+        },
       },
     });
     return NextResponse.json(products);

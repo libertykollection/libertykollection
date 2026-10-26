@@ -4,10 +4,10 @@
  * @param {string} bodyContent - The main HTML content of the email.
  * @returns {string} - The complete HTML email string.
  */
-export const wrapEmailBody = (title, bodyContent, brandName = 'Gloria Cosmetics') => {
+export const wrapEmailBody = (title, bodyContent, brandName = 'Liberty Kollection') => {
   const currentYear = new Date().getFullYear();
   const brandColor = '#C53261';
-  const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk';
+  const baseUrl = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com';
 
   return `
     <!DOCTYPE html>

@@ -6,28 +6,33 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { FiEye, FiShoppingBag, FiCheck } from 'react-icons/fi';
+import { FiShoppingBag, FiCheck } from 'react-icons/fi';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { addToCart } from '../../../store/cartSlice';
 import { toggleWishlist } from '../../../store/wishlistSlice';
 import { useQuickView } from './QuickView';
 import { formatPrice, getOriginalPrice, parseImages, productHref } from './homeUtils';
 
-const ProductCard = ({ product, index = 0, compact = false }) => {
+const ProductCard = ({ product, index = 0, compact = false, showBottomBar = false }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { open } = useQuickView();
   const [added, setAdded] = useState(false);
   const wishlistItems = useSelector((state) => state.wishlist?.items || []);
-  const inWishlist = wishlistItems.some((item) => item.id === product.id);
+  const inWishlist = wishlistItems.some((item) => item.id === product?.id);
 
   const images = parseImages(product);
   const primary = images[0];
   const secondary = images[1];
   const original = getOriginalPrice(product);
-  const category = product.subcategory?.name || product.subcategory?.category?.name;
-  const isDigital = product.productType === 'digital';
-  const outOfStock = product.stock === 0;
+  const hasDiscount = Boolean(original && product?.discount && product.discount > 0);
+  const category =
+    product?.subcategory?.category?.name ||
+    product?.subcategory?.name ||
+    product?.category?.name ||
+    'Liberty Kollection';
+  const isDigital = product?.productType === 'digital';
+  const outOfStock = product?.stock === 0;
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -47,23 +52,19 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
     dispatch(toggleWishlist(product));
   };
 
-  const handleQuickView = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    open(product);
-  };
+  const reviewCount = product?.reviews?.length || product?.ratingCount || 0;
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.45, delay: Math.min(index, 8) * 0.05 }}
-      className="group relative bg-white border border-gray-200 hover:border-theme-dark transition-colors duration-300 flex flex-col h-full"
+      transition={{ duration: 0.4, delay: Math.min(index, 8) * 0.05 }}
+      className="group relative flex flex-col h-full bg-transparent select-none cursor-pointer"
     >
-      <Link href={productHref(product)} className="flex flex-col h-full" aria-label={product.name}>
-        {/* Media */}
-        <div className={`relative w-full overflow-hidden bg-[#FBF8F7] ${compact ? 'aspect-[4/4]' : 'aspect-[4/5]'}`}>
+      <Link href={productHref(product)} className="flex flex-col h-full" aria-label={product?.name}>
+        {/* 1. Image Container matching Liberty rounded full-bleed style */}
+        <div className="relative w-full aspect-[4/5] rounded-[18px] overflow-hidden bg-[#F8F6F2] transition-all duration-300 group-hover:shadow-md">
           {primary ? (
             <>
               <Image
@@ -72,7 +73,7 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
                 loading="lazy"
                 src={primary}
                 alt={product.name}
-                className={`object-contain p-4 transition-all duration-700 ease-out group-hover:scale-[1.06] ${
+                className={`object-cover transition-all duration-700 ease-out group-hover:scale-[1.04] ${
                   secondary ? 'group-hover:opacity-0' : ''
                 }`}
               />
@@ -84,95 +85,119 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
                   src={secondary}
                   alt=""
                   aria-hidden="true"
-                  className="object-contain p-4 opacity-0 scale-105 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-100"
+                  className="object-cover opacity-0 scale-105 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-100"
                 />
               )}
             </>
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-300">No image</div>
+            <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-300">
+              No image
+            </div>
           )}
 
-          {/* Badges */}
-          <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
-            {original && (
-              <span className="bg-theme-primary text-white text-[10px] font-bold tracking-wider px-2 py-0.5">
-                -{Math.round(product.discount)}%
+          {/* 2. Top-Left Sale Badge matching the exact image */}
+          {hasDiscount && (
+            <div className="absolute top-3 left-3 z-10">
+              <span className="bg-[#6B0E44] text-white text-[10.5px] font-medium tracking-normal px-2.5 py-0.5 rounded-full shadow-xs">
+                Sale
               </span>
-            )}
-            {outOfStock && (
-              <span className="bg-gray-900/80 text-white text-[10px] font-bold tracking-wider px-2 py-0.5">SOLD OUT</span>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* Floating Wishlist Heart */}
+          {/* Out of Stock Badge */}
+          {outOfStock && (
+            <div className="absolute top-3 left-3 z-10">
+              <span className="bg-[#1A1A1A] text-white text-[10px] font-medium tracking-normal px-2.5 py-0.5 rounded-full shadow-xs">
+                Sold Out
+              </span>
+            </div>
+          )}
+
+          {/* Wishlist Heart Button (subtle on hover or when active) */}
           <button
             type="button"
             onClick={handleToggleWishlist}
-            aria-label={inWishlist ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
-            title={inWishlist ? 'In Vanity Wishlist' : 'Add to Vanity Wishlist'}
-            className="absolute top-2 right-2 z-10 w-8 h-8 flex items-center justify-center bg-white/90 hover:bg-white border border-[#F0DCE3] text-[#141311] hover:text-[#C53261] transition-all rounded-none shadow-xs"
+            aria-label={inWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
+            className={`absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-white/90 hover:bg-white flex items-center justify-center text-gray-700 hover:text-[#77104C] transition-all shadow-xs ${
+              inWishlist ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+            }`}
           >
-            {inWishlist ? (
-              <FaHeart className="text-[#C53261]" size={14} />
-            ) : (
-              <FaRegHeart size={14} />
-            )}
+            {inWishlist ? <FaHeart className="text-[#77104C]" size={12} /> : <FaRegHeart size={12} />}
           </button>
 
-          {/* Hover actions */}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
-            <button
-              type="button"
-              onClick={handleQuickView}
-              aria-label={`Quick view ${product.name}`}
-              className="w-12 h-11 flex items-center justify-center bg-white border-t border-r border-gray-200 text-theme-dark hover:bg-theme-light transition-colors"
-            >
-              <FiEye size={16} />
-            </button>
-            <button
-              type="button"
-              onClick={handleAdd}
-              disabled={outOfStock && !isDigital}
-              className={`flex-1 h-11 flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest transition-colors disabled:opacity-50 ${
-                added ? 'bg-emerald-600 text-white' : 'bg-theme-dark text-white hover:bg-theme-primary'
-              }`}
-            >
-              {added ? <FiCheck size={14} /> : <FiShoppingBag size={14} />}
-              {isDigital ? 'View' : added ? 'Added' : 'Add to bag'}
-            </button>
-          </div>
+          {/* 3. Add to Cart Button (Bottom bar in catalog grid, or hover drawer in sliders) */}
+          {showBottomBar ? (
+            <div className="absolute inset-x-0 bottom-0 z-10">
+              <button
+                type="button"
+                onClick={handleAdd}
+                disabled={outOfStock && !isDigital}
+                aria-label={`Add ${product.name} to cart`}
+                className={`w-full h-10 flex items-center justify-center gap-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all active:scale-[0.98] disabled:opacity-50 ${
+                  added ? 'bg-emerald-600 text-white' : 'bg-[#77104C] hover:bg-[#5E0B3C] text-white shadow-xs'
+                }`}
+              >
+                {added ? <FiCheck size={14} /> : <FiShoppingBag size={13} />}
+                <span>{isDigital ? 'Download' : added ? 'Added' : 'Add to cart'}</span>
+              </button>
+            </div>
+          ) : (
+            <div className="absolute inset-x-3 bottom-3 z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <button
+                type="button"
+                onClick={handleAdd}
+                disabled={outOfStock && !isDigital}
+                className={`w-full h-9 flex items-center justify-center gap-1.5 text-xs font-semibold rounded-xl shadow-md transition-all active:scale-95 disabled:opacity-50 ${
+                  added ? 'bg-emerald-600 text-white' : 'bg-[#77104C] hover:bg-[#5E0B3C] text-white'
+                }`}
+              >
+                {added ? <FiCheck size={14} /> : <FiShoppingBag size={14} />}
+                <span>{isDigital ? 'Download' : added ? 'Added' : 'Add to cart'}</span>
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Info */}
-        <div className="p-3 sm:p-4 flex flex-col flex-1">
-          {category && (
-            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400 mb-1 line-clamp-1">
-              {category}
-            </span>
-          )}
-          <h3 className="text-[13px] sm:text-sm font-semibold text-gray-900 leading-snug line-clamp-2 min-h-[2.6em] group-hover:text-theme-primary transition-colors">
+        {/* 3. Product Details - Strictly Left-Aligned matching screenshot */}
+        <div className="pt-2.5 pb-1 flex flex-col flex-1 text-left">
+          {/* Product Name */}
+          <h3 className="text-[13.5px] sm:text-[14.5px] font-semibold text-[#1F1F1F] leading-snug line-clamp-1 group-hover:text-[#77104C] transition-colors">
             {product.name}
           </h3>
-          <div className="mt-auto pt-2 flex items-baseline gap-2">
-            <span className="text-sm sm:text-base font-black text-theme-dark tabular-nums">
-              Rs. {formatPrice(product.price)}
+
+          {/* Brand / Subcategory */}
+          <span className="text-[11.5px] text-[#767676] font-normal mt-0.5 block truncate">
+            {category}
+          </span>
+
+          {/* Star Rating & Review Count */}
+          <div className="flex items-center gap-0.5 text-[11px] mt-1">
+            <span className={reviewCount > 0 ? 'text-[#77104C]' : 'text-[#D4AFBF]'}>
+              ★★★★★
             </span>
-            {original && (
-              <span className="text-[11px] text-gray-400 line-through tabular-nums">Rs. {formatPrice(original)}</span>
+            <span className="text-[11px] text-[#555555] ml-1.5 font-normal">
+              {reviewCount} reviews
+            </span>
+          </div>
+
+          {/* Price & Discount Row */}
+          <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+            <span className={`text-[13.5px] sm:text-[14.5px] font-bold tabular-nums ${hasDiscount ? 'text-[#C5193B]' : 'text-[#1F1F1F]'}`}>
+              Rs.{formatPrice(product.price)}
+            </span>
+            {hasDiscount && (
+              <>
+                <span className="text-[11.5px] text-[#999999] line-through tabular-nums ml-0.5">
+                  Rs.{formatPrice(original)}
+                </span>
+                <span className="bg-[#5A0B38] text-white text-[9.5px] font-bold px-1.5 py-0.5 rounded-full ml-1 leading-none">
+                  -{Math.round(product.discount)}%
+                </span>
+              </>
             )}
           </div>
         </div>
       </Link>
-
-      {/* Mobile add button (hover actions are hidden on touch) */}
-      <button
-        type="button"
-        onClick={handleAdd}
-        disabled={outOfStock && !isDigital}
-        className="md:hidden mx-3 mb-3 h-9 text-[11px] font-bold uppercase tracking-widest bg-theme-dark text-white disabled:opacity-50"
-      >
-        {isDigital ? 'View' : added ? 'Added ✓' : 'Add to bag'}
-      </button>
     </motion.article>
   );
 };
@@ -180,13 +205,13 @@ const ProductCard = ({ product, index = 0, compact = false }) => {
 export default ProductCard;
 
 export const ProductCardSkeleton = () => (
-  <div className="border border-gray-100 animate-pulse">
-    <div className="aspect-[4/5] bg-gray-100" />
-    <div className="p-4 space-y-2">
-      <div className="h-2 w-16 bg-gray-100" />
-      <div className="h-3 w-full bg-gray-100" />
-      <div className="h-3 w-2/3 bg-gray-100" />
-      <div className="h-4 w-20 bg-gray-200 mt-3" />
+  <div className="flex flex-col animate-pulse">
+    <div className="w-full aspect-[4/5] rounded-[18px] bg-gray-200/70" />
+    <div className="pt-2.5 space-y-1.5 text-left">
+      <div className="h-3.5 w-3/4 bg-gray-200/70 rounded" />
+      <div className="h-2.5 w-1/2 bg-gray-100 rounded" />
+      <div className="h-2.5 w-1/3 bg-gray-100 rounded" />
+      <div className="h-3.5 w-2/5 bg-gray-200/70 rounded mt-1" />
     </div>
   </div>
 );

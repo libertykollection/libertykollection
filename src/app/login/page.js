@@ -70,7 +70,7 @@ const LoginPage = () => {
                     toast.success('Welcome back to the Admin Concierge.');
                     setTimeout(() => router.push('/admin/pages/Main'), 1200);
                 } else if (user.role === 'CUSTOMER') {
-                    toast.success('Welcome back to Gloria Cosmetics.');
+                    toast.success('Welcome back to Liberty Kollection.');
                     setTimeout(() => router.push('/'), 1200);
                 }
             }
@@ -137,7 +137,7 @@ const LoginPage = () => {
                     <Box sx={{ textAlign: 'center', mb: 5 }}>
                         <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: '#C53261', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', mb: 1 }}>
                             <HiSparkles size={14} />
-                            {brandName ? `${brandName}` : 'Gloria Cosmetics'}
+                            {brandName ? `${brandName}` : 'Liberty Kollection'}
                         </Box>
                         <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: '#141311', fontFamily: 'serif', letterSpacing: '-0.01em' }}>
                             Welcome Back
@@ -247,7 +247,7 @@ const LoginPage = () => {
 
                             <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid #F0DCE3', textAlign: 'center' }}>
                                 <Typography variant="body2" sx={{ color: '#6B7280', fontSize: '0.8rem' }}>
-                                    New to {brandName || 'Gloria Cosmetics'}?{' '}
+                                    New to {brandName || 'Liberty Kollection'}?{' '}
                                     <Typography
                                         component="span"
                                         onClick={() => router.push('/customer/pages/register')}

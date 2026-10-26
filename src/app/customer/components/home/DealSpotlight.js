@@ -205,16 +205,16 @@ const DealSpotlight = () => {
                   id="deal-add-to-bag"
                   onClick={handleAdd}
                   disabled={deal.stock === 0}
-                  className={`flex-1 sm:flex-none sm:px-10 h-12 inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.2em] transition-colors disabled:opacity-40 ${
-                    added ? 'bg-emerald-600' : 'bg-theme-primary hover:bg-white hover:text-theme-dark'
+                  className={`flex-1 sm:flex-none sm:px-10 h-12 inline-flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md disabled:opacity-40 ${
+                    added ? 'bg-emerald-600 text-white' : 'bg-[#77104C] hover:bg-[#5E0B3C] text-white'
                   }`}
                 >
-                  {added ? <FiCheck /> : <FiShoppingBag />} {deal.stock === 0 ? 'Sold out' : added ? 'Added' : 'Add to bag'}
+                  {added ? <FiCheck /> : <FiShoppingBag />} {deal.stock === 0 ? 'Sold out' : added ? 'Added' : 'Add to cart'}
                 </button>
                 <button
                   onClick={() => open(deal)}
                   aria-label="Quick view deal"
-                  className="w-12 h-12 border border-white/25 hover:border-white flex items-center justify-center transition-colors"
+                  className="w-12 h-12 border border-white/25 hover:border-white rounded-xl flex items-center justify-center transition-colors text-white"
                 >
                   <FiEye />
                 </button>

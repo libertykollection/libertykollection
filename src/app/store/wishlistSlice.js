@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const saveWishlistToLocalStorage = (wishlist) => {
   if (typeof window !== 'undefined') {
-    localStorage.setItem('gloria_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('liberty_wishlist', JSON.stringify(wishlist));
   }
 };
 
 const loadWishlistFromLocalStorage = () => {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('gloria_wishlist');
+    const saved = localStorage.getItem('liberty_wishlist');
     if (!saved) return [];
     try {
       const parsed = JSON.parse(saved);

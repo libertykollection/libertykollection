@@ -102,7 +102,7 @@ export async function sendOrderConfirmation(email, orderId, order) {
         We've received your order and will notify you once it ships. You can view your order details in your dashboard.
       </p>
       <div style="text-align: center; margin-top: 20px;">
-        <a href="${process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://gloriacosmetics.pk'}/customer/pages/orders" class="button">View My Orders</a>
+        <a href="${process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com'}/customer/pages/orders" class="button">View My Orders</a>
       </div>
     `;
 

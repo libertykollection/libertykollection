@@ -145,7 +145,7 @@ const AllProducts = () => {
               Store
             </span>
             <FiChevronRight className="text-xs" />
-            <span className="text-theme-dark font-bold">Gloria Cosmetics Catalog</span>
+            <span className="text-theme-dark font-bold">Liberty Kollection Catalog</span>
           </div>
 
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
@@ -255,7 +255,7 @@ const AllProducts = () => {
                   <div className="p-4 flex flex-col flex-grow">
                     <div className="flex justify-between items-center mb-1.5">
                       <p className="text-[10px] font-bold text-[#8C7C68] uppercase tracking-widest truncate max-w-[65%]">
-                        {product.category?.name || 'Gloria Formula'}
+                        {product.category?.name || 'Liberty Kollection'}
                       </p>
                       <div className="flex items-center gap-1 text-theme-primary text-[10px] font-bold">
                         <GoStarFill size={11} />
