@@ -1,13 +1,13 @@
 import nodemailer from 'nodemailer';
 
 /**
- * Creates a standard nodemailer transporter for Titan (Hostinger) global use.
+ * Creates a standard nodemailer transporter for Hostinger SMTPS global use.
  * Falls back to EMAIL_USERNAME/PASSWORD if MAIL_USER/PASSWORD is missing.
  */
 export const getTransporter = () => {
     const mailUser = process.env.MAIL_USER || process.env.EMAIL_USERNAME;
     const mailPass = process.env.MAIL_PASSWORD || process.env.EMAIL_PASSWORD;
-    const mailHost = process.env.MAIL_HOST || 'smtp.titan.email';
+    const mailHost = process.env.MAIL_HOST || 'smtp.hostinger.com';
     const mailPort = parseInt(process.env.MAIL_PORT || '465', 10);
 
     if (!mailUser || !mailPass) {

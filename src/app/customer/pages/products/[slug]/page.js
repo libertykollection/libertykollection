@@ -150,7 +150,7 @@ const ProductDetailsPage = async ({ params }) => {
     const productData = await getProductData(slug);
 
     const { product } = productData;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com';
 
     // Construct Product Schema
     const jsonLd = {

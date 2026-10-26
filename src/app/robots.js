@@ -1,5 +1,5 @@
 export default function robots() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://store2u.ca';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://libertykollection.com';
 
     return {
         rules: {
